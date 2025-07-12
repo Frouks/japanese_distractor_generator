@@ -1,0 +1,19 @@
+2025-06-18 16:31:05 - root - INFO - Logging configured for co-occurrence calculation.
+2025-06-18 16:31:05 - CooccurrenceCalculator - INFO - ====== Starting Co-occurrence Calculation Script (Robust Parallel Version) ======
+2025-06-18 16:31:09 - CooccurrenceCalculator - INFO - Corpus contains 25,408,585 sentences.
+2025-06-18 16:31:09 - CooccurrenceCalculator - INFO - Using temporary directory for partial results: /var/folders/fz/gzc2726d0pl4hr0ljpqy19fw0000gn/T/tmp5j_6d3d2
+2025-06-18 16:31:09 - CooccurrenceCalculator - INFO - Starting worker pool with 12 processes.
+2025-06-18 16:31:15 - CooccurrenceCalculator - INFO - Distributing 255 chunks to workers...
+2025-06-18 16:35:45 - CooccurrenceCalculator - INFO - All workers have finished. All partial results saved to disk.
+2025-06-18 16:35:45 - CooccurrenceCalculator - INFO - Merging partial results from temporary files...
+2025-06-19 10:55:51 - CooccurrenceCalculator - INFO - Temporary files merged and directory cleaned up.
+2025-06-19 10:56:11 - CooccurrenceCalculator - INFO - Found 337,635,769 unique co-occurring pairs before pruning.
+2025-06-19 10:56:11 - CooccurrenceCalculator - INFO - Total co-occurrence instances counted: 3,301,922,537
+2025-06-19 10:56:11 - CooccurrenceCalculator - INFO - Pruning pairs with count < 5...
+2025-06-19 11:03:08 - CooccurrenceCalculator - INFO - Pruned from 337,635,769 to 57,684,917 pairs.
+2025-06-19 11:03:08 - CooccurrenceVisualizer - INFO - Generating co-occurrence visualizations in /Users/danieleamore/University/Bachelorthesis/bachelorarbeit/baseline_method/figures...
+2025-06-19 11:03:42 - CooccurrenceVisualizer - INFO - 📊 German Top N co-occurrence plot saved to: figures/top_n_kookkurrenz_haeufigkeit.png
+2025-06-19 11:03:42 - CooccurrenceCalculator - INFO - Serializing pruned data for JSON storage...
+2025-06-19 11:05:19 - CooccurrenceCalculator - INFO - ✅ Successfully saved co-occurrence data to processed_corpus_data/jp_cooccurrence_counts.json
+2025-06-19 11:05:19 - CooccurrenceCalculator - INFO - Co-occurrence calculation finished in 1114.24 minutes.
+2025-06-19 11:05:19 - CooccurrenceCalculator - INFO - ====== Co-occurrence Calculation Script Finished ======

@@ -1,0 +1,48 @@
+2025-06-08 19:15:12 - root - INFO - Logging configured. Console will show all progress. File will be clean (no progress/gensim spam).
+2025-06-08 19:15:12 - Word2VecPipeline - INFO - ====== Starting Optimized Word2Vec Model Training Pipeline ======
+2025-06-08 19:15:12 - Word2VecPipeline - INFO - --- Step 1: Corpus Preprocessing ---
+2025-06-08 19:15:12 - CorpusPreprocessor - INFO - Starting corpus preprocessing and tokenization...
+2025-06-08 19:15:12 - CorpusPreprocessor - INFO - Output file: processed_corpus_data/simple_jawiki_tokenized.txt
+2025-06-08 19:15:12 - WikiCorpusReader - INFO - Initialized reader for path: /Volumes/T7/Bachelorthesis/jawiki_data/jawiki_extracted
+2025-06-08 19:15:12 - CorpusPreprocessor - INFO - Initialized MeCab tagger with '-Owakati' format for efficient tokenization.
+2025-06-08 19:15:12 - CorpusPreprocessor - INFO - Streaming sentences from corpus and tokenizing with MeCab...
+2025-06-08 19:15:12 - WikiCorpusReader - INFO - Starting to stream sentences from corpus...
+2025-06-08 19:15:12 - WikiCorpusReader - INFO - Searching for JSON files in: /Volumes/T7/Bachelorthesis/jawiki_data/jawiki_extracted
+2025-06-08 19:15:13 - WikiCorpusReader - INFO - Found 7806 valid JSON files to process.
+2025-06-08 19:22:11 - WikiCorpusReader - INFO - Finished streaming. Processed 25,410,880 sentences.
+2025-06-08 19:22:11 - WikiCorpusReader - INFO - Corpus reading took 418.59 seconds.
+2025-06-08 19:22:11 - CorpusPreprocessor - INFO - Preprocessing complete!
+2025-06-08 19:22:11 - CorpusPreprocessor - INFO - Total sentences processed: 25,410,880
+2025-06-08 19:22:11 - CorpusPreprocessor - INFO - Time taken: 6.98 minutes
+2025-06-08 19:22:11 - CorpusPreprocessor - INFO - Tokenized corpus saved to: processed_corpus_data/simple_jawiki_tokenized.txt
+2025-06-08 19:22:11 - CorpusPreprocessor - INFO - File size: 4354.0 MB
+2025-06-08 19:22:11 - Word2VecPipeline - INFO - --- Step 2: Word2Vec Training ---
+2025-06-08 19:22:11 - Word2VecTrainer - INFO - Initializing Word2Vec training...
+2025-06-08 19:22:11 - Word2VecTrainer - INFO - Parameters: sg=0 (CBOW), vector_size=400, window=5, min_count=5, workers=11, epochs=5
+2025-06-08 19:22:11 - Word2VecTrainer - INFO - Initialized LineSentence reader for: processed_corpus_data/simple_jawiki_tokenized.txt
+2025-06-08 19:22:11 - Word2VecTrainer - INFO - Starting Word2Vec model training...
+2025-06-08 19:44:24 - Word2VecTrainer - INFO - Word2Vec training completed in 22.21 minutes
+2025-06-08 19:44:24 - Word2VecPipeline - INFO - --- Step 3: Saving Model ---
+2025-06-08 19:44:24 - Word2VecPipeline - INFO - Saving trained model to: model/jawiki_min_count_5.word2vec.model
+2025-06-08 19:44:24 - Word2VecPipeline - INFO - Model saved successfully in 0.50 seconds
+2025-06-08 19:44:24 - Word2VecPipeline - INFO - 
+==================================================
+2025-06-08 19:44:24 - Word2VecPipeline - INFO - PERFORMANCE SUMMARY
+2025-06-08 19:44:24 - Word2VecPipeline - INFO - ==================================================
+2025-06-08 19:44:24 - Word2VecPipeline - INFO - Corpus Preprocessing: 6.98 minutes
+2025-06-08 19:44:24 - Word2VecPipeline - INFO - Model Training: 22.21 minutes
+2025-06-08 19:44:24 - Word2VecPipeline - INFO - Model Saving: 0.50 seconds
+2025-06-08 19:44:24 - Word2VecPipeline - INFO - Total Pipeline Time: 29.20 minutes
+2025-06-08 19:44:24 - Word2VecPipeline - INFO - ==================================================
+2025-06-08 19:44:24 - root - INFO - 📊 Timing visualization saved to: figures/word2vec_pipeline_timing_20250608_194424.png
+2025-06-08 19:44:24 - Word2VecPipeline - INFO - 
+--- Step 6: Testing the trained model ---
+2025-06-08 19:44:24 - Word2VecPipeline - INFO - Model vocabulary size: 492,130 words
+2025-06-08 19:44:25 - Word2VecPipeline - INFO - Words most similar to '猫': [('子猫', 0.7053337693214417), ('ネコ', 0.6860220432281494), ('犬', 0.6509783864021301)]
+2025-06-08 19:44:25 - Word2VecPipeline - INFO - Words most similar to '東京': [('大阪', 0.7084737420082092), ('京都', 0.6340751051902771), ('名古屋', 0.6220752596855164)]
+2025-06-08 19:44:25 - Word2VecPipeline - INFO - Words most similar to '走る': [('通る', 0.7247433066368103), ('走っ', 0.6703530550003052), ('歩く', 0.6602100729942322)]
+2025-06-08 19:44:25 - Word2VecPipeline - INFO - Words most similar to '美しい': [('美しく', 0.7476904988288879), ('麗しい', 0.6436372995376587), ('素晴らしい', 0.6131706237792969)]
+2025-06-08 19:44:25 - Word2VecPipeline - INFO - Words most similar to '日本': [('韓国', 0.6296117305755615), ('中国', 0.5919339060783386), ('台湾', 0.5362380146980286)]
+2025-06-08 19:44:25 - Word2VecPipeline - INFO - Words most similar to '学校': [('學校', 0.7083703279495239), ('高校', 0.6488839983940125), ('高女', 0.5872975587844849)]
+2025-06-08 19:44:25 - Word2VecPipeline - INFO - 
+====== Word2Vec Model Training Pipeline Finished Successfully ======

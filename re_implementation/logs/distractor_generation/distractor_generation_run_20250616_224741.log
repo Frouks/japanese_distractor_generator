@@ -1,0 +1,212 @@
+2025-06-16 22:47:41 - root - INFO - Logging configured to output to console and file.
+2025-06-16 22:47:41 - Main - INFO - ====== Distractor Generation System Starting ======
+2025-06-16 22:47:41 - Main - WARNING - Processed data file not found at: processed_corpus_data/jp_all_words_details.json
+2025-06-16 22:47:41 - Main - WARNING - Running the full preprocessing pipeline.
+2025-06-16 22:47:41 - Main.Pipeline - INFO - --- Starting Full Preprocessing Pipeline ---
+2025-06-16 22:47:41 - WikiCorpusReader - INFO - Initialized reader for path: /Volumes/T7/Bachelorthesis/jawiki_data/jawiki_extracted
+2025-06-16 22:47:41 - CorpusProcessor - INFO - No explicit MeCab args provided by user. MeCab will use its default dictionary configuration.
+2025-06-16 22:47:41 - CorpusProcessor - WARNING - IMPORTANT: Please check the 'Active MeCab Dictionary Info' log output below to ensure MeCab is using the dictionary you expect (e.g., unidic).
+2025-06-16 22:47:41 - CorpusProcessor - INFO - MeCab Tagger initialized with final effective args: ''.
+2025-06-16 22:47:41 - CorpusProcessor - INFO - Active MeCab Dictionary Info (from Tagger):
+  Filename: /opt/miniconda3/envs/bt/lib/python3.10/site-packages/unidic/dicdir/sys.dic, Charset: utf8, Type: 0, Version: 102
+
+2025-06-16 22:47:41 - CorpusProcessor - INFO - Using feature indices for parsing: POS1=0, POS_Detail_End=3, Lemma=7
+2025-06-16 22:47:41 - CorpusProcessor - INFO - Starting MeCab processing from sentence iterable...
+2025-06-16 22:47:41 - WikiCorpusReader - INFO - Starting to stream sentences from corpus...
+2025-06-16 22:47:41 - WikiCorpusReader - INFO - Searching for JSON files in: /Volumes/T7/Bachelorthesis/jawiki_data/jawiki_extracted
+2025-06-16 22:47:42 - WikiCorpusReader - INFO - Found 7806 valid JSON files to process.
+2025-06-16 23:18:43 - WikiCorpusReader - INFO - Finished streaming. Processed 25,410,880 sentences.
+2025-06-16 23:18:43 - WikiCorpusReader - INFO - Corpus reading took 1862.10 seconds.
+2025-06-16 23:18:43 - CorpusProcessor - INFO - MeCab sentence processing finished.
+2025-06-16 23:18:43 - CorpusProcessor - INFO - Total MeCab nodes yielded (incl. BOS/EOS): 809,247,123
+2025-06-16 23:18:43 - CorpusProcessor - INFO - Total content tokens (after filtering and combining): 395,469,823
+2025-06-16 23:18:43 - CorpusProcessor - INFO - Content tokens where dictionary lemma was '*' (is_unknown_by_dict=True): 0 (0.00% of content tokens).
+2025-06-16 23:18:43 - CorpusProcessor - INFO - Unique (base_form, pos_major) types found: 179,807
+2025-06-16 23:18:47 - Main.Pipeline - INFO - Corpus Reading Stats (summary): {'total_files_processed': 7806, 'files_with_read_errors': 0, 'total_articles_found': 1427811, 'total_sentences_found': 25410880, 'total_processing_time_seconds': 1862.1023590564728, 'sentence_length_stats': {'mean': 53.4399575300029, 'median': 47.0, 'min': 8, 'max': 300, 'std_dev': 32.25485675981667}, 'sentence_lengths_summary': 'List with 25,410,880 entries (not shown).'}
+2025-06-16 23:18:47 - Main.Pipeline - INFO - Saving processed data and generating visualizations...
+2025-06-16 23:18:49 - CorpusProcessor - INFO - All words details with frequencies saved to /Users/danieleamore/University/Bachelorthesis/bachelorarbeit/baseline_method/processed_corpus_data/jp_all_words_details.json
+2025-06-16 23:19:06 - WikiCorpusReader - INFO - 📊 Corpus stats visualization saved to: /Users/danieleamore/University/Bachelorthesis/bachelorarbeit/baseline_method/figures/corpus_sentence_length_distribution.png
+2025-06-16 23:19:06 - Main.Pipeline - INFO - Creating corpus comparison
+2025-06-16 23:19:06 - Main.Visualization - INFO - Creating corpus size comparison plot...
+2025-06-16 23:19:06 - Main.Visualization - INFO - 📊 Corpus size comparison plot saved to: /Users/danieleamore/University/Bachelorthesis/bachelorarbeit/baseline_method/figures/corpus_size_comparison.png
+2025-06-16 23:19:06 - CorpusProcessor - INFO - Generating corpus statistics visualizations in /Users/danieleamore/University/Bachelorthesis/bachelorarbeit/baseline_method/figures...
+2025-06-16 23:19:06 - CorpusProcessor - INFO - Saved top_n_word_pos_frequency.png
+2025-06-16 23:19:07 - CorpusProcessor - INFO - Saved pos_major_token_sum_distribution.png
+2025-06-16 23:19:07 - CorpusProcessor - INFO - Corpus statistics visualizations generation finished.
+2025-06-16 23:19:07 - Main.Pipeline - INFO - --- Full Preprocessing Pipeline Finished ---
+2025-06-16 23:19:07 - Main - INFO - Loading corpus data and initializing generator...
+2025-06-16 23:19:07 - CorpusProcessor - INFO - No explicit MeCab args provided by user. MeCab will use its default dictionary configuration.
+2025-06-16 23:19:07 - CorpusProcessor - WARNING - IMPORTANT: Please check the 'Active MeCab Dictionary Info' log output below to ensure MeCab is using the dictionary you expect (e.g., unidic).
+2025-06-16 23:19:07 - CorpusProcessor - INFO - MeCab Tagger initialized with final effective args: ''.
+2025-06-16 23:19:07 - CorpusProcessor - INFO - Active MeCab Dictionary Info (from Tagger):
+  Filename: /opt/miniconda3/envs/bt/lib/python3.10/site-packages/unidic/dicdir/sys.dic, Charset: utf8, Type: 0, Version: 102
+
+2025-06-16 23:19:07 - CorpusProcessor - INFO - Using feature indices for parsing: POS1=0, POS_Detail_End=3, Lemma=7
+2025-06-16 23:19:07 - Main - INFO - Initializing BaselineGenerator...
+2025-06-16 23:19:07 - CorpusProcessor.Loader - INFO - Loading all words details from /Users/danieleamore/University/Bachelorthesis/bachelorarbeit/baseline_method/processed_corpus_data/jp_all_words_details.json...
+2025-06-16 23:19:07 - CorpusProcessor.Loader - INFO - Successfully loaded 179807 entries from words details file.
+2025-06-16 23:19:07 - BaselineGenerator - INFO - Organizing corpus vocabulary by Part-of-Speech for faster lookups...
+2025-06-16 23:19:07 - BaselineGenerator - INFO - Finished organizing vocabulary.
+2025-06-16 23:19:07 - BaselineGenerator - INFO - Generator initialized. Organized vocabulary into 8 POS categories.
+2025-06-16 23:19:07 - Main - INFO - BaselineGenerator is ready.
+2025-06-16 23:19:07 - Main - INFO - Initializing SpellingGenerator...
+2025-06-16 23:19:07 - SpellingGenerator - INFO - Building character-to-word inverted index for fast lookups...
+2025-06-16 23:19:07 - SpellingGenerator - INFO - Finished building character index.
+2025-06-16 23:19:07 - SpellingGenerator - INFO - Generator initialized. Built character index for 5253 unique characters.
+2025-06-16 23:19:07 - Main - INFO - SpellingGenerator is ready.
+2025-06-16 23:19:07 - Main - INFO - Initializing SimilarityGenerator...
+2025-06-16 23:19:07 - SimilarityGenerator - INFO - Loading Word2Vec model... (This may take a moment)
+2025-06-16 23:19:07 - gensim.utils - INFO - loading Word2Vec object from model/jawiki_min_count_5.word2vec.model
+2025-06-16 23:19:08 - gensim.utils - INFO - loading wv recursively from model/jawiki_min_count_5.word2vec.model.wv.* with mmap=None
+2025-06-16 23:19:08 - gensim.utils - INFO - loading vectors from model/jawiki_min_count_5.word2vec.model.wv.vectors.npy with mmap=None
+2025-06-16 23:19:08 - gensim.utils - INFO - loading syn1neg from model/jawiki_min_count_5.word2vec.model.syn1neg.npy with mmap=None
+2025-06-16 23:19:08 - gensim.utils - INFO - setting ignored attribute cum_table to None
+2025-06-16 23:19:09 - gensim.utils - INFO - Word2Vec lifecycle event {'fname': 'model/jawiki_min_count_5.word2vec.model', 'datetime': '2025-06-16T23:19:09.639752', 'gensim': '4.3.3', 'python': '3.10.16 (main, Dec 11 2024, 10:22:29) [Clang 14.0.6 ]', 'platform': 'macOS-15.5-arm64-arm-64bit', 'event': 'loaded'}
+2025-06-16 23:19:09 - SimilarityGenerator - INFO - Word2Vec model loaded successfully.
+2025-06-16 23:19:09 - SimilarityGenerator - INFO - SimilarityGenerator initialized successfully with model from model/jawiki_min_count_5.word2vec.model
+2025-06-16 23:19:09 - Main - INFO - SimilarityGenerator is ready.
+2025-06-16 23:19:09 - Main - INFO - ============================================================
+
+2025-06-16 23:19:09 - Main - INFO - DEMONSTRATING DISTRACTOR GENERATION
+2025-06-16 23:19:09 - Main - INFO - ============================================================
+
+2025-06-16 23:19:09 - Main - INFO - ▶️  Target Word: '美しい'
+2025-06-16 23:19:09 - BaselineGenerator - INFO - --- Generating baseline distractors for '美しい' ---
+2025-06-16 23:19:09 - BaselineGenerator - INFO - Target analyzed: Lemma='美しい', POS='形容詞', Frequency=25898
+2025-06-16 23:19:09 - BaselineGenerator - INFO - Found 721 candidate words with POS '形容詞'.
+2025-06-16 23:19:09 - BaselineGenerator - INFO - Successfully generated 5 distractors: ['欲しい', '幅広い', '珍しい', '厳しい', '赤い']
+2025-06-16 23:19:09 - Main - INFO -   - Baseline (Frequency): ['欲しい', '幅広い', '珍しい', '厳しい', '赤い']
+2025-06-16 23:19:09 - SpellingGenerator - INFO - --- Generating spelling distractors for '美しい' ---
+2025-06-16 23:19:09 - SpellingGenerator - INFO - Target analyzed: Lemma='美しい', POS='形容詞', Frequency=25898
+2025-06-16 23:19:09 - SpellingGenerator - INFO - Unique characters in target lemma: {'美', 'し', 'い'}
+2025-06-16 23:19:09 - SpellingGenerator - INFO - Found 4913 potential candidates from character index.
+2025-06-16 23:19:09 - SpellingGenerator - INFO - Successfully generated 5 distractors: ['欲しい', '幅広い', '珍しい', '厳しい', '赤い']
+2025-06-16 23:19:09 - Main - INFO -   - Spelling (Char+Freq):   ['欲しい', '幅広い', '珍しい', '厳しい', '赤い']
+2025-06-16 23:19:09 - SimilarityGenerator - INFO - --- Generating similarity distractors for '美しい' ---
+2025-06-16 23:19:10 - SimilarityGenerator - INFO - Found similar items for '美しい': ['美しく' (0.74769), '麗しい' (0.64364), '素晴らしい' (0.61317), 'すばらしい' (0.57261), '美しかっ' (0.56505)]
+2025-06-16 23:19:10 - SimilarityGenerator - INFO - Successfully generated 5 distractors for target token '美しい'.
+2025-06-16 23:19:10 - Main - INFO -   - Similarity (Word2Vec): ['美しく', '麗しい', '素晴らしい', 'すばらしい', '美しかっ']
+2025-06-16 23:19:10 - Main - INFO - --------------------------------------------------
+2025-06-16 23:19:10 - Main - INFO - ▶️  Target Word: '走る'
+2025-06-16 23:19:10 - BaselineGenerator - INFO - --- Generating baseline distractors for '走る' ---
+2025-06-16 23:19:10 - BaselineGenerator - INFO - Target analyzed: Lemma='走る', POS='動詞', Frequency=44121
+2025-06-16 23:19:10 - BaselineGenerator - INFO - Found 8094 candidate words with POS '動詞'.
+2025-06-16 23:19:10 - BaselineGenerator - INFO - Successfully generated 5 distractors: ['巡る', '応ずる', '限る', '乗る', '占める']
+2025-06-16 23:19:10 - Main - INFO -   - Baseline (Frequency): ['巡る', '応ずる', '限る', '乗る', '占める']
+2025-06-16 23:19:10 - SpellingGenerator - INFO - --- Generating spelling distractors for '走る' ---
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Target analyzed: Lemma='走る', POS='動詞', Frequency=44121
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Unique characters in target lemma: {'走', 'る'}
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Found 4768 potential candidates from character index.
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Successfully generated 5 distractors: ['巡る', '応ずる', '限る', '乗る', '占める']
+2025-06-16 23:19:10 - Main - INFO -   - Spelling (Char+Freq):   ['巡る', '応ずる', '限る', '乗る', '占める']
+2025-06-16 23:19:10 - SimilarityGenerator - INFO - --- Generating similarity distractors for '走る' ---
+2025-06-16 23:19:10 - SimilarityGenerator - INFO - Found similar items for '走る': ['通る' (0.72474), '走っ' (0.67035), '歩く' (0.66021), '横切る' (0.65037), '走り' (0.63361)]
+2025-06-16 23:19:10 - SimilarityGenerator - INFO - Successfully generated 5 distractors for target token '走る'.
+2025-06-16 23:19:10 - Main - INFO -   - Similarity (Word2Vec): ['通る', '走っ', '歩く', '横切る', '走り']
+2025-06-16 23:19:10 - Main - INFO - --------------------------------------------------
+2025-06-16 23:19:10 - Main - INFO - ▶️  Target Word: '猫'
+2025-06-16 23:19:10 - BaselineGenerator - INFO - --- Generating baseline distractors for '猫' ---
+2025-06-16 23:19:10 - BaselineGenerator - INFO - Target analyzed: Lemma='猫', POS='名詞', Frequency=22075
+2025-06-16 23:19:10 - BaselineGenerator - INFO - Found 166199 candidate words with POS '名詞'.
+2025-06-16 23:19:10 - BaselineGenerator - INFO - Successfully generated 5 distractors: ['経過', 'マイナー-minor', '商店', '土', '分岐']
+2025-06-16 23:19:10 - Main - INFO -   - Baseline (Frequency): ['経過', 'マイナー-minor', '商店', '土', '分岐']
+2025-06-16 23:19:10 - SpellingGenerator - INFO - --- Generating spelling distractors for '猫' ---
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Target analyzed: Lemma='猫', POS='名詞', Frequency=22075
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Unique characters in target lemma: {'猫'}
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Found 100 potential candidates from character index.
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Successfully generated 5 distractors: ['黒猫', '山猫', '子猫', '野良猫', '飼い猫']
+2025-06-16 23:19:10 - Main - INFO -   - Spelling (Char+Freq):   ['黒猫', '山猫', '子猫', '野良猫', '飼い猫']
+2025-06-16 23:19:10 - SimilarityGenerator - INFO - --- Generating similarity distractors for '猫' ---
+2025-06-16 23:19:10 - SimilarityGenerator - INFO - Found similar items for '猫': ['子猫' (0.70533), 'ネコ' (0.68602), '犬' (0.65098), '仔猫' (0.62438), 'ウサギ' (0.62155)]
+2025-06-16 23:19:10 - SimilarityGenerator - INFO - Successfully generated 5 distractors for target token '猫'.
+2025-06-16 23:19:10 - Main - INFO -   - Similarity (Word2Vec): ['子猫', 'ネコ', '犬', '仔猫', 'ウサギ']
+2025-06-16 23:19:10 - Main - INFO - --------------------------------------------------
+2025-06-16 23:19:10 - Main - INFO - ▶️  Target Word: '政府'
+2025-06-16 23:19:10 - BaselineGenerator - INFO - --- Generating baseline distractors for '政府' ---
+2025-06-16 23:19:10 - BaselineGenerator - INFO - Target analyzed: Lemma='政府', POS='名詞', Frequency=192178
+2025-06-16 23:19:10 - BaselineGenerator - INFO - Found 166199 candidate words with POS '名詞'.
+2025-06-16 23:19:10 - BaselineGenerator - INFO - Successfully generated 5 distractors: ['獲得', '戦争', '東', 'ザ-the', 'バス-bus']
+2025-06-16 23:19:10 - Main - INFO -   - Baseline (Frequency): ['獲得', '戦争', '東', 'ザ-the', 'バス-bus']
+2025-06-16 23:19:10 - SpellingGenerator - INFO - --- Generating spelling distractors for '政府' ---
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Target analyzed: Lemma='政府', POS='名詞', Frequency=192178
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Unique characters in target lemma: {'府', '政'}
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Found 278 potential candidates from character index.
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Successfully generated 5 distractors: ['政治', '府', '行政', '政策', '政権']
+2025-06-16 23:19:10 - Main - INFO -   - Spelling (Char+Freq):   ['政治', '府', '行政', '政策', '政権']
+2025-06-16 23:19:10 - SimilarityGenerator - INFO - --- Generating similarity distractors for '政府' ---
+2025-06-16 23:19:10 - SimilarityGenerator - INFO - Found similar items for '政府': ['当局' (0.65703), '国家' (0.61079), '議会' (0.55014), '政権' (0.53341), '政庁' (0.53006)]
+2025-06-16 23:19:10 - SimilarityGenerator - INFO - Successfully generated 5 distractors for target token '政府'.
+2025-06-16 23:19:10 - Main - INFO -   - Similarity (Word2Vec): ['当局', '国家', '議会', '政権', '政庁']
+2025-06-16 23:19:10 - Main - INFO - --------------------------------------------------
+2025-06-16 23:19:10 - Main - INFO - ▶️  Target Word: 'ゆっくり'
+2025-06-16 23:19:10 - BaselineGenerator - INFO - --- Generating baseline distractors for 'ゆっくり' ---
+2025-06-16 23:19:10 - BaselineGenerator - INFO - Target analyzed: Lemma='ゆっくり', POS='副詞', Frequency=5626
+2025-06-16 23:19:10 - BaselineGenerator - INFO - Found 2921 candidate words with POS '副詞'.
+2025-06-16 23:19:10 - BaselineGenerator - INFO - Successfully generated 5 distractors: ['益々', '大抵', 'もり', 'ざっ', '仮令']
+2025-06-16 23:19:10 - Main - INFO -   - Baseline (Frequency): ['益々', '大抵', 'もり', 'ざっ', '仮令']
+2025-06-16 23:19:10 - SpellingGenerator - INFO - --- Generating spelling distractors for 'ゆっくり' ---
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Target analyzed: Lemma='ゆっくり', POS='副詞', Frequency=5626
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Unique characters in target lemma: {'っ', 'ゆ', 'り', 'く'}
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Found 6647 potential candidates from character index.
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Successfully generated 5 distractors: ['もり', 'ざっ', '斯く', '確り', 'すっ']
+2025-06-16 23:19:10 - Main - INFO -   - Spelling (Char+Freq):   ['もり', 'ざっ', '斯く', '確り', 'すっ']
+2025-06-16 23:19:10 - SimilarityGenerator - INFO - --- Generating similarity distractors for 'ゆっくり' ---
+2025-06-16 23:19:10 - SimilarityGenerator - INFO - Found similar items for 'ゆっくり': ['緩り' (0.58555), 'ゆったり' (0.58510), '素早く' (0.55657), '速く' (0.55278), '速い' (0.51679)]
+2025-06-16 23:19:10 - SimilarityGenerator - INFO - Successfully generated 5 distractors for target token 'ゆっくり'.
+2025-06-16 23:19:10 - Main - INFO -   - Similarity (Word2Vec): ['緩り', 'ゆったり', '素早く', '速く', '速い']
+2025-06-16 23:19:10 - Main - INFO - --------------------------------------------------
+2025-06-16 23:19:10 - Main - INFO - ▶️  Target Word: '食べた'
+2025-06-16 23:19:10 - BaselineGenerator - INFO - --- Generating baseline distractors for '食べた' ---
+2025-06-16 23:19:10 - BaselineGenerator - INFO - Target analyzed: Lemma='食べる', POS='動詞', Frequency=42926
+2025-06-16 23:19:10 - BaselineGenerator - INFO - Found 8094 candidate words with POS '動詞'.
+2025-06-16 23:19:10 - BaselineGenerator - INFO - Successfully generated 5 distractors: ['並ぶ', '呉れる', '加わる', '通す', '応ずる']
+2025-06-16 23:19:10 - Main - INFO -   - Baseline (Frequency): ['並ぶ', '呉れる', '加わる', '通す', '応ずる']
+2025-06-16 23:19:10 - SpellingGenerator - INFO - --- Generating spelling distractors for '食べた' ---
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Target analyzed: Lemma='食べる', POS='動詞', Frequency=42926
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Unique characters in target lemma: {'べ', 'る', '食'}
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Found 5156 potential candidates from character index.
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Successfully generated 5 distractors: ['呉れる', '加わる', '応ずる', '巡る', '走る']
+2025-06-16 23:19:10 - Main - INFO -   - Spelling (Char+Freq):   ['呉れる', '加わる', '応ずる', '巡る', '走る']
+2025-06-16 23:19:10 - SimilarityGenerator - INFO - --- Generating similarity distractors for '食べた' ---
+2025-06-16 23:19:10 - SimilarityGenerator - WARNING - Surface form '食べた' not in Word2Vec vocabulary. Trying lemma...
+2025-06-16 23:19:10 - SimilarityGenerator - INFO - Found similar items for '食べる': ['食す' (0.84436), '食する' (0.79887), '飲む' (0.71250), '摂る' (0.68174), '食し' (0.67707)]
+2025-06-16 23:19:10 - SimilarityGenerator - INFO - Successfully generated 5 distractors for target token '食べる'.
+2025-06-16 23:19:10 - Main - INFO -   - Similarity (Word2Vec): ['食す', '食する', '飲む', '摂る', '食し']
+2025-06-16 23:19:10 - Main - INFO - --------------------------------------------------
+2025-06-16 23:19:10 - Main - INFO - ▶️  Target Word: '走らない'
+2025-06-16 23:19:10 - BaselineGenerator - INFO - --- Generating baseline distractors for '走らない' ---
+2025-06-16 23:19:10 - BaselineGenerator - INFO - Target analyzed: Lemma='走る', POS='動詞', Frequency=44121
+2025-06-16 23:19:10 - BaselineGenerator - INFO - Found 8094 candidate words with POS '動詞'.
+2025-06-16 23:19:10 - BaselineGenerator - INFO - Successfully generated 5 distractors: ['巡る', '応ずる', '限る', '乗る', '占める']
+2025-06-16 23:19:10 - Main - INFO -   - Baseline (Frequency): ['巡る', '応ずる', '限る', '乗る', '占める']
+2025-06-16 23:19:10 - SpellingGenerator - INFO - --- Generating spelling distractors for '走らない' ---
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Target analyzed: Lemma='走る', POS='動詞', Frequency=44121
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Unique characters in target lemma: {'走', 'る'}
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Found 4768 potential candidates from character index.
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Successfully generated 5 distractors: ['巡る', '応ずる', '限る', '乗る', '占める']
+2025-06-16 23:19:10 - Main - INFO -   - Spelling (Char+Freq):   ['巡る', '応ずる', '限る', '乗る', '占める']
+2025-06-16 23:19:10 - SimilarityGenerator - INFO - --- Generating similarity distractors for '走らない' ---
+2025-06-16 23:19:10 - SimilarityGenerator - WARNING - Surface form '走らない' not in Word2Vec vocabulary. Trying lemma...
+2025-06-16 23:19:10 - SimilarityGenerator - INFO - Found similar items for '走る': ['通る' (0.72474), '走っ' (0.67035), '歩く' (0.66021), '横切る' (0.65037), '走り' (0.63361)]
+2025-06-16 23:19:10 - SimilarityGenerator - INFO - Successfully generated 5 distractors for target token '走る'.
+2025-06-16 23:19:10 - Main - INFO -   - Similarity (Word2Vec): ['通る', '走っ', '歩く', '横切る', '走り']
+2025-06-16 23:19:10 - Main - INFO - --------------------------------------------------
+2025-06-16 23:19:10 - Main - INFO - ▶️  Target Word: '発声'
+2025-06-16 23:19:10 - BaselineGenerator - INFO - --- Generating baseline distractors for '発声' ---
+2025-06-16 23:19:10 - BaselineGenerator - INFO - Target analyzed: Lemma='発声', POS='名詞', Frequency=2451
+2025-06-16 23:19:10 - BaselineGenerator - INFO - Found 166199 candidate words with POS '名詞'.
+2025-06-16 23:19:10 - BaselineGenerator - INFO - Successfully generated 5 distractors: ['自爆', '原典', 'ユーティリティー-utility', 'シンドウ', 'ＬＥ']
+2025-06-16 23:19:10 - Main - INFO -   - Baseline (Frequency): ['自爆', '原典', 'ユーティリティー-utility', 'シンドウ', 'ＬＥ']
+2025-06-16 23:19:10 - SpellingGenerator - INFO - --- Generating spelling distractors for '発声' ---
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Target analyzed: Lemma='発声', POS='名詞', Frequency=2451
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Unique characters in target lemma: {'声', '発'}
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Found 382 potential candidates from character index.
+2025-06-16 23:19:10 - SpellingGenerator - INFO - Successfully generated 5 distractors: ['和声', '後発', '発火', '発給', '揮発']
+2025-06-16 23:19:10 - Main - INFO -   - Spelling (Char+Freq):   ['和声', '後発', '発火', '発給', '揮発']
+2025-06-16 23:19:10 - SimilarityGenerator - INFO - --- Generating similarity distractors for '発声' ---
+2025-06-16 23:19:10 - SimilarityGenerator - INFO - Found similar items for '発声': ['調音' (0.54793), 'イントネーション' (0.54400), '発話' (0.52948), '口話' (0.52771), '呼吸' (0.52684)]
+2025-06-16 23:19:10 - SimilarityGenerator - INFO - Successfully generated 5 distractors for target token '発声'.
+2025-06-16 23:19:10 - Main - INFO -   - Similarity (Word2Vec): ['調音', 'イントネーション', '発話', '口話', '呼吸']
+2025-06-16 23:19:10 - Main - INFO - --------------------------------------------------
+2025-06-16 23:19:10 - Main - INFO - 
+====== System finished demonstration. ======

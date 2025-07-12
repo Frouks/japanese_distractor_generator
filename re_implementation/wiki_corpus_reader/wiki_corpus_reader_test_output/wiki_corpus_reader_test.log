@@ -1,0 +1,32 @@
+2025-06-08 15:46:01,581 - WikiCorpusReaderTest - INFO - [<module>:227] - === Starting WikiCorpusReader Self-Test Script (on Real Corpus Sample) ===
+2025-06-08 15:46:01,581 - WikiCorpusReaderTest - INFO - [<module>:228] - Log file for this test run is being saved to: /Users/danieleamore/University/Bachelorthesis/bachelorarbeit/baseline_method/wiki_corpus_reader/wiki_corpus_reader_test_output/wiki_corpus_reader_test.log
+2025-06-08 15:46:01,582 - WikiCorpusReaderTest - INFO - [<module>:239] - 
+--- Initializing WikiCorpusReader with REAL corpus path ---
+2025-06-08 15:46:01,582 - WikiCorpusReader - INFO - [_initialize_logging:54] - Initialized reader for path: /Volumes/T7/Bachelorthesis/jawiki_data/jawiki_extracted
+2025-06-08 15:46:01,582 - WikiCorpusReaderTest - INFO - [<module>:248] - 
+--- Preparing to test with the first 1000 real corpus files ---
+2025-06-08 15:46:01,582 - WikiCorpusReader - INFO - [_find_all_json_files:61] - Searching for JSON files in: /Volumes/T7/Bachelorthesis/jawiki_data/jawiki_extracted
+2025-06-08 15:46:02,340 - WikiCorpusReader - INFO - [_find_all_json_files:70] - Found 7806 valid JSON files to process.
+2025-06-08 15:46:02,340 - WikiCorpusReaderTest - INFO - [<module>:261] - 
+--- Testing sentence streaming and statistics gathering on real data sample ---
+2025-06-08 15:46:02,340 - WikiCorpusReader - INFO - [stream_sentences:110] - Starting to stream sentences from corpus...
+2025-06-08 15:46:18,170 - WikiCorpusReader - INFO - [stream_sentences:147] - Finished streaming. Processed 2,995,539 sentences.
+2025-06-08 15:46:18,170 - WikiCorpusReader - INFO - [stream_sentences:148] - Corpus reading took 15.83 seconds.
+2025-06-08 15:46:18,170 - WikiCorpusReaderTest - INFO - [<module>:269] - 
+--- Verifying Test Results ---
+2025-06-08 15:46:18,251 - WikiCorpusReaderTest - INFO - [<module>:273] - Final statistics from processing 1000 files:
+2025-06-08 15:46:18,251 - WikiCorpusReaderTest - INFO - [<module>:274] -   - Files Processed: 1000
+2025-06-08 15:46:18,251 - WikiCorpusReaderTest - INFO - [<module>:275] -   - Articles Found: 67343
+2025-06-08 15:46:18,251 - WikiCorpusReaderTest - INFO - [<module>:276] -   - Sentences Found: 2995539
+2025-06-08 15:46:18,251 - WikiCorpusReaderTest - INFO - [<module>:277] -   - Number of Sentence Lengths Recorded: 2995539
+2025-06-08 15:46:18,251 - WikiCorpusReaderTest - INFO - [<module>:278] -   - Sentence Length Stats (Mean/Median/Min/Max): {'mean': 58.27538015696007, 'median': 51.0, 'min': 8, 'max': 300, 'std_dev': 34.24385757373803}
+2025-06-08 15:46:18,251 - WikiCorpusReaderTest - INFO - [<module>:282] - ✅ 'total_files_processed' stat matches expected number.
+2025-06-08 15:46:18,252 - WikiCorpusReaderTest - INFO - [<module>:285] - ✅ Found a plausible number of sentences: 2,995,539.
+2025-06-08 15:46:18,252 - WikiCorpusReaderTest - INFO - [<module>:288] - ✅ Found a plausible number of articles: 67,343.
+2025-06-08 15:46:18,252 - WikiCorpusReaderTest - INFO - [<module>:291] - ✅ Sentence length tracking is consistent.
+2025-06-08 15:46:18,252 - WikiCorpusReaderTest - INFO - [<module>:295] - 
+--- Testing visualization generation with real data sample ---
+2025-06-08 15:46:20,571 - WikiCorpusReader - INFO - [generate_and_save_visualizations:205] - 📊 Corpus stats visualization saved to: /Users/danieleamore/University/Bachelorthesis/bachelorarbeit/baseline_method/wiki_corpus_reader/wiki_corpus_reader_test_output/figures_from_test_data/corpus_sentence_length_distribution.png
+2025-06-08 15:46:20,572 - WikiCorpusReaderTest - INFO - [<module>:301] - ✅ Visualization created successfully in '/Users/danieleamore/University/Bachelorthesis/bachelorarbeit/baseline_method/wiki_corpus_reader/wiki_corpus_reader_test_output/figures_from_test_data'.
+2025-06-08 15:46:20,572 - WikiCorpusReaderTest - INFO - [<module>:303] - 
+=== WikiCorpusReader Self-Test Script Finished Successfully ===

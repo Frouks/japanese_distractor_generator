@@ -1,0 +1,3 @@
+2025-06-21 13:31:16 - root - INFO - Logging configured for dependency data build.
+2025-06-21 13:31:16 - DependencyBuilder - INFO - ====== Starting Dependency Relation Set Construction (Parallel) ======
+2025-06-21 13:31:16 - DependencyBuilder - INFO - Performing a quick pre-scan of the raw corpus to get an accurate sentence count...

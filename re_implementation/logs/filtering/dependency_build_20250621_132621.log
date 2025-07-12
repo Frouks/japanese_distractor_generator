@@ -1,0 +1,6 @@
+2025-06-21 13:26:21 - root - INFO - Logging configured for dependency data build.
+2025-06-21 13:26:21 - DependencyBuilder - WARNING - ============================================================
+2025-06-21 13:26:21 - DependencyBuilder - WARNING - === SCRIPT IS RUNNING IN TEST MODE ===
+2025-06-21 13:26:21 - DependencyBuilder - WARNING - === Processing only 100 sentences. ===
+2025-06-21 13:26:21 - DependencyBuilder - WARNING - ============================================================
+2025-06-21 13:26:21 - DependencyBuilder - INFO - ====== Starting Dependency Relation Set Construction (Parallel) ======

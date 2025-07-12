@@ -1,0 +1,60 @@
+2025-06-23 00:39:05 - root - INFO - Logging configured to output to console and file.
+2025-06-23 00:39:05 - Main - INFO - ====== Distractor Generation System Starting ======
+2025-06-23 00:39:05 - Main.Setup - INFO - --- Checking for all required pre-processed data files ---
+2025-06-23 00:39:05 - Main.Setup - INFO - ✅ All pre-processed data files found. Skipping build steps.
+2025-06-23 00:39:05 - Main - INFO - 
+--- Loading data and initializing generators & filters ---
+2025-06-23 00:39:05 - CorpusProcessor - INFO - No explicit MeCab args provided by user. MeCab will use its default dictionary configuration.
+2025-06-23 00:39:05 - CorpusProcessor - WARNING - IMPORTANT: Please check the 'Active MeCab Dictionary Info' log output below to ensure MeCab is using the dictionary you expect (e.g., unidic).
+2025-06-23 00:39:05 - CorpusProcessor - INFO - MeCab Tagger initialized with final effective args: ''.
+2025-06-23 00:39:05 - CorpusProcessor - INFO - Active MeCab Dictionary Info (from Tagger):
+  Filename: /opt/miniconda3/envs/bt/lib/python3.10/site-packages/unidic/dicdir/sys.dic, Charset: utf8, Type: 0, Version: 102
+
+2025-06-23 00:39:05 - CorpusProcessor - INFO - Using feature indices for parsing: POS1=0, POS_Detail_End=3, Lemma=7
+2025-06-23 00:39:05 - CorpusProcessor.Loader - INFO - Loading all words details from /Users/danieleamore/University/Bachelorthesis/bachelorarbeit/baseline_method/processed_corpus_data/jp_all_words_details.json...
+2025-06-23 00:39:06 - CorpusProcessor.Loader - INFO - Successfully loaded 179807 entries from words details file.
+2025-06-23 00:39:06 - BaselineGenerator - INFO - Organizing corpus vocabulary by Part-of-Speech for faster lookups...
+2025-06-23 00:39:06 - BaselineGenerator - INFO - Finished organizing vocabulary.
+2025-06-23 00:39:06 - BaselineGenerator - INFO - Generator initialized. Organized vocabulary into 8 POS categories.
+2025-06-23 00:39:06 - SpellingGenerator - INFO - Building character-to-word inverted index for fast lookups...
+2025-06-23 00:39:06 - SpellingGenerator - INFO - Finished building character index.
+2025-06-23 00:39:06 - SpellingGenerator - INFO - Generator initialized. Built character index for 5253 unique characters.
+2025-06-23 00:39:06 - SimilarityGenerator - INFO - Loading Word2Vec model... (This may take a moment)
+2025-06-23 00:39:06 - gensim.utils - INFO - loading Word2Vec object from model/jawiki_min_count_5.word2vec.model
+2025-06-23 00:39:06 - gensim.utils - INFO - loading wv recursively from model/jawiki_min_count_5.word2vec.model.wv.* with mmap=None
+2025-06-23 00:39:06 - gensim.utils - INFO - loading vectors from model/jawiki_min_count_5.word2vec.model.wv.vectors.npy with mmap=None
+2025-06-23 00:39:06 - gensim.utils - INFO - loading syn1neg from model/jawiki_min_count_5.word2vec.model.syn1neg.npy with mmap=None
+2025-06-23 00:39:06 - gensim.utils - INFO - setting ignored attribute cum_table to None
+2025-06-23 00:39:06 - gensim.utils - INFO - Word2Vec lifecycle event {'fname': 'model/jawiki_min_count_5.word2vec.model', 'datetime': '2025-06-23T00:39:06.961715', 'gensim': '4.3.3', 'python': '3.10.16 (main, Dec 11 2024, 10:22:29) [Clang 14.0.6 ]', 'platform': 'macOS-15.5-arm64-arm-64bit', 'event': 'loaded'}
+2025-06-23 00:39:06 - SimilarityGenerator - INFO - Word2Vec model loaded successfully.
+2025-06-23 00:39:06 - SimilarityGenerator - INFO - SimilarityGenerator initialized successfully with model from model/jawiki_min_count_5.word2vec.model
+2025-06-23 00:40:10 - CooccurrenceGenerator.Loader - INFO - Successfully loaded 57684917 co-occurrence counts from processed_corpus_data/jp_cooccurrence_counts.json
+2025-06-23 00:40:10 - CooccurrenceGenerator - INFO - Building co-occurrence inverted index for fast lookups...
+2025-06-23 00:40:42 - CooccurrenceGenerator - INFO - Finished building co-occurrence index.
+2025-06-23 00:40:42 - CooccurrenceGenerator - INFO - Generator initialized with 57684917 co-occurrence pairs and an index of 226838 lemmas.
+2025-06-23 00:40:42 - Main - INFO - Initializing DistractorFilter...
+2025-06-23 00:40:42 - DistractorFilter - INFO - Loading trigrams from processed_corpus_data/jp_trigram_counts.pkl...
+2025-06-23 00:40:44 - DistractorFilter - INFO - Successfully loaded 6,489,162 items into a set in 2.60s.
+2025-06-23 00:40:44 - DistractorFilter - INFO - Loading dependency index from processed_corpus_data/jp_dependency_relations.pkl...
+2025-06-23 00:42:18 - DistractorFilter - INFO - Successfully loaded 452,568 items into a dict in 93.55s.
+2025-06-23 00:42:18 - DistractorFilter - INFO - Loading spaCy/GiNZA model for live parsing...
+2025-06-23 00:43:14 - DistractorFilter - INFO - ✅ GiNZA model loaded successfully.
+2025-06-23 00:43:14 - Main - INFO - DistractorFilter is ready.
+2025-06-23 00:43:14 - Main - INFO - ============================================================
+
+2025-06-23 00:43:14 - Main - INFO - DEMONSTRATING DISTRACTOR GENERATION WITH CHAINED FILTERING
+2025-06-23 00:43:14 - Main - INFO - ============================================================
+
+2025-06-23 00:43:14 - Main - INFO - ▶️  Target: '猫' in Carrier Sentence: '私の___はとても可愛い。'
+2025-06-23 00:43:14 - Main - INFO -   (Context for Trigram Filter: ('私', BLANK, 'とても'))
+2025-06-23 00:43:14 - BaselineGenerator - INFO - --- Generating baseline distractors for '猫' ---
+2025-06-23 00:43:14 - BaselineGenerator - INFO - Target analyzed: Lemma='猫', POS='名詞', Frequency=22075
+2025-06-23 00:43:14 - BaselineGenerator - INFO - Found 166199 candidate words with POS '名詞'.
+2025-06-23 00:43:14 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['経過', 'マイナー-minor', '商店', '土', '分岐', '提唱', 'オーディション-audition', '財産', '連覇', 'インディアン-Indian', '連結', '周', 'バスケットボール-basketball', '証券', '国土', '大手', '松', '下位', '電動', '当該']
+2025-06-23 00:43:14 - Main - INFO -   - Baseline        (Filtered): ['経過', 'マイナー-minor', '商店', '土', '分岐']
+2025-06-23 00:43:14 - SpellingGenerator - INFO - --- Generating spelling distractors for '猫' ---
+2025-06-23 00:43:14 - SpellingGenerator - INFO - Target analyzed: Lemma='猫', POS='名詞', Frequency=22075
+2025-06-23 00:43:14 - SpellingGenerator - INFO - Unique characters in target lemma: {'猫'}
+2025-06-23 00:43:14 - SpellingGenerator - INFO - Found 100 potential candidates from character index.
+2025-06-23 00:43:14 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['黒猫', '山猫', '子猫', '野良猫', '飼い猫', '愛猫', '海猫', '招き猫', '猫耳', '猫好き', '化け猫', '猫股', '白猫', '家猫', '猫背', '野猫', '雌猫', '斑猫', '猫型', '雄猫']
+2025-06-23 00:43:15 - Main - INFO -   - Spelling        (Filtered): ['黒猫', '山猫', '子猫', '野良猫', '飼い猫']

@@ -1,0 +1,14 @@
+2025-06-21 13:36:08 - root - INFO - Logging configured for dependency data build.
+2025-06-21 13:36:08 - DependencyBuilder - INFO - ====== Starting Dependency Relation Set Construction (Parallel) ======
+2025-06-21 13:36:08 - DependencyBuilder - INFO - Performing a quick pre-scan of the raw corpus to get an accurate sentence count...
+2025-06-21 13:36:08 - WikiCorpusReader - INFO - Starting to stream sentences from corpus...
+2025-06-21 13:36:08 - WikiCorpusReader - INFO - Searching for JSON files in: /Volumes/T7/Bachelorthesis/jawiki_data/jawiki_extracted
+2025-06-21 13:36:09 - WikiCorpusReader - INFO - Found 7806 valid JSON files to process.
+2025-06-21 13:38:15 - WikiCorpusReader - INFO - Finished streaming. Processed 25,410,880 sentences.
+2025-06-21 13:38:15 - WikiCorpusReader - INFO - Corpus reading took 126.37 seconds.
+2025-06-21 13:38:15 - DependencyBuilder - INFO - Full mode: Found 25,410,880 sentences to process.
+2025-06-21 13:38:15 - DependencyBuilder - INFO - Starting worker pool with 6 processes.
+2025-06-21 13:38:15 - DependencyBuilder - INFO - Distributing 5,083 chunks to workers for parsing...
+2025-06-21 13:38:15 - WikiCorpusReader - INFO - Starting to stream sentences from corpus...
+2025-06-21 13:38:15 - WikiCorpusReader - INFO - Searching for JSON files in: /Volumes/T7/Bachelorthesis/jawiki_data/jawiki_extracted
+2025-06-21 13:38:15 - WikiCorpusReader - INFO - Found 7806 valid JSON files to process.

@@ -1,0 +1,74 @@
+2025-06-08 15:54:10 - root - INFO - Logging configured to output to console and file.
+2025-06-08 15:54:10 - Main - INFO - ====== Distractor Generation System Starting (Refactored) ======
+2025-06-08 15:54:10 - Main - WARNING - Processed data file not found at: processed_corpus_data/jp_all_words_details.json
+2025-06-08 15:54:10 - Main - WARNING - Running the full preprocessing pipeline.
+2025-06-08 15:54:10 - Main.Pipeline - INFO - --- Starting Full Preprocessing Pipeline ---
+2025-06-08 15:54:10 - WikiCorpusReader - INFO - Initialized reader for path: /Volumes/T7/Bachelorthesis/jawiki_data/jawiki_extracted
+2025-06-08 15:54:10 - CorpusProcessor - INFO - No explicit MeCab args provided by user. MeCab will use its default dictionary configuration.
+2025-06-08 15:54:10 - CorpusProcessor - WARNING - IMPORTANT: Please check the 'Active MeCab Dictionary Info' log output below to ensure MeCab is using the dictionary you expect (e.g., unidic-lite).
+2025-06-08 15:54:10 - CorpusProcessor - INFO - MeCab Tagger initialized with final effective args: ''.
+2025-06-08 15:54:10 - CorpusProcessor - INFO - Active MeCab Dictionary Info (from Tagger):
+  Filename: /opt/miniconda3/envs/bt/lib/python3.10/site-packages/unidic_lite/dicdir/sys.dic, Charset: utf8, Type: 0, Version: 102
+
+2025-06-08 15:54:10 - CorpusProcessor - INFO - Using feature indices for parsing: POS1=0, POS_Detail_End=3, Lemma=7
+2025-06-08 15:54:10 - CorpusProcessor - INFO - Starting MeCab processing from sentence iterable...
+2025-06-08 15:54:10 - WikiCorpusReader - INFO - Starting to stream sentences from corpus...
+2025-06-08 15:54:10 - WikiCorpusReader - INFO - Searching for JSON files in: /Volumes/T7/Bachelorthesis/jawiki_data/jawiki_extracted
+2025-06-08 15:54:10 - WikiCorpusReader - INFO - Found 7806 valid JSON files to process.
+2025-06-08 16:22:49 - WikiCorpusReader - INFO - Finished streaming. Processed 25,410,880 sentences.
+2025-06-08 16:22:49 - WikiCorpusReader - INFO - Corpus reading took 1719.53 seconds.
+2025-06-08 16:22:49 - CorpusProcessor - INFO - MeCab sentence processing finished.
+2025-06-08 16:22:49 - CorpusProcessor - INFO - Total MeCab nodes yielded (incl. BOS/EOS): 844,281,344
+2025-06-08 16:22:49 - CorpusProcessor - INFO - Total content tokens (after filtering by POS and validity): 420,267,870
+2025-06-08 16:22:49 - CorpusProcessor - INFO - Content tokens where dictionary lemma was '*' (is_unknown_by_dict=True): 0 (0.00% of content tokens).
+2025-06-08 16:22:49 - CorpusProcessor - INFO - Unique (base_form, pos_major) types found: 166,011
+2025-06-08 16:22:56 - Main.Pipeline - INFO - Saving processed data and generating visualizations...
+2025-06-08 16:22:58 - CorpusProcessor - INFO - All words details with frequencies saved to /Users/danieleamore/University/Bachelorthesis/bachelorarbeit/baseline_method/processed_corpus_data/jp_all_words_details.json
+2025-06-08 16:23:15 - WikiCorpusReader - INFO - 📊 Corpus stats visualization saved to: /Users/danieleamore/University/Bachelorthesis/bachelorarbeit/baseline_method/figures/corpus_sentence_length_distribution.png
+2025-06-08 16:23:15 - Main.Pipeline - INFO - Creating corpus comparison
+2025-06-08 16:23:15 - Main.Visualization - INFO - Creating corpus size comparison plot...
+2025-06-08 16:23:15 - Main.Visualization - INFO - 📊 Corpus size comparison plot saved to: /Users/danieleamore/University/Bachelorthesis/bachelorarbeit/baseline_method/figures/corpus_size_comparison.png
+2025-06-08 16:23:15 - CorpusProcessor - INFO - Generating corpus statistics visualizations in /Users/danieleamore/University/Bachelorthesis/bachelorarbeit/baseline_method/figures...
+2025-06-08 16:23:15 - CorpusProcessor - INFO - Saved top_n_word_pos_frequency.png
+2025-06-08 16:23:16 - CorpusProcessor - INFO - Saved pos_major_token_sum_distribution.png
+2025-06-08 16:23:16 - CorpusProcessor - INFO - Corpus statistics visualizations generation finished.
+2025-06-08 16:23:16 - Main.Pipeline - INFO - --- Full Preprocessing Pipeline Finished ---
+2025-06-08 16:23:16 - Main - INFO - Loading corpus data and initializing generator...
+2025-06-08 16:23:16 - CorpusProcessor - INFO - No explicit MeCab args provided by user. MeCab will use its default dictionary configuration.
+2025-06-08 16:23:16 - CorpusProcessor - WARNING - IMPORTANT: Please check the 'Active MeCab Dictionary Info' log output below to ensure MeCab is using the dictionary you expect (e.g., unidic-lite).
+2025-06-08 16:23:16 - CorpusProcessor - INFO - MeCab Tagger initialized with final effective args: ''.
+2025-06-08 16:23:16 - CorpusProcessor - INFO - Active MeCab Dictionary Info (from Tagger):
+  Filename: /opt/miniconda3/envs/bt/lib/python3.10/site-packages/unidic_lite/dicdir/sys.dic, Charset: utf8, Type: 0, Version: 102
+
+2025-06-08 16:23:16 - CorpusProcessor - INFO - Using feature indices for parsing: POS1=0, POS_Detail_End=3, Lemma=7
+2025-06-08 16:23:16 - CorpusProcessor.Loader - INFO - Loading all words details from /Users/danieleamore/University/Bachelorthesis/bachelorarbeit/baseline_method/processed_corpus_data/jp_all_words_details.json...
+2025-06-08 16:23:16 - CorpusProcessor.Loader - INFO - Successfully loaded 166011 entries from words details file.
+2025-06-08 16:23:16 - BaselineGenerator - INFO - Organizing corpus vocabulary by Part-of-Speech for faster lookups...
+2025-06-08 16:23:16 - BaselineGenerator - INFO - Finished organizing vocabulary.
+2025-06-08 16:23:16 - BaselineGenerator - INFO - Generator initialized. Organized vocabulary into 9 POS categories.
+2025-06-08 16:23:16 - Main - INFO - Generator is ready.
+2025-06-08 16:23:16 - BaselineGenerator - INFO - --- Generating baseline distractors for '美しい' ---
+2025-06-08 16:23:16 - BaselineGenerator - INFO - Target analyzed: Lemma='美しい', POS='形容詞', Frequency=25725
+2025-06-08 16:23:16 - BaselineGenerator - INFO - Found 690 candidate words with POS '形容詞'.
+2025-06-08 16:23:16 - BaselineGenerator - INFO - Successfully generated 5 distractors: ['欲しい', '幅広い', '珍しい', '厳しい', '白い']
+2025-06-08 16:23:16 - BaselineGenerator - INFO - --- Generating baseline distractors for '走る' ---
+2025-06-08 16:23:16 - BaselineGenerator - INFO - Target analyzed: Lemma='走る', POS='動詞', Frequency=43586
+2025-06-08 16:23:16 - BaselineGenerator - INFO - Found 7819 candidate words with POS '動詞'.
+2025-06-08 16:23:16 - BaselineGenerator - INFO - Successfully generated 5 distractors: ['乗る', '巡る', '応ずる', '食べる', '限る']
+2025-06-08 16:23:16 - BaselineGenerator - INFO - --- Generating baseline distractors for '猫' ---
+2025-06-08 16:23:16 - BaselineGenerator - INFO - Target analyzed: Lemma='猫', POS='名詞', Frequency=22244
+2025-06-08 16:23:16 - BaselineGenerator - INFO - Found 152496 candidate words with POS '名詞'.
+2025-06-08 16:23:16 - BaselineGenerator - INFO - Successfully generated 5 distractors: ['功績', 'ネーム-name', '国土', 'シコク', '以内']
+2025-06-08 16:23:16 - BaselineGenerator - INFO - --- Generating baseline distractors for '政府' ---
+2025-06-08 16:23:16 - BaselineGenerator - INFO - Target analyzed: Lemma='政府', POS='名詞', Frequency=192067
+2025-06-08 16:23:16 - BaselineGenerator - INFO - Found 152496 candidate words with POS '名詞'.
+2025-06-08 16:23:16 - BaselineGenerator - INFO - Successfully generated 5 distractors: ['獲得', '戦争', 'バス-bus', '経済', '担当']
+2025-06-08 16:23:16 - BaselineGenerator - INFO - --- Generating baseline distractors for 'ゆっくり' ---
+2025-06-08 16:23:16 - BaselineGenerator - INFO - Target analyzed: Lemma='ゆっくり', POS='副詞', Frequency=5628
+2025-06-08 16:23:16 - BaselineGenerator - INFO - Found 2508 candidate words with POS '副詞'.
+2025-06-08 16:23:16 - BaselineGenerator - INFO - Successfully generated 5 distractors: ['しゅっ', '仮令', '大抵', '十分', 'こく']
+2025-06-08 16:23:16 - BaselineGenerator - INFO - --- Generating baseline distractors for '食べた' ---
+2025-06-08 16:23:16 - BaselineGenerator - INFO - Target analyzed: Lemma='食べる', POS='動詞', Frequency=42898
+2025-06-08 16:23:16 - BaselineGenerator - INFO - Found 7819 candidate words with POS '動詞'.
+2025-06-08 16:23:16 - BaselineGenerator - INFO - Successfully generated 5 distractors: ['限る', '並ぶ', '加わる', '走る', '通す']
+2025-06-08 16:23:16 - Main - INFO - ====== System finished demonstration. ======

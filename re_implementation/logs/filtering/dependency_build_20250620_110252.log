@@ -1,0 +1,3 @@
+2025-06-20 11:02:52 - root - INFO - Logging configured for dependency data build.
+2025-06-20 11:02:52 - DependencyBuilder - INFO - ====== Starting Dependency Relation Set Construction (Parallel) ======
+2025-06-20 11:02:52 - WikiCorpusReader - INFO - Initialized reader for path: /Volumes/T7/Bachelorthesis/jawiki_data/jawiki_extracted

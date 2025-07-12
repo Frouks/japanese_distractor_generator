@@ -1,0 +1,87 @@
+2025-06-08 14:51:16,201 - CorpusProcessorTest - INFO - [<module>:489] - === Starting CorpusProcessor Self-Test Script ===
+2025-06-08 14:51:16,201 - CorpusProcessorTest - INFO - [<module>:492] - Initializing CorpusProcessor...
+2025-06-08 14:51:16,201 - CorpusProcessor - INFO - [__init__:48] - No explicit MeCab args provided by user. MeCab will use its default dictionary configuration.
+2025-06-08 14:51:16,201 - CorpusProcessor - WARNING - [__init__:49] - IMPORTANT: Please check the 'Active MeCab Dictionary Info' log output below to ensure MeCab is using the dictionary you expect (e.g., unidic-lite).
+2025-06-08 14:51:16,206 - CorpusProcessor - INFO - [__init__:53] - MeCab Tagger initialized with final effective args: ''.
+2025-06-08 14:51:16,207 - CorpusProcessor - INFO - [__init__:63] - Active MeCab Dictionary Info (from Tagger):
+  Filename: /opt/miniconda3/envs/bt/lib/python3.10/site-packages/unidic_lite/dicdir/sys.dic, Charset: utf8, Type: 0, Version: 102
+
+2025-06-08 14:51:16,207 - CorpusProcessor - INFO - [__init__:88] - Using feature indices for parsing: POS1=0, POS_Detail_End=3, Lemma=7
+2025-06-08 14:51:16,207 - CorpusProcessorTest - INFO - [<module>:500] - 
+--- Verifying MeCab Feature Indices ---
+2025-06-08 14:51:16,207 - CorpusProcessorTest - INFO - [<module>:502] - Analyzing test word '食べた' to check feature indices...
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:509] - Analyzing first token: Surface Form = '食べ'
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:510] - Full Feature String: 動詞,一般,*,*,下一段-バ行,連用形-一般,タベル,食べる,食べ,タベ,食べる,タベル,和,*,*,*,*,タベ,タベル,タベ,タベル,*,*,2,C1,*
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:512] - Feature List with Indices:
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 0: 動詞
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 1: 一般
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 2: *
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 3: *
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 4: 下一段-バ行
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 5: 連用形-一般
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 6: タベル
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 7: 食べる
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 8: 食べ
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 9: タベ
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 10: 食べる
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 11: タベル
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 12: 和
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 13: *
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 14: *
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 15: *
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 16: *
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 17: タベ
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 18: タベル
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 19: タベ
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 20: タベル
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 21: *
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 22: *
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 23: 2
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 24: C1
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:514] -   Index 25: *
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:520] - ==> Extracted Lemma (using index 7): '食べる'
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:522] - ==> SUCCESS: The configured lemma index appears to be correct for '食べる'.
+2025-06-08 14:51:16,210 - CorpusProcessorTest - INFO - [<module>:546] - 
+--- Processing a small set of 11 dummy sentences ---
+2025-06-08 14:51:16,210 - CorpusProcessor - INFO - [process_sentences_from_iterable:182] - Starting MeCab processing from sentence iterable...
+2025-06-08 14:51:16,262 - CorpusProcessor - INFO - [process_sentences_from_iterable:227] - MeCab sentence processing finished.
+2025-06-08 14:51:16,262 - CorpusProcessor - INFO - [process_sentences_from_iterable:228] - Total MeCab nodes yielded (incl. BOS/EOS): 97
+2025-06-08 14:51:16,262 - CorpusProcessor - INFO - [process_sentences_from_iterable:231] - Total content tokens (after filtering by POS and validity): 40
+2025-06-08 14:51:16,262 - CorpusProcessor - INFO - [process_sentences_from_iterable:239] - Content tokens where dictionary lemma was '*' (is_unknown_by_dict=True): 0 (0.00% of content tokens).
+2025-06-08 14:51:16,262 - CorpusProcessor - INFO - [process_sentences_from_iterable:246] - Unique (base_form, pos_major) types found: 32
+2025-06-08 14:51:16,262 - CorpusProcessorTest - INFO - [<module>:552] - 
+--- Basic Processing Results ---
+2025-06-08 14:51:16,262 - CorpusProcessorTest - INFO - [<module>:553] - Total MeCab nodes yielded (incl. BOS/EOS): 97
+2025-06-08 14:51:16,262 - CorpusProcessorTest - INFO - [<module>:554] - Content tokens where dictionary lemma was '*': 0
+2025-06-08 14:51:16,262 - CorpusProcessorTest - INFO - [<module>:555] - Unique (base_form, pos_major) types found: 32
+2025-06-08 14:51:16,262 - CorpusProcessorTest - INFO - [<module>:559] - 
+Top 5 most frequent (lemma, POS) pairs in dummy data:
+2025-06-08 14:51:16,262 - CorpusProcessorTest - INFO - [<module>:561] -   ('美しい', '形容詞'): 3
+2025-06-08 14:51:16,263 - CorpusProcessorTest - INFO - [<module>:561] -   ('彼', '代名詞'): 3
+2025-06-08 14:51:16,263 - CorpusProcessorTest - INFO - [<module>:561] -   ('走る', '動詞'): 3
+2025-06-08 14:51:16,263 - CorpusProcessorTest - INFO - [<module>:561] -   ('早い', '形容詞'): 2
+2025-06-08 14:51:16,263 - CorpusProcessorTest - INFO - [<module>:561] -   ('公園', '名詞'): 2
+2025-06-08 14:51:16,263 - CorpusProcessorTest - INFO - [<module>:572] - 
+--- Testing Save/Load Functionality ---
+2025-06-08 14:51:16,263 - CorpusProcessorTest - INFO - [<module>:573] - Test output will be saved in: /Users/danieleamore/University/Bachelorthesis/bachelorarbeit/baseline_method/corpus_processor/corpus_processor_test_output
+2025-06-08 14:51:16,263 - CorpusProcessorTest - INFO - [<module>:575] - Saving processed dummy data...
+2025-06-08 14:51:16,263 - CorpusProcessor - INFO - [save_processed_data:330] - All words details with frequencies saved to /Users/danieleamore/University/Bachelorthesis/bachelorarbeit/baseline_method/corpus_processor/corpus_processor_test_output/data/dummy_jp_all_words_details.json
+2025-06-08 14:51:16,263 - CorpusProcessorTest - INFO - [<module>:580] - Loading saved data back to verify...
+2025-06-08 14:51:16,263 - CorpusProcessor.Loader - INFO - [load_all_words_details:364] - Loading all words details from /Users/danieleamore/University/Bachelorthesis/bachelorarbeit/baseline_method/corpus_processor/corpus_processor_test_output/data/dummy_jp_all_words_details.json...
+2025-06-08 14:51:16,263 - CorpusProcessor.Loader - INFO - [load_all_words_details:377] - Successfully loaded 32 entries from words details file.
+2025-06-08 14:51:16,263 - CorpusProcessorTest - INFO - [<module>:584] - SUCCESS: Loaded 32 entries from saved JSON.
+2025-06-08 14:51:16,263 - CorpusProcessorTest - INFO - [<module>:589] - 
+--- Testing Visualization Generation ---
+2025-06-08 14:51:16,264 - CorpusProcessor - INFO - [generate_corpus_stats_visualizations:390] - Generating corpus statistics visualizations in /Users/danieleamore/University/Bachelorthesis/bachelorarbeit/baseline_method/corpus_processor/corpus_processor_test_output/figures...
+2025-06-08 14:51:16,492 - CorpusProcessor - INFO - [generate_corpus_stats_visualizations:432] - Saved top_n_word_pos_frequency.png
+2025-06-08 14:51:16,640 - CorpusProcessor - INFO - [generate_corpus_stats_visualizations:463] - Saved pos_major_token_sum_distribution.png
+2025-06-08 14:51:16,641 - CorpusProcessor - INFO - [generate_corpus_stats_visualizations:468] - Corpus statistics visualizations generation finished.
+2025-06-08 14:51:16,641 - CorpusProcessorTest - INFO - [<module>:592] - 
+--- Testing Single Word Lookup (`get_token_info_for_word`) ---
+2025-06-08 14:51:16,641 - CorpusProcessorTest - INFO - [<module>:597] - Info for '美しい': Base='美しい', POS='形容詞'
+2025-06-08 14:51:16,641 - CorpusProcessorTest - INFO - [<module>:597] - Info for '走る': Base='走る', POS='動詞'
+2025-06-08 14:51:16,641 - CorpusProcessorTest - INFO - [<module>:597] - Info for 'ネコ': Base='猫', POS='名詞'
+2025-06-08 14:51:16,641 - CorpusProcessorTest - INFO - [<module>:597] - Info for 'ペン': Base='ペン-pen', POS='名詞'
+2025-06-08 14:51:16,641 - CorpusProcessorTest - INFO - [<module>:597] - Info for '食べた': Base='食べる', POS='動詞'
+2025-06-08 14:51:16,641 - CorpusProcessorTest - INFO - [<module>:601] - 
+=== CorpusProcessor Self-Test Script Finished ===

@@ -1,0 +1,23 @@
+2025-06-20 11:12:45 - root - INFO - Logging configured for dependency data build.
+2025-06-20 11:12:45 - DependencyBuilder - INFO - ====== Starting Dependency Relation Set Construction (Parallel) ======
+2025-06-20 11:12:45 - DependencyBuilder - INFO - Performing a quick pre-scan to count total sentences for progress bar...
+2025-06-20 11:12:45 - WikiCorpusReader - INFO - Initialized reader for path: /Volumes/T7/Bachelorthesis/jawiki_data/jawiki_extracted
+2025-06-20 11:12:45 - WikiCorpusReader - INFO - Starting to stream sentences from corpus...
+2025-06-20 11:12:45 - WikiCorpusReader - INFO - Searching for JSON files in: /Volumes/T7/Bachelorthesis/jawiki_data/jawiki_extracted
+2025-06-20 11:12:46 - WikiCorpusReader - INFO - Found 7806 valid JSON files to process.
+2025-06-20 11:14:50 - WikiCorpusReader - INFO - Finished streaming. Processed 25,410,880 sentences.
+2025-06-20 11:14:50 - WikiCorpusReader - INFO - Corpus reading took 124.72 seconds.
+2025-06-20 11:14:50 - DependencyBuilder - INFO - Found 25,410,880 sentences to process in the raw corpus.
+2025-06-20 11:14:50 - WikiCorpusReader - INFO - Initialized reader for path: /Volumes/T7/Bachelorthesis/jawiki_data/jawiki_extracted
+2025-06-20 11:14:50 - DependencyBuilder - INFO - Starting worker pool with 6 processes.
+2025-06-20 11:14:50 - DependencyBuilder - INFO - Distributing sentence chunks to workers for parsing...
+2025-06-20 11:14:50 - WikiCorpusReader - INFO - Starting to stream sentences from corpus...
+2025-06-20 11:14:50 - WikiCorpusReader - INFO - Searching for JSON files in: /Volumes/T7/Bachelorthesis/jawiki_data/jawiki_extracted
+2025-06-20 11:14:50 - WikiCorpusReader - INFO - Found 7806 valid JSON files to process.
+2025-06-20 18:10:07 - WikiCorpusReader - INFO - Finished streaming. Processed 25,410,880 sentences.
+2025-06-20 18:10:07 - WikiCorpusReader - INFO - Corpus reading took 24916.66 seconds.
+2025-06-20 18:10:21 - DependencyBuilder - INFO - All chunks parsed. Found 99,178,836 unique dependency relations.
+2025-06-20 18:10:21 - DependencyBuilder - INFO - Saving relation set to processed_corpus_data/jp_dependency_relations.pkl using pickle...
+2025-06-20 22:34:34 - DependencyBuilder - INFO - ✅ Successfully saved dependency relation data.
+2025-06-20 22:34:34 - DependencyBuilder - INFO - Dependency set construction finished in 11.36 hours.
+2025-06-20 22:34:34 - DependencyBuilder - INFO - ====== Dependency Relation Set Construction Finished ======

@@ -1,0 +1,9 @@
+2025-06-20 11:05:45 - root - INFO - Logging configured for dependency data build.
+2025-06-20 11:05:45 - DependencyBuilder - INFO - ====== Starting Dependency Relation Set Construction (Parallel) ======
+2025-06-20 11:05:45 - WikiCorpusReader - INFO - Initialized reader for path: /Volumes/T7/Bachelorthesis/jawiki_data/jawiki_extracted
+2025-06-20 11:05:50 - WikiCorpusReader - INFO - Initialized reader for path: /Volumes/T7/Bachelorthesis/jawiki_data/jawiki_extracted
+2025-06-20 11:05:50 - DependencyBuilder - INFO - Starting worker pool with 6 processes.
+2025-06-20 11:05:50 - DependencyBuilder - INFO - Distributing sentence chunks to workers for parsing...
+2025-06-20 11:05:50 - WikiCorpusReader - INFO - Starting to stream sentences from corpus...
+2025-06-20 11:05:50 - WikiCorpusReader - INFO - Searching for JSON files in: /Volumes/T7/Bachelorthesis/jawiki_data/jawiki_extracted
+2025-06-20 11:05:50 - WikiCorpusReader - INFO - Found 7806 valid JSON files to process.

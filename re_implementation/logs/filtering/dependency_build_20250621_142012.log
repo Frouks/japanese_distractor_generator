@@ -1,0 +1,25 @@
+2025-06-21 14:20:12 - root - INFO - Logging configured for dependency data build.
+2025-06-21 14:20:12 - DependencyBuilder - INFO - ====== Starting Dependency Relation Set Construction (Parallel) ======
+2025-06-21 14:20:12 - DependencyBuilder - INFO - Performing a quick pre-scan of the raw corpus to get an accurate sentence count...
+2025-06-21 14:20:12 - WikiCorpusReader - INFO - Starting to stream sentences from corpus...
+2025-06-21 14:20:12 - WikiCorpusReader - INFO - Searching for JSON files in: /Volumes/T7/Bachelorthesis/jawiki_data/jawiki_extracted
+2025-06-21 14:20:12 - WikiCorpusReader - INFO - Found 7806 valid JSON files to process.
+2025-06-21 14:22:12 - WikiCorpusReader - INFO - Finished streaming. Processed 25,410,880 sentences.
+2025-06-21 14:22:12 - WikiCorpusReader - INFO - Corpus reading took 120.60 seconds.
+2025-06-21 14:22:12 - DependencyBuilder - INFO - Full mode: Found 25,410,880 sentences to process.
+2025-06-21 14:22:12 - DependencyBuilder - INFO - Starting worker pool with 6 processes.
+2025-06-21 14:22:12 - DependencyBuilder - INFO - Distributing 5,083 chunks to workers for parsing...
+2025-06-21 14:22:12 - WikiCorpusReader - INFO - Starting to stream sentences from corpus...
+2025-06-21 14:22:12 - WikiCorpusReader - INFO - Searching for JSON files in: /Volumes/T7/Bachelorthesis/jawiki_data/jawiki_extracted
+2025-06-21 14:22:13 - WikiCorpusReader - INFO - Found 7806 valid JSON files to process.
+2025-06-21 19:38:25 - WikiCorpusReader - INFO - Finished streaming. Processed 25,410,880 sentences.
+2025-06-21 19:38:25 - WikiCorpusReader - INFO - Corpus reading took 18972.71 seconds.
+2025-06-21 19:45:08 - DependencyBuilder - INFO - All chunks parsed. Found 82,446,405 unique, filtered dependency relations.
+2025-06-21 19:45:08 - DependencyBuilder - INFO - Pruning relations with count < 3...
+2025-06-21 19:45:42 - DependencyBuilder - INFO - Pruned from 82,446,405 to 13,708,653 unique relations.
+2025-06-21 19:45:42 - DependencyBuilder - INFO - Building inverted index from pruned relations...
+2025-06-21 19:50:35 - DependencyBuilder - INFO - Final index contains 452,568 unique word keys.
+2025-06-21 19:50:35 - DependencyBuilder - INFO - Saving final inverted index to processed_corpus_data/jp_dependency_relations.pkl using pickle...
+2025-06-21 19:53:58 - DependencyBuilder - INFO - ✅ Successfully saved dependency index data.
+2025-06-21 19:53:58 - DependencyBuilder - INFO - Full dependency set construction finished in 5.56 hours.
+2025-06-21 19:53:58 - DependencyBuilder - INFO - ====== Dependency Relation Set Construction Finished ======

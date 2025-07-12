@@ -1,0 +1,21 @@
+2025-06-21 14:15:06 - root - INFO - Logging configured for dependency data build.
+2025-06-21 14:15:06 - DependencyBuilder - WARNING - ============================================================
+2025-06-21 14:15:06 - DependencyBuilder - WARNING - === SCRIPT IS RUNNING IN TEST MODE ===
+2025-06-21 14:15:06 - DependencyBuilder - WARNING - === Processing only 1000 sentences. ===
+2025-06-21 14:15:06 - DependencyBuilder - WARNING - ============================================================
+2025-06-21 14:15:06 - DependencyBuilder - INFO - ====== Starting Dependency Relation Set Construction (Parallel) ======
+2025-06-21 14:15:06 - WikiCorpusReader - INFO - Starting to stream sentences from corpus...
+2025-06-21 14:15:06 - WikiCorpusReader - INFO - Searching for JSON files in: /Volumes/T7/Bachelorthesis/jawiki_data/jawiki_extracted
+2025-06-21 14:15:07 - WikiCorpusReader - INFO - Found 7806 valid JSON files to process.
+2025-06-21 14:15:07 - DependencyBuilder - INFO - Test mode: Processing 1,000 sentences.
+2025-06-21 14:15:07 - DependencyBuilder - INFO - Starting worker pool with 12 processes.
+2025-06-21 14:15:07 - DependencyBuilder - INFO - Distributing 10 chunks to workers for parsing...
+2025-06-21 14:15:09 - DependencyBuilder - INFO - All chunks parsed. Found 11,938 unique, filtered dependency relations.
+2025-06-21 14:15:09 - DependencyBuilder - INFO - Pruning relations with count < 1...
+2025-06-21 14:15:09 - DependencyBuilder - INFO - Pruned from 11,938 to 11,938 unique relations.
+2025-06-21 14:15:09 - DependencyBuilder - INFO - Building inverted index from pruned relations...
+2025-06-21 14:15:09 - DependencyBuilder - INFO - Final index contains 3,833 unique word keys.
+2025-06-21 14:15:09 - DependencyBuilder - INFO - Saving final inverted index to processed_corpus_data/jp_dependency_relations_SAMPLE.pkl using pickle...
+2025-06-21 14:15:09 - DependencyBuilder - INFO - ✅ Successfully saved dependency index data.
+2025-06-21 14:15:09 - DependencyBuilder - INFO - Test run finished in 2.98 seconds.
+2025-06-21 14:15:09 - DependencyBuilder - INFO - ====== Dependency Relation Set Construction Finished ======

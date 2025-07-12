@@ -1,0 +1,7 @@
+2025-06-21 14:14:23 - root - INFO - Logging configured for dependency data build.
+2025-06-21 14:14:23 - DependencyBuilder - WARNING - ============================================================
+2025-06-21 14:14:23 - DependencyBuilder - WARNING - === SCRIPT IS RUNNING IN TEST MODE ===
+2025-06-21 14:14:23 - DependencyBuilder - WARNING - === Processing only 1000 sentences. ===
+2025-06-21 14:14:23 - DependencyBuilder - WARNING - ============================================================
+2025-06-21 14:14:23 - DependencyBuilder - INFO - ====== Starting Dependency Relation Set Construction (Parallel) ======
+2025-06-21 14:14:23 - DependencyBuilder - WARNING - Output file already exists: processed_corpus_data/jp_dependency_relations_SAMPLE.pkl. Aborting to prevent overwrite.

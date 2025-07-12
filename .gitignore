@@ -1,0 +1,51 @@
+# Large files
+*.txt
+*.pkl
+*.json
+*.npy
+*.model
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+venv/
+.env/
+.venv/
+
+# PyInstaller
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.cache
+.pytest_cache/
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+
+# macOS
+.DS_Store
+
+# Compressed files
+*.gz
+*.zip
+*.tar
+*.tgz
+*.rar
