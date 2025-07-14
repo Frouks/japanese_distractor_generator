@@ -1,3 +1,7 @@
+# ========================================================================================
+# CONTEXT-AWARE DISTRACTOR GENERATION SYSTEM (CADGS)
+# ========================================================================================
+#
 # PURPOSE:
 # This module is the core upgrade from the previous system. It analyzes the carrier
 # sentence to determine whether it provides a "Closed" or "Open" context for the blank.
@@ -7,7 +11,7 @@
 # proposed as distractors (e.g., suggesting "dog" for "My ___ is cute" when the
 # target is "cat").
 #
-# This analyzer uses a powerful pre-trained language model (Japanese BERT) to quantify
+# This analyzer uses a pre-trained language model (Japanese BERT) to quantify
 # the contextual constraint. By calculating the entropy of the model's predictions
 # for the blank space, we can determine how "sure" the model is.
 #   - Low Entropy: The model is very certain, meaning the context is "Closed".
@@ -68,6 +72,8 @@ class ContextAnalyzer:
         Args:
             sentence (str): The carrier sentence containing a single '[MASK]' token
                             representing the blank. Example: "私の[MASK]はとても可愛い。"
+            expected_context_type (str): The classification we expect ("Open" or "Closed").
+            translated_sentence (str): The English translation for debugging.
 
         Returns:
             str: Either "Open" or "Closed".
@@ -106,6 +112,26 @@ class ContextAnalyzer:
         # We apply the softmax function to the raw logits to convert them into a
         # true probability distribution (i.e., all values sum to 1).
         probabilities = torch.nn.functional.softmax(mask_token_logits, dim=-1)
+        
+        # --- NEW: Enhanced Debugging Output ---
+        # Get the total number of possible predictions (the size of the model's vocabulary)
+        vocab_size = self.tokenizer.vocab_size
+        
+        # Sort the probabilities to find the top and bottom predictions
+        # `torch.topk` is efficient for finding the k largest values.
+        top_5_probs, top_5_indices = torch.topk(probabilities, 5)
+        
+        # To get the bottom 5, we can sort the whole thing, but it's more efficient
+        # to sort in ascending order and take the first 5.
+        sorted_probs, sorted_indices = torch.sort(probabilities, descending=False)
+        bottom_5_probs = sorted_probs[:5]
+        bottom_5_indices = sorted_indices[:5]
+        
+        # Decode the token IDs back into readable words.
+        top_5_tokens = [self.tokenizer.decode([idx]) for idx in top_5_indices]
+        bottom_5_tokens = [self.tokenizer.decode([idx]) for idx in bottom_5_indices]
+        # --- End of New Code ---
+
 
         # 5. Calculate the entropy of the distribution
         # Entropy is a measure of uncertainty or "surprise". A high entropy means
@@ -121,15 +147,30 @@ class ContextAnalyzer:
         else:
             context_type = "Closed"
             
+        # --- Updated Printing with More Details ---
         print(f"Analyzed sentence: '{sentence}'")
         print(f"Translation: {translated_sentence}")
+        # print(f"  - Total Predictions Made (Vocab Size): {vocab_size}") -> is 32000
+        print("  - Top 5 Predictions:")
+        for token, prob in zip(top_5_tokens, top_5_probs):
+            print(f"      - {token:<10} (Probability: {prob:.4f})")
+            
+        print("  - Bottom 5 Predictions:")
+        for token, prob in zip(bottom_5_tokens, bottom_5_probs):
+            print(f"      - {token:<10} (Probability: {prob:.4e})") # Use scientific notation for tiny numbers
+            
         print(f"  - Calculated Entropy: {calculated_entropy:.4f}")
-        print(f"  - Classification: {context_type}")
         print(f"  - Expected Classification:  {expected_context_type}")
+        print(f"  - Predicted Classification: {context_type}")
 
         return context_type
 
+# ========================================================================================
+# EXAMPLE USAGE
+# ========================================================================================
 if __name__ == '__main__':
+    # You would use a specific Japanese BERT model here.
+    # 'cl-tohoku/bert-base-japanese-whole-word-masking' is a very popular and effective choice.
     MODEL_NAME = 'cl-tohoku/bert-base-japanese-whole-word-masking'
     
     # TODO: This threshold is just an example. The optimal value must be found.
@@ -138,32 +179,27 @@ if __name__ == '__main__':
     analyzer = ContextAnalyzer(model_name=MODEL_NAME, entropy_threshold=ENTROPY_THRESHOLD)
     print("-" * 50)
 
-    # --- Test Case 1: Expected to be "Closed" (Strong verb constraint) ---
-    # The presence of "meowed" (ニャー) strongly implies the blank is "cat".
+    # --- Test Case 1: Expected to be "Open" (Vague adjective) ---
+    open_context_sentence_1 = "私の[MASK]はとても可愛い。"
+    analyzer.analyze_context(open_context_sentence_1, "Open", "My ___ is cute.")
+    print("-" * 50)
+    
+    # --- Test Case 2: Expected to be "Closed" (Strong verb constraint) ---
     closed_context_sentence_1 = "その[MASK]は魚を咥えて、ニャーと鳴いた。"
     analyzer.analyze_context(closed_context_sentence_1, "Closed", "That ___ held a fish in its mouth and meowed.")
     print("-" * 50)
 
-    # --- Test Case 2: Expected to be "Open" (Vague adjective) ---
-    # "My ___ is cute" could have many valid answers (dog, hamster, child, etc.).
-    open_context_sentence_1 = "私の[MASK]はとても可愛い。"
-    analyzer.analyze_context(open_context_sentence_1, "Open", "My ___ is cute.")
-    print("-" * 50)
-
     # --- Test Case 3: Expected to be "Closed" (Strong noun constraint) ---
-    # "The capital of Japan is ___." The answer is highly constrained.
     closed_context_sentence_2 = "日本の首都は[MASK]です。"
     analyzer.analyze_context(closed_context_sentence_2, "Closed", "The capital of Japan is ___.")
     print("-" * 50)
 
     # --- Test Case 4: Expected to be "Open" (General verb) ---
-    # "I ___ to the park yesterday." Many actions are possible (went, ran, walked, etc.).
     open_context_sentence_2 = "昨日、公園に[MASK]ました。"
     analyzer.analyze_context(open_context_sentence_2, "Open", "I ___ to the park yesterday.")
     print("-" * 50)
     
     # --- Test Case 5: Expected to be "Closed" (Idiomatic phrase) ---
-    # "Seeing a shooting star, he made a ___." This is often "wish".
     closed_context_sentence_3 = "流れ星を見て、彼は[MASK]をかけた。"
     analyzer.analyze_context(closed_context_sentence_3, "Closed", "Seeing a shooting star, he made a ___.")
     print("-" * 50)
@@ -183,7 +219,7 @@ if __name__ == '__main__':
     analyzer.analyze_context(open_context_sentence_4, "Open", "I want to paint this wall a ___ color.")
     print("-" * 50)
 
-    # --- Test Case 9: Expected to be "Closed" (Antonym context) ---
+    # --- Test Case 9: Expected to be "Open" (Antonym context) ---
     open_context_sentence_5 = "戦争ではなく[MASK]を。"
     analyzer.analyze_context(open_context_sentence_5, "Open", "Not war, but ___.")
     print("-" * 50)
