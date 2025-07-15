@@ -143,6 +143,16 @@ if __name__ == '__main__':
         ("この壁を[MASK]色に塗りたいです。", "Open", "I want to paint this wall a ___ color."),
         ("戦争ではなく[MASK]を。", "Open", "Not war, but ___."), # Open or closed?
         ("猿も[MASK]から落ちる。", "Closed", "Even monkeys fall from ___."),
+        ("彼はその知らせを聞いて[MASK]なった。", "Closed", "Hearing that news, he became ___."),
+        ("私は[MASK]が好きです。", "Open", "I like ___."),
+        ("光合成は、[MASK]が光エネルギーを使って有機物を合成するプロセスです。", "Closed", "Photosynthesis is the process where ___ use light energy to synthesize organic matter."),
+        ("私は[MASK]を読みます。", "Open", "I read a(n) ___."),
+        ("空港で[MASK]が離陸するのを見た。", "Closed", "I saw the ___ take off at the airport."),
+        ("最も大切なのは[MASK]です。", "Open", "The most important thing is ___."),
+        ("ハサミで紙を[MASK]。", "Closed", "I ___ the paper with scissors."),
+        ("私の趣味は[MASK]です。", "Open", "My hobby is ___."),
+        ("毎朝、私は[MASK]を磨きます。", "Closed", "Every morning, I brush my ___."),
+        ("何か[MASK]を飲みませんか？", "Open", "Won't you drink some kind of ___?"),
     ]
 
     for sentence, expected, translation in test_cases:

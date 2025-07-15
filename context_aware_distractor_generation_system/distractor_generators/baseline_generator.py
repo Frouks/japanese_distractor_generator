@@ -71,6 +71,7 @@ class BaselineGenerator:
 
         Args:
             target_word_surface (str): The surface form of the word to generate distractors for (e.g., "走った").
+            sentence_with_blank (str): The carrier sentence containing a blank token
             num_distractors (int): The number of distractors to return.
 
         Returns:

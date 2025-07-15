@@ -56,6 +56,7 @@ class SpellingGenerator:
 
         Args:
             target_word_surface (str): The surface form of the word.
+            sentence_with_blank (str): carrier sentence with blank token
             num_distractors (int): The number of distractors to return.
 
         Returns:
