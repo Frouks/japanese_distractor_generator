@@ -97,7 +97,7 @@ if __name__ == '__main__':
     print("=" * 60)
 
     if context_gen.model:
-        end_to_end_test_cases: list[dict[str, any]] = [
+        test_cases: list[dict[str, any]] = [
             {
                 "sentence": "動物園で、大きな[MASK]が鼻を高く上げていた。",
                 "target": "象",
@@ -124,7 +124,7 @@ if __name__ == '__main__':
             }
         ]
 
-        for i, case in enumerate(end_to_end_test_cases):
+        for i, case in enumerate(test_cases):
             print(f"🧪 TEST CASE {i+1}: {case['context'].upper()} CONTEXT")
             print(f"   Sentence: {case['sentence']}")
             print(f"   English:  {case['english']}")

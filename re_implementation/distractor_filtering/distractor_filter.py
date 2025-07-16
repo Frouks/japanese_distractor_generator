@@ -100,9 +100,7 @@ class DistractorFilter:
             try:
                 # Parse the sentence
                 doc = self.nlp(full_sentence)
-                
-                # --- MODIFIED: More efficient and robust checking logic ---
-                
+
                 # 1. Get all relations that exist in our pre-built index for the words in this sentence.
                 # This is a fast preliminary check.
                 corpus_relations = set()
