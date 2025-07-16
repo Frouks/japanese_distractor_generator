@@ -133,7 +133,7 @@ class CooccurrenceGenerator:
         self.logger.info(f"Found {len(co_occurring_surfaces)} co-occurring candidate surfaces to analyze.")
 
         candidates_with_pmi = []
-        processed_lemmas = set() 
+        processed_lemmas = {target_lemma}
 
         for cand_surface, co_occur_freq in co_occurring_surfaces:
             cand_info = self.processor.get_token_info_for_word(cand_surface)
@@ -143,7 +143,7 @@ class CooccurrenceGenerator:
             cand_lemma = cand_info['base_form']
             cand_pos = cand_info['pos_major']
             
-            if cand_pos != target_pos or cand_lemma in processed_lemmas or cand_lemma == target_lemma:
+            if cand_pos != target_pos or cand_lemma in processed_lemmas:
                 continue
             
             processed_lemmas.add(cand_lemma)
