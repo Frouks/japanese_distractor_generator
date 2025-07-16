@@ -1,0 +1,1 @@
+# This generator uses BERT for distractor generation

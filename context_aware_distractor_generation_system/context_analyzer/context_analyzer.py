@@ -1,25 +1,3 @@
-# ========================================================================================
-# PURPOSE:
-# This module is the core upgrade from the previous system. It analyzes the carrier
-# sentence to determine whether it provides a "Closed" or "Open" context for the blank.
-#
-# HOW IT'S AN UPGRADE:
-# The previous system was context-blind, leading to errors where valid answers were
-# proposed as distractors (e.g., suggesting "dog" for "My ___ is cute" when the
-# target is "cat").
-#
-# This analyzer uses a pre-trained language model (Japanese BERT) to quantify
-# the contextual constraint. It now includes TWO methods for this analysis:
-#
-#   1. Entropy Method: Calculates the overall "uncertainty" of the entire prediction
-#      distribution. A low score means the model is very certain (Closed Context).
-#
-#   2. Top-k Probability Mass: Calculates the combined probability of the top 'k'
-#      most likely predictions. If this combined probability is very high, it means
-#      the model is confident in a small set of answers (Closed Context), even if
-#      the overall entropy is high due to a long tail of improbable words.
-#
-# ========================================================================================
 import torch
 from transformers import BertJapaneseTokenizer, BertForMaskedLM
 from scipy.stats import entropy
@@ -94,26 +72,26 @@ class ContextAnalyzer:
         print(f"  - Correct? {'✅' if predicted_context == expected_context else '❌'}")
 
 
-    def analyze_context_by_top_k(self, sentence: str, expected_context: str, translated_sentence: str):
-        """
-        Classifies the context based on the cumulative probability of the top K predictions.
-        """
-        probabilities, _ = self._get_probabilities(sentence)
-        if probabilities is None:
-            return
-
-        # Take the top 'k' probabilities and sum them up.
-        top_k_probs, _ = torch.topk(probabilities, self.top_k_value)
-        cumulative_prob = torch.sum(top_k_probs).item()
-        
-        # If the top words capture most of the probability mass, the context is Closed.
-        predicted_context = "Closed" if cumulative_prob > self.top_k_threshold else "Open"
-
-        print(f"--- Method 2: Top-{self.top_k_value} Probability Mass Analysis ---")
-        print(f"'{translated_sentence}'")
-        print(f"  - Cumulative Probability: {cumulative_prob:.4f} (Threshold: > {self.top_k_threshold} for Closed)")
-        print(f"  - Predicted: {predicted_context} (Expected: {expected_context})")
-        print(f"  - Correct? {'✅' if predicted_context == expected_context else '❌'}")
+    # def analyze_context_by_top_k(self, sentence: str, expected_context: str, translated_sentence: str):
+    #     """
+    #     Classifies the context based on the cumulative probability of the top K predictions.
+    #     """
+    #     probabilities, _ = self._get_probabilities(sentence)
+    #     if probabilities is None:
+    #         return
+    #
+    #     # Take the top 'k' probabilities and sum them up.
+    #     top_k_probs, _ = torch.topk(probabilities, self.top_k_value)
+    #     cumulative_prob = torch.sum(top_k_probs).item()
+    #
+    #     # If the top words capture most of the probability mass, the context is Closed.
+    #     predicted_context = "Closed" if cumulative_prob > self.top_k_threshold else "Open"
+    #
+    #     print(f"--- Method 2: Top-{self.top_k_value} Probability Mass Analysis ---")
+    #     print(f"'{translated_sentence}'")
+    #     print(f"  - Cumulative Probability: {cumulative_prob:.4f} (Threshold: > {self.top_k_threshold} for Closed)")
+    #     print(f"  - Predicted: {predicted_context} (Expected: {expected_context})")
+    #     print(f"  - Correct? {'✅' if predicted_context == expected_context else '❌'}")
 
 if __name__ == '__main__':
     MODEL_NAME = 'cl-tohoku/bert-base-japanese-whole-word-masking'
@@ -160,6 +138,6 @@ if __name__ == '__main__':
         print(f"Analyzing Sentence: {sentence}")
         analyzer.analyze_context_by_entropy(sentence, expected, translation)
         print() 
-        analyzer.analyze_context_by_top_k(sentence, expected, translation)
+        # analyzer.analyze_context_by_top_k(sentence, expected, translation)
         
     print("-" * 60)
