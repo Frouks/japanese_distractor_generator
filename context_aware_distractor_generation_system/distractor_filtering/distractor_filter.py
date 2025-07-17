@@ -131,78 +131,68 @@ class DistractorFilter:
 
         return accepted, rejected
 
-    def _calculate_pseudo_log_likelihood(self, sentence: str) -> float:
+    def _calculate_normalized_pll(self, sentence: str) -> float:
         """
-        Calculates sentence PLL using the PLL-word-l2r method.
-        This method corrects for the score inflation of multi-token words by
-        also masking subsequent sub-tokens of the same word.
+        Calculates the normalized sentence PLL using the PLL-word-l2r method.
+        This corrects for score inflation from multi-token words and normalizes
+        by the number of tokens to make the score length-independent.
         """
         if not self.bert_model or not self.bert_tokenizer:
-            print("Error: BERT model or tokenizer not initialized.")
+            self.logger.error("BERT model or tokenizer not initialized.")
             return -float('inf')
 
-        tensor_input = self.bert_tokenizer.encode(sentence, return_tensors='pt')
-
-        # Check if the tensor is 2D ([batch_size, sequence_length]), if not we need to add a batch dimension
-        if len(tensor_input.shape) == 1:
-            tensor_input = tensor_input.unsqueeze(0)
-
-        # To identify which tokens belong to the same word, we need their string representation. -> OOV tokens or complex tokens
-        # WordPiece tokenizers (used by BERT) mark sub-tokens of a word with a '##' prefix.
-        # Example: "tokenization" -> ["token", "##ization"]
-        token_ids = tensor_input[0].tolist()
+        # Tokenize the input sentence to get token IDs and string representations
+        token_ids = self.bert_tokenizer.encode(sentence, add_special_tokens=False)
         tokens = self.bert_tokenizer.convert_ids_to_tokens(token_ids)
+
+        # Add [CLS] and [SEP] special tokens for BERT processing
+        input_ids = self.bert_tokenizer.build_inputs_with_special_tokens(token_ids)
+        tensor_input = torch.tensor([input_ids])
+
+        if tensor_input.shape[1] <= 2:  # Only [CLS] and [SEP]
+            return -float('inf')
 
         total_log_likelihood = 0.0
 
-        # We iterate through each token in the sentence to calculate its individual PLL.
-        # We skip the first token ([CLS]) and the last token ([SEP])
-        for i in range(1, tensor_input.shape[1] - 1):
-            # Store the original token ID at the current position `i`. We'll need this later
-            # to find its log-likelihood in the model's output.
+        # Iterate through each actual token (skipping [CLS] and [SEP])
+        for i in range(1, len(tokens) + 1):
             original_token_id = tensor_input[0, i].item()
-
             masked_input = tensor_input.clone()
 
-            # 1. Mask the current target token at position `i`.
-            # We replace its ID with the special [MASK] token ID.
+            # --- PLL-word-l2r Logic ---
+            # 1. Mask the current target token
             masked_input[0, i] = self.bert_tokenizer.mask_token_id
 
-            # 2. Mask all subsequent tokens that are part of the *same word*.
-            # We check tokens to the right of the current one (`i + 1`).
-            for j in range(i + 1, tensor_input.shape[1] - 1):
-                # If a token string starts with '##', it's a continuation of the previous token's word.
-                if tokens[j].startswith('##'):
-                    # If it's part of the same word, mask it as well.
+            # 2. Also mask subsequent tokens if they are part of the same word
+            for j in range(i + 1, len(tokens) + 1):
+                if tokens[j - 1].startswith('##'):
                     masked_input[0, j] = self.bert_tokenizer.mask_token_id
                 else:
-                    # If we encounter a token that does NOT start with '##', it means we've
-                    # reached the beginning of a new word. We stop masking.
-                    break
+                    break  # Stop masking at the start of a new word
 
-            # Performance optimization that disables gradient calculation because we are only doing inference, not training.
+            # Get model predictions with no gradient calculation for efficiency
             with torch.no_grad():
                 outputs = self.bert_model(masked_input)
 
-            # [0] -> Selects the results for the first sentence in our batch
-            # [i] -> Get predictions for our target position `i`
-            logits_for_target_token = outputs.logits[0, i]
-            log_probs = torch.nn.functional.log_softmax(logits_for_target_token, dim=0)
-
-            # From the distribution of log probabilities, we select the one corresponding
-            # to our *original*, unmasked token. This value is the PLL for this single token.
+            # Extract the log probability of the original token
+            logits = outputs.logits[0, i]
+            log_probs = torch.nn.functional.log_softmax(logits, dim=0)
             token_log_likelihood = log_probs[original_token_id].item()
-
-            # Add this token's score to the running total for the sentence.
             total_log_likelihood += token_log_likelihood
 
-        return total_log_likelihood
+        # --- Normalization ---
+        # Divide the total score by the number of tokens to get the average
+        num_tokens = len(tokens)
+        normalized_pll = total_log_likelihood / num_tokens if num_tokens > 0 else 0.0
 
-    def filter_by_bert(self, candidates: list[str], carrier_sentence: str, context_type: str) -> tuple[
+        return normalized_pll
+
+    def filter_by_bert(self, candidates: list[str], carrier_sentence: str, context: str, target_word: str) -> tuple[
         list[str], list[str]]:
         """
-        Filters candidates by rejecting those that make the sentence "too plausible"
-        according to BERT's PPL score.
+        Filters candidates using a normalized PLL score. Candidates are rejected
+        if they form a sentence that is NOT plausible enough (i.e., the score
+        is below a fixed threshold).
         """
         if not self.bert_model:
             self.logger.warning("BERT model not available. Skipping BERT filtering.")
@@ -211,24 +201,30 @@ class DistractorFilter:
             self.logger.error("Carrier sentence for BERT filter must contain '___' placeholder.")
             return [], candidates
 
-        # rejection_threshold = -25.0 if context_type == 'closed' else -15.0
-        rejection_threshold = -100
-        self.logger.info(
-            f"--- Filtering with BERT (Context: {context_type}, Rejection Threshold > {rejection_threshold}) ---")
-
         accepted, rejected = [], []
+        sentence_with_target_word = carrier_sentence.replace("___", target_word)
+        target_word_pll = self._calculate_normalized_pll(sentence_with_target_word)
+
+        if context == "open":
+            pll_threshold = target_word_pll - 2
+        else:
+            pll_threshold = target_word_pll - 1
+
+        self.logger.info(f"Threshold: {pll_threshold}")
         for candidate in candidates:
             full_sentence = carrier_sentence.replace("___", candidate)
-            score = self._calculate_pseudo_log_likelihood(full_sentence)
-            if score <= rejection_threshold:
-                self.logger.info(f"  ✅ ACCEPTED: '{candidate}' (Score: {score:.2f})")
+            # Use the new method to get a normalized score
+            score = self._calculate_normalized_pll(full_sentence)
+
+            if score <= pll_threshold:
+                self.logger.info(f"  ✅ ACCEPTED: '{candidate}' (Normalized Score: {score:.2f})")
                 accepted.append(candidate)
             else:
-                self.logger.info(f"  ❌ REJECTED: '{candidate}' (Score: {score:.2f})")
+                self.logger.info(f"  ❌ REJECTED: '{candidate}' (Normalized Score: {score:.2f})")
                 rejected.append(candidate)
         return accepted, rejected
 
-
+    
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
     print("Initializing the Unified DistractorFilter...")
@@ -298,7 +294,6 @@ if __name__ == '__main__':
 
         print("=" * 70)
 
-        # --- EXECUTION LOOP ---
         for i, case in enumerate(test_cases):
             english_sentence_with_blank = case["english_sentence"]
 
@@ -338,8 +333,8 @@ if __name__ == '__main__':
             # Step 3: BERT Filter
             print("\n--- 3. Applying BERT Filter ---")
             final_distractors, rejected_by_bert = unified_filter.filter_by_bert(
-                # remaining_after_dep, case["sentence"], case["context"]
-                remaining_after_trigram, case["sentence"], case["context"]
+                # remaining_after_dep, case["sentence"], case["context"], case["target"]
+                remaining_after_trigram, case["sentence"], case["context"], case["target"]
             )
             print("-" * 50)
 
