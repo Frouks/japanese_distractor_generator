@@ -156,7 +156,7 @@ class DistractorFilter:
 
         # Iterate through each actual token (skipping [CLS] and [SEP])
         for i in range(1, len(tokens) + 1):
-            original_token_id = tensor_input[0, i].item()
+            token_of_interest = tensor_input[0, i].item()
             masked_input = tensor_input.clone()
 
             # --- PLL-word-l2r Logic ---
@@ -174,10 +174,10 @@ class DistractorFilter:
             with torch.no_grad():
                 outputs = self.bert_model(masked_input)
 
-            # Extract the log probability of the original token
+            # Extract the log probability of the token_of_interest -> the one originally "below" the mask
             logits = outputs.logits[0, i]
             log_probs = torch.nn.functional.log_softmax(logits, dim=0)
-            token_log_likelihood = log_probs[original_token_id].item()
+            token_log_likelihood = log_probs[token_of_interest].item()
             total_log_likelihood += token_log_likelihood
 
         # --- Normalization ---
@@ -187,12 +187,13 @@ class DistractorFilter:
 
         return normalized_pll
 
-    def filter_by_bert(self, candidates: list[str], carrier_sentence: str, context: str, target_word: str) -> tuple[
-        list[str], list[str]]:
+    def filter_by_bert_fixed(self, candidates: list[str], carrier_sentence: str, context: str, target_word: str) -> \
+            tuple[
+                list[str], list[str]]:
         """
         Filters candidates using a normalized PLL score. Candidates are rejected
-        if they form a sentence that is NOT plausible enough (i.e., the score
-        is below a fixed threshold).
+        if they form a sentence that is too plausible (i.e., the score
+        is above a fixed threshold).
         """
         if not self.bert_model:
             self.logger.warning("BERT model not available. Skipping BERT filtering.")
@@ -206,14 +207,13 @@ class DistractorFilter:
         target_word_pll = self._calculate_normalized_pll(sentence_with_target_word)
 
         if context == "open":
-            pll_threshold = target_word_pll - 2
+            pll_threshold = target_word_pll - 1.25
         else:
-            pll_threshold = target_word_pll - 1
+            pll_threshold = target_word_pll - 0.5
 
-        self.logger.info(f"Threshold: {pll_threshold}")
+        self.logger.info(f"Threshold: > {pll_threshold}")
         for candidate in candidates:
             full_sentence = carrier_sentence.replace("___", candidate)
-            # Use the new method to get a normalized score
             score = self._calculate_normalized_pll(full_sentence)
 
             if score <= pll_threshold:
@@ -224,7 +224,33 @@ class DistractorFilter:
                 rejected.append(candidate)
         return accepted, rejected
 
-    
+    # def filter_by_bert_percentile(self, candidates: list[str], carrier_sentence: str, target_word: str,
+    #                               percentile: int = 25) -> tuple[list[str], list[str]]:
+    #     """Filters candidates based on the percentile rank of their PLL scores."""
+    #     if not self.bert_model or not candidates: return candidates, []
+    #
+    #     # Calculate scores for all candidates and the target word
+    #     candidate_scores = {c: self._calculate_normalized_pll(carrier_sentence.replace("___", c)) for c in candidates}
+    #     target_score = self._calculate_normalized_pll(carrier_sentence.replace("___", target_word))
+    #
+    #     all_scores = list(candidate_scores.values()) + [target_score]
+    #
+    #     # Determine the threshold from the distribution of scores
+    #     threshold = np.percentile(all_scores, percentile)
+    #     self.logger.info(
+    #         f"--- Filtering with BERT (Percentile Threshold @ {percentile}%: < {threshold:.2f}) ---")
+    #
+    #     accepted, rejected = [], []
+    #     for candidate, score in candidate_scores.items():
+    #         if score >= threshold and candidate != target_word:
+    #             self.logger.info(f"  ✅ ACCEPTED: '{candidate}' (Score: {score:.2f})")
+    #             accepted.append(candidate)
+    #         else:
+    #             self.logger.info(f"  ❌ REJECTED: '{candidate}' (Score: {score:.2f})")
+    #             rejected.append(candidate)
+    #     return accepted, rejected
+
+
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
     print("Initializing the Unified DistractorFilter...")
@@ -322,19 +348,19 @@ if __name__ == '__main__':
             print("-" * 50)
 
             # Step 2: Dependency Filter
-            # print("\n--- 2. Applying Dependency Filter ---")
-            # remaining_after_dep, rejected_by_dep = unified_filter.filter_by_dependency(
-            #     remaining_after_trigram, case["sentence"]
-            # )
-            # print(f"   Rejected {len(rejected_by_dep)} candidates: {format_list(rejected_by_dep)}")
-            # print(f"   Candidates remaining: {format_list(remaining_after_dep)}")
-            # print("-" * 50)
+            print("\n--- 2. Applying Dependency Filter ---")
+            remaining_after_dep, rejected_by_dep = unified_filter.filter_by_dependency(
+                remaining_after_trigram, case["sentence"]
+            )
+            print(f"   Rejected {len(rejected_by_dep)} candidates: {format_list(rejected_by_dep)}")
+            print(f"   Candidates remaining: {format_list(remaining_after_dep)}")
+            print("-" * 50)
 
             # Step 3: BERT Filter
             print("\n--- 3. Applying BERT Filter ---")
-            final_distractors, rejected_by_bert = unified_filter.filter_by_bert(
-                # remaining_after_dep, case["sentence"], case["context"], case["target"]
-                remaining_after_trigram, case["sentence"], case["context"], case["target"]
+            final_distractors, rejected_by_bert = unified_filter.filter_by_bert_fixed(
+                remaining_after_dep, case["sentence"], case["context"], case["target"]
+                # remaining_after_trigram, case["sentence"], case["context"], case["target"]
             )
             print("-" * 50)
 
@@ -342,7 +368,7 @@ if __name__ == '__main__':
             print("\n" + "-" * 25 + f" RESULTS FOR CASE {i + 1} " + "-" * 25)
             print(f"{'Initial Candidates:':<28} {format_list(initial_candidates)}")
             print(f"{'Rejected by Trigram Filter:':<28} {format_list(rejected_by_trigram)}")
-            # print(f"{'Rejected by Dependency Filter:':<28} {format_list(rejected_by_dep)}")
+            print(f"{'Rejected by Dependency Filter:':<28} {format_list(rejected_by_dep)}")
             print(f"{'Rejected by BERT Filter:':<28} {format_list(rejected_by_bert)}")
             print("-" * 35)
             print(f"{'Final Accepted Distractors:':<28} {format_list(final_distractors)}")
