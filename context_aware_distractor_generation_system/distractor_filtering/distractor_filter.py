@@ -131,11 +131,10 @@ class DistractorFilter:
 
         return accepted, rejected
 
-    def _calculate_normalized_pll(self, sentence: str) -> float:
+    def _calculate_pll(self, sentence: str) -> float:
         """
-        Calculates the normalized sentence PLL using the PLL-word-l2r method.
-        This corrects for score inflation from multi-token words and normalizes
-        by the number of tokens to make the score length-independent.
+        Calculates the sentence PLL using the PLL-word-l2r method.
+        This corrects for score inflation from multi-token words.
         """
         if not self.bert_model or not self.bert_tokenizer:
             self.logger.error("BERT model or tokenizer not initialized.")
@@ -180,18 +179,16 @@ class DistractorFilter:
             token_log_likelihood = log_probs[token_of_interest].item()
             total_log_likelihood += token_log_likelihood
 
-        # --- Normalization ---
-        # Divide the total score by the number of tokens to get the average
-        num_tokens = len(tokens)
-        normalized_pll = total_log_likelihood / num_tokens if num_tokens > 0 else 0.0
+        # num_tokens = len(tokens)
+        # normalized_pll = total_log_likelihood / num_tokens if num_tokens > 0 else 0.0
 
-        return normalized_pll
+        return total_log_likelihood
 
     def filter_by_bert_fixed(self, candidates: list[str], carrier_sentence: str, context: str, target_word: str) -> \
             tuple[
                 list[str], list[str]]:
         """
-        Filters candidates using a normalized PLL score. Candidates are rejected
+        Filters candidates using a PLL score. Candidates are rejected
         if they form a sentence that is too plausible (i.e., the score
         is above a fixed threshold).
         """
@@ -204,7 +201,7 @@ class DistractorFilter:
 
         accepted, rejected = [], []
         sentence_with_target_word = carrier_sentence.replace("___", target_word)
-        target_word_pll = self._calculate_normalized_pll(sentence_with_target_word)
+        target_word_pll = self._calculate_pll(sentence_with_target_word)
 
         if context == "open":
             pll_threshold = target_word_pll - 1.25
@@ -214,13 +211,13 @@ class DistractorFilter:
         self.logger.info(f"Threshold: > {pll_threshold}")
         for candidate in candidates:
             full_sentence = carrier_sentence.replace("___", candidate)
-            score = self._calculate_normalized_pll(full_sentence)
+            score = self._calculate_pll(full_sentence)
 
             if score <= pll_threshold:
-                self.logger.info(f"  ✅ ACCEPTED: '{candidate}' (Normalized Score: {score:.2f})")
+                self.logger.info(f"  ✅ ACCEPTED: '{candidate}' (PLL Score: {score:.2f})")
                 accepted.append(candidate)
             else:
-                self.logger.info(f"  ❌ REJECTED: '{candidate}' (Normalized Score: {score:.2f})")
+                self.logger.info(f"  ❌ REJECTED: '{candidate}' (PLL Score: {score:.2f})")
                 rejected.append(candidate)
         return accepted, rejected
 
