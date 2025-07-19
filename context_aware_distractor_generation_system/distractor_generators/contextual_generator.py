@@ -1,5 +1,13 @@
+import sys
+from pathlib import Path
+from typing import Union
+
 import torch
 from transformers import BertTokenizer, BertForMaskedLM
+
+project_root = Path(__file__).resolve().parents[2]
+sys.path.append(str(project_root))
+from context_aware_distractor_generation_system.constants.SentenceContextEnum import SentenceContextEnum
 
 
 class ContextualGenerator:
@@ -30,29 +38,32 @@ class ContextualGenerator:
             self,
             masked_sentence: str,
             target_word: str,
-            context_type: str,
-            top_n: int = 5
-    ) -> list[tuple[str, float]]:
+            context_type: SentenceContextEnum,
+            top_n: int = 5,
+            include_prob_score: bool = False
+    ) -> Union[list[tuple[str, float]], list[str]]:
         """
         Generates distractors by predicting the masked token in a sentence.
 
         Args:
             masked_sentence (str): The carrier sentence with the target word replaced by '[MASK]'.
             target_word (str): The original target word (to be excluded from results).
-            context_type (str): The type of context, 'open' or 'closed'.
+            context_type (SentenceContextEnum): The type of context, 'open' or 'closed'.
             top_n (int): The final number of distractors to return.
+            include_prob_score (bool): If False, returns only a list of words.
+                                       If True, returns a list of (word, score) tuples.
 
         Returns:
-            list[tuple[str, float]]: A list of (distractor, probability_score) tuples.
+            A list of distractors in the specified format.
         """
         if not self.model:
             print("Error: Model not loaded. Cannot generate contextual distractors.")
             return []
 
-        if context_type == 'Open':
+        if context_type == SentenceContextEnum.OPEN:
             # For open contexts, accept a wider range of less probable but plausible words.
             min_prob, max_prob = 0.005, 0.1
-        elif context_type == 'Closed':
+        elif context_type == SentenceContextEnum.CLOSED:
             # For closed contexts, demand higher probability candidates.
             min_prob, max_prob = 0.1, 0.9
         else:
@@ -90,9 +101,14 @@ class ContextualGenerator:
                 if token != target_word and not token.startswith('##') and token != '[UNK]':
                     distractors.append((token, prob))
 
-        final_distractors = distractors[:top_n]
-        print(f"Successfully generated {len(final_distractors)} distractors.")
-        return final_distractors
+        final_distractors_with_scores = distractors[:top_n]
+        print(f"Successfully generated {len(final_distractors_with_scores)} distractors.")
+
+        # Add the conditional return logic
+        if include_prob_score:
+            return final_distractors_with_scores
+        else:
+            return [word for word, score in final_distractors_with_scores]
 
 
 if __name__ == '__main__':
@@ -104,31 +120,33 @@ if __name__ == '__main__':
             {
                 "sentence": "動物園で、大きな[MASK]が鼻を高く上げていた。",
                 "target": "象",
-                "context": "Closed",
+                "context": SentenceContextEnum.CLOSED,
                 "english": "At the zoo, the big ___ was raising its trunk high."
             },
             {
                 "sentence": "公園で、たくさんの[MASK]が遊んでいた。",
                 "target": "子供",
-                "context": "Open",
+                "context": SentenceContextEnum.OPEN,
                 "english": "At the park, many ___ were playing."
             },
             {
                 "sentence": "彼は100メートルを10秒で[MASK]ことができる。",
                 "target": "走る",
-                "context": "Closed",
+                "context": SentenceContextEnum.CLOSED,
                 "english": "He can ___ 100 meters in 10 seconds."
             },
             {
                 "sentence": "この[MASK]はとても重要です。",
                 "target": "問題",
-                "context": "Open",
+                "context": SentenceContextEnum.OPEN,
                 "english": "This ___ is very important."
             }
         ]
 
         for i, case in enumerate(test_cases):
-            print(f"🧪 TEST CASE {i + 1}: {case['context'].upper()} CONTEXT")
+            context = "Open" if case["context"] == SentenceContextEnum.OPEN else "Closed"
+
+            print(f"🧪 TEST CASE {i + 1}: {context} CONTEXT")
             print(f"   Sentence: {case['sentence']}")
             print(f"   English:  {case['english']}")
             print(f"   Target:   {case['target']}")

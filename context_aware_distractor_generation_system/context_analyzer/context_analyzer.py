@@ -1,6 +1,13 @@
+import sys
+from pathlib import Path
+
 import torch
 from scipy.stats import entropy
 from transformers import BertJapaneseTokenizer, BertForMaskedLM
+
+project_root = Path(__file__).resolve().parents[2]
+sys.path.append(str(project_root))
+from context_aware_distractor_generation_system.constants.SentenceContextEnum import SentenceContextEnum
 
 
 class ContextAnalyzer:
@@ -58,7 +65,7 @@ class ContextAnalyzer:
             sentence: str,
             expected_context: str = None,
             translated_sentence: str = None
-    ) -> str:
+    ) -> SentenceContextEnum:
         """
         Classifies the context based on the entropy of the entire probability distribution.
 
@@ -72,8 +79,9 @@ class ContextAnalyzer:
             return
 
         calculated_entropy = entropy(probabilities.cpu().numpy())
-        predicted_context = "Open" if calculated_entropy > self.entropy_threshold else "Closed"
+        # predicted_context = "Open" if calculated_entropy > self.entropy_threshold else "Closed"
 
+        predicted_context = SentenceContextEnum.OPEN if calculated_entropy > self.entropy_threshold else SentenceContextEnum.CLOSED
         # --- Optional Printing ---
         print(f"--- Entropy Analysis ---")
 
@@ -87,8 +95,10 @@ class ContextAnalyzer:
 
         # Only print comparison if expected_context was provided
         if expected_context:
-            print(f"  - Predicted: {predicted_context} (Expected: {expected_context})")
-            print(f"  - Correct? {'✅' if predicted_context == expected_context else '❌'}")
+            is_open = expected_context.lower() == "open"
+            expected_context_from_enum = SentenceContextEnum.OPEN if is_open else SentenceContextEnum.CLOSED
+            print(f"  - Predicted: {predicted_context} (Expected: {expected_context_from_enum})")
+            print(f"  - Correct? {'✅' if predicted_context == expected_context_from_enum else '❌'}")
         else:
             print(f"  - Predicted: {predicted_context}")
 
@@ -134,13 +144,13 @@ if __name__ == '__main__':
         ("私の[MASK]はとても可愛い。", "Open", "My ___ is cute."),
         ("その[MASK]は魚を咥えて、ニャーと鳴いた。", "Closed", "That ___ held a fish in its mouth and meowed."),
         ("日本の首都は[MASK]です。", "Closed", "The capital of Japan is ___."),
-        ("昨日、公園に[MASK]ました。", "Open", "I ___ to the park yesterday."),
+        ("昨日、公園に[MASK]ました。", "Closed", "I ___ to the park yesterday."),
         ("流れ星を見て、彼は[MASK]をかけた。", "Closed", "Seeing a shooting star, he made a ___."),
         ("朝食に[MASK]を食べます。", "Open", "I eat ___ for breakfast."),
         ("水はH2Oとしても知られる[MASK]です。", "Closed", "Water is a ___ also known as H2O."),
         ("この壁を[MASK]色に塗りたいです。", "Open", "I want to paint this wall a ___ color."),
         ("戦争ではなく[MASK]を。", "Open", "Not war, but ___."),  # Open or closed?
-        ("猿も[MASK]から落ちる。", "Closed", "Even monkeys fall from ___."),
+        ("猿も[MASK]から落ちる。", "Closed", "Even monkeys fall from ___."),  # Open or closed?
         ("彼はその知らせを聞いて[MASK]なった。", "Closed", "Hearing that news, he became ___."),
         ("私は[MASK]が好きです。", "Open", "I like ___."),
         ("光合成は、[MASK]が光エネルギーを使って有機物を合成するプロセスです。", "Closed",
@@ -151,7 +161,7 @@ if __name__ == '__main__':
         ("ハサミで紙を[MASK]。", "Closed", "I ___ the paper with scissors."),
         ("私の趣味は[MASK]です。", "Open", "My hobby is ___."),
         ("毎朝、私は[MASK]を磨きます。", "Closed", "Every morning, I brush my ___."),
-        ("何か[MASK]を飲みませんか？", "Open", "Won't you drink some kind of ___?"),
+        ("何か[MASK]を飲みませんか？", "Closed", "Won't you drink some kind of ___?"),
     ]
 
     for sentence, expected, translation in test_cases:

@@ -5,6 +5,7 @@ from pathlib import Path
 
 import MeCab
 
+from constants.SentenceContextEnum import SentenceContextEnum
 from context_analyzer.context_analyzer import ContextAnalyzer
 from corpus_processor.corpus_processor import CorpusProcessor
 from distractor_filtering.distractor_filter import DistractorFilter
@@ -248,7 +249,7 @@ if __name__ == "__main__":
     for item in test_items:
         target_word, sentence = item["target"], item["sentence"]
         masked_sentence = sentence.replace("___", "[MASK]")
-        context = context_analyzer.analyze_context_by_entropy(masked_sentence)
+        context: SentenceContextEnum = context_analyzer.analyze_context_by_entropy(masked_sentence)
         main_logger.info(f"▶️ Target Word: '{target_word}' in Carrier Sentence: '{sentence}' with context: '{context}'")
 
         # Get the trigram context once per sentence.
@@ -264,13 +265,21 @@ if __name__ == "__main__":
 
             # Generate more candidates than needed (e.g., 20) to give the filters options.
             if name == "Contextual":
-                distractor_candidates = generator.generate_distractors(masked_sentence, target_word, context, 20)
+                distractor_candidates = generator.generate_distractors(masked_sentence=masked_sentence,
+                                                                       target_word=target_word, context_type=context,
+                                                                       top_n=20, include_prob_score=False)
             elif name == "Co-occurrence":
-                distractor_candidates = generator.generate_distractors(target_word, sentence, context, 20)
+                distractor_candidates = generator.generate_distractors(target_word_surface=target_word,
+                                                                       sentence_with_blank=sentence,
+                                                                       context_type=context, num_distractors=20,
+                                                                       include_pmi_score=False)
             elif name == "Similarity":
-                distractor_candidates = generator.generate_distractors(target_word, context, 20, 200, False)
+                distractor_candidates = generator.generate_distractors(target_word=target_word, context_type=context,
+                                                                       top_n=20, num_candidates=200,
+                                                                       include_sim_score=False)
             else:  # Baseline- and SpellingGenerator
-                distractor_candidates = generator.generate_distractors(target_word, sentence, num_distractors=20)
+                distractor_candidates = generator.generate_distractors(target_word_surface=target_word,
+                                                                       sentence_with_blank=sentence, num_distractors=20)
 
             # --- Step 4: Apply filters ---
             trigram_accepted_list, trigram_rejected_list = distractor_filter.filter_by_trigram(distractor_candidates,

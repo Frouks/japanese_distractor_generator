@@ -1,8 +1,15 @@
+import json
 import logging
 import math
+import sys
 from collections import defaultdict
-import json
 from pathlib import Path
+from typing import Union
+
+project_root = Path(__file__).resolve().parents[2]
+sys.path.append(str(project_root))
+from context_aware_distractor_generation_system.constants.SentenceContextEnum import SentenceContextEnum
+
 
 class CooccurrenceGenerator:
     """
@@ -28,7 +35,8 @@ class CooccurrenceGenerator:
 
         # For faster lookups, build an inverted index from a word to its co-occurring partners
         self.cooccurrence_index = self._build_cooccurrence_index()
-        self.logger.info(f"Generator initialized with {len(self.cooccurrence_counts)} co-occurrence pairs and an index of {len(self.cooccurrence_index)} lemmas.")
+        self.logger.info(
+            f"Generator initialized with {len(self.cooccurrence_counts)} co-occurrence pairs and an index of {len(self.cooccurrence_index)} lemmas.")
 
     def _build_cooccurrence_index(self):
         """Builds an inverted index from a word to its co-occurring pairs and counts."""
@@ -51,7 +59,7 @@ class CooccurrenceGenerator:
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
                 data = json.load(f)
-            
+
             # Convert string keys "word1|word2" back to tuples ('word1', 'word2')
             reformatted_counts = {tuple(key.split('|')): count for key, count in data['counts'].items()}
             data['counts'] = reformatted_counts
@@ -86,12 +94,26 @@ class CooccurrenceGenerator:
 
         return pmi_val + correction_factor
 
-    def generate_distractors(self, target_word_surface, sentence_with_blank, context_type: str, num_distractors=5):
+    def generate_distractors(self, target_word_surface, sentence_with_blank, context_type: SentenceContextEnum,
+                             num_distractors=5, include_pmi_score: bool = True) -> Union[
+        list[tuple[str, float]], list[str]]:
         """
         Generates a ranked list of distractors, choosing the PMI variant based on context.
+
+        Args:
+            target_word_surface (str): The surface form of the word.
+            sentence_with_blank (str): The carrier sentence.
+            context_type (SentenceContextEnum): The context (OPEN or CLOSED).
+            num_distractors (int): The number of distractors to return.
+            include_pmi_score (bool): If False (default), returns a list of words.
+                                      If True, returns a list of (word, pmi_score) tuples.
+
+        Returns:
+            A list of distractors in the specified format.
         """
+        context = "Open" if context_type == SentenceContextEnum.OPEN else "Closed"
         self.logger.info(
-            f"--- Generating co-occurrence distractors for '{target_word_surface}' (Context: {context_type}) ---")
+            f"--- Generating co-occurrence distractors for '{target_word_surface}' (Context: {context}) ---")
         if not self.cooccurrence_index:
             self.logger.error("No co-occurrence index available. Aborting.")
             return []
@@ -141,10 +163,10 @@ class CooccurrenceGenerator:
             p_target_cand = co_occur_freq / self.total_sentences if self.total_sentences > 0 else 0
 
             score = 0
-            if context_type == 'closed':
+            if context_type == SentenceContextEnum.CLOSED:
                 score = self._calculate_pmi(p_target, p_cand, p_target_cand)
-            elif context_type == 'open':
-                # Using PMI^2 (k=2) for open contexts
+            elif context_type == SentenceContextEnum.OPEN:
+                # Using PMI^2 (k=2) for open contexts -> results in more general distractors
                 score = self._calculate_pmi_k(p_target, p_cand, p_target_cand, k=2)
             else:
                 self.logger.warning(f"Invalid context type '{context_type}'. Defaulting to standard PMI.")
@@ -154,7 +176,14 @@ class CooccurrenceGenerator:
                 candidates_with_scores.append((cand_lemma, score))
 
         sorted_candidates = sorted(candidates_with_scores, key=lambda item: item[1], reverse=True)
-        distractors = [lemma for lemma, score in sorted_candidates[:num_distractors]]
+        final_candidates_with_scores = sorted_candidates[:num_distractors]
+
+        # Conditionally format the final output based on the flag
+        if include_pmi_score:
+            distractors = final_candidates_with_scores
+        else:
+            # Default behavior: return only the words
+            distractors = [lemma for lemma, score in final_candidates_with_scores]
 
         self.logger.info(f"Successfully generated {len(distractors)} distractors: {distractors}")
         return distractors

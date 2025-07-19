@@ -1,7 +1,13 @@
 import logging
+import sys
+from pathlib import Path
 from typing import Union
 
 from gensim.models.fasttext import load_facebook_model
+
+project_root = Path(__file__).resolve().parents[2]
+sys.path.append(str(project_root))
+from context_aware_distractor_generation_system.constants.SentenceContextEnum import SentenceContextEnum
 
 
 class SimilarityGenerator:
@@ -56,7 +62,7 @@ class SimilarityGenerator:
     def generate_distractors(
             self,
             target_word: str,
-            context_type: str,
+            context_type: SentenceContextEnum,
             top_n: int = 5,
             num_candidates: int = 200,
             include_sim_score: bool = True,
@@ -81,10 +87,10 @@ class SimilarityGenerator:
             return []
 
         # 1. Define similarity thresholds based on context
-        if context_type == 'Open':
+        if context_type == SentenceContextEnum.OPEN:
             # For open contexts, we want distractors that are related but not too close.
             min_similarity, max_similarity = 0.4, 0.6
-        elif context_type == 'Closed':
+        elif context_type == SentenceContextEnum.CLOSED:
             # For closed contexts, we want very similar distractors to be more challenging.
             min_similarity, max_similarity = 0.61, 0.75
         else:
@@ -113,14 +119,19 @@ class SimilarityGenerator:
                 return final_distractors_with_scores
             else:
                 return [word for word, score in final_distractors_with_scores]
-
         except KeyError:
             print(f"Warning: Could not generate a vector for the target word '{target_word}'.")
             return []
 
 
 if __name__ == '__main__':
-    # Make sure to provide the correct path to your downloaded FastText model
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    logging.getLogger('gensim.models._fasttext_bin').setLevel(logging.CRITICAL)
+
     FASTTEXT_MODEL_PATH = '../model/cc.ja.300.bin'
     sim_generator = SimilarityGenerator(model_path=FASTTEXT_MODEL_PATH)
     print("=" * 60)
@@ -130,31 +141,32 @@ if __name__ == '__main__':
             {
                 "sentence": "動物園で、大きな＿＿が鼻を高く上げていた。",
                 "target": "象",
-                "context": "Closed",
+                "context": SentenceContextEnum.CLOSED,
                 "english": "At the zoo, the big ___ was raising its trunk high."
             },
             {
                 "sentence": "公園で、たくさんの＿＿が遊んでいた。",
                 "target": "子供",
-                "context": "Open",
+                "context": SentenceContextEnum.OPEN,
                 "english": "At the park, many ___ were playing."
             },
             {
                 "sentence": "彼は100メートルを10秒で＿＿ことができる。",
                 "target": "走る",
-                "context": "Closed",
+                "context": SentenceContextEnum.CLOSED,
                 "english": "He can ___ 100 meters in 10 seconds."
             },
             {
                 "sentence": "この＿＿はとても重要です。",
                 "target": "問題",
-                "context": "Open",
+                "context": SentenceContextEnum.OPEN,
                 "english": "This ___ is very important."
             }
         ]
 
         for i, case in enumerate(test_cases):
-            print(f"🧪 TEST CASE {i + 1}: {case['context'].upper()} CONTEXT")
+            context = "Open" if case["context"] == SentenceContextEnum.OPEN else "Closed"
+            print(f"🧪 TEST CASE {i + 1}: {context} CONTEXT")
             print(f"   Sentence: {case['sentence']}")
             print(f"   English:  {case['english']}")
             print(f"   Target:   {case['target']}")
@@ -162,7 +174,10 @@ if __name__ == '__main__':
 
             distractors = sim_generator.generate_distractors(
                 target_word=case['target'],
-                context_type=case['context']
+                context_type=case['context'],
+                top_n=5,
+                num_candidates=20,
+                include_sim_score=True
             )
 
             print("\n   Generated Distractors:")

@@ -1,0 +1,664 @@
+2025-07-19 17:29:32 - root - INFO - Logging configured to output to console and file.
+2025-07-19 17:29:32 - Main - INFO - ====== Distractor Generation System Starting (CADGS) ======
+2025-07-19 17:29:32 - Main - INFO - 
+--- Loading data and initializing generators & filters ---
+2025-07-19 17:29:32 - CorpusProcessor - INFO - No explicit MeCab args provided by user. MeCab will use its default dictionary configuration.
+2025-07-19 17:29:32 - CorpusProcessor - WARNING - IMPORTANT: Please check the 'Active MeCab Dictionary Info' log output below to ensure MeCab is using the dictionary you expect (e.g., unidic).
+2025-07-19 17:29:32 - CorpusProcessor - INFO - MeCab Tagger initialized with final effective args: ''.
+2025-07-19 17:29:32 - CorpusProcessor - INFO - Active MeCab Dictionary Info (from Tagger):
+  Filename: /opt/miniconda3/envs/cadgs/lib/python3.10/site-packages/unidic_lite/dicdir/sys.dic, Charset: utf8, Type: 0, Version: 102
+
+2025-07-19 17:29:32 - CorpusProcessor - INFO - Using feature indices for parsing: POS1=0, POS_Detail_End=3, Lemma=7
+2025-07-19 17:29:32 - CorpusProcessor.Loader - INFO - Loading all words details from /Users/danieleamore/University/Bachelorthesis/japanese_distractor_generator/re_implementation/processed_corpus_data/jp_all_words_details.json...
+2025-07-19 17:29:33 - CorpusProcessor.Loader - INFO - Successfully loaded 179807 entries from words details file.
+2025-07-19 17:29:33 - BaselineGenerator - INFO - Organizing corpus vocabulary by Part-of-Speech for faster lookups...
+2025-07-19 17:29:33 - BaselineGenerator - INFO - Finished organizing vocabulary.
+2025-07-19 17:29:33 - BaselineGenerator - INFO - Generator initialized. Organized vocabulary into 8 POS categories.
+2025-07-19 17:29:33 - SpellingGenerator - INFO - Building character-to-word inverted index for fast lookups...
+2025-07-19 17:29:33 - SpellingGenerator - INFO - Finished building character index.
+2025-07-19 17:29:33 - SpellingGenerator - INFO - Generator initialized. Built character index for 5253 unique characters.
+2025-07-19 17:29:36 - gensim.utils - INFO - FastText lifecycle event {'params': 'FastText<vocab=0, vector_size=300, alpha=0.025>', 'datetime': '2025-07-19T17:29:36.926016', 'gensim': '4.3.3', 'python': '3.10.18 (main, Jun  5 2025, 08:37:47) [Clang 14.0.6 ]', 'platform': 'macOS-15.5-arm64-arm-64bit', 'event': 'created'}
+2025-07-19 17:29:36 - gensim.models.word2vec - INFO - Updating model with new vocabulary
+2025-07-19 17:29:40 - gensim.utils - INFO - FastText lifecycle event {'msg': 'added 2000000 new unique words (100.00% of original 2000000) and increased the count of 0 pre-existing words (0.00% of original 2000000)', 'datetime': '2025-07-19T17:29:40.639383', 'gensim': '4.3.3', 'python': '3.10.18 (main, Jun  5 2025, 08:37:47) [Clang 14.0.6 ]', 'platform': 'macOS-15.5-arm64-arm-64bit', 'event': 'prepare_vocab'}
+2025-07-19 17:29:43 - gensim.models.word2vec - INFO - deleting the raw counts dictionary of 2000000 items
+2025-07-19 17:29:43 - gensim.models.word2vec - INFO - sample=1e-05 downsamples 3452 most-common words
+2025-07-19 17:29:43 - gensim.utils - INFO - FastText lifecycle event {'msg': 'downsampling leaves estimated 31762570124.727135 word corpus (34.3%% of prior 92599889183)', 'datetime': '2025-07-19T17:29:43.690600', 'gensim': '4.3.3', 'python': '3.10.18 (main, Jun  5 2025, 08:37:47) [Clang 14.0.6 ]', 'platform': 'macOS-15.5-arm64-arm-64bit', 'event': 'prepare_vocab'}
+2025-07-19 17:30:00 - gensim.utils - INFO - FastText lifecycle event {'msg': 'loaded (4000000, 300) weight matrix for fastText model from model/cc.ja.300.bin', 'datetime': '2025-07-19T17:30:00.133684', 'gensim': '4.3.3', 'python': '3.10.18 (main, Jun  5 2025, 08:37:47) [Clang 14.0.6 ]', 'platform': 'macOS-15.5-arm64-arm-64bit', 'event': 'load_fasttext_format'}
+2025-07-19 17:31:04 - CooccurrenceGenerator.Loader - INFO - Successfully loaded 57684917 co-occurrence counts from ../re_implementation/processed_corpus_data/jp_cooccurrence_counts.json
+2025-07-19 17:31:04 - CooccurrenceGenerator - INFO - Building co-occurrence inverted index for fast lookups...
+2025-07-19 17:31:23 - CooccurrenceGenerator - INFO - Finished building co-occurrence index.
+2025-07-19 17:31:23 - CooccurrenceGenerator - INFO - Generator initialized with 57684917 co-occurrence pairs and an index of 226838 lemmas.
+2025-07-19 17:31:23 - Main - INFO - Initializing DistractorFilter...
+2025-07-19 17:31:23 - DistractorFilter - INFO - Loading trigrams from ../re_implementation/processed_corpus_data/jp_trigram_counts.pkl...
+2025-07-19 17:31:26 - DistractorFilter - INFO - Successfully loaded 6,489,162 items into a set in 2.65s.
+2025-07-19 17:31:26 - DistractorFilter - INFO - Loading dependency index from ../re_implementation/processed_corpus_data/jp_dependency_relations.pkl...
+2025-07-19 17:33:38 - DistractorFilter - INFO - Successfully loaded 452,568 items into a dict in 131.99s.
+2025-07-19 17:33:38 - DistractorFilter - INFO - Loading spaCy/GiNZA model for live parsing...
+2025-07-19 17:33:38 - DistractorFilter - INFO - ✅ GiNZA model loaded successfully.
+2025-07-19 17:33:38 - DistractorFilter - INFO - Loading BERT model 'cl-tohoku/bert-base-japanese-whole-word-masking' for filtering...
+2025-07-19 17:33:40 - DistractorFilter - INFO - ✅ BERT model loaded successfully for filtering.
+2025-07-19 17:33:40 - Main - INFO - DistractorFilter is ready.
+2025-07-19 17:33:40 - Main - INFO - Initializing ContextAnalyzer... 
+
+2025-07-19 17:33:41 - Main - INFO - 
+ ContextAnalyzer is ready. 
+
+2025-07-19 17:33:41 - Main - INFO - ============================================================
+
+2025-07-19 17:33:41 - Main - INFO - DEMONSTRATING DISTRACTOR GENERATION WITH CHAINED FILTERING
+2025-07-19 17:33:41 - Main - INFO - ============================================================
+
+2025-07-19 17:33:41 - Main - INFO - ▶️ Target Word: '猫' in Carrier Sentence: '私の___はとても可愛い。' with context: 'SentenceContextEnum.OPEN'
+2025-07-19 17:33:41 - Main - INFO -   (Context for Trigram Filter: ('私', BLANK, 'とても'))
+2025-07-19 17:33:41 - BaselineGenerator - INFO - --- Generating baseline distractors for '猫' ---
+2025-07-19 17:33:41 - BaselineGenerator - INFO - Target analyzed: Lemma='猫', POS='名詞', Frequency=22075
+2025-07-19 17:33:41 - BaselineGenerator - INFO - Found 166199 candidate words with POS '名詞'.
+2025-07-19 17:33:42 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['経過', 'マイナー-minor', '商店', '土', '分岐', '提唱', 'オーディション-audition', '財産', '連覇', 'インディアン-Indian', '連結', '周', 'バスケットボール-basketball', '証券', '国土', '大手', '松', '下位', '電動', '当該']
+2025-07-19 17:33:42 - DistractorFilter - INFO - Threshold: > -74.43836387991905
+2025-07-19 17:33:42 - DistractorFilter - INFO -   ✅ ACCEPTED: '経過' (PLL Score: -84.26)
+2025-07-19 17:33:42 - DistractorFilter - INFO -   ✅ ACCEPTED: 'マイナー-minor' (PLL Score: -123.00)
+2025-07-19 17:33:43 - DistractorFilter - INFO -   ❌ REJECTED: '商店' (PLL Score: -72.89)
+2025-07-19 17:33:43 - DistractorFilter - INFO -   ❌ REJECTED: '土' (PLL Score: -66.97)
+2025-07-19 17:33:43 - DistractorFilter - INFO -   ✅ ACCEPTED: '分岐' (PLL Score: -78.72)
+2025-07-19 17:33:43 - DistractorFilter - INFO -   ❌ REJECTED: '提唱' (PLL Score: -70.59)
+2025-07-19 17:33:44 - DistractorFilter - INFO -   ✅ ACCEPTED: 'オーディション-audition' (PLL Score: -142.34)
+2025-07-19 17:33:44 - DistractorFilter - INFO -   ❌ REJECTED: '財産' (PLL Score: -72.23)
+2025-07-19 17:33:44 - DistractorFilter - INFO -   ✅ ACCEPTED: '連覇' (PLL Score: -81.05)
+2025-07-19 17:33:44 - DistractorFilter - INFO -   ✅ ACCEPTED: 'インディアン-Indian' (PLL Score: -142.97)
+2025-07-19 17:33:45 - DistractorFilter - INFO -   ✅ ACCEPTED: '連結' (PLL Score: -75.23)
+2025-07-19 17:33:45 - DistractorFilter - INFO -   ✅ ACCEPTED: '周' (PLL Score: -76.61)
+2025-07-19 17:33:45 - DistractorFilter - INFO -   ✅ ACCEPTED: 'バスケットボール-basketball' (PLL Score: -166.56)
+2025-07-19 17:33:45 - DistractorFilter - INFO -   ✅ ACCEPTED: '証券' (PLL Score: -87.26)
+2025-07-19 17:33:46 - DistractorFilter - INFO -   ❌ REJECTED: '国土' (PLL Score: -74.35)
+2025-07-19 17:33:46 - DistractorFilter - INFO -   ✅ ACCEPTED: '大手' (PLL Score: -81.55)
+2025-07-19 17:33:46 - DistractorFilter - INFO -   ❌ REJECTED: '松' (PLL Score: -71.08)
+2025-07-19 17:33:46 - DistractorFilter - INFO -   ✅ ACCEPTED: '下位' (PLL Score: -78.21)
+2025-07-19 17:33:47 - DistractorFilter - INFO -   ❌ REJECTED: '電動' (PLL Score: -74.21)
+2025-07-19 17:33:47 - DistractorFilter - INFO -   ✅ ACCEPTED: '当該' (PLL Score: -74.51)
+2025-07-19 17:33:47 - Main - INFO - 
+====== Results for Baseline. ======
+2025-07-19 17:33:47 - Main - INFO -     Distractor candidates pool: ['経過', 'マイナー-minor', '商店', '土', '分岐', '提唱', 'オーディション-audition', '財産', '連覇', 'インディアン-Indian']
+2025-07-19 17:33:47 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:33:47 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:33:47 - Main - INFO -     BERT Rejects: ['商店', '土', '提唱', '財産', '国土', '松', '電動']
+2025-07-19 17:33:47 - Main - INFO -     Final Rejects (In any filter): ['財産', '松', '土', '提唱', '電動', '国土', '商店']
+2025-07-19 17:33:47 - Main - INFO -     Final Distractors: ['経過', 'マイナー-minor', '分岐', 'オーディション-audition', '連覇']
+2025-07-19 17:33:47 - SpellingGenerator - INFO - --- Generating spelling distractors for '猫' ---
+2025-07-19 17:33:47 - SpellingGenerator - INFO - Target analyzed: Lemma='猫', POS='名詞', Frequency=22075
+2025-07-19 17:33:47 - SpellingGenerator - INFO - Unique characters in target lemma: {'猫'}
+2025-07-19 17:33:47 - SpellingGenerator - INFO - Found 100 potential candidates from character index.
+2025-07-19 17:33:47 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['黒猫', '山猫', '子猫', '野良猫', '飼い猫', '愛猫', '海猫', '招き猫', '猫耳', '猫好き', '化け猫', '猫股', '白猫', '家猫', '猫背', '野猫', '雌猫', '斑猫', '猫型', '雄猫']
+2025-07-19 17:33:47 - DistractorFilter - INFO - Threshold: > -74.43836387991905
+2025-07-19 17:33:47 - DistractorFilter - INFO -   ❌ REJECTED: '黒猫' (PLL Score: -73.27)
+2025-07-19 17:33:47 - DistractorFilter - INFO -   ✅ ACCEPTED: '山猫' (PLL Score: -86.01)
+2025-07-19 17:33:48 - DistractorFilter - INFO -   ✅ ACCEPTED: '子猫' (PLL Score: -76.62)
+2025-07-19 17:33:48 - DistractorFilter - INFO -   ✅ ACCEPTED: '野良猫' (PLL Score: -91.45)
+2025-07-19 17:33:48 - DistractorFilter - INFO -   ✅ ACCEPTED: '飼い猫' (PLL Score: -76.80)
+2025-07-19 17:33:48 - DistractorFilter - INFO -   ✅ ACCEPTED: '愛猫' (PLL Score: -76.39)
+2025-07-19 17:33:49 - DistractorFilter - INFO -   ✅ ACCEPTED: '海猫' (PLL Score: -87.50)
+2025-07-19 17:33:49 - DistractorFilter - INFO -   ✅ ACCEPTED: '招き猫' (PLL Score: -83.43)
+2025-07-19 17:33:49 - DistractorFilter - INFO -   ✅ ACCEPTED: '猫耳' (PLL Score: -78.23)
+2025-07-19 17:33:49 - DistractorFilter - INFO -   ✅ ACCEPTED: '猫好き' (PLL Score: -103.85)
+2025-07-19 17:33:50 - DistractorFilter - INFO -   ✅ ACCEPTED: '化け猫' (PLL Score: -86.05)
+2025-07-19 17:33:50 - DistractorFilter - INFO -   ✅ ACCEPTED: '猫股' (PLL Score: -89.53)
+2025-07-19 17:33:50 - DistractorFilter - INFO -   ✅ ACCEPTED: '白猫' (PLL Score: -75.46)
+2025-07-19 17:33:50 - DistractorFilter - INFO -   ✅ ACCEPTED: '家猫' (PLL Score: -84.16)
+2025-07-19 17:33:51 - DistractorFilter - INFO -   ✅ ACCEPTED: '猫背' (PLL Score: -83.46)
+2025-07-19 17:33:51 - DistractorFilter - INFO -   ✅ ACCEPTED: '野猫' (PLL Score: -79.39)
+2025-07-19 17:33:51 - DistractorFilter - INFO -   ❌ REJECTED: '雌猫' (PLL Score: -69.95)
+2025-07-19 17:33:51 - DistractorFilter - INFO -   ✅ ACCEPTED: '斑猫' (PLL Score: -79.42)
+2025-07-19 17:33:51 - DistractorFilter - INFO -   ✅ ACCEPTED: '猫型' (PLL Score: -83.24)
+2025-07-19 17:33:52 - DistractorFilter - INFO -   ✅ ACCEPTED: '雄猫' (PLL Score: -75.80)
+2025-07-19 17:33:52 - Main - INFO - 
+====== Results for Spelling. ======
+2025-07-19 17:33:52 - Main - INFO -     Distractor candidates pool: ['黒猫', '山猫', '子猫', '野良猫', '飼い猫', '愛猫', '海猫', '招き猫', '猫耳', '猫好き']
+2025-07-19 17:33:52 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:33:52 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:33:52 - Main - INFO -     BERT Rejects: ['黒猫', '雌猫']
+2025-07-19 17:33:52 - Main - INFO -     Final Rejects (In any filter): ['雌猫', '黒猫']
+2025-07-19 17:33:52 - Main - INFO -     Final Distractors: ['山猫', '子猫', '野良猫', '飼い猫', '愛猫']
+2025-07-19 17:33:52 - SimilarityGenerator - INFO - 
+--- Generating for '猫' (Context: SentenceContextEnum.OPEN, Range: 0.4-0.6) ---
+2025-07-19 17:33:59 - DistractorFilter - INFO - Threshold: > -74.43836387991905
+2025-07-19 17:34:00 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ゃんこがいます' (PLL Score: -159.90)
+2025-07-19 17:34:00 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ゃんこが' (PLL Score: -145.15)
+2025-07-19 17:34:00 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ミケコ' (PLL Score: -139.15)
+2025-07-19 17:34:00 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ゃんこです' (PLL Score: -159.95)
+2025-07-19 17:34:01 - DistractorFilter - INFO -   ✅ ACCEPTED: 'チャトラン' (PLL Score: -123.07)
+2025-07-19 17:34:01 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ネココ' (PLL Score: -138.98)
+2025-07-19 17:34:01 - DistractorFilter - INFO -   ✅ ACCEPTED: 'チャトラ' (PLL Score: -123.45)
+2025-07-19 17:34:01 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ハチワレ' (PLL Score: -148.92)
+2025-07-19 17:34:02 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ゃんにゃんにゃんで' (PLL Score: -194.81)
+2025-07-19 17:34:02 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ゃんこたちの' (PLL Score: -164.68)
+2025-07-19 17:34:02 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ゃんこも' (PLL Score: -143.61)
+2025-07-19 17:34:02 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ゃんこを' (PLL Score: -147.44)
+2025-07-19 17:34:03 - DistractorFilter - INFO -   ✅ ACCEPTED: 'しば犬' (PLL Score: -91.70)
+2025-07-19 17:34:03 - DistractorFilter - INFO -   ✅ ACCEPTED: '' (PLL Score: -87.69)
+2025-07-19 17:34:03 - DistractorFilter - INFO -   ✅ ACCEPTED: 'チビネコ' (PLL Score: -152.26)
+2025-07-19 17:34:03 - DistractorFilter - INFO -   ✅ ACCEPTED: 'オンダケ' (PLL Score: -136.45)
+2025-07-19 17:34:04 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ゃんこに' (PLL Score: -125.99)
+2025-07-19 17:34:04 - DistractorFilter - INFO -   ✅ ACCEPTED: '猫又' (PLL Score: -84.46)
+2025-07-19 17:34:04 - DistractorFilter - INFO -   ✅ ACCEPTED: '野良' (PLL Score: -79.96)
+2025-07-19 17:34:04 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ゃんこたちが' (PLL Score: -164.69)
+2025-07-19 17:34:04 - Main - INFO - 
+====== Results for Similarity. ======
+2025-07-19 17:34:04 - Main - INFO -     Distractor candidates pool: ['ゃんこがいます', 'ゃんこが', 'ミケコ', 'ゃんこです', 'チャトラン', 'ネココ', 'チャトラ', 'ハチワレ', 'ゃんにゃんにゃんで', 'ゃんこたちの']
+2025-07-19 17:34:04 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:34:04 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:34:04 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:34:04 - Main - INFO -     Final Rejects (In any filter): []
+2025-07-19 17:34:04 - Main - INFO -     Final Distractors: ['ゃんこがいます', 'ゃんこが', 'ミケコ', 'ゃんこです', 'チャトラン']
+2025-07-19 17:34:06 - DistractorFilter - INFO - Threshold: > -74.43836387991905
+2025-07-19 17:34:06 - DistractorFilter - INFO -   ✅ ACCEPTED: '性格' (PLL Score: -74.60)
+2025-07-19 17:34:06 - DistractorFilter - INFO -   ✅ ACCEPTED: '気持ち' (PLL Score: -93.66)
+2025-07-19 17:34:06 - DistractorFilter - INFO -   ✅ ACCEPTED: '人生' (PLL Score: -75.77)
+2025-07-19 17:34:07 - DistractorFilter - INFO -   ✅ ACCEPTED: '言葉' (PLL Score: -77.40)
+2025-07-19 17:34:07 - DistractorFilter - INFO -   ✅ ACCEPTED: 'こと' (PLL Score: -100.30)
+2025-07-19 17:34:07 - DistractorFilter - INFO -   ✅ ACCEPTED: 'こころ' (PLL Score: -113.13)
+2025-07-19 17:34:07 - DistractorFilter - INFO -   ❌ REJECTED: '愛' (PLL Score: -64.85)
+2025-07-19 17:34:07 - DistractorFilter - INFO -   ❌ REJECTED: '感情' (PLL Score: -62.92)
+2025-07-19 17:34:08 - DistractorFilter - INFO -   ❌ REJECTED: '母' (PLL Score: -64.08)
+2025-07-19 17:34:08 - DistractorFilter - INFO -   ❌ REJECTED: '顔' (PLL Score: -59.34)
+2025-07-19 17:34:08 - DistractorFilter - INFO -   ❌ REJECTED: '人' (PLL Score: -65.32)
+2025-07-19 17:34:08 - DistractorFilter - INFO -   ❌ REJECTED: '愛情' (PLL Score: -63.54)
+2025-07-19 17:34:08 - DistractorFilter - INFO -   ❌ REJECTED: '体' (PLL Score: -59.26)
+2025-07-19 17:34:09 - DistractorFilter - INFO -   ❌ REJECTED: '声' (PLL Score: -69.02)
+2025-07-19 17:34:09 - DistractorFilter - INFO -   ❌ REJECTED: '子' (PLL Score: -62.35)
+2025-07-19 17:34:09 - DistractorFilter - INFO -   ✅ ACCEPTED: '人柄' (PLL Score: -79.19)
+2025-07-19 17:34:09 - DistractorFilter - INFO -   ❌ REJECTED: '良心' (PLL Score: -68.57)
+2025-07-19 17:34:09 - DistractorFilter - INFO -   ✅ ACCEPTED: '考え' (PLL Score: -86.35)
+2025-07-19 17:34:10 - DistractorFilter - INFO -   ❌ REJECTED: '生き方' (PLL Score: -72.60)
+2025-07-19 17:34:10 - DistractorFilter - INFO -   ✅ ACCEPTED: '思い' (PLL Score: -88.54)
+2025-07-19 17:34:10 - Main - INFO - 
+====== Results for Contextual. ======
+2025-07-19 17:34:10 - Main - INFO -     Distractor candidates pool: ['性格', '気持ち', '人生', '言葉', 'こと', 'こころ', '愛', '感情', '母', '顔']
+2025-07-19 17:34:10 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:34:10 - Main - INFO -     Dependency Rejects: ['こと', '母', '顔', '声', '子']
+2025-07-19 17:34:10 - Main - INFO -     BERT Rejects: ['愛', '感情', '母', '顔', '人', '愛情', '体', '声', '子', '良心']
+2025-07-19 17:34:10 - Main - INFO -     Final Rejects (In any filter): ['こと', '人', '良心', '愛', '体', '母', '顔', '愛情', '生き方', '子', '声', '感情']
+2025-07-19 17:34:10 - Main - INFO -     Final Distractors: ['性格', '気持ち', '人生', '言葉', 'こころ']
+2025-07-19 17:34:10 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for '猫' (Context: Open) ---
+2025-07-19 17:34:10 - CooccurrenceGenerator - INFO - Target: Lemma='猫', POS='名詞', Freq=22075
+2025-07-19 17:34:10 - CooccurrenceGenerator - INFO - Found 6209 co-occurring candidate surfaces to analyze.
+2025-07-19 17:34:10 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['目指し', '通じ', '三毛', '猫好き', '犬', '縒れ', 'アクマ', 'チェシャー', '愛猫', '有り', '飼い猫', '欠け', '擬古', '野良猫', '飼い主', '鼻頭', 'ペット-pet', '長靴', 'バリニーズ-Balinese', 'ギコ']
+2025-07-19 17:34:11 - DistractorFilter - INFO - Threshold: > -74.43836387991905
+2025-07-19 17:34:11 - DistractorFilter - INFO -   ✅ ACCEPTED: '目指し' (PLL Score: -92.77)
+2025-07-19 17:34:11 - DistractorFilter - INFO -   ✅ ACCEPTED: '通じ' (PLL Score: -96.20)
+2025-07-19 17:34:11 - DistractorFilter - INFO -   ❌ REJECTED: '三毛' (PLL Score: -69.75)
+2025-07-19 17:34:11 - DistractorFilter - INFO -   ✅ ACCEPTED: '猫好き' (PLL Score: -103.85)
+2025-07-19 17:34:12 - DistractorFilter - INFO -   ❌ REJECTED: '犬' (PLL Score: -66.42)
+2025-07-19 17:34:12 - DistractorFilter - INFO -   ✅ ACCEPTED: '縒れ' (PLL Score: -85.57)
+2025-07-19 17:34:12 - DistractorFilter - INFO -   ✅ ACCEPTED: 'アクマ' (PLL Score: -128.28)
+2025-07-19 17:34:12 - DistractorFilter - INFO -   ✅ ACCEPTED: 'チェシャー' (PLL Score: -119.70)
+2025-07-19 17:34:13 - DistractorFilter - INFO -   ✅ ACCEPTED: '愛猫' (PLL Score: -76.39)
+2025-07-19 17:34:13 - DistractorFilter - INFO -   ✅ ACCEPTED: '有り' (PLL Score: -97.66)
+2025-07-19 17:34:13 - DistractorFilter - INFO -   ✅ ACCEPTED: '飼い猫' (PLL Score: -76.80)
+2025-07-19 17:34:13 - DistractorFilter - INFO -   ✅ ACCEPTED: '欠け' (PLL Score: -97.28)
+2025-07-19 17:34:13 - DistractorFilter - INFO -   ✅ ACCEPTED: '擬古' (PLL Score: -86.53)
+2025-07-19 17:34:14 - DistractorFilter - INFO -   ✅ ACCEPTED: '野良猫' (PLL Score: -91.45)
+2025-07-19 17:34:14 - DistractorFilter - INFO -   ✅ ACCEPTED: '飼い主' (PLL Score: -81.04)
+2025-07-19 17:34:14 - DistractorFilter - INFO -   ❌ REJECTED: '鼻頭' (PLL Score: -71.54)
+2025-07-19 17:34:14 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ペット-pet' (PLL Score: -128.21)
+2025-07-19 17:34:15 - DistractorFilter - INFO -   ✅ ACCEPTED: '長靴' (PLL Score: -81.68)
+2025-07-19 17:34:15 - DistractorFilter - INFO -   ✅ ACCEPTED: 'バリニーズ-Balinese' (PLL Score: -159.19)
+2025-07-19 17:34:15 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ギコ' (PLL Score: -122.02)
+2025-07-19 17:34:15 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-07-19 17:34:15 - Main - INFO -     Distractor candidates pool: ['目指し', '通じ', '三毛', '猫好き', '犬', '縒れ', 'アクマ', 'チェシャー', '愛猫', '有り']
+2025-07-19 17:34:15 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:34:15 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:34:15 - Main - INFO -     BERT Rejects: ['三毛', '犬', '鼻頭']
+2025-07-19 17:34:15 - Main - INFO -     Final Rejects (In any filter): ['鼻頭', '犬', '三毛']
+2025-07-19 17:34:15 - Main - INFO -     Final Distractors: ['目指し', '通じ', '猫好き', '縒れ', 'アクマ']
+2025-07-19 17:34:15 - Main - INFO - ------------------------------------------------------------
+2025-07-19 17:34:15 - Main - INFO - ▶️ Target Word: '猫' in Carrier Sentence: 'その___は魚を咥えて、ニャーと鳴いた。' with context: 'SentenceContextEnum.OPEN'
+2025-07-19 17:34:15 - Main - INFO -   (Context for Trigram Filter: ('その', BLANK, '魚'))
+2025-07-19 17:34:15 - BaselineGenerator - INFO - --- Generating baseline distractors for '猫' ---
+2025-07-19 17:34:15 - BaselineGenerator - INFO - Target analyzed: Lemma='猫', POS='名詞', Frequency=22075
+2025-07-19 17:34:15 - BaselineGenerator - INFO - Found 166199 candidate words with POS '名詞'.
+2025-07-19 17:34:15 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['経過', 'マイナー-minor', '商店', '土', '分岐', '提唱', 'オーディション-audition', '財産', '連覇', 'インディアン-Indian', '連結', '周', 'バスケットボール-basketball', '証券', '国土', '大手', '松', '下位', '電動', '当該']
+2025-07-19 17:34:16 - DistractorFilter - INFO - Threshold: > -72.80155118741095
+2025-07-19 17:34:16 - DistractorFilter - INFO -   ✅ ACCEPTED: '経過' (PLL Score: -92.02)
+2025-07-19 17:34:16 - DistractorFilter - INFO -   ✅ ACCEPTED: 'マイナー-minor' (PLL Score: -126.85)
+2025-07-19 17:34:16 - DistractorFilter - INFO -   ✅ ACCEPTED: '商店' (PLL Score: -79.07)
+2025-07-19 17:34:17 - DistractorFilter - INFO -   ✅ ACCEPTED: '土' (PLL Score: -76.72)
+2025-07-19 17:34:17 - DistractorFilter - INFO -   ✅ ACCEPTED: '分岐' (PLL Score: -92.28)
+2025-07-19 17:34:17 - DistractorFilter - INFO -   ✅ ACCEPTED: '提唱' (PLL Score: -84.93)
+2025-07-19 17:34:18 - DistractorFilter - INFO -   ✅ ACCEPTED: 'オーディション-audition' (PLL Score: -143.84)
+2025-07-19 17:34:18 - DistractorFilter - INFO -   ✅ ACCEPTED: '財産' (PLL Score: -90.72)
+2025-07-19 17:34:18 - DistractorFilter - INFO -   ✅ ACCEPTED: '連覇' (PLL Score: -93.54)
+2025-07-19 17:34:19 - DistractorFilter - INFO -   ✅ ACCEPTED: 'インディアン-Indian' (PLL Score: -147.05)
+2025-07-19 17:34:19 - DistractorFilter - INFO -   ✅ ACCEPTED: '連結' (PLL Score: -87.38)
+2025-07-19 17:34:19 - DistractorFilter - INFO -   ✅ ACCEPTED: '周' (PLL Score: -85.82)
+2025-07-19 17:34:20 - DistractorFilter - INFO -   ✅ ACCEPTED: 'バスケットボール-basketball' (PLL Score: -168.47)
+2025-07-19 17:34:20 - DistractorFilter - INFO -   ✅ ACCEPTED: '証券' (PLL Score: -98.70)
+2025-07-19 17:34:20 - DistractorFilter - INFO -   ✅ ACCEPTED: '国土' (PLL Score: -87.58)
+2025-07-19 17:34:20 - DistractorFilter - INFO -   ✅ ACCEPTED: '大手' (PLL Score: -86.98)
+2025-07-19 17:34:21 - DistractorFilter - INFO -   ✅ ACCEPTED: '松' (PLL Score: -76.04)
+2025-07-19 17:34:21 - DistractorFilter - INFO -   ✅ ACCEPTED: '下位' (PLL Score: -88.61)
+2025-07-19 17:34:21 - DistractorFilter - INFO -   ✅ ACCEPTED: '電動' (PLL Score: -88.63)
+2025-07-19 17:34:22 - DistractorFilter - INFO -   ✅ ACCEPTED: '当該' (PLL Score: -86.70)
+2025-07-19 17:34:22 - Main - INFO - 
+====== Results for Baseline. ======
+2025-07-19 17:34:22 - Main - INFO -     Distractor candidates pool: ['経過', 'マイナー-minor', '商店', '土', '分岐', '提唱', 'オーディション-audition', '財産', '連覇', 'インディアン-Indian']
+2025-07-19 17:34:22 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:34:22 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:34:22 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:34:22 - Main - INFO -     Final Rejects (In any filter): []
+2025-07-19 17:34:22 - Main - INFO -     Final Distractors: ['経過', 'マイナー-minor', '商店', '土', '分岐']
+2025-07-19 17:34:22 - SpellingGenerator - INFO - --- Generating spelling distractors for '猫' ---
+2025-07-19 17:34:22 - SpellingGenerator - INFO - Target analyzed: Lemma='猫', POS='名詞', Frequency=22075
+2025-07-19 17:34:22 - SpellingGenerator - INFO - Unique characters in target lemma: {'猫'}
+2025-07-19 17:34:22 - SpellingGenerator - INFO - Found 100 potential candidates from character index.
+2025-07-19 17:34:22 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['黒猫', '山猫', '子猫', '野良猫', '飼い猫', '愛猫', '海猫', '招き猫', '猫耳', '猫好き', '化け猫', '猫股', '白猫', '家猫', '猫背', '野猫', '雌猫', '斑猫', '猫型', '雄猫']
+2025-07-19 17:34:22 - DistractorFilter - INFO - Threshold: > -72.80155118741095
+2025-07-19 17:34:22 - DistractorFilter - INFO -   ❌ REJECTED: '黒猫' (PLL Score: -71.32)
+2025-07-19 17:34:22 - DistractorFilter - INFO -   ✅ ACCEPTED: '山猫' (PLL Score: -80.91)
+2025-07-19 17:34:23 - DistractorFilter - INFO -   ❌ REJECTED: '子猫' (PLL Score: -71.36)
+2025-07-19 17:34:23 - DistractorFilter - INFO -   ✅ ACCEPTED: '野良猫' (PLL Score: -91.58)
+2025-07-19 17:34:23 - DistractorFilter - INFO -   ✅ ACCEPTED: '飼い猫' (PLL Score: -88.31)
+2025-07-19 17:34:24 - DistractorFilter - INFO -   ❌ REJECTED: '愛猫' (PLL Score: -72.51)
+2025-07-19 17:34:24 - DistractorFilter - INFO -   ✅ ACCEPTED: '海猫' (PLL Score: -79.67)
+2025-07-19 17:34:24 - DistractorFilter - INFO -   ✅ ACCEPTED: '招き猫' (PLL Score: -88.29)
+2025-07-19 17:34:24 - DistractorFilter - INFO -   ✅ ACCEPTED: '猫耳' (PLL Score: -73.45)
+2025-07-19 17:34:25 - DistractorFilter - INFO -   ✅ ACCEPTED: '猫好き' (PLL Score: -97.65)
+2025-07-19 17:34:25 - DistractorFilter - INFO -   ✅ ACCEPTED: '化け猫' (PLL Score: -91.46)
+2025-07-19 17:34:25 - DistractorFilter - INFO -   ✅ ACCEPTED: '猫股' (PLL Score: -87.08)
+2025-07-19 17:34:26 - DistractorFilter - INFO -   ✅ ACCEPTED: '白猫' (PLL Score: -73.43)
+2025-07-19 17:34:26 - DistractorFilter - INFO -   ✅ ACCEPTED: '家猫' (PLL Score: -75.06)
+2025-07-19 17:34:26 - DistractorFilter - INFO -   ✅ ACCEPTED: '猫背' (PLL Score: -83.32)
+2025-07-19 17:34:27 - DistractorFilter - INFO -   ✅ ACCEPTED: '野猫' (PLL Score: -77.11)
+2025-07-19 17:34:27 - DistractorFilter - INFO -   ✅ ACCEPTED: '雌猫' (PLL Score: -73.49)
+2025-07-19 17:34:27 - DistractorFilter - INFO -   ✅ ACCEPTED: '斑猫' (PLL Score: -83.72)
+2025-07-19 17:34:28 - DistractorFilter - INFO -   ✅ ACCEPTED: '猫型' (PLL Score: -87.42)
+2025-07-19 17:34:28 - DistractorFilter - INFO -   ❌ REJECTED: '雄猫' (PLL Score: -72.53)
+2025-07-19 17:34:28 - Main - INFO - 
+====== Results for Spelling. ======
+2025-07-19 17:34:28 - Main - INFO -     Distractor candidates pool: ['黒猫', '山猫', '子猫', '野良猫', '飼い猫', '愛猫', '海猫', '招き猫', '猫耳', '猫好き']
+2025-07-19 17:34:28 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:34:28 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:34:28 - Main - INFO -     BERT Rejects: ['黒猫', '子猫', '愛猫', '雄猫']
+2025-07-19 17:34:28 - Main - INFO -     Final Rejects (In any filter): ['子猫', '愛猫', '黒猫', '雄猫']
+2025-07-19 17:34:28 - Main - INFO -     Final Distractors: ['山猫', '野良猫', '飼い猫', '海猫', '招き猫']
+2025-07-19 17:34:28 - SimilarityGenerator - INFO - 
+--- Generating for '猫' (Context: SentenceContextEnum.OPEN, Range: 0.4-0.6) ---
+2025-07-19 17:34:28 - DistractorFilter - INFO - Threshold: > -72.80155118741095
+2025-07-19 17:34:29 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ゃんこがいます' (PLL Score: -142.77)
+2025-07-19 17:34:29 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ゃんこが' (PLL Score: -124.40)
+2025-07-19 17:34:29 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ミケコ' (PLL Score: -104.61)
+2025-07-19 17:34:30 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ゃんこです' (PLL Score: -138.97)
+2025-07-19 17:34:30 - DistractorFilter - INFO -   ✅ ACCEPTED: 'チャトラン' (PLL Score: -107.69)
+2025-07-19 17:34:30 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ネココ' (PLL Score: -102.21)
+2025-07-19 17:34:31 - DistractorFilter - INFO -   ✅ ACCEPTED: 'チャトラ' (PLL Score: -106.75)
+2025-07-19 17:34:31 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ハチワレ' (PLL Score: -117.59)
+2025-07-19 17:34:31 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ゃんにゃんにゃんで' (PLL Score: -175.52)
+2025-07-19 17:34:32 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ゃんこたちの' (PLL Score: -143.86)
+2025-07-19 17:34:32 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ゃんこも' (PLL Score: -123.31)
+2025-07-19 17:34:32 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ゃんこを' (PLL Score: -129.55)
+2025-07-19 17:34:33 - DistractorFilter - INFO -   ✅ ACCEPTED: 'しば犬' (PLL Score: -91.64)
+2025-07-19 17:34:33 - DistractorFilter - INFO -   ✅ ACCEPTED: '' (PLL Score: -81.29)
+2025-07-19 17:34:33 - DistractorFilter - INFO -   ✅ ACCEPTED: 'チビネコ' (PLL Score: -123.94)
+2025-07-19 17:34:33 - DistractorFilter - INFO -   ✅ ACCEPTED: 'オンダケ' (PLL Score: -109.92)
+2025-07-19 17:34:34 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ゃんこに' (PLL Score: -111.59)
+2025-07-19 17:34:34 - DistractorFilter - INFO -   ✅ ACCEPTED: '猫又' (PLL Score: -85.24)
+2025-07-19 17:34:34 - DistractorFilter - INFO -   ✅ ACCEPTED: '野良' (PLL Score: -88.76)
+2025-07-19 17:34:35 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ゃんこたちが' (PLL Score: -143.43)
+2025-07-19 17:34:35 - Main - INFO - 
+====== Results for Similarity. ======
+2025-07-19 17:34:35 - Main - INFO -     Distractor candidates pool: ['ゃんこがいます', 'ゃんこが', 'ミケコ', 'ゃんこです', 'チャトラン', 'ネココ', 'チャトラ', 'ハチワレ', 'ゃんにゃんにゃんで', 'ゃんこたちの']
+2025-07-19 17:34:35 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:34:35 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:34:35 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:34:35 - Main - INFO -     Final Rejects (In any filter): []
+2025-07-19 17:34:35 - Main - INFO -     Final Distractors: ['ゃんこがいます', 'ゃんこが', 'ミケコ', 'ゃんこです', 'チャトラン']
+2025-07-19 17:34:35 - DistractorFilter - INFO - Threshold: > -72.80155118741095
+2025-07-19 17:34:35 - DistractorFilter - INFO -   ❌ REJECTED: '鳥' (PLL Score: -68.67)
+2025-07-19 17:34:36 - DistractorFilter - INFO -   ❌ REJECTED: '者' (PLL Score: -72.28)
+2025-07-19 17:34:36 - DistractorFilter - INFO -   ❌ REJECTED: '人' (PLL Score: -72.11)
+2025-07-19 17:34:36 - DistractorFilter - INFO -   ❌ REJECTED: '音' (PLL Score: -69.30)
+2025-07-19 17:34:37 - DistractorFilter - INFO -   ❌ REJECTED: '犬' (PLL Score: -70.20)
+2025-07-19 17:34:37 - DistractorFilter - INFO -   ❌ REJECTED: '子' (PLL Score: -72.22)
+2025-07-19 17:34:37 - DistractorFilter - INFO -   ✅ ACCEPTED: '時' (PLL Score: -74.51)
+2025-07-19 17:34:37 - DistractorFilter - INFO -   ❌ REJECTED: '夜' (PLL Score: -72.16)
+2025-07-19 17:34:38 - DistractorFilter - INFO -   ✅ ACCEPTED: 'とき' (PLL Score: -96.11)
+2025-07-19 17:34:38 - DistractorFilter - INFO -   ✅ ACCEPTED: '方' (PLL Score: -75.77)
+2025-07-19 17:34:38 - DistractorFilter - INFO -   ❌ REJECTED: '魚' (PLL Score: -70.00)
+2025-07-19 17:34:38 - DistractorFilter - INFO -   ✅ ACCEPTED: '鳴き声' (PLL Score: -73.36)
+2025-07-19 17:34:38 - DistractorFilter - INFO -   ❌ REJECTED: '男' (PLL Score: -71.46)
+2025-07-19 17:34:39 - DistractorFilter - INFO -   ❌ REJECTED: '矢' (PLL Score: -70.66)
+2025-07-19 17:34:39 - DistractorFilter - INFO -   ✅ ACCEPTED: '手' (PLL Score: -73.41)
+2025-07-19 17:34:39 - DistractorFilter - INFO -   ✅ ACCEPTED: 'もの' (PLL Score: -85.18)
+2025-07-19 17:34:39 - DistractorFilter - INFO -   ✅ ACCEPTED: '腹' (PLL Score: -73.67)
+2025-07-19 17:34:40 - DistractorFilter - INFO -   ✅ ACCEPTED: '老人' (PLL Score: -87.04)
+2025-07-19 17:34:40 - DistractorFilter - INFO -   ✅ ACCEPTED: '日' (PLL Score: -75.52)
+2025-07-19 17:34:40 - DistractorFilter - INFO -   ❌ REJECTED: '耳' (PLL Score: -70.71)
+2025-07-19 17:34:40 - Main - INFO - 
+====== Results for Contextual. ======
+2025-07-19 17:34:40 - Main - INFO -     Distractor candidates pool: ['鳥', '者', '人', '音', '犬', '子', '時', '夜', 'とき', '方']
+2025-07-19 17:34:40 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:34:40 - Main - INFO -     Dependency Rejects: ['時', '方']
+2025-07-19 17:34:40 - Main - INFO -     BERT Rejects: ['鳥', '者', '人', '音', '犬', '子', '夜', '魚', '男', '矢']
+2025-07-19 17:34:40 - Main - INFO -     Final Rejects (In any filter): ['夜', '者', '矢', '魚', '男', '人', '子', '時', '方', '犬', '音', '鳥', '耳']
+2025-07-19 17:34:40 - Main - INFO -     Final Distractors: ['とき', '鳴き声', '手', 'もの', '腹']
+2025-07-19 17:34:40 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for '猫' (Context: Open) ---
+2025-07-19 17:34:40 - CooccurrenceGenerator - INFO - Target: Lemma='猫', POS='名詞', Freq=22075
+2025-07-19 17:34:40 - CooccurrenceGenerator - INFO - Found 6209 co-occurring candidate surfaces to analyze.
+2025-07-19 17:34:40 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['目指し', '通じ', '三毛', '猫好き', '犬', '縒れ', 'アクマ', 'チェシャー', '愛猫', '有り', '飼い猫', '欠け', '擬古', '野良猫', '飼い主', '鼻頭', 'ペット-pet', '長靴', 'バリニーズ-Balinese', 'ギコ']
+2025-07-19 17:34:40 - DistractorFilter - INFO - Threshold: > -72.80155118741095
+2025-07-19 17:34:41 - DistractorFilter - INFO -   ✅ ACCEPTED: '目指し' (PLL Score: -102.32)
+2025-07-19 17:34:41 - DistractorFilter - INFO -   ✅ ACCEPTED: '通じ' (PLL Score: -92.05)
+2025-07-19 17:34:41 - DistractorFilter - INFO -   ✅ ACCEPTED: '三毛' (PLL Score: -80.31)
+2025-07-19 17:34:42 - DistractorFilter - INFO -   ✅ ACCEPTED: '猫好き' (PLL Score: -97.65)
+2025-07-19 17:34:42 - DistractorFilter - INFO -   ❌ REJECTED: '犬' (PLL Score: -70.20)
+2025-07-19 17:34:42 - DistractorFilter - INFO -   ✅ ACCEPTED: '縒れ' (PLL Score: -87.72)
+2025-07-19 17:34:42 - DistractorFilter - INFO -   ✅ ACCEPTED: 'アクマ' (PLL Score: -107.50)
+2025-07-19 17:34:43 - DistractorFilter - INFO -   ✅ ACCEPTED: 'チェシャー' (PLL Score: -106.45)
+2025-07-19 17:34:43 - DistractorFilter - INFO -   ❌ REJECTED: '愛猫' (PLL Score: -72.51)
+2025-07-19 17:34:43 - DistractorFilter - INFO -   ✅ ACCEPTED: '有り' (PLL Score: -92.77)
+2025-07-19 17:34:44 - DistractorFilter - INFO -   ✅ ACCEPTED: '飼い猫' (PLL Score: -88.31)
+2025-07-19 17:34:44 - DistractorFilter - INFO -   ✅ ACCEPTED: '欠け' (PLL Score: -91.68)
+2025-07-19 17:34:44 - DistractorFilter - INFO -   ✅ ACCEPTED: '擬古' (PLL Score: -95.29)
+2025-07-19 17:34:45 - DistractorFilter - INFO -   ✅ ACCEPTED: '野良猫' (PLL Score: -91.58)
+2025-07-19 17:34:45 - DistractorFilter - INFO -   ✅ ACCEPTED: '飼い主' (PLL Score: -90.76)
+2025-07-19 17:34:45 - DistractorFilter - INFO -   ✅ ACCEPTED: '鼻頭' (PLL Score: -84.38)
+2025-07-19 17:34:46 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ペット-pet' (PLL Score: -129.10)
+2025-07-19 17:34:46 - DistractorFilter - INFO -   ✅ ACCEPTED: '長靴' (PLL Score: -87.52)
+2025-07-19 17:34:46 - DistractorFilter - INFO -   ✅ ACCEPTED: 'バリニーズ-Balinese' (PLL Score: -152.37)
+2025-07-19 17:34:47 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ギコ' (PLL Score: -99.56)
+2025-07-19 17:34:47 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-07-19 17:34:47 - Main - INFO -     Distractor candidates pool: ['目指し', '通じ', '三毛', '猫好き', '犬', '縒れ', 'アクマ', 'チェシャー', '愛猫', '有り']
+2025-07-19 17:34:47 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:34:47 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:34:47 - Main - INFO -     BERT Rejects: ['犬', '愛猫']
+2025-07-19 17:34:47 - Main - INFO -     Final Rejects (In any filter): ['愛猫', '犬']
+2025-07-19 17:34:47 - Main - INFO -     Final Distractors: ['目指し', '通じ', '三毛', '猫好き', '縒れ']
+2025-07-19 17:34:47 - Main - INFO - ------------------------------------------------------------
+2025-07-19 17:34:47 - Main - INFO - ▶️ Target Word: '本' in Carrier Sentence: '図書館で面白い___を借りた。' with context: 'SentenceContextEnum.CLOSED'
+2025-07-19 17:34:47 - Main - INFO -   (Context for Trigram Filter: ('面白い', BLANK, '借りた'))
+2025-07-19 17:34:47 - BaselineGenerator - INFO - --- Generating baseline distractors for '本' ---
+2025-07-19 17:34:47 - BaselineGenerator - INFO - Target analyzed: Lemma='本', POS='名詞', Frequency=80890
+2025-07-19 17:34:47 - BaselineGenerator - INFO - Found 166199 candidate words with POS '名詞'.
+2025-07-19 17:34:47 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['復帰', '合併', '事故', '動物', '男性', '種類', '始め', '勝', '写真', '移動', '姿', '運用', '掲載', 'ＦＣ', '支持', 'インド-India', '行動', '論', '国内', '階']
+2025-07-19 17:34:47 - DistractorFilter - INFO - Threshold: > -91.23222692403942
+2025-07-19 17:34:47 - DistractorFilter - INFO -   ✅ ACCEPTED: '復帰' (PLL Score: -102.72)
+2025-07-19 17:34:48 - DistractorFilter - INFO -   ✅ ACCEPTED: '合併' (PLL Score: -106.58)
+2025-07-19 17:34:48 - DistractorFilter - INFO -   ✅ ACCEPTED: '事故' (PLL Score: -101.25)
+2025-07-19 17:34:48 - DistractorFilter - INFO -   ✅ ACCEPTED: '動物' (PLL Score: -103.05)
+2025-07-19 17:34:48 - DistractorFilter - INFO -   ✅ ACCEPTED: '男性' (PLL Score: -102.22)
+2025-07-19 17:34:49 - DistractorFilter - INFO -   ✅ ACCEPTED: '種類' (PLL Score: -96.96)
+2025-07-19 17:34:49 - DistractorFilter - INFO -   ✅ ACCEPTED: '始め' (PLL Score: -108.40)
+2025-07-19 17:34:49 - DistractorFilter - INFO -   ✅ ACCEPTED: '勝' (PLL Score: -95.03)
+2025-07-19 17:34:49 - DistractorFilter - INFO -   ✅ ACCEPTED: '写真' (PLL Score: -101.49)
+2025-07-19 17:34:50 - DistractorFilter - INFO -   ✅ ACCEPTED: '移動' (PLL Score: -111.33)
+2025-07-19 17:34:50 - DistractorFilter - INFO -   ✅ ACCEPTED: '姿' (PLL Score: -92.35)
+2025-07-19 17:34:50 - DistractorFilter - INFO -   ✅ ACCEPTED: '運用' (PLL Score: -101.08)
+2025-07-19 17:34:50 - DistractorFilter - INFO -   ✅ ACCEPTED: '掲載' (PLL Score: -106.46)
+2025-07-19 17:34:50 - DistractorFilter - INFO -   ❌ REJECTED: 'ＦＣ' (PLL Score: -82.19)
+2025-07-19 17:34:51 - DistractorFilter - INFO -   ✅ ACCEPTED: '支持' (PLL Score: -107.44)
+2025-07-19 17:34:51 - DistractorFilter - INFO -   ✅ ACCEPTED: 'インド-India' (PLL Score: -155.29)
+2025-07-19 17:34:51 - DistractorFilter - INFO -   ✅ ACCEPTED: '行動' (PLL Score: -106.82)
+2025-07-19 17:34:52 - DistractorFilter - INFO -   ✅ ACCEPTED: '論' (PLL Score: -92.75)
+2025-07-19 17:34:52 - DistractorFilter - INFO -   ✅ ACCEPTED: '国内' (PLL Score: -100.24)
+2025-07-19 17:34:52 - DistractorFilter - INFO -   ❌ REJECTED: '階' (PLL Score: -90.06)
+2025-07-19 17:34:52 - Main - INFO - 
+====== Results for Baseline. ======
+2025-07-19 17:34:52 - Main - INFO -     Distractor candidates pool: ['復帰', '合併', '事故', '動物', '男性', '種類', '始め', '勝', '写真', '移動']
+2025-07-19 17:34:52 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:34:52 - Main - INFO -     Dependency Rejects: ['写真', '姿', '階']
+2025-07-19 17:34:52 - Main - INFO -     BERT Rejects: ['ＦＣ', '階']
+2025-07-19 17:34:52 - Main - INFO -     Final Rejects (In any filter): ['姿', '写真', 'ＦＣ', '階']
+2025-07-19 17:34:52 - Main - INFO -     Final Distractors: ['復帰', '合併', '事故', '動物', '男性']
+2025-07-19 17:34:52 - SpellingGenerator - INFO - --- Generating spelling distractors for '本' ---
+2025-07-19 17:34:52 - SpellingGenerator - INFO - Target analyzed: Lemma='本', POS='名詞', Frequency=80890
+2025-07-19 17:34:52 - SpellingGenerator - INFO - Unique characters in target lemma: {'本'}
+2025-07-19 17:34:52 - SpellingGenerator - INFO - Found 447 potential candidates from character index.
+2025-07-19 17:34:52 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['本部', '本社', '基本', '脚本', '本塁', '本人', '本線', '本来', '本格', '本名', '本拠', '資本', '本作', '本当', '本土', '本編', '本体', '本種', '本項', '本田']
+2025-07-19 17:34:52 - DistractorFilter - INFO - Threshold: > -91.23222692403942
+2025-07-19 17:34:53 - DistractorFilter - INFO -   ✅ ACCEPTED: '本部' (PLL Score: -104.14)
+2025-07-19 17:34:53 - DistractorFilter - INFO -   ✅ ACCEPTED: '本社' (PLL Score: -101.69)
+2025-07-19 17:34:53 - DistractorFilter - INFO -   ✅ ACCEPTED: '基本' (PLL Score: -103.56)
+2025-07-19 17:34:53 - DistractorFilter - INFO -   ✅ ACCEPTED: '脚本' (PLL Score: -100.23)
+2025-07-19 17:34:54 - DistractorFilter - INFO -   ✅ ACCEPTED: '本塁' (PLL Score: -100.11)
+2025-07-19 17:34:54 - DistractorFilter - INFO -   ✅ ACCEPTED: '本人' (PLL Score: -98.56)
+2025-07-19 17:34:54 - DistractorFilter - INFO -   ✅ ACCEPTED: '本線' (PLL Score: -108.50)
+2025-07-19 17:34:54 - DistractorFilter - INFO -   ✅ ACCEPTED: '本来' (PLL Score: -98.07)
+2025-07-19 17:34:55 - DistractorFilter - INFO -   ✅ ACCEPTED: '本格' (PLL Score: -102.59)
+2025-07-19 17:34:55 - DistractorFilter - INFO -   ✅ ACCEPTED: '本名' (PLL Score: -99.76)
+2025-07-19 17:34:55 - DistractorFilter - INFO -   ✅ ACCEPTED: '本拠' (PLL Score: -107.08)
+2025-07-19 17:34:55 - DistractorFilter - INFO -   ✅ ACCEPTED: '資本' (PLL Score: -101.25)
+2025-07-19 17:34:56 - DistractorFilter - INFO -   ✅ ACCEPTED: '本作' (PLL Score: -99.17)
+2025-07-19 17:34:56 - DistractorFilter - INFO -   ✅ ACCEPTED: '本当' (PLL Score: -104.05)
+2025-07-19 17:34:56 - DistractorFilter - INFO -   ✅ ACCEPTED: '本土' (PLL Score: -100.88)
+2025-07-19 17:34:56 - DistractorFilter - INFO -   ✅ ACCEPTED: '本編' (PLL Score: -98.89)
+2025-07-19 17:34:57 - DistractorFilter - INFO -   ✅ ACCEPTED: '本体' (PLL Score: -101.67)
+2025-07-19 17:34:57 - DistractorFilter - INFO -   ✅ ACCEPTED: '本種' (PLL Score: -98.70)
+2025-07-19 17:34:57 - DistractorFilter - INFO -   ✅ ACCEPTED: '本項' (PLL Score: -106.89)
+2025-07-19 17:34:57 - DistractorFilter - INFO -   ✅ ACCEPTED: '本田' (PLL Score: -99.50)
+2025-07-19 17:34:57 - Main - INFO - 
+====== Results for Spelling. ======
+2025-07-19 17:34:57 - Main - INFO -     Distractor candidates pool: ['本部', '本社', '基本', '脚本', '本塁', '本人', '本線', '本来', '本格', '本名']
+2025-07-19 17:34:57 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:34:57 - Main - INFO -     Dependency Rejects: ['脚本']
+2025-07-19 17:34:57 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:34:57 - Main - INFO -     Final Rejects (In any filter): ['脚本']
+2025-07-19 17:34:57 - Main - INFO -     Final Distractors: ['本部', '本社', '基本', '本塁', '本人']
+2025-07-19 17:34:57 - SimilarityGenerator - INFO - 
+--- Generating for '本' (Context: SentenceContextEnum.CLOSED, Range: 0.61-0.75) ---
+2025-07-19 17:34:58 - DistractorFilter - INFO - Threshold: > -91.23222692403942
+2025-07-19 17:34:58 - Main - INFO - 
+====== Results for Similarity. ======
+2025-07-19 17:34:58 - Main - INFO -     Distractor candidates pool: []
+2025-07-19 17:34:58 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:34:58 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:34:58 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:34:58 - Main - INFO -     Final Rejects (In any filter): []
+2025-07-19 17:34:58 - Main - INFO -     Final Distractors: []
+2025-07-19 17:34:58 - DistractorFilter - INFO - Threshold: > -91.23222692403942
+2025-07-19 17:34:58 - Main - INFO - 
+====== Results for Contextual. ======
+2025-07-19 17:34:58 - Main - INFO -     Distractor candidates pool: []
+2025-07-19 17:34:58 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:34:58 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:34:58 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:34:58 - Main - INFO -     Final Rejects (In any filter): []
+2025-07-19 17:34:58 - Main - INFO -     Final Distractors: []
+2025-07-19 17:34:58 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for '本' (Context: Closed) ---
+2025-07-19 17:34:58 - CooccurrenceGenerator - INFO - Target: Lemma='本', POS='名詞', Freq=80890
+2025-07-19 17:34:58 - CooccurrenceGenerator - INFO - Found 21286 co-occurring candidate surfaces to analyze.
+2025-07-19 17:34:59 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['通じ', '目指し', '縒れ', 'アクマ', 'チワ', '書き残し', 'エイラク', '欠け', 'テンポウ', '買い込み', '亀鑑', '連ね', '春日', '菜刀', '取り上げ', '紹煕', '受け継ぎ', '淡海', '単行', '初撰']
+2025-07-19 17:34:59 - DistractorFilter - INFO - Threshold: > -91.23222692403942
+2025-07-19 17:35:00 - DistractorFilter - INFO -   ✅ ACCEPTED: '通じ' (PLL Score: -109.70)
+2025-07-19 17:35:00 - DistractorFilter - INFO -   ✅ ACCEPTED: '目指し' (PLL Score: -110.23)
+2025-07-19 17:35:00 - DistractorFilter - INFO -   ✅ ACCEPTED: '縒れ' (PLL Score: -98.85)
+2025-07-19 17:35:00 - DistractorFilter - INFO -   ✅ ACCEPTED: 'アクマ' (PLL Score: -115.79)
+2025-07-19 17:35:01 - DistractorFilter - INFO -   ✅ ACCEPTED: 'チワ' (PLL Score: -113.52)
+2025-07-19 17:35:01 - DistractorFilter - INFO -   ✅ ACCEPTED: '書き残し' (PLL Score: -125.68)
+2025-07-19 17:35:01 - DistractorFilter - INFO -   ✅ ACCEPTED: 'エイラク' (PLL Score: -117.30)
+2025-07-19 17:35:01 - DistractorFilter - INFO -   ✅ ACCEPTED: '欠け' (PLL Score: -107.22)
+2025-07-19 17:35:02 - DistractorFilter - INFO -   ✅ ACCEPTED: 'テンポウ' (PLL Score: -126.02)
+2025-07-19 17:35:02 - DistractorFilter - INFO -   ✅ ACCEPTED: '買い込み' (PLL Score: -124.40)
+2025-07-19 17:35:02 - DistractorFilter - INFO -   ✅ ACCEPTED: '亀鑑' (PLL Score: -101.99)
+2025-07-19 17:35:03 - DistractorFilter - INFO -   ✅ ACCEPTED: '連ね' (PLL Score: -108.30)
+2025-07-19 17:35:03 - DistractorFilter - INFO -   ✅ ACCEPTED: '春日' (PLL Score: -101.60)
+2025-07-19 17:35:03 - DistractorFilter - INFO -   ✅ ACCEPTED: '菜刀' (PLL Score: -100.41)
+2025-07-19 17:35:03 - DistractorFilter - INFO -   ✅ ACCEPTED: '取り上げ' (PLL Score: -125.78)
+2025-07-19 17:35:04 - DistractorFilter - INFO -   ✅ ACCEPTED: '紹煕' (PLL Score: -102.06)
+2025-07-19 17:35:04 - DistractorFilter - INFO -   ✅ ACCEPTED: '受け継ぎ' (PLL Score: -120.38)
+2025-07-19 17:35:04 - DistractorFilter - INFO -   ✅ ACCEPTED: '淡海' (PLL Score: -101.10)
+2025-07-19 17:35:04 - DistractorFilter - INFO -   ✅ ACCEPTED: '単行' (PLL Score: -107.13)
+2025-07-19 17:35:05 - DistractorFilter - INFO -   ✅ ACCEPTED: '初撰' (PLL Score: -98.75)
+2025-07-19 17:35:05 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-07-19 17:35:05 - Main - INFO -     Distractor candidates pool: ['通じ', '目指し', '縒れ', 'アクマ', 'チワ', '書き残し', 'エイラク', '欠け', 'テンポウ', '買い込み']
+2025-07-19 17:35:05 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:35:05 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:35:05 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:35:05 - Main - INFO -     Final Rejects (In any filter): []
+2025-07-19 17:35:05 - Main - INFO -     Final Distractors: ['通じ', '目指し', '縒れ', 'アクマ', 'チワ']
+2025-07-19 17:35:05 - Main - INFO - ------------------------------------------------------------
+2025-07-19 17:35:05 - Main - INFO - ▶️ Target Word: '本' in Carrier Sentence: '彼はその___のページをめくり、活字を追い始めた。' with context: 'SentenceContextEnum.CLOSED'
+2025-07-19 17:35:05 - Main - INFO -   (Context for Trigram Filter: ('その', BLANK, 'ページ'))
+2025-07-19 17:35:05 - BaselineGenerator - INFO - --- Generating baseline distractors for '本' ---
+2025-07-19 17:35:05 - BaselineGenerator - INFO - Target analyzed: Lemma='本', POS='名詞', Frequency=80890
+2025-07-19 17:35:05 - BaselineGenerator - INFO - Found 166199 candidate words with POS '名詞'.
+2025-07-19 17:35:05 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['復帰', '合併', '事故', '動物', '男性', '種類', '始め', '勝', '写真', '移動', '姿', '運用', '掲載', 'ＦＣ', '支持', 'インド-India', '行動', '論', '国内', '階']
+2025-07-19 17:35:05 - DistractorFilter - INFO - Threshold: > -115.91963809728622
+2025-07-19 17:35:05 - DistractorFilter - INFO -   ✅ ACCEPTED: '復帰' (PLL Score: -127.74)
+2025-07-19 17:35:06 - DistractorFilter - INFO -   ✅ ACCEPTED: '合併' (PLL Score: -130.71)
+2025-07-19 17:35:06 - DistractorFilter - INFO -   ✅ ACCEPTED: '事故' (PLL Score: -132.57)
+2025-07-19 17:35:07 - DistractorFilter - INFO -   ✅ ACCEPTED: '動物' (PLL Score: -127.97)
+2025-07-19 17:35:07 - DistractorFilter - INFO -   ✅ ACCEPTED: '男性' (PLL Score: -132.38)
+2025-07-19 17:35:07 - DistractorFilter - INFO -   ✅ ACCEPTED: '種類' (PLL Score: -126.72)
+2025-07-19 17:35:08 - DistractorFilter - INFO -   ✅ ACCEPTED: '始め' (PLL Score: -126.36)
+2025-07-19 17:35:08 - DistractorFilter - INFO -   ✅ ACCEPTED: '勝' (PLL Score: -129.51)
+2025-07-19 17:35:08 - DistractorFilter - INFO -   ✅ ACCEPTED: '写真' (PLL Score: -123.26)
+2025-07-19 17:35:09 - DistractorFilter - INFO -   ✅ ACCEPTED: '移動' (PLL Score: -129.33)
+2025-07-19 17:35:09 - DistractorFilter - INFO -   ✅ ACCEPTED: '姿' (PLL Score: -120.37)
+2025-07-19 17:35:09 - DistractorFilter - INFO -   ✅ ACCEPTED: '運用' (PLL Score: -124.87)
+2025-07-19 17:35:10 - DistractorFilter - INFO -   ✅ ACCEPTED: '掲載' (PLL Score: -131.88)
+2025-07-19 17:35:10 - DistractorFilter - INFO -   ❌ REJECTED: 'ＦＣ' (PLL Score: -67.42)
+2025-07-19 17:35:10 - DistractorFilter - INFO -   ✅ ACCEPTED: '支持' (PLL Score: -138.72)
+2025-07-19 17:35:11 - DistractorFilter - INFO -   ✅ ACCEPTED: 'インド-India' (PLL Score: -200.77)
+2025-07-19 17:35:11 - DistractorFilter - INFO -   ✅ ACCEPTED: '行動' (PLL Score: -127.00)
+2025-07-19 17:35:11 - DistractorFilter - INFO -   ✅ ACCEPTED: '論' (PLL Score: -126.76)
+2025-07-19 17:35:12 - DistractorFilter - INFO -   ✅ ACCEPTED: '国内' (PLL Score: -126.18)
+2025-07-19 17:35:12 - DistractorFilter - INFO -   ✅ ACCEPTED: '階' (PLL Score: -124.83)
+2025-07-19 17:35:12 - Main - INFO - 
+====== Results for Baseline. ======
+2025-07-19 17:35:12 - Main - INFO -     Distractor candidates pool: ['復帰', '合併', '事故', '動物', '男性', '種類', '始め', '勝', '写真', '移動']
+2025-07-19 17:35:12 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:35:12 - Main - INFO -     Dependency Rejects: ['種類', '始め', '写真', '掲載']
+2025-07-19 17:35:12 - Main - INFO -     BERT Rejects: ['ＦＣ']
+2025-07-19 17:35:12 - Main - INFO -     Final Rejects (In any filter): ['写真', '掲載', '始め', '種類', 'ＦＣ']
+2025-07-19 17:35:12 - Main - INFO -     Final Distractors: ['復帰', '合併', '事故', '動物', '男性']
+2025-07-19 17:35:12 - SpellingGenerator - INFO - --- Generating spelling distractors for '本' ---
+2025-07-19 17:35:12 - SpellingGenerator - INFO - Target analyzed: Lemma='本', POS='名詞', Frequency=80890
+2025-07-19 17:35:12 - SpellingGenerator - INFO - Unique characters in target lemma: {'本'}
+2025-07-19 17:35:12 - SpellingGenerator - INFO - Found 447 potential candidates from character index.
+2025-07-19 17:35:12 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['本部', '本社', '基本', '脚本', '本塁', '本人', '本線', '本来', '本格', '本名', '本拠', '資本', '本作', '本当', '本土', '本編', '本体', '本種', '本項', '本田']
+2025-07-19 17:35:12 - DistractorFilter - INFO - Threshold: > -115.91963809728622
+2025-07-19 17:35:13 - DistractorFilter - INFO -   ✅ ACCEPTED: '本部' (PLL Score: -125.70)
+2025-07-19 17:35:13 - DistractorFilter - INFO -   ✅ ACCEPTED: '本社' (PLL Score: -125.93)
+2025-07-19 17:35:13 - DistractorFilter - INFO -   ✅ ACCEPTED: '基本' (PLL Score: -127.69)
+2025-07-19 17:35:14 - DistractorFilter - INFO -   ✅ ACCEPTED: '脚本' (PLL Score: -123.35)
+2025-07-19 17:35:14 - DistractorFilter - INFO -   ✅ ACCEPTED: '本塁' (PLL Score: -129.65)
+2025-07-19 17:35:15 - DistractorFilter - INFO -   ✅ ACCEPTED: '本人' (PLL Score: -128.51)
+2025-07-19 17:35:15 - DistractorFilter - INFO -   ✅ ACCEPTED: '本線' (PLL Score: -127.27)
+2025-07-19 17:35:15 - DistractorFilter - INFO -   ✅ ACCEPTED: '本来' (PLL Score: -124.82)
+2025-07-19 17:35:16 - DistractorFilter - INFO -   ✅ ACCEPTED: '本格' (PLL Score: -125.55)
+2025-07-19 17:35:16 - DistractorFilter - INFO -   ✅ ACCEPTED: '本名' (PLL Score: -125.43)
+2025-07-19 17:35:16 - DistractorFilter - INFO -   ✅ ACCEPTED: '本拠' (PLL Score: -133.94)
+2025-07-19 17:35:17 - DistractorFilter - INFO -   ✅ ACCEPTED: '資本' (PLL Score: -129.54)
+2025-07-19 17:35:17 - DistractorFilter - INFO -   ✅ ACCEPTED: '本作' (PLL Score: -120.32)
+2025-07-19 17:35:17 - DistractorFilter - INFO -   ✅ ACCEPTED: '本当' (PLL Score: -127.70)
+2025-07-19 17:35:18 - DistractorFilter - INFO -   ✅ ACCEPTED: '本土' (PLL Score: -131.20)
+2025-07-19 17:35:18 - DistractorFilter - INFO -   ✅ ACCEPTED: '本編' (PLL Score: -125.54)
+2025-07-19 17:35:18 - DistractorFilter - INFO -   ✅ ACCEPTED: '本体' (PLL Score: -129.64)
+2025-07-19 17:35:19 - DistractorFilter - INFO -   ✅ ACCEPTED: '本種' (PLL Score: -123.71)
+2025-07-19 17:35:19 - DistractorFilter - INFO -   ✅ ACCEPTED: '本項' (PLL Score: -123.88)
+2025-07-19 17:35:19 - DistractorFilter - INFO -   ✅ ACCEPTED: '本田' (PLL Score: -128.53)
+2025-07-19 17:35:19 - Main - INFO - 
+====== Results for Spelling. ======
+2025-07-19 17:35:19 - Main - INFO -     Distractor candidates pool: ['本部', '本社', '基本', '脚本', '本塁', '本人', '本線', '本来', '本格', '本名']
+2025-07-19 17:35:19 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:35:19 - Main - INFO -     Dependency Rejects: ['本人', '本線', '本作']
+2025-07-19 17:35:19 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:35:19 - Main - INFO -     Final Rejects (In any filter): ['本人', '本線', '本作']
+2025-07-19 17:35:19 - Main - INFO -     Final Distractors: ['本部', '本社', '基本', '脚本', '本塁']
+2025-07-19 17:35:19 - SimilarityGenerator - INFO - 
+--- Generating for '本' (Context: SentenceContextEnum.CLOSED, Range: 0.61-0.75) ---
+2025-07-19 17:35:20 - DistractorFilter - INFO - Threshold: > -115.91963809728622
+2025-07-19 17:35:20 - Main - INFO - 
+====== Results for Similarity. ======
+2025-07-19 17:35:20 - Main - INFO -     Distractor candidates pool: []
+2025-07-19 17:35:20 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:35:20 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:35:20 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:35:20 - Main - INFO -     Final Rejects (In any filter): []
+2025-07-19 17:35:20 - Main - INFO -     Final Distractors: []
+2025-07-19 17:35:20 - DistractorFilter - INFO - Threshold: > -115.91963809728622
+2025-07-19 17:35:20 - Main - INFO - 
+====== Results for Contextual. ======
+2025-07-19 17:35:20 - Main - INFO -     Distractor candidates pool: []
+2025-07-19 17:35:20 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:35:20 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:35:20 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:35:20 - Main - INFO -     Final Rejects (In any filter): []
+2025-07-19 17:35:20 - Main - INFO -     Final Distractors: []
+2025-07-19 17:35:20 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for '本' (Context: Closed) ---
+2025-07-19 17:35:20 - CooccurrenceGenerator - INFO - Target: Lemma='本', POS='名詞', Freq=80890
+2025-07-19 17:35:20 - CooccurrenceGenerator - INFO - Found 21286 co-occurring candidate surfaces to analyze.
+2025-07-19 17:35:20 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['通じ', '目指し', '縒れ', 'アクマ', 'チワ', '書き残し', 'エイラク', '欠け', 'テンポウ', '買い込み', '亀鑑', '連ね', '春日', '菜刀', '取り上げ', '紹煕', '受け継ぎ', '淡海', '単行', '初撰']
+2025-07-19 17:35:21 - DistractorFilter - INFO - Threshold: > -115.91963809728622
+2025-07-19 17:35:21 - DistractorFilter - INFO -   ✅ ACCEPTED: '通じ' (PLL Score: -137.87)
+2025-07-19 17:35:22 - DistractorFilter - INFO -   ✅ ACCEPTED: '目指し' (PLL Score: -131.61)
+2025-07-19 17:35:22 - DistractorFilter - INFO -   ✅ ACCEPTED: '縒れ' (PLL Score: -129.47)
+2025-07-19 17:35:22 - DistractorFilter - INFO -   ✅ ACCEPTED: 'アクマ' (PLL Score: -191.14)
+2025-07-19 17:35:23 - DistractorFilter - INFO -   ✅ ACCEPTED: 'チワ' (PLL Score: -189.63)
+2025-07-19 17:35:23 - DistractorFilter - INFO -   ✅ ACCEPTED: '書き残し' (PLL Score: -143.22)
+2025-07-19 17:35:23 - DistractorFilter - INFO -   ✅ ACCEPTED: 'エイラク' (PLL Score: -192.14)
+2025-07-19 17:35:24 - DistractorFilter - INFO -   ✅ ACCEPTED: '欠け' (PLL Score: -140.68)
+2025-07-19 17:35:24 - DistractorFilter - INFO -   ✅ ACCEPTED: 'テンポウ' (PLL Score: -203.38)
+2025-07-19 17:35:24 - DistractorFilter - INFO -   ✅ ACCEPTED: '買い込み' (PLL Score: -143.05)
+2025-07-19 17:35:25 - DistractorFilter - INFO -   ✅ ACCEPTED: '亀鑑' (PLL Score: -136.94)
+2025-07-19 17:35:25 - DistractorFilter - INFO -   ✅ ACCEPTED: '連ね' (PLL Score: -136.60)
+2025-07-19 17:35:26 - DistractorFilter - INFO -   ✅ ACCEPTED: '春日' (PLL Score: -128.19)
+2025-07-19 17:35:26 - DistractorFilter - INFO -   ✅ ACCEPTED: '菜刀' (PLL Score: -134.48)
+2025-07-19 17:35:26 - DistractorFilter - INFO -   ✅ ACCEPTED: '取り上げ' (PLL Score: -153.50)
+2025-07-19 17:35:27 - DistractorFilter - INFO -   ✅ ACCEPTED: '紹煕' (PLL Score: -134.59)
+2025-07-19 17:35:27 - DistractorFilter - INFO -   ✅ ACCEPTED: '受け継ぎ' (PLL Score: -147.10)
+2025-07-19 17:35:27 - DistractorFilter - INFO -   ✅ ACCEPTED: '淡海' (PLL Score: -135.11)
+2025-07-19 17:35:28 - DistractorFilter - INFO -   ✅ ACCEPTED: '単行' (PLL Score: -119.57)
+2025-07-19 17:35:28 - DistractorFilter - INFO -   ✅ ACCEPTED: '初撰' (PLL Score: -129.36)
+2025-07-19 17:35:28 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-07-19 17:35:28 - Main - INFO -     Distractor candidates pool: ['通じ', '目指し', '縒れ', 'アクマ', 'チワ', '書き残し', 'エイラク', '欠け', 'テンポウ', '買い込み']
+2025-07-19 17:35:28 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:35:28 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:35:28 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:35:28 - Main - INFO -     Final Rejects (In any filter): []
+2025-07-19 17:35:28 - Main - INFO -     Final Distractors: ['通じ', '目指し', '縒れ', 'アクマ', 'チワ']
+2025-07-19 17:35:28 - Main - INFO - ------------------------------------------------------------
+2025-07-19 17:35:28 - Main - INFO - ▶️ Target Word: '走る' in Carrier Sentence: '彼は公園を___のが好きだ。' with context: 'SentenceContextEnum.CLOSED'
+2025-07-19 17:35:28 - Main - INFO -   (Context for Trigram Filter: ('公園', BLANK, '好き'))
+2025-07-19 17:35:28 - BaselineGenerator - INFO - --- Generating baseline distractors for '走る' ---
+2025-07-19 17:35:28 - BaselineGenerator - INFO - Target analyzed: Lemma='走る', POS='動詞', Frequency=44121
+2025-07-19 17:35:28 - BaselineGenerator - INFO - Found 8094 candidate words with POS '動詞'.
+2025-07-19 17:35:28 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '及ぶ', '組む', '食べる', '並ぶ', '通る', '繋がる', '呉れる', '話す', '加わる', '破る', '通す', '止める', '増える', '読む']
+2025-07-19 17:35:29 - DistractorFilter - INFO - Threshold: > -78.14734385535121
+2025-07-19 17:35:29 - DistractorFilter - INFO -   ❌ REJECTED: '巡る' (PLL Score: -75.71)
+2025-07-19 17:35:29 - DistractorFilter - INFO -   ✅ ACCEPTED: '応ずる' (PLL Score: -100.14)
+2025-07-19 17:35:29 - DistractorFilter - INFO -   ✅ ACCEPTED: '限る' (PLL Score: -79.13)
+2025-07-19 17:35:30 - DistractorFilter - INFO -   ✅ ACCEPTED: '乗る' (PLL Score: -81.36)
+2025-07-19 17:35:30 - DistractorFilter - INFO -   ✅ ACCEPTED: '占める' (PLL Score: -87.99)
+2025-07-19 17:35:30 - DistractorFilter - INFO -   ✅ ACCEPTED: '命ずる' (PLL Score: -95.71)
+2025-07-19 17:35:30 - DistractorFilter - INFO -   ✅ ACCEPTED: '及ぶ' (PLL Score: -84.25)
+2025-07-19 17:35:31 - DistractorFilter - INFO -   ✅ ACCEPTED: '組む' (PLL Score: -82.89)
+2025-07-19 17:35:31 - DistractorFilter - INFO -   ✅ ACCEPTED: '食べる' (PLL Score: -84.27)
+2025-07-19 17:35:31 - DistractorFilter - INFO -   ✅ ACCEPTED: '並ぶ' (PLL Score: -89.61)
+2025-07-19 17:35:31 - DistractorFilter - INFO -   ❌ REJECTED: '通る' (PLL Score: -78.05)
+2025-07-19 17:35:32 - DistractorFilter - INFO -   ✅ ACCEPTED: '繋がる' (PLL Score: -92.50)
+2025-07-19 17:35:32 - DistractorFilter - INFO -   ✅ ACCEPTED: '呉れる' (PLL Score: -87.74)
+2025-07-19 17:35:32 - DistractorFilter - INFO -   ✅ ACCEPTED: '話す' (PLL Score: -82.40)
+2025-07-19 17:35:32 - DistractorFilter - INFO -   ✅ ACCEPTED: '加わる' (PLL Score: -95.19)
+2025-07-19 17:35:33 - DistractorFilter - INFO -   ❌ REJECTED: '破る' (PLL Score: -78.00)
+2025-07-19 17:35:33 - DistractorFilter - INFO -   ❌ REJECTED: '通す' (PLL Score: -76.04)
+2025-07-19 17:35:33 - DistractorFilter - INFO -   ✅ ACCEPTED: '止める' (PLL Score: -88.95)
+2025-07-19 17:35:33 - DistractorFilter - INFO -   ✅ ACCEPTED: '増える' (PLL Score: -87.61)
+2025-07-19 17:35:33 - DistractorFilter - INFO -   ✅ ACCEPTED: '読む' (PLL Score: -85.07)
+2025-07-19 17:35:33 - Main - INFO - 
+====== Results for Baseline. ======
+2025-07-19 17:35:33 - Main - INFO -     Distractor candidates pool: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '及ぶ', '組む', '食べる', '並ぶ']
+2025-07-19 17:35:33 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:35:33 - Main - INFO -     Dependency Rejects: ['巡る', '乗る', '食べる', '通る', '話す', '読む']
+2025-07-19 17:35:33 - Main - INFO -     BERT Rejects: ['巡る', '通る', '破る', '通す']
+2025-07-19 17:35:33 - Main - INFO -     Final Rejects (In any filter): ['食べる', '巡る', '読む', '乗る', '通す', '話す', '破る', '通る']
+2025-07-19 17:35:33 - Main - INFO -     Final Distractors: ['応ずる', '限る', '占める', '命ずる', '及ぶ']
+2025-07-19 17:35:33 - SpellingGenerator - INFO - --- Generating spelling distractors for '走る' ---
+2025-07-19 17:35:33 - SpellingGenerator - INFO - Target analyzed: Lemma='走る', POS='動詞', Frequency=44121
+2025-07-19 17:35:33 - SpellingGenerator - INFO - Unique characters in target lemma: {'る', '走'}
+2025-07-19 17:35:33 - SpellingGenerator - INFO - Found 4768 potential candidates from character index.
+2025-07-19 17:35:34 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '食べる', '通る', '繋がる', '呉れる', '加わる', '破る', '止める', '増える', '移る', '感ずる', '広がる', '達する', '決まる', '起きる']
+2025-07-19 17:35:34 - DistractorFilter - INFO - Threshold: > -78.14734385535121
+2025-07-19 17:35:34 - DistractorFilter - INFO -   ❌ REJECTED: '巡る' (PLL Score: -75.71)

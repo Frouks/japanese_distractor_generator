@@ -7,6 +7,8 @@ import spacy
 import torch
 from transformers import BertTokenizer, BertForMaskedLM
 
+from context_aware_distractor_generation_system.constants.SentenceContextEnum import SentenceContextEnum
+
 
 class DistractorFilter:
     """
@@ -184,7 +186,8 @@ class DistractorFilter:
 
         return total_log_likelihood
 
-    def filter_by_bert_fixed(self, candidates: list[str], carrier_sentence: str, context: str, target_word: str) -> \
+    def filter_by_bert_fixed(self, candidates: list[str], carrier_sentence: str, context: SentenceContextEnum,
+                             target_word: str) -> \
             tuple[
                 list[str], list[str]]:
         """
@@ -203,7 +206,7 @@ class DistractorFilter:
         sentence_with_target_word = carrier_sentence.replace("___", target_word)
         target_word_pll = self._calculate_pll(sentence_with_target_word)
 
-        if context == "Open":
+        if context == SentenceContextEnum.OPEN:
             pll_threshold = target_word_pll - 1.25
         else:
             pll_threshold = target_word_pll - 0.5
@@ -263,7 +266,7 @@ if __name__ == '__main__':
         test_cases: list[dict[str, any]] = [
             {
                 "sentence": "動物園で、大きな___が鼻を高く上げていた。",
-                "target": "象", "context": "Closed",
+                "target": "象", "context": SentenceContextEnum.CLOSED,
                 "english_sentence": "At the zoo, the big ___ was raising its trunk high.",
                 "prev_word": "大きな", "next_word": "鼻",
                 "candidates": ["象", "キリン", "マンモス", "車", "木", "獅子", "アリクイ"],
@@ -272,7 +275,7 @@ if __name__ == '__main__':
             },
             {
                 "sentence": "公園で、たくさんの___が遊んでいた。",
-                "target": "子供", "context": "Open",
+                "target": "子供", "context": SentenceContextEnum.OPEN,
                 "english_sentence": "At the park, many ___ were playing.",
                 "prev_word": "たくさんの", "next_word": "遊んでいた",
                 "candidates": ["子供", "人々", "学生", "動物", "鯉", "成人", "親", "食品"],
@@ -281,7 +284,7 @@ if __name__ == '__main__':
             },
             {
                 "sentence": "彼は100メートルを10秒で___ことができる。",
-                "target": "走る", "context": "Closed",
+                "target": "走る", "context": SentenceContextEnum.CLOSED,
                 "english_sentence": "He can ___ 100 meters in 10 seconds.",
                 "prev_word": "10秒で", "next_word": "こと",
                 "candidates": ["走る", "歩く", "泳ぐ", "飛ぶ", "ある", "飲む", "食べる", "歌う"],
@@ -290,7 +293,7 @@ if __name__ == '__main__':
             },
             {
                 "sentence": "この___はとても重要です。",
-                "target": "問題", "context": "Open",
+                "target": "問題", "context": SentenceContextEnum.OPEN,
                 "english_sentence": "This ___ is very important.",
                 "prev_word": "この", "next_word": "とても",
                 "candidates": ["問題", "点", "部分", "選手", "脚", "人", "イベント", "食品", "質問", "愛", "歌う",
@@ -300,14 +303,15 @@ if __name__ == '__main__':
                                  "愛": "love", "歌う": "sing", "歌": "song"}
             },
             {
-                "sentence": "私の___はとても可愛い。", "target": "猫", "context": "Open",
+                "sentence": "私の___はとても可愛い。", "target": "猫", "context": SentenceContextEnum.OPEN,
                 "english_sentence": "My ___ is very cute.",
                 "prev_word": "私の", "next_word": "とても",
                 "candidates": ["猫", "犬", "子供", "ハムスター", "カバン"],
                 "translations": {"猫": "cat", "犬": "dog", "子供": "child", "ハムスター": "hamster", "カバン": "bag"}
             },
             {
-                "sentence": "私の___は可愛くて、よくニャーと鳴く。", "target": "猫", "context": "Closed",
+                "sentence": "私の___は可愛くて、よくニャーと鳴く。", "target": "猫",
+                "context": SentenceContextEnum.CLOSED,
                 "english_sentence": "My ___ is cute and meows a lot.",
                 "prev_word": "私の", "next_word": "可愛くて",
                 "candidates": ["猫", "犬", "鳥", "子犬", "子猫"],
@@ -319,8 +323,9 @@ if __name__ == '__main__':
 
         for i, case in enumerate(test_cases):
             english_sentence_with_blank = case["english_sentence"]
+            context = "Open" if case["context"] == SentenceContextEnum.OPEN else "Closed"
 
-            print(f"🧪 TEST CASE {i + 1}: {case['context'].upper()} CONTEXT")
+            print(f"🧪 TEST CASE {i + 1}: {context} CONTEXT")
             print(f"   Sentence: {case['sentence']}")
             print(f"   English:  {english_sentence_with_blank}'")
 
