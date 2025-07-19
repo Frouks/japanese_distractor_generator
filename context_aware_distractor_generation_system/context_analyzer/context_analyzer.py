@@ -1,6 +1,7 @@
 import torch
-from transformers import BertJapaneseTokenizer, BertForMaskedLM
 from scipy.stats import entropy
+from transformers import BertJapaneseTokenizer, BertForMaskedLM
+
 
 class ContextAnalyzer:
     """
@@ -8,15 +9,13 @@ class ContextAnalyzer:
     using two different methods: Entropy and Top-k Probability Mass.
     """
 
-    def __init__(self, model_name: str, entropy_threshold: float, top_k_value: int, top_k_threshold: float):
+    def __init__(self, model_name: str, entropy_threshold: float):
         """
         Initializes the tokenizer and the masked language model from Hugging Face.
 
         Args:
             model_name (str): The name of the pre-trained Japanese BERT model.
             entropy_threshold (float): The threshold for the entropy method.
-            top_k_value (int): The number of top predictions to consider (e.g., 5).
-            top_k_threshold (float): The probability mass threshold for the top-k method.
         """
         print("Initializing ContextAnalyzer...")
 
@@ -27,13 +26,13 @@ class ContextAnalyzer:
 
         # --- Thresholds for both analysis methods ---
         self.entropy_threshold = entropy_threshold
-        self.top_k_value = top_k_value
-        self.top_k_threshold = top_k_threshold
+        # self.top_k_value = top_k_value
+        # self.top_k_threshold = top_k_threshold
 
         print(f"✅ ContextAnalyzer ready.")
         print(f"  - Entropy Threshold set to: {self.entropy_threshold}")
-        print(f"  - Top-K Value set to: {self.top_k_value}")
-        print(f"  - Top-K Probability Threshold set to: {self.top_k_threshold}")
+        # print(f"  - Top-K Value set to: {self.top_k_value}")
+        # print(f"  - Top-K Probability Threshold set to: {self.top_k_threshold}")
 
     def _get_probabilities(self, sentence: str) -> tuple[torch.Tensor, int] | tuple[None, None]:
         """A helper function to get the probability distribution for a sentence."""
@@ -54,9 +53,19 @@ class ContextAnalyzer:
         probabilities = torch.nn.functional.softmax(mask_token_logits, dim=-1)
         return probabilities, masked_index
 
-    def analyze_context_by_entropy(self, sentence: str, expected_context: str, translated_sentence: str):
+    def analyze_context_by_entropy(
+            self,
+            sentence: str,
+            expected_context: str = None,
+            translated_sentence: str = None
+    ) -> str:
         """
         Classifies the context based on the entropy of the entire probability distribution.
+
+        Args:
+            sentence (str): The input sentence with a blank.
+            expected_context (str, optional): The ground truth context ("Open" or "Closed"). Defaults to None.
+            translated_sentence (str, optional): The English translation of the sentence. Defaults to None.
         """
         probabilities, _ = self._get_probabilities(sentence)
         if probabilities is None:
@@ -65,12 +74,25 @@ class ContextAnalyzer:
         calculated_entropy = entropy(probabilities.cpu().numpy())
         predicted_context = "Open" if calculated_entropy > self.entropy_threshold else "Closed"
 
-        print(f"--- Method 1: Entropy Analysis ---")
-        print(f"'{translated_sentence}'")
-        print(f"  - Calculated Entropy: {calculated_entropy:.4f} (Threshold: > {self.entropy_threshold} for Open)")
-        print(f"  - Predicted: {predicted_context} (Expected: {expected_context})")
-        print(f"  - Correct? {'✅' if predicted_context == expected_context else '❌'}")
+        # --- Optional Printing ---
+        print(f"--- Entropy Analysis ---")
 
+        # Only print the translated sentence if it was given
+        if translated_sentence:
+            print(f"'{translated_sentence}'")
+        else:
+            print(f"'{sentence}'")  # Fallback to the original sentence
+
+        print(f"  - Calculated Entropy: {calculated_entropy:.4f} (Threshold: > {self.entropy_threshold} for Open)")
+
+        # Only print comparison if expected_context was provided
+        if expected_context:
+            print(f"  - Predicted: {predicted_context} (Expected: {expected_context})")
+            print(f"  - Correct? {'✅' if predicted_context == expected_context else '❌'}")
+        else:
+            print(f"  - Predicted: {predicted_context}")
+
+        return predicted_context
 
     # def analyze_context_by_top_k(self, sentence: str, expected_context: str, translated_sentence: str):
     #     """
@@ -93,23 +115,21 @@ class ContextAnalyzer:
     #     print(f"  - Predicted: {predicted_context} (Expected: {expected_context})")
     #     print(f"  - Correct? {'✅' if predicted_context == expected_context else '❌'}")
 
+
 if __name__ == '__main__':
     MODEL_NAME = 'cl-tohoku/bert-base-japanese-whole-word-masking'
-    
+
     # --- HYPERPARAMETERS FOR ANALYSIS ---
-    # TODO: We need to fine tune these values
-    ENTROPY_THRESHOLD = 4.5  
-    TOP_K_VALUE = 5          
-    TOP_K_THRESHOLD = 0.50   # If the top 5 words have > 50% probability, we call it "Closed"
+    ENTROPY_THRESHOLD = 4.5
+    # TOP_K_VALUE = 5
+    # TOP_K_THRESHOLD = 0.50  # If the top 5 words have > 50% probability, we call it "Closed"
 
     # Initialize the analyzer with parameters for both methods.
     analyzer = ContextAnalyzer(
         model_name=MODEL_NAME,
         entropy_threshold=ENTROPY_THRESHOLD,
-        top_k_value=TOP_K_VALUE,
-        top_k_threshold=TOP_K_THRESHOLD
     )
-    
+
     test_cases = [
         ("私の[MASK]はとても可愛い。", "Open", "My ___ is cute."),
         ("その[MASK]は魚を咥えて、ニャーと鳴いた。", "Closed", "That ___ held a fish in its mouth and meowed."),
@@ -119,11 +139,12 @@ if __name__ == '__main__':
         ("朝食に[MASK]を食べます。", "Open", "I eat ___ for breakfast."),
         ("水はH2Oとしても知られる[MASK]です。", "Closed", "Water is a ___ also known as H2O."),
         ("この壁を[MASK]色に塗りたいです。", "Open", "I want to paint this wall a ___ color."),
-        ("戦争ではなく[MASK]を。", "Open", "Not war, but ___."), # Open or closed?
+        ("戦争ではなく[MASK]を。", "Open", "Not war, but ___."),  # Open or closed?
         ("猿も[MASK]から落ちる。", "Closed", "Even monkeys fall from ___."),
         ("彼はその知らせを聞いて[MASK]なった。", "Closed", "Hearing that news, he became ___."),
         ("私は[MASK]が好きです。", "Open", "I like ___."),
-        ("光合成は、[MASK]が光エネルギーを使って有機物を合成するプロセスです。", "Closed", "Photosynthesis is the process where ___ use light energy to synthesize organic matter."),
+        ("光合成は、[MASK]が光エネルギーを使って有機物を合成するプロセスです。", "Closed",
+         "Photosynthesis is the process where ___ use light energy to synthesize organic matter."),
         ("私は[MASK]を読みます。", "Open", "I read a(n) ___."),
         ("空港で[MASK]が離陸するのを見た。", "Closed", "I saw the ___ take off at the airport."),
         ("最も大切なのは[MASK]です。", "Open", "The most important thing is ___."),
@@ -137,7 +158,7 @@ if __name__ == '__main__':
         print("-" * 60)
         print(f"Analyzing Sentence: {sentence}")
         analyzer.analyze_context_by_entropy(sentence, expected, translation)
-        print() 
+        print()
         # analyzer.analyze_context_by_top_k(sentence, expected, translation)
-        
+
     print("-" * 60)

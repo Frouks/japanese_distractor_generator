@@ -1,11 +1,13 @@
 import torch
 from transformers import BertTokenizer, BertForMaskedLM
 
-class ContextualCandidateGenerator:
+
+class ContextualGenerator:
     """
     Generates distractors using a pre-trained Japanese BERT model to find
     contextually relevant candidates for a masked word in a sentence.
     """
+
     def __init__(self, model_name: str = 'cl-tohoku/bert-base-japanese-whole-word-masking'):
         """
         Initializes the generator by loading the BERT model and tokenizer.
@@ -25,11 +27,11 @@ class ContextualCandidateGenerator:
             self.model = None
 
     def generate_distractors(
-        self,
-        masked_sentence: str,
-        target_word: str,
-        context_type: str,
-        top_n: int = 5
+            self,
+            masked_sentence: str,
+            target_word: str,
+            context_type: str,
+            top_n: int = 5
     ) -> list[tuple[str, float]]:
         """
         Generates distractors by predicting the masked token in a sentence.
@@ -47,17 +49,18 @@ class ContextualCandidateGenerator:
             print("Error: Model not loaded. Cannot generate contextual distractors.")
             return []
 
-        if context_type == 'open':
+        if context_type == 'Open':
             # For open contexts, accept a wider range of less probable but plausible words.
             min_prob, max_prob = 0.005, 0.1
-        elif context_type == 'closed':
+        elif context_type == 'Closed':
             # For closed contexts, demand higher probability candidates.
             min_prob, max_prob = 0.1, 0.9
         else:
             print(f"Warning: Invalid context_type '{context_type}'. Defaulting to a wide range.")
             min_prob, max_prob = 0.005, 0.95
 
-        print(f"\n--- Generating for mask in '{masked_sentence}' (Context: {context_type}, Prob Range: {min_prob}-{max_prob}) ---")
+        print(
+            f"\n--- Generating for mask in '{masked_sentence}' (Context: {context_type}, Prob Range: {min_prob}-{max_prob}) ---")
 
         # 2. Tokenize the input sentence
         tokenized_input = self.tokenizer(masked_sentence, return_tensors="pt")
@@ -93,7 +96,7 @@ class ContextualCandidateGenerator:
 
 
 if __name__ == '__main__':
-    context_gen = ContextualCandidateGenerator()
+    context_gen = ContextualGenerator()
     print("=" * 60)
 
     if context_gen.model:
@@ -101,31 +104,31 @@ if __name__ == '__main__':
             {
                 "sentence": "動物園で、大きな[MASK]が鼻を高く上げていた。",
                 "target": "象",
-                "context": "closed",
+                "context": "Closed",
                 "english": "At the zoo, the big ___ was raising its trunk high."
             },
             {
                 "sentence": "公園で、たくさんの[MASK]が遊んでいた。",
                 "target": "子供",
-                "context": "open",
+                "context": "Open",
                 "english": "At the park, many ___ were playing."
             },
             {
                 "sentence": "彼は100メートルを10秒で[MASK]ことができる。",
                 "target": "走る",
-                "context": "closed",
+                "context": "Closed",
                 "english": "He can ___ 100 meters in 10 seconds."
             },
             {
                 "sentence": "この[MASK]はとても重要です。",
                 "target": "問題",
-                "context": "open",
+                "context": "Open",
                 "english": "This ___ is very important."
             }
         ]
 
         for i, case in enumerate(test_cases):
-            print(f"🧪 TEST CASE {i+1}: {case['context'].upper()} CONTEXT")
+            print(f"🧪 TEST CASE {i + 1}: {case['context'].upper()} CONTEXT")
             print(f"   Sentence: {case['sentence']}")
             print(f"   English:  {case['english']}")
             print(f"   Target:   {case['target']}")

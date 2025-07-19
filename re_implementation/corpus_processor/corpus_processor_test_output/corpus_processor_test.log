@@ -1,43 +1,43 @@
-2025-07-15 20:32:28,672 - CorpusProcessorTest - INFO - [<module>:554] - === Starting CorpusProcessor Self-Test Script (with refined logic) ===
-2025-07-15 20:32:28,672 - CorpusProcessor - INFO - [__init__:47] - No explicit MeCab args provided by user. MeCab will use its default dictionary configuration.
-2025-07-15 20:32:28,672 - CorpusProcessor - WARNING - [__init__:48] - IMPORTANT: Please check the 'Active MeCab Dictionary Info' log output below to ensure MeCab is using the dictionary you expect (e.g., unidic).
-2025-07-15 20:32:28,675 - CorpusProcessor - INFO - [__init__:52] - MeCab Tagger initialized with final effective args: ''.
-2025-07-15 20:32:28,675 - CorpusProcessor - INFO - [__init__:62] - Active MeCab Dictionary Info (from Tagger):
+2025-07-18 14:34:21,347 - CorpusProcessorTest - INFO - [<module>:554] - === Starting CorpusProcessor Self-Test Script (with refined logic) ===
+2025-07-18 14:34:21,347 - CorpusProcessor - INFO - [__init__:47] - No explicit MeCab args provided by user. MeCab will use its default dictionary configuration.
+2025-07-18 14:34:21,347 - CorpusProcessor - WARNING - [__init__:48] - IMPORTANT: Please check the 'Active MeCab Dictionary Info' log output below to ensure MeCab is using the dictionary you expect (e.g., unidic).
+2025-07-18 14:34:21,350 - CorpusProcessor - INFO - [__init__:52] - MeCab Tagger initialized with final effective args: ''.
+2025-07-18 14:34:21,350 - CorpusProcessor - INFO - [__init__:62] - Active MeCab Dictionary Info (from Tagger):
   Filename: /opt/miniconda3/envs/cadgs/lib/python3.10/site-packages/unidic_lite/dicdir/sys.dic, Charset: utf8, Type: 0, Version: 102
 
-2025-07-15 20:32:28,675 - CorpusProcessor - INFO - [__init__:85] - Using feature indices for parsing: POS1=0, POS_Detail_End=3, Lemma=7
-2025-07-15 20:32:28,675 - CorpusProcessorTest - INFO - [<module>:564] - 
+2025-07-18 14:34:21,350 - CorpusProcessor - INFO - [__init__:85] - Using feature indices for parsing: POS1=0, POS_Detail_End=3, Lemma=7
+2025-07-18 14:34:21,351 - CorpusProcessorTest - INFO - [<module>:564] - 
 --- Verifying MeCab Feature Indices for the active dictionary ---
-2025-07-15 20:32:28,675 - CorpusProcessorTest - INFO - [<module>:566] - Analyzing test word '食べた' to check feature indices...
-2025-07-15 20:32:28,678 - CorpusProcessorTest - INFO - [<module>:571] - Analyzing first token: Surface Form = '食べ'
-2025-07-15 20:32:28,678 - CorpusProcessorTest - INFO - [<module>:572] - Full Feature String: 動詞,一般,*,*,下一段-バ行,連用形-一般,タベル,食べる,食べ,タベ,食べる,タベル,和,*,*,*,*,タベ,タベル,タベ,タベル,*,*,2,C1,*
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:574] - Feature List with Indices:
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 0: 動詞
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 1: 一般
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 2: *
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 3: *
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 4: 下一段-バ行
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 5: 連用形-一般
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 6: タベル
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 7: 食べる
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 8: 食べ
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 9: タベ
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 10: 食べる
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 11: タベル
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 12: 和
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 13: *
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 14: *
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 15: *
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 16: *
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 17: タベ
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 18: タベル
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 19: タベ
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 20: タベル
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 21: *
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 22: *
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 23: 2
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 24: C1
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:576] -   Index 25: *
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:581] - ==> Extracted Lemma (using configured index 7): '食べる'
-2025-07-15 20:32:28,679 - CorpusProcessorTest - INFO - [<module>:583] - ==> SUCCESS: The configured lemma index appears to be correct for '食べる'.
-2025-07-15 20:32:28,679 - CorpusProcessorTest - ERROR - [<module>:594] - Real corpus path not found: /Volumes/T7/Bachelorthesis/jawiki_data/jawiki_extracted. Please update the path and re-run.
+2025-07-18 14:34:21,351 - CorpusProcessorTest - INFO - [<module>:566] - Analyzing test word '食べた' to check feature indices...
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:571] - Analyzing first token: Surface Form = '食べ'
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:572] - Full Feature String: 動詞,一般,*,*,下一段-バ行,連用形-一般,タベル,食べる,食べ,タベ,食べる,タベル,和,*,*,*,*,タベ,タベル,タベ,タベル,*,*,2,C1,*
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:574] - Feature List with Indices:
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 0: 動詞
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 1: 一般
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 2: *
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 3: *
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 4: 下一段-バ行
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 5: 連用形-一般
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 6: タベル
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 7: 食べる
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 8: 食べ
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 9: タベ
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 10: 食べる
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 11: タベル
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 12: 和
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 13: *
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 14: *
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 15: *
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 16: *
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 17: タベ
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 18: タベル
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 19: タベ
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 20: タベル
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 21: *
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 22: *
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 23: 2
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 24: C1
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:576] -   Index 25: *
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:581] - ==> Extracted Lemma (using configured index 7): '食べる'
+2025-07-18 14:34:21,355 - CorpusProcessorTest - INFO - [<module>:583] - ==> SUCCESS: The configured lemma index appears to be correct for '食べる'.
+2025-07-18 14:34:21,355 - CorpusProcessorTest - ERROR - [<module>:594] - Real corpus path not found: /Volumes/T7/Bachelorthesis/jawiki_data/jawiki_extracted. Please update the path and re-run.

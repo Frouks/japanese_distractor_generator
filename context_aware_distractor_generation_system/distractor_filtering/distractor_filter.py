@@ -203,7 +203,7 @@ class DistractorFilter:
         sentence_with_target_word = carrier_sentence.replace("___", target_word)
         target_word_pll = self._calculate_pll(sentence_with_target_word)
 
-        if context == "open":
+        if context == "Open":
             pll_threshold = target_word_pll - 1.25
         else:
             pll_threshold = target_word_pll - 0.5
@@ -263,7 +263,7 @@ if __name__ == '__main__':
         test_cases: list[dict[str, any]] = [
             {
                 "sentence": "動物園で、大きな___が鼻を高く上げていた。",
-                "target": "象", "context": "closed",
+                "target": "象", "context": "Closed",
                 "english_sentence": "At the zoo, the big ___ was raising its trunk high.",
                 "prev_word": "大きな", "next_word": "鼻",
                 "candidates": ["象", "キリン", "マンモス", "車", "木", "獅子", "アリクイ"],
@@ -272,7 +272,7 @@ if __name__ == '__main__':
             },
             {
                 "sentence": "公園で、たくさんの___が遊んでいた。",
-                "target": "子供", "context": "open",
+                "target": "子供", "context": "Open",
                 "english_sentence": "At the park, many ___ were playing.",
                 "prev_word": "たくさんの", "next_word": "遊んでいた",
                 "candidates": ["子供", "人々", "学生", "動物", "鯉", "成人", "親", "食品"],
@@ -281,7 +281,7 @@ if __name__ == '__main__':
             },
             {
                 "sentence": "彼は100メートルを10秒で___ことができる。",
-                "target": "走る", "context": "closed",
+                "target": "走る", "context": "Closed",
                 "english_sentence": "He can ___ 100 meters in 10 seconds.",
                 "prev_word": "10秒で", "next_word": "こと",
                 "candidates": ["走る", "歩く", "泳ぐ", "飛ぶ", "ある", "飲む", "食べる", "歌う"],
@@ -290,7 +290,7 @@ if __name__ == '__main__':
             },
             {
                 "sentence": "この___はとても重要です。",
-                "target": "問題", "context": "open",
+                "target": "問題", "context": "Open",
                 "english_sentence": "This ___ is very important.",
                 "prev_word": "この", "next_word": "とても",
                 "candidates": ["問題", "点", "部分", "選手", "脚", "人", "イベント", "食品", "質問", "愛", "歌う",
@@ -300,14 +300,14 @@ if __name__ == '__main__':
                                  "愛": "love", "歌う": "sing", "歌": "song"}
             },
             {
-                "sentence": "私の___はとても可愛い。", "target": "猫", "context": "open",
+                "sentence": "私の___はとても可愛い。", "target": "猫", "context": "Open",
                 "english_sentence": "My ___ is very cute.",
                 "prev_word": "私の", "next_word": "とても",
                 "candidates": ["猫", "犬", "子供", "ハムスター", "カバン"],
                 "translations": {"猫": "cat", "犬": "dog", "子供": "child", "ハムスター": "hamster", "カバン": "bag"}
             },
             {
-                "sentence": "私の___は可愛くて、よくニャーと鳴く。", "target": "猫", "context": "closed",
+                "sentence": "私の___は可愛くて、よくニャーと鳴く。", "target": "猫", "context": "Closed",
                 "english_sentence": "My ___ is cute and meows a lot.",
                 "prev_word": "私の", "next_word": "可愛くて",
                 "candidates": ["猫", "犬", "鳥", "子犬", "子猫"],
