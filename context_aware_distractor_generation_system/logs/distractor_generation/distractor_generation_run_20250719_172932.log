@@ -662,3 +662,1146 @@
 2025-07-19 17:35:34 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '食べる', '通る', '繋がる', '呉れる', '加わる', '破る', '止める', '増える', '移る', '感ずる', '広がる', '達する', '決まる', '起きる']
 2025-07-19 17:35:34 - DistractorFilter - INFO - Threshold: > -78.14734385535121
 2025-07-19 17:35:34 - DistractorFilter - INFO -   ❌ REJECTED: '巡る' (PLL Score: -75.71)
+2025-07-19 17:35:34 - DistractorFilter - INFO -   ✅ ACCEPTED: '応ずる' (PLL Score: -100.14)
+2025-07-19 17:35:35 - DistractorFilter - INFO -   ✅ ACCEPTED: '限る' (PLL Score: -79.13)
+2025-07-19 17:35:35 - DistractorFilter - INFO -   ✅ ACCEPTED: '乗る' (PLL Score: -81.36)
+2025-07-19 17:35:35 - DistractorFilter - INFO -   ✅ ACCEPTED: '占める' (PLL Score: -87.99)
+2025-07-19 17:35:35 - DistractorFilter - INFO -   ✅ ACCEPTED: '命ずる' (PLL Score: -95.71)
+2025-07-19 17:35:36 - DistractorFilter - INFO -   ✅ ACCEPTED: '食べる' (PLL Score: -84.27)
+2025-07-19 17:35:36 - DistractorFilter - INFO -   ❌ REJECTED: '通る' (PLL Score: -78.05)
+2025-07-19 17:35:36 - DistractorFilter - INFO -   ✅ ACCEPTED: '繋がる' (PLL Score: -92.50)
+2025-07-19 17:35:36 - DistractorFilter - INFO -   ✅ ACCEPTED: '呉れる' (PLL Score: -87.74)
+2025-07-19 17:35:37 - DistractorFilter - INFO -   ✅ ACCEPTED: '加わる' (PLL Score: -95.19)
+2025-07-19 17:35:37 - DistractorFilter - INFO -   ❌ REJECTED: '破る' (PLL Score: -78.00)
+2025-07-19 17:35:37 - DistractorFilter - INFO -   ✅ ACCEPTED: '止める' (PLL Score: -88.95)
+2025-07-19 17:35:37 - DistractorFilter - INFO -   ✅ ACCEPTED: '増える' (PLL Score: -87.61)
+2025-07-19 17:35:38 - DistractorFilter - INFO -   ✅ ACCEPTED: '移る' (PLL Score: -80.67)
+2025-07-19 17:35:38 - DistractorFilter - INFO -   ✅ ACCEPTED: '感ずる' (PLL Score: -98.94)
+2025-07-19 17:35:38 - DistractorFilter - INFO -   ✅ ACCEPTED: '広がる' (PLL Score: -80.83)
+2025-07-19 17:35:38 - DistractorFilter - INFO -   ✅ ACCEPTED: '達する' (PLL Score: -94.13)
+2025-07-19 17:35:39 - DistractorFilter - INFO -   ✅ ACCEPTED: '決まる' (PLL Score: -90.98)
+2025-07-19 17:35:39 - DistractorFilter - INFO -   ✅ ACCEPTED: '起きる' (PLL Score: -92.43)
+2025-07-19 17:35:39 - Main - INFO - 
+====== Results for Spelling. ======
+2025-07-19 17:35:39 - Main - INFO -     Distractor candidates pool: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '食べる', '通る', '繋がる', '呉れる']
+2025-07-19 17:35:39 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:35:39 - Main - INFO -     Dependency Rejects: ['巡る', '乗る', '食べる', '通る']
+2025-07-19 17:35:39 - Main - INFO -     BERT Rejects: ['巡る', '通る', '破る']
+2025-07-19 17:35:39 - Main - INFO -     Final Rejects (In any filter): ['乗る', '食べる', '巡る', '破る', '通る']
+2025-07-19 17:35:39 - Main - INFO -     Final Distractors: ['応ずる', '限る', '占める', '命ずる', '繋がる']
+2025-07-19 17:35:39 - SimilarityGenerator - INFO - 
+--- Generating for '走る' (Context: SentenceContextEnum.CLOSED, Range: 0.61-0.75) ---
+2025-07-19 17:35:39 - DistractorFilter - INFO - Threshold: > -78.14734385535121
+2025-07-19 17:35:40 - DistractorFilter - INFO -   ✅ ACCEPTED: '走り' (PLL Score: -81.05)
+2025-07-19 17:35:40 - DistractorFilter - INFO -   ✅ ACCEPTED: 'はしる' (PLL Score: -97.56)
+2025-07-19 17:35:40 - DistractorFilter - INFO -   ✅ ACCEPTED: '走り抜ける' (PLL Score: -88.31)
+2025-07-19 17:35:40 - DistractorFilter - INFO -   ✅ ACCEPTED: '走れ' (PLL Score: -86.08)
+2025-07-19 17:35:41 - DistractorFilter - INFO -   ✅ ACCEPTED: '走ら' (PLL Score: -87.36)
+2025-07-19 17:35:41 - DistractorFilter - INFO -   ✅ ACCEPTED: '走れる' (PLL Score: -88.20)
+2025-07-19 17:35:41 - DistractorFilter - INFO -   ✅ ACCEPTED: '走ろ' (PLL Score: -82.76)
+2025-07-19 17:35:41 - DistractorFilter - INFO -   ✅ ACCEPTED: '駆け抜ける' (PLL Score: -95.86)
+2025-07-19 17:35:42 - DistractorFilter - INFO -   ❌ REJECTED: '歩く' (PLL Score: -76.74)
+2025-07-19 17:35:42 - DistractorFilter - INFO -   ✅ ACCEPTED: '走り出す' (PLL Score: -80.97)
+2025-07-19 17:35:42 - DistractorFilter - INFO -   ✅ ACCEPTED: '走り出し' (PLL Score: -87.44)
+2025-07-19 17:35:43 - DistractorFilter - INFO -   ✅ ACCEPTED: '走り抜け' (PLL Score: -85.64)
+2025-07-19 17:35:43 - DistractorFilter - INFO -   ✅ ACCEPTED: '走り回る' (PLL Score: -84.34)
+2025-07-19 17:35:43 - DistractorFilter - INFO -   ✅ ACCEPTED: '走らす' (PLL Score: -92.50)
+2025-07-19 17:35:43 - DistractorFilter - INFO -   ✅ ACCEPTED: '併走' (PLL Score: -99.13)
+2025-07-19 17:35:43 - Main - INFO - 
+====== Results for Similarity. ======
+2025-07-19 17:35:43 - Main - INFO -     Distractor candidates pool: ['走り', 'はしる', '走り抜ける', '走れ', '走ら', '走れる', '走ろ', '駆け抜ける', '歩く', '走り出す']
+2025-07-19 17:35:43 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:35:43 - Main - INFO -     Dependency Rejects: ['歩く', '走り回る']
+2025-07-19 17:35:43 - Main - INFO -     BERT Rejects: ['歩く']
+2025-07-19 17:35:43 - Main - INFO -     Final Rejects (In any filter): ['走り回る', '歩く']
+2025-07-19 17:35:43 - Main - INFO -     Final Distractors: ['走り', 'はしる', '走り抜ける', '走れ', '走ら']
+2025-07-19 17:35:44 - DistractorFilter - INFO - Threshold: > -78.14734385535121
+2025-07-19 17:35:44 - DistractorFilter - INFO -   ✅ ACCEPTED: '訪れる' (PLL Score: -83.06)
+2025-07-19 17:35:44 - DistractorFilter - INFO -   ✅ ACCEPTED: '見る' (PLL Score: -80.62)
+2025-07-19 17:35:44 - Main - INFO - 
+====== Results for Contextual. ======
+2025-07-19 17:35:44 - Main - INFO -     Distractor candidates pool: ['訪れる', '見る']
+2025-07-19 17:35:44 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:35:44 - Main - INFO -     Dependency Rejects: ['訪れる', '見る']
+2025-07-19 17:35:44 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:35:44 - Main - INFO -     Final Rejects (In any filter): ['見る', '訪れる']
+2025-07-19 17:35:44 - Main - INFO -     Final Distractors: []
+2025-07-19 17:35:44 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for '走る' (Context: Closed) ---
+2025-07-19 17:35:44 - CooccurrenceGenerator - INFO - Target: Lemma='走る', POS='動詞', Freq=44121
+2025-07-19 17:35:44 - CooccurrenceGenerator - INFO - Found 7560 co-occurring candidate surfaces to analyze.
+2025-07-19 17:35:44 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['跳び越える', '縫う', 'しゃがむ', '引き締まる', '沿う', '曲がりくねる', '波打つ', '切り立つ', '駆ける', '追い抜く', '競う', '曲がる', '銜える', '交わる', '引っ掛ける', '取り巻く', '眺める', '為さる', '泳ぐ', '貫く']
+2025-07-19 17:35:45 - DistractorFilter - INFO - Threshold: > -78.14734385535121
+2025-07-19 17:35:45 - DistractorFilter - INFO -   ✅ ACCEPTED: '跳び越える' (PLL Score: -104.59)
+2025-07-19 17:35:45 - DistractorFilter - INFO -   ✅ ACCEPTED: '縫う' (PLL Score: -80.07)
+2025-07-19 17:35:46 - DistractorFilter - INFO -   ✅ ACCEPTED: 'しゃがむ' (PLL Score: -119.96)
+2025-07-19 17:35:46 - DistractorFilter - INFO -   ✅ ACCEPTED: '引き締まる' (PLL Score: -102.85)
+2025-07-19 17:35:46 - DistractorFilter - INFO -   ✅ ACCEPTED: '沿う' (PLL Score: -87.97)
+2025-07-19 17:35:46 - DistractorFilter - INFO -   ✅ ACCEPTED: '曲がりくねる' (PLL Score: -115.62)
+2025-07-19 17:35:47 - DistractorFilter - INFO -   ✅ ACCEPTED: '波打つ' (PLL Score: -96.01)
+2025-07-19 17:35:47 - DistractorFilter - INFO -   ✅ ACCEPTED: '切り立つ' (PLL Score: -100.41)
+2025-07-19 17:35:47 - DistractorFilter - INFO -   ✅ ACCEPTED: '駆ける' (PLL Score: -90.71)
+2025-07-19 17:35:47 - DistractorFilter - INFO -   ✅ ACCEPTED: '追い抜く' (PLL Score: -93.67)
+2025-07-19 17:35:48 - DistractorFilter - INFO -   ✅ ACCEPTED: '競う' (PLL Score: -78.92)
+2025-07-19 17:35:48 - DistractorFilter - INFO -   ✅ ACCEPTED: '曲がる' (PLL Score: -94.84)
+2025-07-19 17:35:48 - DistractorFilter - INFO -   ❌ REJECTED: '銜える' (PLL Score: -76.36)
+2025-07-19 17:35:48 - DistractorFilter - INFO -   ✅ ACCEPTED: '交わる' (PLL Score: -96.95)
+2025-07-19 17:35:49 - DistractorFilter - INFO -   ✅ ACCEPTED: '引っ掛ける' (PLL Score: -101.22)
+2025-07-19 17:35:49 - DistractorFilter - INFO -   ✅ ACCEPTED: '取り巻く' (PLL Score: -91.33)
+2025-07-19 17:35:49 - DistractorFilter - INFO -   ✅ ACCEPTED: '眺める' (PLL Score: -85.21)
+2025-07-19 17:35:49 - DistractorFilter - INFO -   ✅ ACCEPTED: '為さる' (PLL Score: -85.10)
+2025-07-19 17:35:50 - DistractorFilter - INFO -   ❌ REJECTED: '泳ぐ' (PLL Score: -75.31)
+2025-07-19 17:35:50 - DistractorFilter - INFO -   ❌ REJECTED: '貫く' (PLL Score: -73.99)
+2025-07-19 17:35:50 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-07-19 17:35:50 - Main - INFO -     Distractor candidates pool: ['跳び越える', '縫う', 'しゃがむ', '引き締まる', '沿う', '曲がりくねる', '波打つ', '切り立つ', '駆ける', '追い抜く']
+2025-07-19 17:35:50 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:35:50 - Main - INFO -     Dependency Rejects: ['取り巻く', '眺める', '泳ぐ', '貫く']
+2025-07-19 17:35:50 - Main - INFO -     BERT Rejects: ['銜える', '泳ぐ', '貫く']
+2025-07-19 17:35:50 - Main - INFO -     Final Rejects (In any filter): ['貫く', '銜える', '泳ぐ', '眺める', '取り巻く']
+2025-07-19 17:35:50 - Main - INFO -     Final Distractors: ['跳び越える', '縫う', 'しゃがむ', '引き締まる', '沿う']
+2025-07-19 17:35:50 - Main - INFO - ------------------------------------------------------------
+2025-07-19 17:35:50 - Main - INFO - ▶️ Target Word: '走る' in Carrier Sentence: '彼は100メートルを11秒で___ことができる。' with context: 'SentenceContextEnum.CLOSED'
+2025-07-19 17:35:50 - Main - INFO -   (Context for Trigram Filter: ('で', BLANK, 'こと'))
+2025-07-19 17:35:50 - BaselineGenerator - INFO - --- Generating baseline distractors for '走る' ---
+2025-07-19 17:35:50 - BaselineGenerator - INFO - Target analyzed: Lemma='走る', POS='動詞', Frequency=44121
+2025-07-19 17:35:50 - BaselineGenerator - INFO - Found 8094 candidate words with POS '動詞'.
+2025-07-19 17:35:50 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '及ぶ', '組む', '食べる', '並ぶ', '通る', '繋がる', '呉れる', '話す', '加わる', '破る', '通す', '止める', '増える', '読む']
+2025-07-19 17:35:50 - DistractorFilter - INFO - Threshold: > -160.77156364079565
+2025-07-19 17:35:51 - DistractorFilter - INFO -   ✅ ACCEPTED: '巡る' (PLL Score: -169.78)
+2025-07-19 17:35:51 - DistractorFilter - INFO -   ✅ ACCEPTED: '応ずる' (PLL Score: -178.20)
+2025-07-19 17:35:51 - DistractorFilter - INFO -   ✅ ACCEPTED: '限る' (PLL Score: -177.63)
+2025-07-19 17:35:52 - DistractorFilter - INFO -   ✅ ACCEPTED: '乗る' (PLL Score: -167.57)
+2025-07-19 17:35:52 - DistractorFilter - INFO -   ✅ ACCEPTED: '占める' (PLL Score: -176.33)
+2025-07-19 17:35:52 - DistractorFilter - INFO -   ✅ ACCEPTED: '命ずる' (PLL Score: -166.78)
+2025-07-19 17:35:53 - DistractorFilter - INFO -   ✅ ACCEPTED: '及ぶ' (PLL Score: -172.29)
+2025-07-19 17:35:53 - DistractorFilter - INFO -   ✅ ACCEPTED: '組む' (PLL Score: -175.16)
+2025-07-19 17:35:53 - DistractorFilter - INFO -   ✅ ACCEPTED: '食べる' (PLL Score: -172.80)
+2025-07-19 17:35:54 - DistractorFilter - INFO -   ✅ ACCEPTED: '並ぶ' (PLL Score: -174.00)
+2025-07-19 17:35:54 - DistractorFilter - INFO -   ✅ ACCEPTED: '通る' (PLL Score: -170.98)
+2025-07-19 17:35:54 - DistractorFilter - INFO -   ✅ ACCEPTED: '繋がる' (PLL Score: -175.56)
+2025-07-19 17:35:55 - DistractorFilter - INFO -   ✅ ACCEPTED: '呉れる' (PLL Score: -188.10)
+2025-07-19 17:35:55 - DistractorFilter - INFO -   ✅ ACCEPTED: '話す' (PLL Score: -161.74)
+2025-07-19 17:35:55 - DistractorFilter - INFO -   ✅ ACCEPTED: '加わる' (PLL Score: -179.82)
+2025-07-19 17:35:56 - DistractorFilter - INFO -   ✅ ACCEPTED: '破る' (PLL Score: -168.96)
+2025-07-19 17:35:56 - DistractorFilter - INFO -   ✅ ACCEPTED: '通す' (PLL Score: -175.65)
+2025-07-19 17:35:56 - DistractorFilter - INFO -   ✅ ACCEPTED: '止める' (PLL Score: -176.82)
+2025-07-19 17:35:56 - DistractorFilter - INFO -   ✅ ACCEPTED: '増える' (PLL Score: -174.98)
+2025-07-19 17:35:57 - DistractorFilter - INFO -   ✅ ACCEPTED: '読む' (PLL Score: -173.43)
+2025-07-19 17:35:57 - Main - INFO - 
+====== Results for Baseline. ======
+2025-07-19 17:35:57 - Main - INFO -     Distractor candidates pool: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '及ぶ', '組む', '食べる', '並ぶ']
+2025-07-19 17:35:57 - Main - INFO -     Trigram Rejects: ['乗る', '食べる', '話す']
+2025-07-19 17:35:57 - Main - INFO -     Dependency Rejects: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '及ぶ', '組む', '食べる', '並ぶ']
+2025-07-19 17:35:57 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:35:57 - Main - INFO -     Final Rejects (In any filter): ['食べる', '加わる', '占める', '乗る', '並ぶ', '繋がる', '話す', '破る', '応ずる', '通る', '巡る', '読む', '限る', '及ぶ', '止める', '組む', '通す', '命ずる', '増える']
+2025-07-19 17:35:57 - Main - INFO -     Final Distractors: ['呉れる']
+2025-07-19 17:35:57 - SpellingGenerator - INFO - --- Generating spelling distractors for '走る' ---
+2025-07-19 17:35:57 - SpellingGenerator - INFO - Target analyzed: Lemma='走る', POS='動詞', Frequency=44121
+2025-07-19 17:35:57 - SpellingGenerator - INFO - Unique characters in target lemma: {'る', '走'}
+2025-07-19 17:35:57 - SpellingGenerator - INFO - Found 4768 potential candidates from character index.
+2025-07-19 17:35:57 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '食べる', '通る', '繋がる', '呉れる', '加わる', '破る', '止める', '増える', '移る', '感ずる', '広がる', '達する', '決まる', '起きる']
+2025-07-19 17:35:57 - DistractorFilter - INFO - Threshold: > -160.77156364079565
+2025-07-19 17:35:57 - DistractorFilter - INFO -   ✅ ACCEPTED: '巡る' (PLL Score: -169.78)
+2025-07-19 17:35:58 - DistractorFilter - INFO -   ✅ ACCEPTED: '応ずる' (PLL Score: -178.20)
+2025-07-19 17:35:58 - DistractorFilter - INFO -   ✅ ACCEPTED: '限る' (PLL Score: -177.63)
+2025-07-19 17:35:58 - DistractorFilter - INFO -   ✅ ACCEPTED: '乗る' (PLL Score: -167.57)
+2025-07-19 17:35:59 - DistractorFilter - INFO -   ✅ ACCEPTED: '占める' (PLL Score: -176.33)
+2025-07-19 17:35:59 - DistractorFilter - INFO -   ✅ ACCEPTED: '命ずる' (PLL Score: -166.78)
+2025-07-19 17:35:59 - DistractorFilter - INFO -   ✅ ACCEPTED: '食べる' (PLL Score: -172.80)
+2025-07-19 17:36:00 - DistractorFilter - INFO -   ✅ ACCEPTED: '通る' (PLL Score: -170.98)
+2025-07-19 17:36:00 - DistractorFilter - INFO -   ✅ ACCEPTED: '繋がる' (PLL Score: -175.56)
+2025-07-19 17:36:00 - DistractorFilter - INFO -   ✅ ACCEPTED: '呉れる' (PLL Score: -188.10)
+2025-07-19 17:36:01 - DistractorFilter - INFO -   ✅ ACCEPTED: '加わる' (PLL Score: -179.82)
+2025-07-19 17:36:01 - DistractorFilter - INFO -   ✅ ACCEPTED: '破る' (PLL Score: -168.96)
+2025-07-19 17:36:01 - DistractorFilter - INFO -   ✅ ACCEPTED: '止める' (PLL Score: -176.82)
+2025-07-19 17:36:02 - DistractorFilter - INFO -   ✅ ACCEPTED: '増える' (PLL Score: -174.98)
+2025-07-19 17:36:02 - DistractorFilter - INFO -   ✅ ACCEPTED: '移る' (PLL Score: -175.43)
+2025-07-19 17:36:02 - DistractorFilter - INFO -   ✅ ACCEPTED: '感ずる' (PLL Score: -173.51)
+2025-07-19 17:36:03 - DistractorFilter - INFO -   ✅ ACCEPTED: '広がる' (PLL Score: -169.23)
+2025-07-19 17:36:03 - DistractorFilter - INFO -   ✅ ACCEPTED: '達する' (PLL Score: -173.75)
+2025-07-19 17:36:03 - DistractorFilter - INFO -   ✅ ACCEPTED: '決まる' (PLL Score: -169.53)
+2025-07-19 17:36:04 - DistractorFilter - INFO -   ✅ ACCEPTED: '起きる' (PLL Score: -172.28)
+2025-07-19 17:36:04 - Main - INFO - 
+====== Results for Spelling. ======
+2025-07-19 17:36:04 - Main - INFO -     Distractor candidates pool: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '食べる', '通る', '繋がる', '呉れる']
+2025-07-19 17:36:04 - Main - INFO -     Trigram Rejects: ['乗る', '食べる']
+2025-07-19 17:36:04 - Main - INFO -     Dependency Rejects: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '食べる', '通る', '繋がる', '加わる']
+2025-07-19 17:36:04 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:36:04 - Main - INFO -     Final Rejects (In any filter): ['食べる', '加わる', '達する', '占める', '感ずる', '乗る', '広がる', '決まる', '繋がる', '応ずる', '破る', '移る', '通る', '起きる', '巡る', '限る', '止める', '命ずる', '増える']
+2025-07-19 17:36:04 - Main - INFO -     Final Distractors: ['呉れる']
+2025-07-19 17:36:04 - SimilarityGenerator - INFO - 
+--- Generating for '走る' (Context: SentenceContextEnum.CLOSED, Range: 0.61-0.75) ---
+2025-07-19 17:36:04 - DistractorFilter - INFO - Threshold: > -160.77156364079565
+2025-07-19 17:36:04 - DistractorFilter - INFO -   ✅ ACCEPTED: '走り' (PLL Score: -162.29)
+2025-07-19 17:36:05 - DistractorFilter - INFO -   ✅ ACCEPTED: 'はしる' (PLL Score: -188.22)
+2025-07-19 17:36:05 - DistractorFilter - INFO -   ✅ ACCEPTED: '走り抜ける' (PLL Score: -170.49)
+2025-07-19 17:36:05 - DistractorFilter - INFO -   ✅ ACCEPTED: '走れ' (PLL Score: -177.65)
+2025-07-19 17:36:06 - DistractorFilter - INFO -   ✅ ACCEPTED: '走ら' (PLL Score: -171.16)
+2025-07-19 17:36:06 - DistractorFilter - INFO -   ✅ ACCEPTED: '走れる' (PLL Score: -178.66)
+2025-07-19 17:36:06 - DistractorFilter - INFO -   ✅ ACCEPTED: '走ろ' (PLL Score: -166.97)
+2025-07-19 17:36:07 - DistractorFilter - INFO -   ✅ ACCEPTED: '駆け抜ける' (PLL Score: -179.49)
+2025-07-19 17:36:07 - DistractorFilter - INFO -   ❌ REJECTED: '歩く' (PLL Score: -158.33)
+2025-07-19 17:36:07 - DistractorFilter - INFO -   ❌ REJECTED: '走り出す' (PLL Score: -155.74)
+2025-07-19 17:36:08 - DistractorFilter - INFO -   ✅ ACCEPTED: '走り出し' (PLL Score: -164.50)
+2025-07-19 17:36:08 - DistractorFilter - INFO -   ✅ ACCEPTED: '走り抜け' (PLL Score: -173.47)
+2025-07-19 17:36:08 - DistractorFilter - INFO -   ❌ REJECTED: '走り回る' (PLL Score: -159.98)
+2025-07-19 17:36:09 - DistractorFilter - INFO -   ✅ ACCEPTED: '走らす' (PLL Score: -174.66)
+2025-07-19 17:36:09 - DistractorFilter - INFO -   ✅ ACCEPTED: '併走' (PLL Score: -176.38)
+2025-07-19 17:36:09 - Main - INFO - 
+====== Results for Similarity. ======
+2025-07-19 17:36:09 - Main - INFO -     Distractor candidates pool: ['走り', 'はしる', '走り抜ける', '走れ', '走ら', '走れる', '走ろ', '駆け抜ける', '歩く', '走り出す']
+2025-07-19 17:36:09 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:36:09 - Main - INFO -     Dependency Rejects: ['走り抜ける', '走れる', '駆け抜ける', '歩く', '走り回る', '走らす']
+2025-07-19 17:36:09 - Main - INFO -     BERT Rejects: ['歩く', '走り出す', '走り回る']
+2025-07-19 17:36:09 - Main - INFO -     Final Rejects (In any filter): ['走り回る', '駆け抜ける', '走らす', '走り出す', '走り抜ける', '走れる', '歩く']
+2025-07-19 17:36:09 - Main - INFO -     Final Distractors: ['走り', 'はしる', '走れ', '走ら', '走ろ']
+2025-07-19 17:36:09 - DistractorFilter - INFO - Threshold: > -160.77156364079565
+2025-07-19 17:36:10 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ある' (PLL Score: -185.16)
+2025-07-19 17:36:10 - Main - INFO - 
+====== Results for Contextual. ======
+2025-07-19 17:36:10 - Main - INFO -     Distractor candidates pool: ['ある']
+2025-07-19 17:36:10 - Main - INFO -     Trigram Rejects: ['ある']
+2025-07-19 17:36:10 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:36:10 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:36:10 - Main - INFO -     Final Rejects (In any filter): ['ある']
+2025-07-19 17:36:10 - Main - INFO -     Final Distractors: []
+2025-07-19 17:36:10 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for '走る' (Context: Closed) ---
+2025-07-19 17:36:10 - CooccurrenceGenerator - INFO - Target: Lemma='走る', POS='動詞', Freq=44121
+2025-07-19 17:36:10 - CooccurrenceGenerator - INFO - Found 7560 co-occurring candidate surfaces to analyze.
+2025-07-19 17:36:10 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['跳び越える', '縫う', 'しゃがむ', '引き締まる', '沿う', '曲がりくねる', '波打つ', '切り立つ', '駆ける', '追い抜く', '競う', '曲がる', '銜える', '交わる', '引っ掛ける', '取り巻く', '眺める', '為さる', '泳ぐ', '貫く']
+2025-07-19 17:36:10 - DistractorFilter - INFO - Threshold: > -160.77156364079565
+2025-07-19 17:36:10 - DistractorFilter - INFO -   ✅ ACCEPTED: '跳び越える' (PLL Score: -171.73)
+2025-07-19 17:36:11 - DistractorFilter - INFO -   ✅ ACCEPTED: '縫う' (PLL Score: -177.19)
+2025-07-19 17:36:11 - DistractorFilter - INFO -   ✅ ACCEPTED: 'しゃがむ' (PLL Score: -195.12)
+2025-07-19 17:36:11 - DistractorFilter - INFO -   ✅ ACCEPTED: '引き締まる' (PLL Score: -181.17)
+2025-07-19 17:36:12 - DistractorFilter - INFO -   ✅ ACCEPTED: '沿う' (PLL Score: -183.16)
+2025-07-19 17:36:12 - DistractorFilter - INFO -   ✅ ACCEPTED: '曲がりくねる' (PLL Score: -186.20)
+2025-07-19 17:36:12 - DistractorFilter - INFO -   ✅ ACCEPTED: '波打つ' (PLL Score: -176.30)
+2025-07-19 17:36:13 - DistractorFilter - INFO -   ✅ ACCEPTED: '切り立つ' (PLL Score: -175.33)
+2025-07-19 17:36:13 - DistractorFilter - INFO -   ✅ ACCEPTED: '駆ける' (PLL Score: -179.88)
+2025-07-19 17:36:13 - DistractorFilter - INFO -   ✅ ACCEPTED: '追い抜く' (PLL Score: -177.72)
+2025-07-19 17:36:14 - DistractorFilter - INFO -   ✅ ACCEPTED: '競う' (PLL Score: -170.63)
+2025-07-19 17:36:14 - DistractorFilter - INFO -   ✅ ACCEPTED: '曲がる' (PLL Score: -170.73)
+2025-07-19 17:36:14 - DistractorFilter - INFO -   ✅ ACCEPTED: '銜える' (PLL Score: -163.98)
+2025-07-19 17:36:15 - DistractorFilter - INFO -   ✅ ACCEPTED: '交わる' (PLL Score: -178.95)
+2025-07-19 17:36:15 - DistractorFilter - INFO -   ✅ ACCEPTED: '引っ掛ける' (PLL Score: -185.03)
+2025-07-19 17:36:15 - DistractorFilter - INFO -   ✅ ACCEPTED: '取り巻く' (PLL Score: -173.23)
+2025-07-19 17:36:16 - DistractorFilter - INFO -   ✅ ACCEPTED: '眺める' (PLL Score: -180.57)
+2025-07-19 17:36:16 - DistractorFilter - INFO -   ✅ ACCEPTED: '為さる' (PLL Score: -176.63)
+2025-07-19 17:36:16 - DistractorFilter - INFO -   ❌ REJECTED: '泳ぐ' (PLL Score: -158.80)
+2025-07-19 17:36:16 - DistractorFilter - INFO -   ✅ ACCEPTED: '貫く' (PLL Score: -169.86)
+2025-07-19 17:36:16 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-07-19 17:36:16 - Main - INFO -     Distractor candidates pool: ['跳び越える', '縫う', 'しゃがむ', '引き締まる', '沿う', '曲がりくねる', '波打つ', '切り立つ', '駆ける', '追い抜く']
+2025-07-19 17:36:16 - Main - INFO -     Trigram Rejects: ['眺める']
+2025-07-19 17:36:16 - Main - INFO -     Dependency Rejects: ['縫う', 'しゃがむ', '沿う', '波打つ', '駆ける', '追い抜く', '競う', '曲がる', '交わる', '引っ掛ける']
+2025-07-19 17:36:16 - Main - INFO -     BERT Rejects: ['泳ぐ']
+2025-07-19 17:36:16 - Main - INFO -     Final Rejects (In any filter): ['しゃがむ', '眺める', '波打つ', '交わる', '泳ぐ', '縫う', '追い抜く', '貫く', '引っ掛ける', '駆ける', '沿う', '曲がる', '取り巻く', '競う']
+2025-07-19 17:36:16 - Main - INFO -     Final Distractors: ['跳び越える', '引き締まる', '曲がりくねる', '切り立つ', '銜える']
+2025-07-19 17:36:16 - Main - INFO - ------------------------------------------------------------
+2025-07-19 17:36:16 - Main - INFO - ▶️ Target Word: '政府' in Carrier Sentence: '内閣総理大臣が率いる日本___は、新しい法案を国会に提出した。' with context: 'SentenceContextEnum.CLOSED'
+2025-07-19 17:36:16 - Main - INFO -   (Context for Trigram Filter: ('日本', BLANK, '新しい'))
+2025-07-19 17:36:16 - BaselineGenerator - INFO - --- Generating baseline distractors for '政府' ---
+2025-07-19 17:36:16 - BaselineGenerator - INFO - Target analyzed: Lemma='政府', POS='名詞', Frequency=192178
+2025-07-19 17:36:16 - BaselineGenerator - INFO - Found 166199 candidate words with POS '名詞'.
+2025-07-19 17:36:17 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['獲得', '戦争', '東', 'ザ-the', 'バス-bus', '経済', '担当', '事件', '設立', '選挙', '上', 'グループ-group', '式', '地方', '設置', '変更', '女性', '線', '調査', 'プロ-pro']
+2025-07-19 17:36:17 - DistractorFilter - INFO - Threshold: > -152.2452251771465
+2025-07-19 17:36:18 - DistractorFilter - INFO -   ✅ ACCEPTED: '獲得' (PLL Score: -167.17)
+2025-07-19 17:36:18 - DistractorFilter - INFO -   ✅ ACCEPTED: '戦争' (PLL Score: -162.18)
+2025-07-19 17:36:19 - DistractorFilter - INFO -   ✅ ACCEPTED: '東' (PLL Score: -155.87)
+2025-07-19 17:36:19 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ザ-the' (PLL Score: -187.85)
+2025-07-19 17:36:20 - DistractorFilter - INFO -   ✅ ACCEPTED: 'バス-bus' (PLL Score: -184.50)
+2025-07-19 17:36:20 - DistractorFilter - INFO -   ✅ ACCEPTED: '経済' (PLL Score: -161.32)
+2025-07-19 17:36:21 - DistractorFilter - INFO -   ✅ ACCEPTED: '担当' (PLL Score: -169.97)
+2025-07-19 17:36:21 - DistractorFilter - INFO -   ✅ ACCEPTED: '事件' (PLL Score: -160.93)
+2025-07-19 17:36:22 - DistractorFilter - INFO -   ✅ ACCEPTED: '設立' (PLL Score: -165.08)
+2025-07-19 17:36:22 - DistractorFilter - INFO -   ✅ ACCEPTED: '選挙' (PLL Score: -158.44)
+2025-07-19 17:36:22 - DistractorFilter - INFO -   ❌ REJECTED: '上' (PLL Score: -151.83)
+2025-07-19 17:36:23 - DistractorFilter - INFO -   ✅ ACCEPTED: 'グループ-group' (PLL Score: -180.47)
+2025-07-19 17:36:23 - DistractorFilter - INFO -   ✅ ACCEPTED: '式' (PLL Score: -152.65)
+2025-07-19 17:36:24 - DistractorFilter - INFO -   ✅ ACCEPTED: '地方' (PLL Score: -161.85)
+2025-07-19 17:36:24 - DistractorFilter - INFO -   ✅ ACCEPTED: '設置' (PLL Score: -163.88)
+2025-07-19 17:36:25 - DistractorFilter - INFO -   ✅ ACCEPTED: '変更' (PLL Score: -171.03)
+2025-07-19 17:36:25 - DistractorFilter - INFO -   ✅ ACCEPTED: '女性' (PLL Score: -169.37)
+2025-07-19 17:36:25 - DistractorFilter - INFO -   ✅ ACCEPTED: '線' (PLL Score: -154.63)
+2025-07-19 17:36:26 - DistractorFilter - INFO -   ✅ ACCEPTED: '調査' (PLL Score: -156.89)
+2025-07-19 17:36:26 - DistractorFilter - INFO -   ✅ ACCEPTED: 'プロ-pro' (PLL Score: -182.69)
+2025-07-19 17:36:26 - Main - INFO - 
+====== Results for Baseline. ======
+2025-07-19 17:36:26 - Main - INFO -     Distractor candidates pool: ['獲得', '戦争', '東', 'ザ-the', 'バス-bus', '経済', '担当', '事件', '設立', '選挙']
+2025-07-19 17:36:26 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:36:26 - Main - INFO -     Dependency Rejects: ['獲得', '戦争', '東', '経済', '担当', '事件', '設立', '選挙', '上', '式']
+2025-07-19 17:36:26 - Main - INFO -     BERT Rejects: ['上']
+2025-07-19 17:36:26 - Main - INFO -     Final Rejects (In any filter): ['調査', '式', '獲得', '設立', '東', '変更', '設置', '地方', '戦争', '事件', '選挙', '経済', '担当', '線', '女性', '上']
+2025-07-19 17:36:26 - Main - INFO -     Final Distractors: ['ザ-the', 'バス-bus', 'グループ-group', 'プロ-pro']
+2025-07-19 17:36:26 - SpellingGenerator - INFO - --- Generating spelling distractors for '政府' ---
+2025-07-19 17:36:26 - SpellingGenerator - INFO - Target analyzed: Lemma='政府', POS='名詞', Frequency=192178
+2025-07-19 17:36:26 - SpellingGenerator - INFO - Unique characters in target lemma: {'府', '政'}
+2025-07-19 17:36:26 - SpellingGenerator - INFO - Found 278 potential candidates from character index.
+2025-07-19 17:36:26 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['政治', '府', '行政', '政策', '政権', '幕府', '政党', '財政', '政', '安政', '政務', '寛政', '政界', '執政', '文政', '法政', '摂政', '郵政', '政令', '国政']
+2025-07-19 17:36:27 - DistractorFilter - INFO - Threshold: > -152.2452251771465
+2025-07-19 17:36:28 - DistractorFilter - INFO -   ✅ ACCEPTED: '政治' (PLL Score: -158.56)
+2025-07-19 17:36:28 - DistractorFilter - INFO -   ❌ REJECTED: '府' (PLL Score: -146.33)
+2025-07-19 17:36:29 - DistractorFilter - INFO -   ✅ ACCEPTED: '行政' (PLL Score: -152.57)
+2025-07-19 17:36:29 - DistractorFilter - INFO -   ✅ ACCEPTED: '政策' (PLL Score: -155.88)
+2025-07-19 17:36:30 - DistractorFilter - INFO -   ❌ REJECTED: '政権' (PLL Score: -151.99)
+2025-07-19 17:36:30 - DistractorFilter - INFO -   ✅ ACCEPTED: '幕府' (PLL Score: -159.57)
+2025-07-19 17:36:30 - DistractorFilter - INFO -   ✅ ACCEPTED: '政党' (PLL Score: -154.56)
+2025-07-19 17:36:31 - DistractorFilter - INFO -   ✅ ACCEPTED: '財政' (PLL Score: -155.21)
+2025-07-19 17:36:31 - DistractorFilter - INFO -   ❌ REJECTED: '政' (PLL Score: -150.43)
+2025-07-19 17:36:32 - DistractorFilter - INFO -   ✅ ACCEPTED: '安政' (PLL Score: -161.76)
+2025-07-19 17:36:32 - DistractorFilter - INFO -   ✅ ACCEPTED: '政務' (PLL Score: -156.83)
+2025-07-19 17:36:33 - DistractorFilter - INFO -   ✅ ACCEPTED: '寛政' (PLL Score: -159.10)
+2025-07-19 17:36:33 - DistractorFilter - INFO -   ✅ ACCEPTED: '政界' (PLL Score: -154.69)
+2025-07-19 17:36:33 - DistractorFilter - INFO -   ❌ REJECTED: '執政' (PLL Score: -152.11)
+2025-07-19 17:36:34 - DistractorFilter - INFO -   ✅ ACCEPTED: '文政' (PLL Score: -163.61)
+2025-07-19 17:36:34 - DistractorFilter - INFO -   ✅ ACCEPTED: '法政' (PLL Score: -156.94)
+2025-07-19 17:36:35 - DistractorFilter - INFO -   ✅ ACCEPTED: '摂政' (PLL Score: -155.85)
+2025-07-19 17:36:35 - DistractorFilter - INFO -   ✅ ACCEPTED: '郵政' (PLL Score: -164.00)
+2025-07-19 17:36:36 - DistractorFilter - INFO -   ❌ REJECTED: '政令' (PLL Score: -152.02)
+2025-07-19 17:36:36 - DistractorFilter - INFO -   ✅ ACCEPTED: '国政' (PLL Score: -158.14)
+2025-07-19 17:36:36 - Main - INFO - 
+====== Results for Spelling. ======
+2025-07-19 17:36:36 - Main - INFO -     Distractor candidates pool: ['政治', '府', '行政', '政策', '政権', '幕府', '政党', '財政', '政', '安政']
+2025-07-19 17:36:36 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:36:36 - Main - INFO -     Dependency Rejects: ['政治', '府', '行政', '政策', '政権', '幕府', '政党', '財政', '政界', '政令']
+2025-07-19 17:36:36 - Main - INFO -     BERT Rejects: ['府', '政権', '政', '執政', '政令']
+2025-07-19 17:36:36 - Main - INFO -     Final Rejects (In any filter): ['政策', '政党', '執政', '政', '政令', '府', '政権', '財政', '政治', '政界', '行政', '幕府']
+2025-07-19 17:36:36 - Main - INFO -     Final Distractors: ['安政', '政務', '寛政', '文政', '法政']
+2025-07-19 17:36:36 - SimilarityGenerator - INFO - 
+--- Generating for '政府' (Context: SentenceContextEnum.CLOSED, Range: 0.61-0.75) ---
+2025-07-19 17:36:37 - DistractorFilter - INFO - Threshold: > -152.2452251771465
+2025-07-19 17:36:37 - DistractorFilter - INFO -   ✅ ACCEPTED: '当局' (PLL Score: -158.99)
+2025-07-19 17:36:38 - DistractorFilter - INFO -   ✅ ACCEPTED: '高官' (PLL Score: -161.65)
+2025-07-19 17:36:38 - DistractorFilter - INFO -   ✅ ACCEPTED: '与党' (PLL Score: -157.07)
+2025-07-19 17:36:39 - DistractorFilter - INFO -   ❌ REJECTED: '省庁' (PLL Score: -149.74)
+2025-07-19 17:36:39 - DistractorFilter - INFO -   ✅ ACCEPTED: '役人' (PLL Score: -158.42)
+2025-07-19 17:36:40 - DistractorFilter - INFO -   ✅ ACCEPTED: '外務省' (PLL Score: -168.36)
+2025-07-19 17:36:40 - DistractorFilter - INFO -   ✅ ACCEPTED: '財務省' (PLL Score: -160.66)
+2025-07-19 17:36:41 - DistractorFilter - INFO -   ❌ REJECTED: '議会' (PLL Score: -148.99)
+2025-07-19 17:36:41 - DistractorFilter - INFO -   ✅ ACCEPTED: '国防省' (PLL Score: -164.99)
+2025-07-19 17:36:41 - DistractorFilter - INFO -   ✅ ACCEPTED: '行政府' (PLL Score: -156.84)
+2025-07-19 17:36:41 - Main - INFO - 
+====== Results for Similarity. ======
+2025-07-19 17:36:41 - Main - INFO -     Distractor candidates pool: ['当局', '高官', '与党', '省庁', '役人', '外務省', '財務省', '議会', '国防省', '行政府']
+2025-07-19 17:36:41 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:36:41 - Main - INFO -     Dependency Rejects: ['当局', '高官', '与党', '省庁', '役人', '外務省', '財務省', '議会']
+2025-07-19 17:36:41 - Main - INFO -     BERT Rejects: ['省庁', '議会']
+2025-07-19 17:36:41 - Main - INFO -     Final Rejects (In any filter): ['役人', '外務省', '議会', '与党', '当局', '高官', '省庁', '財務省']
+2025-07-19 17:36:41 - Main - INFO -     Final Distractors: ['国防省', '行政府']
+2025-07-19 17:36:42 - DistractorFilter - INFO - Threshold: > -152.2452251771465
+2025-07-19 17:36:42 - DistractorFilter - INFO -   ❌ REJECTED: '院' (PLL Score: -143.82)
+2025-07-19 17:36:42 - Main - INFO - 
+====== Results for Contextual. ======
+2025-07-19 17:36:42 - Main - INFO -     Distractor candidates pool: ['院']
+2025-07-19 17:36:42 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:36:42 - Main - INFO -     Dependency Rejects: ['院']
+2025-07-19 17:36:42 - Main - INFO -     BERT Rejects: ['院']
+2025-07-19 17:36:42 - Main - INFO -     Final Rejects (In any filter): ['院']
+2025-07-19 17:36:42 - Main - INFO -     Final Distractors: []
+2025-07-19 17:36:42 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for '政府' (Context: Closed) ---
+2025-07-19 17:36:42 - CooccurrenceGenerator - INFO - Target: Lemma='政府', POS='名詞', Freq=192178
+2025-07-19 17:36:42 - CooccurrenceGenerator - INFO - Found 28999 co-occurring candidate surfaces to analyze.
+2025-07-19 17:36:44 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['通じ', '目指し', '称え', '縒れ', '見做し', '欠け', '割り', 'コンミューン-commune', '減らし', '起き', '連ね', '執り', '移り', 'ワイス-Weiss', 'アクマ', '有礼', '尽き', '脅かし', '棊子', '掻き集め']
+2025-07-19 17:36:44 - DistractorFilter - INFO - Threshold: > -152.2452251771465
+2025-07-19 17:36:45 - DistractorFilter - INFO -   ✅ ACCEPTED: '通じ' (PLL Score: -167.00)
+2025-07-19 17:36:45 - DistractorFilter - INFO -   ✅ ACCEPTED: '目指し' (PLL Score: -174.87)
+2025-07-19 17:36:46 - DistractorFilter - INFO -   ✅ ACCEPTED: '称え' (PLL Score: -171.01)
+2025-07-19 17:36:46 - DistractorFilter - INFO -   ✅ ACCEPTED: '縒れ' (PLL Score: -166.48)
+2025-07-19 17:36:47 - DistractorFilter - INFO -   ✅ ACCEPTED: '見做し' (PLL Score: -174.53)
+2025-07-19 17:36:47 - DistractorFilter - INFO -   ✅ ACCEPTED: '欠け' (PLL Score: -169.89)
+2025-07-19 17:36:48 - DistractorFilter - INFO -   ✅ ACCEPTED: '割り' (PLL Score: -166.38)
+2025-07-19 17:36:48 - DistractorFilter - INFO -   ✅ ACCEPTED: 'コンミューン-commune' (PLL Score: -198.41)
+2025-07-19 17:36:49 - DistractorFilter - INFO -   ✅ ACCEPTED: '減らし' (PLL Score: -176.03)
+2025-07-19 17:36:49 - DistractorFilter - INFO -   ✅ ACCEPTED: '起き' (PLL Score: -167.02)
+2025-07-19 17:36:50 - DistractorFilter - INFO -   ✅ ACCEPTED: '連ね' (PLL Score: -170.76)
+2025-07-19 17:36:50 - DistractorFilter - INFO -   ✅ ACCEPTED: '執り' (PLL Score: -166.62)
+2025-07-19 17:36:51 - DistractorFilter - INFO -   ✅ ACCEPTED: '移り' (PLL Score: -168.80)
+2025-07-19 17:36:51 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ワイス-Weiss' (PLL Score: -205.93)
+2025-07-19 17:36:52 - DistractorFilter - INFO -   ✅ ACCEPTED: 'アクマ' (PLL Score: -183.31)
+2025-07-19 17:36:52 - DistractorFilter - INFO -   ✅ ACCEPTED: '有礼' (PLL Score: -159.49)
+2025-07-19 17:36:52 - DistractorFilter - INFO -   ✅ ACCEPTED: '尽き' (PLL Score: -171.25)
+2025-07-19 17:36:53 - DistractorFilter - INFO -   ✅ ACCEPTED: '脅かし' (PLL Score: -176.32)
+2025-07-19 17:36:53 - DistractorFilter - INFO -   ✅ ACCEPTED: '棊子' (PLL Score: -160.31)
+2025-07-19 17:36:54 - DistractorFilter - INFO -   ✅ ACCEPTED: '掻き集め' (PLL Score: -189.68)
+2025-07-19 17:36:54 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-07-19 17:36:54 - Main - INFO -     Distractor candidates pool: ['通じ', '目指し', '称え', '縒れ', '見做し', '欠け', '割り', 'コンミューン-commune', '減らし', '起き']
+2025-07-19 17:36:54 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:36:54 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:36:54 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:36:54 - Main - INFO -     Final Rejects (In any filter): []
+2025-07-19 17:36:54 - Main - INFO -     Final Distractors: ['通じ', '目指し', '称え', '縒れ', '見做し']
+2025-07-19 17:36:54 - Main - INFO - ------------------------------------------------------------
+2025-07-19 17:36:54 - Main - INFO - ▶️ Target Word: '寒い' in Carrier Sentence: '今日の朝は本当に___ですね。' with context: 'SentenceContextEnum.OPEN'
+2025-07-19 17:36:54 - Main - INFO -   (Context for Trigram Filter: ('本当', BLANK, 'です'))
+2025-07-19 17:36:54 - BaselineGenerator - INFO - --- Generating baseline distractors for '寒い' ---
+2025-07-19 17:36:54 - BaselineGenerator - INFO - Target analyzed: Lemma='寒い', POS='形容詞', Frequency=6056
+2025-07-19 17:36:54 - BaselineGenerator - INFO - Found 721 candidate words with POS '形容詞'.
+2025-07-19 17:36:54 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['望ましい', '素早い', '怖い', '丸い', '柔らかい', '温かい', '嬉しい', '鋭い', '久しい', '力強い', '苦しい', '熱い', '貧しい', '美味しい', '淡い', '相応しい', '冷たい', '黄色い', '恐ろしい', '可愛い']
+2025-07-19 17:36:54 - DistractorFilter - INFO - Threshold: > -86.5830914452672
+2025-07-19 17:36:55 - DistractorFilter - INFO -   ✅ ACCEPTED: '望ましい' (PLL Score: -105.36)
+2025-07-19 17:36:55 - DistractorFilter - INFO -   ✅ ACCEPTED: '素早い' (PLL Score: -98.84)
+2025-07-19 17:36:55 - DistractorFilter - INFO -   ✅ ACCEPTED: '怖い' (PLL Score: -93.33)
+2025-07-19 17:36:56 - DistractorFilter - INFO -   ✅ ACCEPTED: '丸い' (PLL Score: -89.72)
+2025-07-19 17:36:56 - DistractorFilter - INFO -   ✅ ACCEPTED: '柔らかい' (PLL Score: -115.64)
+2025-07-19 17:36:56 - DistractorFilter - INFO -   ✅ ACCEPTED: '温かい' (PLL Score: -97.08)
+2025-07-19 17:36:56 - DistractorFilter - INFO -   ✅ ACCEPTED: '嬉しい' (PLL Score: -99.61)
+2025-07-19 17:36:57 - DistractorFilter - INFO -   ✅ ACCEPTED: '鋭い' (PLL Score: -96.34)
+2025-07-19 17:36:57 - DistractorFilter - INFO -   ✅ ACCEPTED: '久しい' (PLL Score: -98.86)
+2025-07-19 17:36:57 - DistractorFilter - INFO -   ✅ ACCEPTED: '力強い' (PLL Score: -98.34)
+2025-07-19 17:36:57 - DistractorFilter - INFO -   ✅ ACCEPTED: '苦しい' (PLL Score: -102.11)
+2025-07-19 17:36:58 - DistractorFilter - INFO -   ✅ ACCEPTED: '熱い' (PLL Score: -91.70)
+2025-07-19 17:36:58 - DistractorFilter - INFO -   ✅ ACCEPTED: '貧しい' (PLL Score: -101.95)
+2025-07-19 17:36:58 - DistractorFilter - INFO -   ✅ ACCEPTED: '美味しい' (PLL Score: -107.92)
+2025-07-19 17:36:59 - DistractorFilter - INFO -   ✅ ACCEPTED: '淡い' (PLL Score: -96.63)
+2025-07-19 17:36:59 - DistractorFilter - INFO -   ✅ ACCEPTED: '相応しい' (PLL Score: -104.09)
+2025-07-19 17:36:59 - DistractorFilter - INFO -   ✅ ACCEPTED: '冷たい' (PLL Score: -95.70)
+2025-07-19 17:36:59 - DistractorFilter - INFO -   ✅ ACCEPTED: '黄色い' (PLL Score: -88.46)
+2025-07-19 17:37:00 - DistractorFilter - INFO -   ✅ ACCEPTED: '恐ろしい' (PLL Score: -112.12)
+2025-07-19 17:37:00 - DistractorFilter - INFO -   ✅ ACCEPTED: '可愛い' (PLL Score: -102.67)
+2025-07-19 17:37:00 - Main - INFO - 
+====== Results for Baseline. ======
+2025-07-19 17:37:00 - Main - INFO -     Distractor candidates pool: ['望ましい', '素早い', '怖い', '丸い', '柔らかい', '温かい', '嬉しい', '鋭い', '久しい', '力強い']
+2025-07-19 17:37:00 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:37:00 - Main - INFO -     Dependency Rejects: ['怖い', '嬉しい', '苦しい', '熱い', '美味しい', '恐ろしい', '可愛い']
+2025-07-19 17:37:00 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:37:00 - Main - INFO -     Final Rejects (In any filter): ['恐ろしい', '美味しい', '怖い', '苦しい', '嬉しい', '可愛い', '熱い']
+2025-07-19 17:37:00 - Main - INFO -     Final Distractors: ['望ましい', '素早い', '丸い', '柔らかい', '温かい']
+2025-07-19 17:37:00 - SpellingGenerator - INFO - --- Generating spelling distractors for '寒い' ---
+2025-07-19 17:37:00 - SpellingGenerator - INFO - Target analyzed: Lemma='寒い', POS='形容詞', Frequency=6056
+2025-07-19 17:37:00 - SpellingGenerator - INFO - Unique characters in target lemma: {'い', '寒'}
+2025-07-19 17:37:00 - SpellingGenerator - INFO - Found 2770 potential candidates from character index.
+2025-07-19 17:37:00 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['望ましい', '素早い', '怖い', '丸い', '柔らかい', '温かい', '嬉しい', '鋭い', '久しい', '力強い', '苦しい', '熱い', '貧しい', '美味しい', '淡い', '相応しい', '冷たい', '黄色い', '恐ろしい', '可愛い']
+2025-07-19 17:37:00 - DistractorFilter - INFO - Threshold: > -86.5830914452672
+2025-07-19 17:37:00 - DistractorFilter - INFO -   ✅ ACCEPTED: '望ましい' (PLL Score: -105.36)
+2025-07-19 17:37:01 - DistractorFilter - INFO -   ✅ ACCEPTED: '素早い' (PLL Score: -98.84)
+2025-07-19 17:37:01 - DistractorFilter - INFO -   ✅ ACCEPTED: '怖い' (PLL Score: -93.33)
+2025-07-19 17:37:01 - DistractorFilter - INFO -   ✅ ACCEPTED: '丸い' (PLL Score: -89.72)
+2025-07-19 17:37:01 - DistractorFilter - INFO -   ✅ ACCEPTED: '柔らかい' (PLL Score: -115.64)
+2025-07-19 17:37:02 - DistractorFilter - INFO -   ✅ ACCEPTED: '温かい' (PLL Score: -97.08)
+2025-07-19 17:37:02 - DistractorFilter - INFO -   ✅ ACCEPTED: '嬉しい' (PLL Score: -99.61)
+2025-07-19 17:37:02 - DistractorFilter - INFO -   ✅ ACCEPTED: '鋭い' (PLL Score: -96.34)
+2025-07-19 17:37:03 - DistractorFilter - INFO -   ✅ ACCEPTED: '久しい' (PLL Score: -98.86)
+2025-07-19 17:37:03 - DistractorFilter - INFO -   ✅ ACCEPTED: '力強い' (PLL Score: -98.34)
+2025-07-19 17:37:03 - DistractorFilter - INFO -   ✅ ACCEPTED: '苦しい' (PLL Score: -102.11)
+2025-07-19 17:37:03 - DistractorFilter - INFO -   ✅ ACCEPTED: '熱い' (PLL Score: -91.70)
+2025-07-19 17:37:04 - DistractorFilter - INFO -   ✅ ACCEPTED: '貧しい' (PLL Score: -101.95)
+2025-07-19 17:37:04 - DistractorFilter - INFO -   ✅ ACCEPTED: '美味しい' (PLL Score: -107.92)
+2025-07-19 17:37:04 - DistractorFilter - INFO -   ✅ ACCEPTED: '淡い' (PLL Score: -96.63)
+2025-07-19 17:37:04 - DistractorFilter - INFO -   ✅ ACCEPTED: '相応しい' (PLL Score: -104.09)
+2025-07-19 17:37:05 - DistractorFilter - INFO -   ✅ ACCEPTED: '冷たい' (PLL Score: -95.70)
+2025-07-19 17:37:05 - DistractorFilter - INFO -   ✅ ACCEPTED: '黄色い' (PLL Score: -88.46)
+2025-07-19 17:37:05 - DistractorFilter - INFO -   ✅ ACCEPTED: '恐ろしい' (PLL Score: -112.12)
+2025-07-19 17:37:06 - DistractorFilter - INFO -   ✅ ACCEPTED: '可愛い' (PLL Score: -102.67)
+2025-07-19 17:37:06 - Main - INFO - 
+====== Results for Spelling. ======
+2025-07-19 17:37:06 - Main - INFO -     Distractor candidates pool: ['望ましい', '素早い', '怖い', '丸い', '柔らかい', '温かい', '嬉しい', '鋭い', '久しい', '力強い']
+2025-07-19 17:37:06 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:37:06 - Main - INFO -     Dependency Rejects: ['怖い', '嬉しい', '苦しい', '熱い', '美味しい', '恐ろしい', '可愛い']
+2025-07-19 17:37:06 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:37:06 - Main - INFO -     Final Rejects (In any filter): ['恐ろしい', '美味しい', '怖い', '苦しい', '嬉しい', '可愛い', '熱い']
+2025-07-19 17:37:06 - Main - INFO -     Final Distractors: ['望ましい', '素早い', '丸い', '柔らかい', '温かい']
+2025-07-19 17:37:06 - SimilarityGenerator - INFO - 
+--- Generating for '寒い' (Context: SentenceContextEnum.OPEN, Range: 0.4-0.6) ---
+2025-07-19 17:37:06 - DistractorFilter - INFO - Threshold: > -86.5830914452672
+2025-07-19 17:37:06 - DistractorFilter - INFO -   ✅ ACCEPTED: '底冷え' (PLL Score: -104.57)
+2025-07-19 17:37:07 - DistractorFilter - INFO -   ✅ ACCEPTED: '暖か' (PLL Score: -96.86)
+2025-07-19 17:37:07 - DistractorFilter - INFO -   ✅ ACCEPTED: '寒う' (PLL Score: -88.84)
+2025-07-19 17:37:07 - DistractorFilter - INFO -   ❌ REJECTED: '冬' (PLL Score: -76.87)
+2025-07-19 17:37:07 - DistractorFilter - INFO -   ✅ ACCEPTED: '温かっ' (PLL Score: -100.42)
+2025-07-19 17:37:07 - DistractorFilter - INFO -   ✅ ACCEPTED: '温い' (PLL Score: -90.86)
+2025-07-19 17:37:08 - DistractorFilter - INFO -   ✅ ACCEPTED: 'サムーイ' (PLL Score: -130.86)
+2025-07-19 17:37:08 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ぬくかっ' (PLL Score: -128.46)
+2025-07-19 17:37:08 - DistractorFilter - INFO -   ✅ ACCEPTED: 'むし暑かっ' (PLL Score: -105.49)
+2025-07-19 17:37:08 - DistractorFilter - INFO -   ✅ ACCEPTED: 'うすら寒かっ' (PLL Score: -107.24)
+2025-07-19 17:37:09 - DistractorFilter - INFO -   ❌ REJECTED: '暖ま' (PLL Score: -82.54)
+2025-07-19 17:37:09 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ポカポカ' (PLL Score: -145.23)
+2025-07-19 17:37:09 - DistractorFilter - INFO -   ✅ ACCEPTED: 'うすら寒い' (PLL Score: -101.77)
+2025-07-19 17:37:09 - DistractorFilter - INFO -   ❌ REJECTED: '寒空' (PLL Score: -81.48)
+2025-07-19 17:37:10 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ぬくく' (PLL Score: -121.80)
+2025-07-19 17:37:10 - DistractorFilter - INFO -   ❌ REJECTED: '暖まる' (PLL Score: -84.12)
+2025-07-19 17:37:10 - DistractorFilter - INFO -   ✅ ACCEPTED: '氷点下' (PLL Score: -97.51)
+2025-07-19 17:37:10 - DistractorFilter - INFO -   ✅ ACCEPTED: 'かじかむ' (PLL Score: -130.75)
+2025-07-19 17:37:10 - DistractorFilter - INFO -   ✅ ACCEPTED: '寒々しい' (PLL Score: -91.62)
+2025-07-19 17:37:11 - DistractorFilter - INFO -   ✅ ACCEPTED: 'あったまる' (PLL Score: -121.79)
+2025-07-19 17:37:11 - Main - INFO - 
+====== Results for Similarity. ======
+2025-07-19 17:37:11 - Main - INFO -     Distractor candidates pool: ['底冷え', '暖か', '寒う', '冬', '温かっ', '温い', 'サムーイ', 'ぬくかっ', 'むし暑かっ', 'うすら寒かっ']
+2025-07-19 17:37:11 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:37:11 - Main - INFO -     Dependency Rejects: ['あったまる']
+2025-07-19 17:37:11 - Main - INFO -     BERT Rejects: ['冬', '暖ま', '寒空', '暖まる']
+2025-07-19 17:37:11 - Main - INFO -     Final Rejects (In any filter): ['暖ま', '寒空', 'あったまる', '冬', '暖まる']
+2025-07-19 17:37:11 - Main - INFO -     Final Distractors: ['底冷え', '暖か', '寒う', '温かっ', '温い']
+2025-07-19 17:37:11 - DistractorFilter - INFO - Threshold: > -86.5830914452672
+2025-07-19 17:37:11 - DistractorFilter - INFO -   ❌ REJECTED: 'いる' (PLL Score: -82.13)
+2025-07-19 17:37:12 - DistractorFilter - INFO -   ❌ REJECTED: '帰る' (PLL Score: -80.03)
+2025-07-19 17:37:12 - DistractorFilter - INFO -   ✅ ACCEPTED: '向かう' (PLL Score: -96.12)
+2025-07-19 17:37:12 - DistractorFilter - INFO -   ❌ REJECTED: '来る' (PLL Score: -81.93)
+2025-07-19 17:37:12 - DistractorFilter - INFO -   ✅ ACCEPTED: '通う' (PLL Score: -90.42)
+2025-07-19 17:37:13 - DistractorFilter - INFO -   ❌ REJECTED: '戻る' (PLL Score: -82.49)
+2025-07-19 17:37:13 - DistractorFilter - INFO -   ❌ REJECTED: '入る' (PLL Score: -83.74)
+2025-07-19 17:37:13 - DistractorFilter - INFO -   ❌ REJECTED: '行き' (PLL Score: -83.95)
+2025-07-19 17:37:13 - DistractorFilter - INFO -   ❌ REJECTED: 'なる' (PLL Score: -83.70)
+2025-07-19 17:37:14 - DistractorFilter - INFO -   ❌ REJECTED: '朝' (PLL Score: -67.95)
+2025-07-19 17:37:14 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ある' (PLL Score: -100.24)
+2025-07-19 17:37:14 - DistractorFilter - INFO -   ❌ REJECTED: '出る' (PLL Score: -80.84)
+2025-07-19 17:37:14 - DistractorFilter - INFO -   ✅ ACCEPTED: '近い' (PLL Score: -86.86)
+2025-07-19 17:37:15 - DistractorFilter - INFO -   ✅ ACCEPTED: '着く' (PLL Score: -91.55)
+2025-07-19 17:37:15 - DistractorFilter - INFO -   ❌ REJECTED: '集まる' (PLL Score: -76.00)
+2025-07-19 17:37:15 - DistractorFilter - INFO -   ❌ REJECTED: '夢中' (PLL Score: -82.29)
+2025-07-19 17:37:15 - DistractorFilter - INFO -   ✅ ACCEPTED: 'いい' (PLL Score: -101.81)
+2025-07-19 17:37:16 - DistractorFilter - INFO -   ❌ REJECTED: 'い' (PLL Score: -85.75)
+2025-07-19 17:37:16 - DistractorFilter - INFO -   ❌ REJECTED: '帰り' (PLL Score: -81.97)
+2025-07-19 17:37:16 - DistractorFilter - INFO -   ❌ REJECTED: 'も' (PLL Score: -86.13)
+2025-07-19 17:37:16 - Main - INFO - 
+====== Results for Contextual. ======
+2025-07-19 17:37:16 - Main - INFO -     Distractor candidates pool: ['いる', '帰る', '向かう', '来る', '通う', '戻る', '入る', '行き', 'なる', '朝']
+2025-07-19 17:37:16 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:37:16 - Main - INFO -     Dependency Rejects: ['いる', '帰る', '向かう', '来る', '通う', '戻る', '入る', 'なる', '朝', 'ある']
+2025-07-19 17:37:16 - Main - INFO -     BERT Rejects: ['いる', '帰る', '来る', '戻る', '入る', '行き', 'なる', '朝', '出る', '集まる']
+2025-07-19 17:37:16 - Main - INFO -     Final Rejects (In any filter): ['なる', '帰り', '着く', 'いい', '入る', 'い', '帰る', '来る', '近い', '行き', '通う', 'ある', '戻る', '向かう', 'いる', '夢中', 'も', '朝', '集まる', '出る']
+2025-07-19 17:37:16 - Main - INFO -     Final Distractors: []
+2025-07-19 17:37:16 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for '寒い' (Context: Open) ---
+2025-07-19 17:37:16 - CooccurrenceGenerator - INFO - Target: Lemma='寒い', POS='形容詞', Freq=6056
+2025-07-19 17:37:16 - CooccurrenceGenerator - INFO - Found 873 co-occurring candidate surfaces to analyze.
+2025-07-19 17:37:16 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['暑い', '蒸し暑い', '涼しい', '温かい', '冷たい', '熱い', '多い', '厳しい', '高い', '短い', '低い', '白い', '無い', '少ない', '強い', '赤い', '暗い', '珍しい', '激しい', '黒い']
+2025-07-19 17:37:16 - DistractorFilter - INFO - Threshold: > -86.5830914452672
+2025-07-19 17:37:17 - DistractorFilter - INFO -   ❌ REJECTED: '暑い' (PLL Score: -85.35)
+2025-07-19 17:37:17 - DistractorFilter - INFO -   ✅ ACCEPTED: '蒸し暑い' (PLL Score: -108.73)
+2025-07-19 17:37:17 - DistractorFilter - INFO -   ✅ ACCEPTED: '涼しい' (PLL Score: -102.33)
+2025-07-19 17:37:17 - DistractorFilter - INFO -   ✅ ACCEPTED: '温かい' (PLL Score: -97.08)
+2025-07-19 17:37:18 - DistractorFilter - INFO -   ✅ ACCEPTED: '冷たい' (PLL Score: -95.70)
+2025-07-19 17:37:18 - DistractorFilter - INFO -   ✅ ACCEPTED: '熱い' (PLL Score: -91.70)
+2025-07-19 17:37:18 - DistractorFilter - INFO -   ✅ ACCEPTED: '多い' (PLL Score: -91.12)
+2025-07-19 17:37:18 - DistractorFilter - INFO -   ✅ ACCEPTED: '厳しい' (PLL Score: -100.57)
+2025-07-19 17:37:19 - DistractorFilter - INFO -   ✅ ACCEPTED: '高い' (PLL Score: -92.97)
+2025-07-19 17:37:19 - DistractorFilter - INFO -   ✅ ACCEPTED: '短い' (PLL Score: -91.66)
+2025-07-19 17:37:19 - DistractorFilter - INFO -   ✅ ACCEPTED: '低い' (PLL Score: -96.88)
+2025-07-19 17:37:19 - DistractorFilter - INFO -   ✅ ACCEPTED: '白い' (PLL Score: -87.90)
+2025-07-19 17:37:20 - DistractorFilter - INFO -   ✅ ACCEPTED: '無い' (PLL Score: -88.94)
+2025-07-19 17:37:20 - DistractorFilter - INFO -   ✅ ACCEPTED: '少ない' (PLL Score: -96.06)
+2025-07-19 17:37:20 - DistractorFilter - INFO -   ✅ ACCEPTED: '強い' (PLL Score: -89.01)
+2025-07-19 17:37:20 - DistractorFilter - INFO -   ✅ ACCEPTED: '赤い' (PLL Score: -88.57)
+2025-07-19 17:37:21 - DistractorFilter - INFO -   ✅ ACCEPTED: '暗い' (PLL Score: -91.22)
+2025-07-19 17:37:21 - DistractorFilter - INFO -   ✅ ACCEPTED: '珍しい' (PLL Score: -105.94)
+2025-07-19 17:37:21 - DistractorFilter - INFO -   ✅ ACCEPTED: '激しい' (PLL Score: -106.15)
+2025-07-19 17:37:21 - DistractorFilter - INFO -   ✅ ACCEPTED: '黒い' (PLL Score: -91.18)
+2025-07-19 17:37:21 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-07-19 17:37:21 - Main - INFO -     Distractor candidates pool: ['暑い', '蒸し暑い', '涼しい', '温かい', '冷たい', '熱い', '多い', '厳しい', '高い', '短い']
+2025-07-19 17:37:21 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:37:21 - Main - INFO -     Dependency Rejects: ['熱い', '多い', '厳しい', '高い', '短い', '低い', '無い', '少ない', '強い', '暗い']
+2025-07-19 17:37:21 - Main - INFO -     BERT Rejects: ['暑い']
+2025-07-19 17:37:21 - Main - INFO -     Final Rejects (In any filter): ['多い', '無い', '強い', '少ない', '厳しい', '暗い', '高い', '珍しい', '低い', '激しい', '暑い', '短い', '熱い']
+2025-07-19 17:37:21 - Main - INFO -     Final Distractors: ['蒸し暑い', '涼しい', '温かい', '冷たい', '白い']
+2025-07-19 17:37:21 - Main - INFO - ------------------------------------------------------------
+2025-07-19 17:37:21 - Main - INFO - ▶️ Target Word: 'コーヒー' in Carrier Sentence: '彼は朝食に___を一杯飲みます。' with context: 'SentenceContextEnum.CLOSED'
+2025-07-19 17:37:21 - Main - INFO -   (Context for Trigram Filter: ('朝食', BLANK, '一杯'))
+2025-07-19 17:37:21 - BaselineGenerator - INFO - --- Generating baseline distractors for 'コーヒー' ---
+2025-07-19 17:37:21 - BaselineGenerator - INFO - Target analyzed: Lemma='コーヒー-coffee', POS='名詞', Frequency=14799
+2025-07-19 17:37:21 - BaselineGenerator - INFO - Found 166199 candidate words with POS '名詞'.
+2025-07-19 17:37:22 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['同作', '受信', '両国', '入院', '噂', '逃亡', 'ねた', '容量', '騎乗', 'エル', '悪魔', 'アレンジ-arrange', '徹底', '保証', 'サンフランシスコ', '血液', '開放', '湖', '騒動', '黄色']
+2025-07-19 17:37:22 - DistractorFilter - INFO - Threshold: > -91.53479900117964
+2025-07-19 17:37:22 - DistractorFilter - INFO -   ❌ REJECTED: '同作' (PLL Score: -75.26)
+2025-07-19 17:37:22 - DistractorFilter - INFO -   ❌ REJECTED: '受信' (PLL Score: -85.69)
+2025-07-19 17:37:23 - DistractorFilter - INFO -   ❌ REJECTED: '両国' (PLL Score: -81.44)
+2025-07-19 17:37:23 - DistractorFilter - INFO -   ❌ REJECTED: '入院' (PLL Score: -87.51)
+2025-07-19 17:37:23 - DistractorFilter - INFO -   ❌ REJECTED: '噂' (PLL Score: -78.77)
+2025-07-19 17:37:23 - DistractorFilter - INFO -   ❌ REJECTED: '逃亡' (PLL Score: -89.20)
+2025-07-19 17:37:24 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ねた' (PLL Score: -96.10)
+2025-07-19 17:37:24 - DistractorFilter - INFO -   ❌ REJECTED: '容量' (PLL Score: -90.71)
+2025-07-19 17:37:24 - DistractorFilter - INFO -   ❌ REJECTED: '騎乗' (PLL Score: -79.48)
+2025-07-19 17:37:24 - DistractorFilter - INFO -   ❌ REJECTED: 'エル' (PLL Score: -87.52)
+2025-07-19 17:37:25 - DistractorFilter - INFO -   ❌ REJECTED: '悪魔' (PLL Score: -83.55)
+2025-07-19 17:37:25 - DistractorFilter - INFO -   ✅ ACCEPTED: 'アレンジ-arrange' (PLL Score: -145.05)
+2025-07-19 17:37:25 - DistractorFilter - INFO -   ❌ REJECTED: '徹底' (PLL Score: -90.12)
+2025-07-19 17:37:26 - DistractorFilter - INFO -   ❌ REJECTED: '保証' (PLL Score: -79.31)
+2025-07-19 17:37:26 - DistractorFilter - INFO -   ✅ ACCEPTED: 'サンフランシスコ' (PLL Score: -100.31)
+2025-07-19 17:37:26 - DistractorFilter - INFO -   ❌ REJECTED: '血液' (PLL Score: -75.90)
+2025-07-19 17:37:26 - DistractorFilter - INFO -   ❌ REJECTED: '開放' (PLL Score: -87.15)
+2025-07-19 17:37:27 - DistractorFilter - INFO -   ❌ REJECTED: '湖' (PLL Score: -74.80)
+2025-07-19 17:37:27 - DistractorFilter - INFO -   ✅ ACCEPTED: '騒動' (PLL Score: -92.76)
+2025-07-19 17:37:27 - DistractorFilter - INFO -   ❌ REJECTED: '黄色' (PLL Score: -83.06)
+2025-07-19 17:37:27 - Main - INFO - 
+====== Results for Baseline. ======
+2025-07-19 17:37:27 - Main - INFO -     Distractor candidates pool: ['同作', '受信', '両国', '入院', '噂', '逃亡', 'ねた', '容量', '騎乗', 'エル']
+2025-07-19 17:37:27 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:37:27 - Main - INFO -     Dependency Rejects: ['血液']
+2025-07-19 17:37:27 - Main - INFO -     BERT Rejects: ['同作', '受信', '両国', '入院', '噂', '逃亡', '容量', '騎乗', 'エル', '悪魔']
+2025-07-19 17:37:27 - Main - INFO -     Final Rejects (In any filter): ['同作', '湖', 'エル', '黄色', '容量', '騎乗', '受信', '血液', '悪魔', '逃亡', '徹底', '開放', '噂', '保証', '入院', '両国']
+2025-07-19 17:37:27 - Main - INFO -     Final Distractors: ['ねた', 'アレンジ-arrange', 'サンフランシスコ', '騒動']
+2025-07-19 17:37:27 - SpellingGenerator - INFO - --- Generating spelling distractors for 'コーヒー' ---
+2025-07-19 17:37:27 - SpellingGenerator - INFO - Target analyzed: Lemma='コーヒー-coffee', POS='名詞', Frequency=14799
+2025-07-19 17:37:27 - SpellingGenerator - INFO - Unique characters in target lemma: {'o', 'コ', 'ヒ', 'c', 'ー', '-', 'e', 'f'}
+2025-07-19 17:37:27 - SpellingGenerator - INFO - Found 43581 potential candidates from character index.
+2025-07-19 17:37:27 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['アレンジ-arrange', 'サンフランシスコ', 'ホールディング-holding', 'ストア-store', 'アイディア-idea', 'マルクス-Marx', 'ヨコスカ', 'ジョー-外国', 'バイエルン-Bayern', 'ヘクタール-hectare', 'レーシング', 'グラフィック-graphic', 'ヒーロー-hero', 'タイセイ-外国', 'フィリップ-Philippe', 'フィギュア-figure', 'コウジ', 'キャッチ-catch', 'インター', 'ダービー-Derby']
+2025-07-19 17:37:27 - DistractorFilter - INFO - Threshold: > -91.53479900117964
+2025-07-19 17:37:28 - DistractorFilter - INFO -   ✅ ACCEPTED: 'アレンジ-arrange' (PLL Score: -145.05)
+2025-07-19 17:37:28 - DistractorFilter - INFO -   ✅ ACCEPTED: 'サンフランシスコ' (PLL Score: -100.31)
+2025-07-19 17:37:28 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ホールディング-holding' (PLL Score: -136.27)
+2025-07-19 17:37:29 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ストア-store' (PLL Score: -115.95)
+2025-07-19 17:37:29 - DistractorFilter - INFO -   ✅ ACCEPTED: 'アイディア-idea' (PLL Score: -139.34)
+2025-07-19 17:37:29 - DistractorFilter - INFO -   ✅ ACCEPTED: 'マルクス-Marx' (PLL Score: -133.48)
+2025-07-19 17:37:29 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ヨコスカ' (PLL Score: -102.06)
+2025-07-19 17:37:30 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ジョー-外国' (PLL Score: -111.09)
+2025-07-19 17:37:30 - DistractorFilter - INFO -   ✅ ACCEPTED: 'バイエルン-Bayern' (PLL Score: -138.65)
+2025-07-19 17:37:30 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ヘクタール-hectare' (PLL Score: -148.28)
+2025-07-19 17:37:31 - DistractorFilter - INFO -   ✅ ACCEPTED: 'レーシング' (PLL Score: -92.64)
+2025-07-19 17:37:31 - DistractorFilter - INFO -   ✅ ACCEPTED: 'グラフィック-graphic' (PLL Score: -143.32)
+2025-07-19 17:37:31 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ヒーロー-hero' (PLL Score: -116.51)
+2025-07-19 17:37:32 - DistractorFilter - INFO -   ✅ ACCEPTED: 'タイセイ-外国' (PLL Score: -117.78)
+2025-07-19 17:37:32 - DistractorFilter - INFO -   ✅ ACCEPTED: 'フィリップ-Philippe' (PLL Score: -131.48)
+2025-07-19 17:37:32 - DistractorFilter - INFO -   ✅ ACCEPTED: 'フィギュア-figure' (PLL Score: -133.72)
+2025-07-19 17:37:33 - DistractorFilter - INFO -   ✅ ACCEPTED: 'コウジ' (PLL Score: -94.22)
+2025-07-19 17:37:33 - DistractorFilter - INFO -   ✅ ACCEPTED: 'キャッチ-catch' (PLL Score: -126.13)
+2025-07-19 17:37:33 - DistractorFilter - INFO -   ✅ ACCEPTED: 'インター' (PLL Score: -91.95)
+2025-07-19 17:37:33 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ダービー-Derby' (PLL Score: -130.88)
+2025-07-19 17:37:33 - Main - INFO - 
+====== Results for Spelling. ======
+2025-07-19 17:37:33 - Main - INFO -     Distractor candidates pool: ['アレンジ-arrange', 'サンフランシスコ', 'ホールディング-holding', 'ストア-store', 'アイディア-idea', 'マルクス-Marx', 'ヨコスカ', 'ジョー-外国', 'バイエルン-Bayern', 'ヘクタール-hectare']
+2025-07-19 17:37:33 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:37:33 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:37:33 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:37:33 - Main - INFO -     Final Rejects (In any filter): []
+2025-07-19 17:37:33 - Main - INFO -     Final Distractors: ['アレンジ-arrange', 'サンフランシスコ', 'ホールディング-holding', 'ストア-store', 'アイディア-idea']
+2025-07-19 17:37:33 - SimilarityGenerator - INFO - 
+--- Generating for 'コーヒー' (Context: SentenceContextEnum.CLOSED, Range: 0.61-0.75) ---
+2025-07-19 17:37:34 - DistractorFilter - INFO - Threshold: > -91.53479900117964
+2025-07-19 17:37:34 - DistractorFilter - INFO -   ✅ ACCEPTED: 'カフェオレ' (PLL Score: -101.02)
+2025-07-19 17:37:35 - DistractorFilter - INFO -   ❌ REJECTED: '紅茶' (PLL Score: -70.18)
+2025-07-19 17:37:35 - DistractorFilter - INFO -   ✅ ACCEPTED: 'カフェラテ' (PLL Score: -121.64)
+2025-07-19 17:37:35 - DistractorFilter - INFO -   ❌ REJECTED: 'コヒー' (PLL Score: -91.51)
+2025-07-19 17:37:35 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ーコーヒー' (PLL Score: -97.96)
+2025-07-19 17:37:36 - DistractorFilter - INFO -   ✅ ACCEPTED: 'スペシャリティコーヒー' (PLL Score: -142.20)
+2025-07-19 17:37:36 - DistractorFilter - INFO -   ❌ REJECTED: 'お茶' (PLL Score: -78.52)
+2025-07-19 17:37:36 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ラバッツァ' (PLL Score: -100.80)
+2025-07-19 17:37:36 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ドリップ' (PLL Score: -92.17)
+2025-07-19 17:37:37 - DistractorFilter - INFO -   ✅ ACCEPTED: 'スペシャリティーコーヒー' (PLL Score: -141.98)
+2025-07-19 17:37:37 - DistractorFilter - INFO -   ✅ ACCEPTED: 'トアルコトラジャ' (PLL Score: -148.05)
+2025-07-19 17:37:37 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ウインナコーヒー' (PLL Score: -144.89)
+2025-07-19 17:37:38 - DistractorFilter - INFO -   ✅ ACCEPTED: 'スペシャルティーコーヒー' (PLL Score: -109.80)
+2025-07-19 17:37:38 - DistractorFilter - INFO -   ✅ ACCEPTED: 'コーヒーマシーン' (PLL Score: -132.66)
+2025-07-19 17:37:38 - DistractorFilter - INFO -   ❌ REJECTED: 'ｺｰﾋｰ' (PLL Score: -63.56)
+2025-07-19 17:37:39 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ノンカフェインコーヒー' (PLL Score: -160.62)
+2025-07-19 17:37:39 - DistractorFilter - INFO -   ✅ ACCEPTED: 'カップオンコーヒー' (PLL Score: -112.79)
+2025-07-19 17:37:39 - DistractorFilter - INFO -   ✅ ACCEPTED: 'スペシャルティコーヒー' (PLL Score: -118.09)
+2025-07-19 17:37:40 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ハンドドリップコーヒー' (PLL Score: -161.36)
+2025-07-19 17:37:40 - DistractorFilter - INFO -   ✅ ACCEPTED: 'フェアトレードコーヒー' (PLL Score: -144.75)
+2025-07-19 17:37:40 - Main - INFO - 
+====== Results for Similarity. ======
+2025-07-19 17:37:40 - Main - INFO -     Distractor candidates pool: ['カフェオレ', '紅茶', 'カフェラテ', 'コヒー', 'ーコーヒー', 'スペシャリティコーヒー', 'お茶', 'ラバッツァ', 'ドリップ', 'スペシャリティーコーヒー']
+2025-07-19 17:37:40 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:37:40 - Main - INFO -     Dependency Rejects: ['紅茶']
+2025-07-19 17:37:40 - Main - INFO -     BERT Rejects: ['紅茶', 'コヒー', 'お茶', 'ｺｰﾋｰ']
+2025-07-19 17:37:40 - Main - INFO -     Final Rejects (In any filter): ['ｺｰﾋｰ', '紅茶', 'コヒー', 'お茶']
+2025-07-19 17:37:40 - Main - INFO -     Final Distractors: ['カフェオレ', 'カフェラテ', 'ーコーヒー', 'スペシャリティコーヒー', 'ラバッツァ']
+2025-07-19 17:37:40 - DistractorFilter - INFO - Threshold: > -91.53479900117964
+2025-07-19 17:37:40 - DistractorFilter - INFO -   ❌ REJECTED: '酒' (PLL Score: -61.56)
+2025-07-19 17:37:41 - DistractorFilter - INFO -   ❌ REJECTED: '水' (PLL Score: -64.38)
+2025-07-19 17:37:41 - Main - INFO - 
+====== Results for Contextual. ======
+2025-07-19 17:37:41 - Main - INFO -     Distractor candidates pool: ['酒', '水']
+2025-07-19 17:37:41 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:37:41 - Main - INFO -     Dependency Rejects: ['酒', '水']
+2025-07-19 17:37:41 - Main - INFO -     BERT Rejects: ['酒', '水']
+2025-07-19 17:37:41 - Main - INFO -     Final Rejects (In any filter): ['水', '酒']
+2025-07-19 17:37:41 - Main - INFO -     Final Distractors: []
+2025-07-19 17:37:41 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for 'コーヒー' (Context: Closed) ---
+2025-07-19 17:37:41 - CooccurrenceGenerator - INFO - Target: Lemma='コーヒー-coffee', POS='名詞', Freq=14799
+2025-07-19 17:37:41 - CooccurrenceGenerator - INFO - Found 4790 co-occurring candidate surfaces to analyze.
+2025-07-19 17:37:41 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['通じ', '目指し', '縒れ', 'テノム', 'タリーズ', 'ソリュブル-soluble', 'ドトール-doutor', '酒入り', 'ロブスタ-robusta', 'アラビカ-arabica', '浸し', '焙煎', '深煎り', 'デミタス-demitasse', 'ドリップ-drip', 'スターバックス-Starbucks', '蜀黍', 'エスプレッソ-espresso', '欠け', '日レス']
+2025-07-19 17:37:41 - DistractorFilter - INFO - Threshold: > -91.53479900117964
+2025-07-19 17:37:41 - DistractorFilter - INFO -   ❌ REJECTED: '通じ' (PLL Score: -83.79)
+2025-07-19 17:37:42 - DistractorFilter - INFO -   ✅ ACCEPTED: '目指し' (PLL Score: -91.61)
+2025-07-19 17:37:42 - DistractorFilter - INFO -   ❌ REJECTED: '縒れ' (PLL Score: -82.67)
+2025-07-19 17:37:42 - DistractorFilter - INFO -   ✅ ACCEPTED: 'テノム' (PLL Score: -97.92)
+2025-07-19 17:37:42 - DistractorFilter - INFO -   ✅ ACCEPTED: 'タリーズ' (PLL Score: -97.84)
+2025-07-19 17:37:43 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ソリュブル-soluble' (PLL Score: -142.71)
+2025-07-19 17:37:43 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ドトール-doutor' (PLL Score: -130.24)
+2025-07-19 17:37:43 - DistractorFilter - INFO -   ❌ REJECTED: '酒入り' (PLL Score: -86.74)
+2025-07-19 17:37:43 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ロブスタ-robusta' (PLL Score: -122.65)
+2025-07-19 17:37:44 - DistractorFilter - INFO -   ✅ ACCEPTED: 'アラビカ-arabica' (PLL Score: -124.74)
+2025-07-19 17:37:44 - DistractorFilter - INFO -   ❌ REJECTED: '浸し' (PLL Score: -81.94)
+2025-07-19 17:37:44 - DistractorFilter - INFO -   ❌ REJECTED: '焙煎' (PLL Score: -71.21)
+2025-07-19 17:37:45 - DistractorFilter - INFO -   ✅ ACCEPTED: '深煎り' (PLL Score: -91.77)
+2025-07-19 17:37:45 - DistractorFilter - INFO -   ✅ ACCEPTED: 'デミタス-demitasse' (PLL Score: -147.40)
+2025-07-19 17:37:45 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ドリップ-drip' (PLL Score: -137.20)
+2025-07-19 17:37:46 - DistractorFilter - INFO -   ✅ ACCEPTED: 'スターバックス-Starbucks' (PLL Score: -143.39)
+2025-07-19 17:37:46 - DistractorFilter - INFO -   ❌ REJECTED: '蜀黍' (PLL Score: -72.51)
+2025-07-19 17:37:46 - DistractorFilter - INFO -   ✅ ACCEPTED: 'エスプレッソ-espresso' (PLL Score: -139.90)
+2025-07-19 17:37:46 - DistractorFilter - INFO -   ❌ REJECTED: '欠け' (PLL Score: -90.89)
+2025-07-19 17:37:47 - DistractorFilter - INFO -   ✅ ACCEPTED: '日レス' (PLL Score: -97.46)
+2025-07-19 17:37:47 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-07-19 17:37:47 - Main - INFO -     Distractor candidates pool: ['通じ', '目指し', '縒れ', 'テノム', 'タリーズ', 'ソリュブル-soluble', 'ドトール-doutor', '酒入り', 'ロブスタ-robusta', 'アラビカ-arabica']
+2025-07-19 17:37:47 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:37:47 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:37:47 - Main - INFO -     BERT Rejects: ['通じ', '縒れ', '酒入り', '浸し', '焙煎', '蜀黍', '欠け']
+2025-07-19 17:37:47 - Main - INFO -     Final Rejects (In any filter): ['欠け', '浸し', '焙煎', '蜀黍', '縒れ', '酒入り', '通じ']
+2025-07-19 17:37:47 - Main - INFO -     Final Distractors: ['目指し', 'テノム', 'タリーズ', 'ソリュブル-soluble', 'ドトール-doutor']
+2025-07-19 17:37:47 - Main - INFO - ------------------------------------------------------------
+2025-07-19 17:37:47 - Main - INFO - ▶️ Target Word: '書いた' in Carrier Sentence: '彼女は昨日、長い手紙を___。' with context: 'SentenceContextEnum.CLOSED'
+2025-07-19 17:37:47 - Main - INFO -   (Context for Trigram Filter: ('手紙', BLANK, 'EOS'))
+2025-07-19 17:37:47 - BaselineGenerator - INFO - --- Generating baseline distractors for '書いた' ---
+2025-07-19 17:37:47 - BaselineGenerator - INFO - Target analyzed: Lemma='書く', POS='動詞', Frequency=130301
+2025-07-19 17:37:47 - BaselineGenerator - INFO - Found 8094 candidate words with POS '動詞'.
+2025-07-19 17:37:47 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['思う', '加える', '出す', '述べる', '認める', '結ぶ', '始まる', '至る', '渡る', '出る', '経る', '残す', '付く', '求める', '果たす', '選ぶ', '基づく', '変わる', '続ける', '当たる']
+2025-07-19 17:37:47 - DistractorFilter - INFO - Threshold: > -88.60920923948288
+2025-07-19 17:37:47 - DistractorFilter - INFO -   ✅ ACCEPTED: '思う' (PLL Score: -94.19)
+2025-07-19 17:37:48 - DistractorFilter - INFO -   ✅ ACCEPTED: '加える' (PLL Score: -95.47)
+2025-07-19 17:37:48 - DistractorFilter - INFO -   ✅ ACCEPTED: '出す' (PLL Score: -89.96)
+2025-07-19 17:37:48 - DistractorFilter - INFO -   ❌ REJECTED: '述べる' (PLL Score: -88.51)
+2025-07-19 17:37:49 - DistractorFilter - INFO -   ✅ ACCEPTED: '認める' (PLL Score: -93.41)
+2025-07-19 17:37:49 - DistractorFilter - INFO -   ❌ REJECTED: '結ぶ' (PLL Score: -85.69)
+2025-07-19 17:37:49 - DistractorFilter - INFO -   ✅ ACCEPTED: '始まる' (PLL Score: -95.69)
+2025-07-19 17:37:49 - DistractorFilter - INFO -   ✅ ACCEPTED: '至る' (PLL Score: -91.45)
+2025-07-19 17:37:50 - DistractorFilter - INFO -   ❌ REJECTED: '渡る' (PLL Score: -84.22)
+2025-07-19 17:37:50 - DistractorFilter - INFO -   ✅ ACCEPTED: '出る' (PLL Score: -93.91)
+2025-07-19 17:37:50 - DistractorFilter - INFO -   ❌ REJECTED: '経る' (PLL Score: -86.25)
+2025-07-19 17:37:50 - DistractorFilter - INFO -   ❌ REJECTED: '残す' (PLL Score: -87.70)
+2025-07-19 17:37:51 - DistractorFilter - INFO -   ✅ ACCEPTED: '付く' (PLL Score: -89.56)
+2025-07-19 17:37:51 - DistractorFilter - INFO -   ✅ ACCEPTED: '求める' (PLL Score: -93.65)
+2025-07-19 17:37:51 - DistractorFilter - INFO -   ✅ ACCEPTED: '果たす' (PLL Score: -106.56)
+2025-07-19 17:37:51 - DistractorFilter - INFO -   ✅ ACCEPTED: '選ぶ' (PLL Score: -92.47)
+2025-07-19 17:37:52 - DistractorFilter - INFO -   ✅ ACCEPTED: '基づく' (PLL Score: -98.97)
+2025-07-19 17:37:52 - DistractorFilter - INFO -   ✅ ACCEPTED: '変わる' (PLL Score: -96.64)
+2025-07-19 17:37:52 - DistractorFilter - INFO -   ✅ ACCEPTED: '続ける' (PLL Score: -90.49)
+2025-07-19 17:37:52 - DistractorFilter - INFO -   ❌ REJECTED: '当たる' (PLL Score: -86.83)
+2025-07-19 17:37:52 - Main - INFO - 
+====== Results for Baseline. ======
+2025-07-19 17:37:52 - Main - INFO -     Distractor candidates pool: ['思う', '加える', '出す', '述べる', '認める', '結ぶ', '始まる', '至る', '渡る', '出る']
+2025-07-19 17:37:52 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:37:52 - Main - INFO -     Dependency Rejects: ['加える', '出す', '認める', '結ぶ', '残す', '求める']
+2025-07-19 17:37:52 - Main - INFO -     BERT Rejects: ['述べる', '結ぶ', '渡る', '経る', '残す', '当たる']
+2025-07-19 17:37:52 - Main - INFO -     Final Rejects (In any filter): ['結ぶ', '加える', '経る', '渡る', '求める', '述べる', '当たる', '残す', '出す', '認める']
+2025-07-19 17:37:52 - Main - INFO -     Final Distractors: ['思う', '始まる', '至る', '出る', '付く']
+2025-07-19 17:37:52 - SpellingGenerator - INFO - --- Generating spelling distractors for '書いた' ---
+2025-07-19 17:37:52 - SpellingGenerator - INFO - Target analyzed: Lemma='書く', POS='動詞', Frequency=130301
+2025-07-19 17:37:52 - SpellingGenerator - INFO - Unique characters in target lemma: {'く', '書'}
+2025-07-19 17:37:52 - SpellingGenerator - INFO - Found 1469 potential candidates from character index.
+2025-07-19 17:37:52 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['付く', '基づく', '続く', '描く', '除く', '置く', '開く', '聞く', '働く', '亡くなる', '引く-他動詞', '引き続く', '無くなる', '招く', '築く', '抱く', '動く', '気付く', '導く', '抜く']
+2025-07-19 17:37:53 - DistractorFilter - INFO - Threshold: > -88.60920923948288
+2025-07-19 17:37:53 - DistractorFilter - INFO -   ✅ ACCEPTED: '付く' (PLL Score: -89.56)
+2025-07-19 17:37:53 - DistractorFilter - INFO -   ✅ ACCEPTED: '基づく' (PLL Score: -98.97)
+2025-07-19 17:37:53 - DistractorFilter - INFO -   ❌ REJECTED: '続く' (PLL Score: -85.35)
+2025-07-19 17:37:54 - DistractorFilter - INFO -   ✅ ACCEPTED: '描く' (PLL Score: -94.27)
+2025-07-19 17:37:54 - DistractorFilter - INFO -   ✅ ACCEPTED: '除く' (PLL Score: -90.43)
+2025-07-19 17:37:54 - DistractorFilter - INFO -   ✅ ACCEPTED: '置く' (PLL Score: -96.15)
+2025-07-19 17:37:54 - DistractorFilter - INFO -   ✅ ACCEPTED: '開く' (PLL Score: -88.77)
+2025-07-19 17:37:55 - DistractorFilter - INFO -   ✅ ACCEPTED: '聞く' (PLL Score: -90.74)
+2025-07-19 17:37:55 - DistractorFilter - INFO -   ✅ ACCEPTED: '働く' (PLL Score: -103.23)
+2025-07-19 17:37:55 - DistractorFilter - INFO -   ✅ ACCEPTED: '亡くなる' (PLL Score: -93.42)
+2025-07-19 17:37:56 - DistractorFilter - INFO -   ✅ ACCEPTED: '引く-他動詞' (PLL Score: -120.34)
+2025-07-19 17:37:56 - DistractorFilter - INFO -   ✅ ACCEPTED: '引き続く' (PLL Score: -95.22)
+2025-07-19 17:37:56 - DistractorFilter - INFO -   ✅ ACCEPTED: '無くなる' (PLL Score: -100.03)
+2025-07-19 17:37:56 - DistractorFilter - INFO -   ❌ REJECTED: '招く' (PLL Score: -85.16)
+2025-07-19 17:37:57 - DistractorFilter - INFO -   ✅ ACCEPTED: '築く' (PLL Score: -94.69)
+2025-07-19 17:37:57 - DistractorFilter - INFO -   ✅ ACCEPTED: '抱く' (PLL Score: -95.08)
+2025-07-19 17:37:57 - DistractorFilter - INFO -   ✅ ACCEPTED: '動く' (PLL Score: -95.53)
+2025-07-19 17:37:57 - DistractorFilter - INFO -   ✅ ACCEPTED: '気付く' (PLL Score: -98.50)
+2025-07-19 17:37:58 - DistractorFilter - INFO -   ✅ ACCEPTED: '導く' (PLL Score: -89.98)
+2025-07-19 17:37:58 - DistractorFilter - INFO -   ✅ ACCEPTED: '抜く' (PLL Score: -92.34)
+2025-07-19 17:37:58 - Main - INFO - 
+====== Results for Spelling. ======
+2025-07-19 17:37:58 - Main - INFO -     Distractor candidates pool: ['付く', '基づく', '続く', '描く', '除く', '置く', '開く', '聞く', '働く', '亡くなる']
+2025-07-19 17:37:58 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:37:58 - Main - INFO -     Dependency Rejects: ['描く', '除く', '置く', '開く', '聞く']
+2025-07-19 17:37:58 - Main - INFO -     BERT Rejects: ['続く', '招く']
+2025-07-19 17:37:58 - Main - INFO -     Final Rejects (In any filter): ['続く', '招く', '置く', '聞く', '開く', '描く', '除く']
+2025-07-19 17:37:58 - Main - INFO -     Final Distractors: ['付く', '基づく', '働く', '亡くなる', '引く-他動詞']
+2025-07-19 17:37:58 - SimilarityGenerator - INFO - 
+--- Generating for '書いた' (Context: SentenceContextEnum.CLOSED, Range: 0.61-0.75) ---
+2025-07-19 17:37:58 - DistractorFilter - INFO - Threshold: > -88.60920923948288
+2025-07-19 17:37:58 - Main - INFO - 
+====== Results for Similarity. ======
+2025-07-19 17:37:58 - Main - INFO -     Distractor candidates pool: []
+2025-07-19 17:37:58 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:37:58 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:37:58 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:37:58 - Main - INFO -     Final Rejects (In any filter): []
+2025-07-19 17:37:58 - Main - INFO -     Final Distractors: []
+2025-07-19 17:37:59 - DistractorFilter - INFO - Threshold: > -88.60920923948288
+2025-07-19 17:37:59 - DistractorFilter - INFO -   ✅ ACCEPTED: '見つける' (PLL Score: -102.13)
+2025-07-19 17:37:59 - DistractorFilter - INFO -   ✅ ACCEPTED: '見せる' (PLL Score: -105.98)
+2025-07-19 17:37:59 - Main - INFO - 
+====== Results for Contextual. ======
+2025-07-19 17:37:59 - Main - INFO -     Distractor candidates pool: ['見つける', '見せる']
+2025-07-19 17:37:59 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:37:59 - Main - INFO -     Dependency Rejects: ['見つける', '見せる']
+2025-07-19 17:37:59 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:37:59 - Main - INFO -     Final Rejects (In any filter): ['見せる', '見つける']
+2025-07-19 17:37:59 - Main - INFO -     Final Distractors: []
+2025-07-19 17:37:59 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for '書いた' (Context: Closed) ---
+2025-07-19 17:37:59 - CooccurrenceGenerator - INFO - Target: Lemma='書く', POS='動詞', Freq=130301
+2025-07-19 17:37:59 - CooccurrenceGenerator - INFO - Found 11426 co-occurring candidate surfaces to analyze.
+2025-07-19 17:38:00 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['激する', '焼き捨てる', '思い浮かべる', '誑かす', '惟る', '書き直す', '付け足す', '止す', '死する', '歩き回る', '手渡す', '書き記す', '言い放つ', '満ちる', '装う', '思い出す', '思い付く', '書き上げる', '悼む', '間違う']
+2025-07-19 17:38:00 - DistractorFilter - INFO - Threshold: > -88.60920923948288
+2025-07-19 17:38:00 - DistractorFilter - INFO -   ✅ ACCEPTED: '激する' (PLL Score: -101.30)
+2025-07-19 17:38:01 - DistractorFilter - INFO -   ✅ ACCEPTED: '焼き捨てる' (PLL Score: -113.72)
+2025-07-19 17:38:01 - DistractorFilter - INFO -   ✅ ACCEPTED: '思い浮かべる' (PLL Score: -122.70)
+2025-07-19 17:38:01 - DistractorFilter - INFO -   ✅ ACCEPTED: '誑かす' (PLL Score: -92.03)
+2025-07-19 17:38:01 - DistractorFilter - INFO -   ❌ REJECTED: '惟る' (PLL Score: -86.08)
+2025-07-19 17:38:02 - DistractorFilter - INFO -   ✅ ACCEPTED: '書き直す' (PLL Score: -97.75)
+2025-07-19 17:38:02 - DistractorFilter - INFO -   ✅ ACCEPTED: '付け足す' (PLL Score: -98.83)
+2025-07-19 17:38:02 - DistractorFilter - INFO -   ❌ REJECTED: '止す' (PLL Score: -88.29)
+2025-07-19 17:38:02 - DistractorFilter - INFO -   ✅ ACCEPTED: '死する' (PLL Score: -102.94)
+2025-07-19 17:38:03 - DistractorFilter - INFO -   ✅ ACCEPTED: '歩き回る' (PLL Score: -101.11)
+2025-07-19 17:38:03 - DistractorFilter - INFO -   ❌ REJECTED: '手渡す' (PLL Score: -87.14)
+2025-07-19 17:38:03 - DistractorFilter - INFO -   ✅ ACCEPTED: '書き記す' (PLL Score: -90.22)
+2025-07-19 17:38:03 - DistractorFilter - INFO -   ✅ ACCEPTED: '言い放つ' (PLL Score: -101.27)
+2025-07-19 17:38:04 - DistractorFilter - INFO -   ✅ ACCEPTED: '満ちる' (PLL Score: -92.22)
+2025-07-19 17:38:04 - DistractorFilter - INFO -   ✅ ACCEPTED: '装う' (PLL Score: -92.84)
+2025-07-19 17:38:04 - DistractorFilter - INFO -   ✅ ACCEPTED: '思い出す' (PLL Score: -92.11)
+2025-07-19 17:38:05 - DistractorFilter - INFO -   ✅ ACCEPTED: '思い付く' (PLL Score: -99.18)
+2025-07-19 17:38:05 - DistractorFilter - INFO -   ✅ ACCEPTED: '書き上げる' (PLL Score: -102.72)
+2025-07-19 17:38:05 - DistractorFilter - INFO -   ✅ ACCEPTED: '悼む' (PLL Score: -95.82)
+2025-07-19 17:38:05 - DistractorFilter - INFO -   ✅ ACCEPTED: '間違う' (PLL Score: -106.96)
+2025-07-19 17:38:05 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-07-19 17:38:05 - Main - INFO -     Distractor candidates pool: ['激する', '焼き捨てる', '思い浮かべる', '誑かす', '惟る', '書き直す', '付け足す', '止す', '死する', '歩き回る']
+2025-07-19 17:38:05 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:38:05 - Main - INFO -     Dependency Rejects: ['焼き捨てる', '書き直す', '手渡す', '書き上げる']
+2025-07-19 17:38:05 - Main - INFO -     BERT Rejects: ['惟る', '止す', '手渡す']
+2025-07-19 17:38:05 - Main - INFO -     Final Rejects (In any filter): ['止す', '惟る', '書き上げる', '書き直す', '焼き捨てる', '手渡す']
+2025-07-19 17:38:05 - Main - INFO -     Final Distractors: ['激する', '思い浮かべる', '誑かす', '付け足す', '死する']
+2025-07-19 17:38:05 - Main - INFO - ------------------------------------------------------------
+2025-07-19 17:38:06 - Main - INFO - ▶️ Target Word: '走った' in Carrier Sentence: '彼はマラソン大会で速く___。' with context: 'SentenceContextEnum.CLOSED'
+2025-07-19 17:38:06 - Main - INFO -   (Context for Trigram Filter: ('速く', BLANK, 'EOS'))
+2025-07-19 17:38:06 - BaselineGenerator - INFO - --- Generating baseline distractors for '走った' ---
+2025-07-19 17:38:06 - BaselineGenerator - INFO - Target analyzed: Lemma='走る', POS='動詞', Frequency=44121
+2025-07-19 17:38:06 - BaselineGenerator - INFO - Found 8094 candidate words with POS '動詞'.
+2025-07-19 17:38:06 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '及ぶ', '組む', '食べる', '並ぶ', '通る', '繋がる', '呉れる', '話す', '加わる', '破る', '通す', '止める', '増える', '読む']
+2025-07-19 17:38:06 - DistractorFilter - INFO - Threshold: > -82.32517562340945
+2025-07-19 17:38:06 - DistractorFilter - INFO -   ❌ REJECTED: '巡る' (PLL Score: -73.66)
+2025-07-19 17:38:06 - DistractorFilter - INFO -   ✅ ACCEPTED: '応ずる' (PLL Score: -83.57)
+2025-07-19 17:38:06 - DistractorFilter - INFO -   ❌ REJECTED: '限る' (PLL Score: -79.55)
+2025-07-19 17:38:07 - DistractorFilter - INFO -   ❌ REJECTED: '乗る' (PLL Score: -76.98)
+2025-07-19 17:38:07 - DistractorFilter - INFO -   ✅ ACCEPTED: '占める' (PLL Score: -82.39)
+2025-07-19 17:38:07 - DistractorFilter - INFO -   ✅ ACCEPTED: '命ずる' (PLL Score: -87.68)
+2025-07-19 17:38:07 - DistractorFilter - INFO -   ❌ REJECTED: '及ぶ' (PLL Score: -77.70)
+2025-07-19 17:38:08 - DistractorFilter - INFO -   ❌ REJECTED: '組む' (PLL Score: -81.04)
+2025-07-19 17:38:08 - DistractorFilter - INFO -   ✅ ACCEPTED: '食べる' (PLL Score: -86.61)
+2025-07-19 17:38:08 - DistractorFilter - INFO -   ❌ REJECTED: '並ぶ' (PLL Score: -81.50)
+2025-07-19 17:38:08 - DistractorFilter - INFO -   ❌ REJECTED: '通る' (PLL Score: -78.17)
+2025-07-19 17:38:08 - DistractorFilter - INFO -   ✅ ACCEPTED: '繋がる' (PLL Score: -85.24)
+2025-07-19 17:38:09 - DistractorFilter - INFO -   ❌ REJECTED: '呉れる' (PLL Score: -74.94)
+2025-07-19 17:38:09 - DistractorFilter - INFO -   ❌ REJECTED: '話す' (PLL Score: -78.33)
+2025-07-19 17:38:09 - DistractorFilter - INFO -   ✅ ACCEPTED: '加わる' (PLL Score: -83.41)
+2025-07-19 17:38:09 - DistractorFilter - INFO -   ❌ REJECTED: '破る' (PLL Score: -75.58)
+2025-07-19 17:38:09 - DistractorFilter - INFO -   ❌ REJECTED: '通す' (PLL Score: -79.82)
+2025-07-19 17:38:10 - DistractorFilter - INFO -   ✅ ACCEPTED: '止める' (PLL Score: -85.57)
+2025-07-19 17:38:10 - DistractorFilter - INFO -   ✅ ACCEPTED: '増える' (PLL Score: -83.79)
+2025-07-19 17:38:10 - DistractorFilter - INFO -   ❌ REJECTED: '読む' (PLL Score: -81.23)
+2025-07-19 17:38:10 - Main - INFO - 
+====== Results for Baseline. ======
+2025-07-19 17:38:10 - Main - INFO -     Distractor candidates pool: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '及ぶ', '組む', '食べる', '並ぶ']
+2025-07-19 17:38:10 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:38:10 - Main - INFO -     Dependency Rejects: ['応ずる', '限る', '乗る', '占める', '及ぶ', '組む', '食べる', '並ぶ', '通る', '繋がる']
+2025-07-19 17:38:10 - Main - INFO -     BERT Rejects: ['巡る', '限る', '乗る', '及ぶ', '組む', '並ぶ', '通る', '呉れる', '話す', '破る']
+2025-07-19 17:38:10 - Main - INFO -     Final Rejects (In any filter): ['食べる', '加わる', '占める', '乗る', '並ぶ', '繋がる', '話す', '応ずる', '破る', '通る', '限る', '読む', '巡る', '呉れる', '及ぶ', '止める', '組む', '通す', '増える']
+2025-07-19 17:38:10 - Main - INFO -     Final Distractors: ['命ずる']
+2025-07-19 17:38:10 - SpellingGenerator - INFO - --- Generating spelling distractors for '走った' ---
+2025-07-19 17:38:10 - SpellingGenerator - INFO - Target analyzed: Lemma='走る', POS='動詞', Frequency=44121
+2025-07-19 17:38:10 - SpellingGenerator - INFO - Unique characters in target lemma: {'る', '走'}
+2025-07-19 17:38:10 - SpellingGenerator - INFO - Found 4768 potential candidates from character index.
+2025-07-19 17:38:10 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '食べる', '通る', '繋がる', '呉れる', '加わる', '破る', '止める', '増える', '移る', '感ずる', '広がる', '達する', '決まる', '起きる']
+2025-07-19 17:38:10 - DistractorFilter - INFO - Threshold: > -82.32517562340945
+2025-07-19 17:38:10 - DistractorFilter - INFO -   ❌ REJECTED: '巡る' (PLL Score: -73.66)
+2025-07-19 17:38:11 - DistractorFilter - INFO -   ✅ ACCEPTED: '応ずる' (PLL Score: -83.57)
+2025-07-19 17:38:11 - DistractorFilter - INFO -   ❌ REJECTED: '限る' (PLL Score: -79.55)
+2025-07-19 17:38:11 - DistractorFilter - INFO -   ❌ REJECTED: '乗る' (PLL Score: -76.98)
+2025-07-19 17:38:11 - DistractorFilter - INFO -   ✅ ACCEPTED: '占める' (PLL Score: -82.39)
+2025-07-19 17:38:11 - DistractorFilter - INFO -   ✅ ACCEPTED: '命ずる' (PLL Score: -87.68)
+2025-07-19 17:38:12 - DistractorFilter - INFO -   ✅ ACCEPTED: '食べる' (PLL Score: -86.61)
+2025-07-19 17:38:12 - DistractorFilter - INFO -   ❌ REJECTED: '通る' (PLL Score: -78.17)
+2025-07-19 17:38:12 - DistractorFilter - INFO -   ✅ ACCEPTED: '繋がる' (PLL Score: -85.24)
+2025-07-19 17:38:12 - DistractorFilter - INFO -   ❌ REJECTED: '呉れる' (PLL Score: -74.94)
+2025-07-19 17:38:12 - DistractorFilter - INFO -   ✅ ACCEPTED: '加わる' (PLL Score: -83.41)
+2025-07-19 17:38:13 - DistractorFilter - INFO -   ❌ REJECTED: '破る' (PLL Score: -75.58)
+2025-07-19 17:38:13 - DistractorFilter - INFO -   ✅ ACCEPTED: '止める' (PLL Score: -85.57)
+2025-07-19 17:38:13 - DistractorFilter - INFO -   ✅ ACCEPTED: '増える' (PLL Score: -83.79)
+2025-07-19 17:38:13 - DistractorFilter - INFO -   ✅ ACCEPTED: '移る' (PLL Score: -84.91)
+2025-07-19 17:38:13 - DistractorFilter - INFO -   ✅ ACCEPTED: '感ずる' (PLL Score: -86.74)
+2025-07-19 17:38:14 - DistractorFilter - INFO -   ✅ ACCEPTED: '広がる' (PLL Score: -82.80)
+2025-07-19 17:38:14 - DistractorFilter - INFO -   ❌ REJECTED: '達する' (PLL Score: -76.51)
+2025-07-19 17:38:14 - DistractorFilter - INFO -   ✅ ACCEPTED: '決まる' (PLL Score: -85.17)
+2025-07-19 17:38:14 - DistractorFilter - INFO -   ✅ ACCEPTED: '起きる' (PLL Score: -85.95)
+2025-07-19 17:38:14 - Main - INFO - 
+====== Results for Spelling. ======
+2025-07-19 17:38:14 - Main - INFO -     Distractor candidates pool: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '食べる', '通る', '繋がる', '呉れる']
+2025-07-19 17:38:14 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:38:14 - Main - INFO -     Dependency Rejects: ['応ずる', '限る', '乗る', '占める', '食べる', '通る', '繋がる', '加わる', '破る', '止める']
+2025-07-19 17:38:14 - Main - INFO -     BERT Rejects: ['巡る', '限る', '乗る', '通る', '呉れる', '破る', '達する']
+2025-07-19 17:38:14 - Main - INFO -     Final Rejects (In any filter): ['食べる', '加わる', '達する', '占める', '感ずる', '乗る', '広がる', '決まる', '繋がる', '応ずる', '破る', '移る', '通る', '起きる', '限る', '巡る', '呉れる', '止める', '増える']
+2025-07-19 17:38:14 - Main - INFO -     Final Distractors: ['命ずる']
+2025-07-19 17:38:14 - SimilarityGenerator - INFO - 
+--- Generating for '走った' (Context: SentenceContextEnum.CLOSED, Range: 0.61-0.75) ---
+2025-07-19 17:38:15 - DistractorFilter - INFO - Threshold: > -82.32517562340945
+2025-07-19 17:38:15 - Main - INFO - 
+====== Results for Similarity. ======
+2025-07-19 17:38:15 - Main - INFO -     Distractor candidates pool: []
+2025-07-19 17:38:15 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:38:15 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:38:15 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:38:15 - Main - INFO -     Final Rejects (In any filter): []
+2025-07-19 17:38:15 - Main - INFO -     Final Distractors: []
+2025-07-19 17:38:15 - DistractorFilter - INFO - Threshold: > -82.32517562340945
+2025-07-19 17:38:15 - DistractorFilter - INFO -   ❌ REJECTED: '学ぶ' (PLL Score: -77.99)
+2025-07-19 17:38:15 - DistractorFilter - INFO -   ✅ ACCEPTED: '活躍' (PLL Score: -89.87)
+2025-07-19 17:38:15 - Main - INFO - 
+====== Results for Contextual. ======
+2025-07-19 17:38:15 - Main - INFO -     Distractor candidates pool: ['学ぶ', '活躍']
+2025-07-19 17:38:15 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:38:15 - Main - INFO -     Dependency Rejects: ['学ぶ', '活躍']
+2025-07-19 17:38:15 - Main - INFO -     BERT Rejects: ['学ぶ']
+2025-07-19 17:38:15 - Main - INFO -     Final Rejects (In any filter): ['活躍', '学ぶ']
+2025-07-19 17:38:15 - Main - INFO -     Final Distractors: []
+2025-07-19 17:38:15 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for '走った' (Context: Closed) ---
+2025-07-19 17:38:15 - CooccurrenceGenerator - INFO - Target: Lemma='走る', POS='動詞', Freq=44121
+2025-07-19 17:38:15 - CooccurrenceGenerator - INFO - Found 1724 co-occurring candidate surfaces to analyze.
+2025-07-19 17:38:15 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['捨てる', '痛める', '背負う', '逃げる', '抜く', '終わる', '向ける', '落とす', '助ける', '勝つ', '留まる', '乗る', '沿う', '次ぐ', '向かう', '敗れる', '迫る', '上回る', '狙う', '終える']
+2025-07-19 17:38:16 - DistractorFilter - INFO - Threshold: > -82.32517562340945
+2025-07-19 17:38:16 - DistractorFilter - INFO -   ✅ ACCEPTED: '捨てる' (PLL Score: -91.19)
+2025-07-19 17:38:16 - DistractorFilter - INFO -   ✅ ACCEPTED: '痛める' (PLL Score: -82.43)
+2025-07-19 17:38:16 - DistractorFilter - INFO -   ✅ ACCEPTED: '背負う' (PLL Score: -83.92)
+2025-07-19 17:38:17 - DistractorFilter - INFO -   ✅ ACCEPTED: '逃げる' (PLL Score: -93.55)
+2025-07-19 17:38:17 - DistractorFilter - INFO -   ❌ REJECTED: '抜く' (PLL Score: -73.49)
+2025-07-19 17:38:17 - DistractorFilter - INFO -   ❌ REJECTED: '終わる' (PLL Score: -81.95)
+2025-07-19 17:38:17 - DistractorFilter - INFO -   ❌ REJECTED: '向ける' (PLL Score: -82.00)
+2025-07-19 17:38:18 - DistractorFilter - INFO -   ✅ ACCEPTED: '落とす' (PLL Score: -92.56)
+2025-07-19 17:38:18 - DistractorFilter - INFO -   ❌ REJECTED: '助ける' (PLL Score: -82.11)
+2025-07-19 17:38:18 - DistractorFilter - INFO -   ❌ REJECTED: '勝つ' (PLL Score: -76.61)
+2025-07-19 17:38:18 - DistractorFilter - INFO -   ❌ REJECTED: '留まる' (PLL Score: -80.10)
+2025-07-19 17:38:18 - DistractorFilter - INFO -   ❌ REJECTED: '乗る' (PLL Score: -76.98)
+2025-07-19 17:38:18 - DistractorFilter - INFO -   ❌ REJECTED: '沿う' (PLL Score: -78.93)
+2025-07-19 17:38:19 - DistractorFilter - INFO -   ❌ REJECTED: '次ぐ' (PLL Score: -80.69)
+2025-07-19 17:38:19 - DistractorFilter - INFO -   ✅ ACCEPTED: '向かう' (PLL Score: -88.52)
+2025-07-19 17:38:19 - DistractorFilter - INFO -   ❌ REJECTED: '敗れる' (PLL Score: -80.27)
+2025-07-19 17:38:19 - DistractorFilter - INFO -   ❌ REJECTED: '迫る' (PLL Score: -76.93)
+2025-07-19 17:38:19 - DistractorFilter - INFO -   ❌ REJECTED: '上回る' (PLL Score: -77.34)
+2025-07-19 17:38:19 - DistractorFilter - INFO -   ❌ REJECTED: '狙う' (PLL Score: -79.13)
+2025-07-19 17:38:20 - DistractorFilter - INFO -   ❌ REJECTED: '終える' (PLL Score: -73.20)
+2025-07-19 17:38:20 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-07-19 17:38:20 - Main - INFO -     Distractor candidates pool: ['捨てる', '痛める', '背負う', '逃げる', '抜く', '終わる', '向ける', '落とす', '助ける', '勝つ']
+2025-07-19 17:38:20 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:38:20 - Main - INFO -     Dependency Rejects: ['痛める', '背負う', '逃げる', '抜く', '終わる', '向ける', '落とす', '勝つ', '留まる', '乗る']
+2025-07-19 17:38:20 - Main - INFO -     BERT Rejects: ['抜く', '終わる', '向ける', '助ける', '勝つ', '留まる', '乗る', '沿う', '次ぐ', '敗れる']
+2025-07-19 17:38:20 - Main - INFO -     Final Rejects (In any filter): ['迫る', '乗る', '抜く', '沿う', '助ける', '逃げる', '留まる', '背負う', '終わる', '狙う', '次ぐ', '痛める', '上回る', '向ける', '勝つ', '終える', '向かう', '落とす', '敗れる']
+2025-07-19 17:38:20 - Main - INFO -     Final Distractors: ['捨てる']
+2025-07-19 17:38:20 - Main - INFO - ------------------------------------------------------------
+2025-07-19 17:38:20 - Main - INFO - ▶️ Target Word: '日' in Carrier Sentence: '次の日曜は父の___なので、お墓参りに行きます。' with context: 'SentenceContextEnum.CLOSED'
+2025-07-19 17:38:20 - Main - INFO -   (Context for Trigram Filter: ('父', BLANK, 'な'))
+2025-07-19 17:38:20 - BaselineGenerator - INFO - --- Generating baseline distractors for '日' ---
+2025-07-19 17:38:20 - BaselineGenerator - INFO - Target analyzed: Lemma='日', POS='名詞', Frequency=291761
+2025-07-19 17:38:20 - BaselineGenerator - INFO - Found 166199 candidate words with POS '名詞'.
+2025-07-19 17:38:20 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['試合', '出場', '発売', 'チーム-team', '地域', '開発', '以降', '記録', 'シーズン-season', '以下', '曲', '歴史', '一日', '局', '関係', '郡', '平成', '開催', '時間', '大会']
+2025-07-19 17:38:20 - DistractorFilter - INFO - Threshold: > -103.98922978714108
+2025-07-19 17:38:21 - DistractorFilter - INFO -   ✅ ACCEPTED: '試合' (PLL Score: -132.14)
+2025-07-19 17:38:21 - DistractorFilter - INFO -   ✅ ACCEPTED: '出場' (PLL Score: -116.12)
+2025-07-19 17:38:21 - DistractorFilter - INFO -   ✅ ACCEPTED: '発売' (PLL Score: -127.36)
+2025-07-19 17:38:22 - DistractorFilter - INFO -   ✅ ACCEPTED: 'チーム-team' (PLL Score: -159.95)
+2025-07-19 17:38:22 - DistractorFilter - INFO -   ✅ ACCEPTED: '地域' (PLL Score: -116.58)
+2025-07-19 17:38:22 - DistractorFilter - INFO -   ✅ ACCEPTED: '開発' (PLL Score: -120.15)
+2025-07-19 17:38:23 - DistractorFilter - INFO -   ✅ ACCEPTED: '以降' (PLL Score: -132.90)
+2025-07-19 17:38:23 - DistractorFilter - INFO -   ✅ ACCEPTED: '記録' (PLL Score: -116.50)
+2025-07-19 17:38:23 - DistractorFilter - INFO -   ✅ ACCEPTED: 'シーズン-season' (PLL Score: -162.03)
+2025-07-19 17:38:24 - DistractorFilter - INFO -   ✅ ACCEPTED: '以下' (PLL Score: -127.75)
+2025-07-19 17:38:24 - DistractorFilter - INFO -   ✅ ACCEPTED: '曲' (PLL Score: -113.63)
+2025-07-19 17:38:25 - DistractorFilter - INFO -   ✅ ACCEPTED: '歴史' (PLL Score: -123.72)
+2025-07-19 17:38:25 - DistractorFilter - INFO -   ✅ ACCEPTED: '一日' (PLL Score: -111.72)
+2025-07-19 17:38:25 - DistractorFilter - INFO -   ✅ ACCEPTED: '局' (PLL Score: -111.88)
+2025-07-19 17:38:26 - DistractorFilter - INFO -   ✅ ACCEPTED: '関係' (PLL Score: -123.91)
+2025-07-19 17:38:26 - DistractorFilter - INFO -   ✅ ACCEPTED: '郡' (PLL Score: -122.87)
+2025-07-19 17:38:27 - DistractorFilter - INFO -   ✅ ACCEPTED: '平成' (PLL Score: -117.23)
+2025-07-19 17:38:27 - DistractorFilter - INFO -   ✅ ACCEPTED: '開催' (PLL Score: -128.63)
+2025-07-19 17:38:27 - DistractorFilter - INFO -   ✅ ACCEPTED: '時間' (PLL Score: -117.70)
+2025-07-19 17:38:28 - DistractorFilter - INFO -   ✅ ACCEPTED: '大会' (PLL Score: -120.08)
+2025-07-19 17:38:28 - Main - INFO - 
+====== Results for Baseline. ======
+2025-07-19 17:38:28 - Main - INFO -     Distractor candidates pool: ['試合', '出場', '発売', 'チーム-team', '地域', '開発', '以降', '記録', 'シーズン-season', '以下']
+2025-07-19 17:38:28 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:38:28 - Main - INFO -     Dependency Rejects: ['試合', '出場', '発売', '開発', '以降', '記録', '曲', '局', '関係', '郡']
+2025-07-19 17:38:28 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:38:28 - Main - INFO -     Final Rejects (In any filter): ['曲', '郡', '記録', '以降', '局', '関係', '開催', '出場', '発売', '試合', '開発']
+2025-07-19 17:38:28 - Main - INFO -     Final Distractors: ['チーム-team', '地域', 'シーズン-season', '以下', '歴史']
+2025-07-19 17:38:28 - SpellingGenerator - INFO - --- Generating spelling distractors for '日' ---
+2025-07-19 17:38:28 - SpellingGenerator - INFO - Target analyzed: Lemma='日', POS='名詞', Frequency=291761
+2025-07-19 17:38:28 - SpellingGenerator - INFO - Unique characters in target lemma: {'日'}
+2025-07-19 17:38:28 - SpellingGenerator - INFO - Found 454 potential candidates from character index.
+2025-07-19 17:38:28 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['一日', '朝日', '今日', '日間', '同日', '毎日', '翌日', '日曜', '平日', '来日', '日常', '当日', '日記', '日中', '日々', '中日', '前日', '日産', '日程', '休日']
+2025-07-19 17:38:28 - DistractorFilter - INFO - Threshold: > -103.98922978714108
+2025-07-19 17:38:28 - DistractorFilter - INFO -   ✅ ACCEPTED: '一日' (PLL Score: -111.72)
+2025-07-19 17:38:29 - DistractorFilter - INFO -   ✅ ACCEPTED: '朝日' (PLL Score: -116.29)
+2025-07-19 17:38:29 - DistractorFilter - INFO -   ✅ ACCEPTED: '今日' (PLL Score: -114.36)
+2025-07-19 17:38:29 - DistractorFilter - INFO -   ✅ ACCEPTED: '日間' (PLL Score: -114.43)
+2025-07-19 17:38:30 - DistractorFilter - INFO -   ✅ ACCEPTED: '同日' (PLL Score: -114.36)
+2025-07-19 17:38:30 - DistractorFilter - INFO -   ✅ ACCEPTED: '毎日' (PLL Score: -110.69)
+2025-07-19 17:38:30 - DistractorFilter - INFO -   ✅ ACCEPTED: '翌日' (PLL Score: -110.48)
+2025-07-19 17:38:31 - DistractorFilter - INFO -   ❌ REJECTED: '日曜' (PLL Score: -96.02)
+2025-07-19 17:38:31 - DistractorFilter - INFO -   ✅ ACCEPTED: '平日' (PLL Score: -120.20)
+2025-07-19 17:38:31 - DistractorFilter - INFO -   ✅ ACCEPTED: '来日' (PLL Score: -114.69)
+2025-07-19 17:38:32 - DistractorFilter - INFO -   ✅ ACCEPTED: '日常' (PLL Score: -111.67)
+2025-07-19 17:38:32 - DistractorFilter - INFO -   ✅ ACCEPTED: '当日' (PLL Score: -113.21)
+2025-07-19 17:38:33 - DistractorFilter - INFO -   ✅ ACCEPTED: '日記' (PLL Score: -107.68)
+2025-07-19 17:38:33 - DistractorFilter - INFO -   ✅ ACCEPTED: '日中' (PLL Score: -111.01)
+2025-07-19 17:38:33 - DistractorFilter - INFO -   ✅ ACCEPTED: '日々' (PLL Score: -121.12)
+2025-07-19 17:38:34 - DistractorFilter - INFO -   ✅ ACCEPTED: '中日' (PLL Score: -119.17)
+2025-07-19 17:38:34 - DistractorFilter - INFO -   ✅ ACCEPTED: '前日' (PLL Score: -110.95)
+2025-07-19 17:38:34 - DistractorFilter - INFO -   ✅ ACCEPTED: '日産' (PLL Score: -111.31)
+2025-07-19 17:38:35 - DistractorFilter - INFO -   ✅ ACCEPTED: '日程' (PLL Score: -111.46)
+2025-07-19 17:38:35 - DistractorFilter - INFO -   ✅ ACCEPTED: '休日' (PLL Score: -111.98)
+2025-07-19 17:38:35 - Main - INFO - 
+====== Results for Spelling. ======
+2025-07-19 17:38:35 - Main - INFO -     Distractor candidates pool: ['一日', '朝日', '今日', '日間', '同日', '毎日', '翌日', '日曜', '平日', '来日']
+2025-07-19 17:38:35 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:38:35 - Main - INFO -     Dependency Rejects: ['同日', '日曜', '来日', '日常', '日記', '日々']
+2025-07-19 17:38:35 - Main - INFO -     BERT Rejects: ['日曜']
+2025-07-19 17:38:35 - Main - INFO -     Final Rejects (In any filter): ['来日', '日々', '同日', '日曜', '日常', '日記']
+2025-07-19 17:38:35 - Main - INFO -     Final Distractors: ['一日', '朝日', '今日', '日間', '毎日']
+2025-07-19 17:38:35 - SimilarityGenerator - INFO - 
+--- Generating for '日' (Context: SentenceContextEnum.CLOSED, Range: 0.61-0.75) ---
+2025-07-19 17:38:36 - DistractorFilter - INFO - Threshold: > -103.98922978714108
+2025-07-19 17:38:36 - DistractorFilter - INFO -   ✅ ACCEPTED: '20' (PLL Score: -121.84)
+2025-07-19 17:38:37 - DistractorFilter - INFO -   ✅ ACCEPTED: '2015' (PLL Score: -142.27)
+2025-07-19 17:38:37 - DistractorFilter - INFO -   ✅ ACCEPTED: '9' (PLL Score: -120.34)
+2025-07-19 17:38:37 - DistractorFilter - INFO -   ✅ ACCEPTED: '7' (PLL Score: -120.93)
+2025-07-19 17:38:38 - DistractorFilter - INFO -   ✅ ACCEPTED: '5' (PLL Score: -121.05)
+2025-07-19 17:38:38 - DistractorFilter - INFO -   ✅ ACCEPTED: '6' (PLL Score: -120.92)
+2025-07-19 17:38:38 - DistractorFilter - INFO -   ✅ ACCEPTED: '2014' (PLL Score: -141.30)
+2025-07-19 17:38:39 - DistractorFilter - INFO -   ✅ ACCEPTED: '8' (PLL Score: -120.56)
+2025-07-19 17:38:39 - DistractorFilter - INFO -   ✅ ACCEPTED: '2010' (PLL Score: -135.44)
+2025-07-19 17:38:39 - DistractorFilter - INFO -   ✅ ACCEPTED: '00' (PLL Score: -121.07)
+2025-07-19 17:38:40 - DistractorFilter - INFO -   ✅ ACCEPTED: '2013' (PLL Score: -136.08)
+2025-07-19 17:38:40 - DistractorFilter - INFO -   ✅ ACCEPTED: '4' (PLL Score: -121.16)
+2025-07-19 17:38:40 - DistractorFilter - INFO -   ✅ ACCEPTED: '2009' (PLL Score: -141.80)
+2025-07-19 17:38:41 - DistractorFilter - INFO -   ✅ ACCEPTED: '2008' (PLL Score: -141.15)
+2025-07-19 17:38:41 - DistractorFilter - INFO -   ✅ ACCEPTED: '2012' (PLL Score: -135.93)
+2025-07-19 17:38:42 - DistractorFilter - INFO -   ✅ ACCEPTED: '2011' (PLL Score: -136.38)
+2025-07-19 17:38:42 - DistractorFilter - INFO -   ✅ ACCEPTED: '2007' (PLL Score: -141.93)
+2025-07-19 17:38:42 - DistractorFilter - INFO -   ✅ ACCEPTED: '3' (PLL Score: -121.31)
+2025-07-19 17:38:43 - DistractorFilter - INFO -   ✅ ACCEPTED: '59' (PLL Score: -131.35)
+2025-07-19 17:38:43 - DistractorFilter - INFO -   ✅ ACCEPTED: '火' (PLL Score: -114.18)
+2025-07-19 17:38:43 - Main - INFO - 
+====== Results for Similarity. ======
+2025-07-19 17:38:43 - Main - INFO -     Distractor candidates pool: ['20', '2015', '9', '7', '5', '6', '2014', '8', '2010', '00']
+2025-07-19 17:38:43 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:38:43 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:38:43 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:38:43 - Main - INFO -     Final Rejects (In any filter): []
+2025-07-19 17:38:43 - Main - INFO -     Final Distractors: ['20', '2015', '9', '7', '5']
+2025-07-19 17:38:43 - DistractorFilter - INFO - Threshold: > -103.98922978714108
+2025-07-19 17:38:44 - DistractorFilter - INFO -   ❌ REJECTED: '命' (PLL Score: -98.92)
+2025-07-19 17:38:44 - Main - INFO - 
+====== Results for Contextual. ======
+2025-07-19 17:38:44 - Main - INFO -     Distractor candidates pool: ['命']
+2025-07-19 17:38:44 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:38:44 - Main - INFO -     Dependency Rejects: ['命']
+2025-07-19 17:38:44 - Main - INFO -     BERT Rejects: ['命']
+2025-07-19 17:38:44 - Main - INFO -     Final Rejects (In any filter): ['命']
+2025-07-19 17:38:44 - Main - INFO -     Final Distractors: []
+2025-07-19 17:38:44 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for '日' (Context: Closed) ---
+2025-07-19 17:38:44 - CooccurrenceGenerator - INFO - Target: Lemma='日', POS='名詞', Freq=291761
+2025-07-19 17:38:44 - CooccurrenceGenerator - INFO - Found 44197 co-occurring candidate surfaces to analyze.
+2025-07-19 17:38:46 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['通じ', '目指し', '称え', '縒れ', 'アクマ', '割り', '欠け', '切り抜け', '槻', '春日', 'テンポウ', '尽き', '連ね', 'ナミタ', '救い出し', 'さ迷い', '書き残し', '起き', '掻き集め', '棊子']
+2025-07-19 17:38:47 - DistractorFilter - INFO - Threshold: > -103.98922978714108
+2025-07-19 17:38:47 - DistractorFilter - INFO -   ✅ ACCEPTED: '通じ' (PLL Score: -130.87)
+2025-07-19 17:38:47 - DistractorFilter - INFO -   ✅ ACCEPTED: '目指し' (PLL Score: -120.49)
+2025-07-19 17:38:48 - DistractorFilter - INFO -   ✅ ACCEPTED: '称え' (PLL Score: -125.85)
+2025-07-19 17:38:48 - DistractorFilter - INFO -   ✅ ACCEPTED: '縒れ' (PLL Score: -121.79)
+2025-07-19 17:38:48 - DistractorFilter - INFO -   ✅ ACCEPTED: 'アクマ' (PLL Score: -136.55)
+2025-07-19 17:38:49 - DistractorFilter - INFO -   ✅ ACCEPTED: '割り' (PLL Score: -134.88)
+2025-07-19 17:38:49 - DistractorFilter - INFO -   ✅ ACCEPTED: '欠け' (PLL Score: -133.06)
+2025-07-19 17:38:50 - DistractorFilter - INFO -   ✅ ACCEPTED: '切り抜け' (PLL Score: -148.19)
+2025-07-19 17:38:50 - DistractorFilter - INFO -   ✅ ACCEPTED: '槻' (PLL Score: -108.94)
+2025-07-19 17:38:50 - DistractorFilter - INFO -   ✅ ACCEPTED: '春日' (PLL Score: -119.20)
+2025-07-19 17:38:51 - DistractorFilter - INFO -   ✅ ACCEPTED: 'テンポウ' (PLL Score: -148.07)
+2025-07-19 17:38:51 - DistractorFilter - INFO -   ✅ ACCEPTED: '尽き' (PLL Score: -135.00)
+2025-07-19 17:38:51 - DistractorFilter - INFO -   ✅ ACCEPTED: '連ね' (PLL Score: -131.38)
+2025-07-19 17:38:52 - DistractorFilter - INFO -   ✅ ACCEPTED: 'ナミタ' (PLL Score: -136.01)
+2025-07-19 17:38:52 - DistractorFilter - INFO -   ✅ ACCEPTED: '救い出し' (PLL Score: -128.81)
+2025-07-19 17:38:53 - DistractorFilter - INFO -   ✅ ACCEPTED: 'さ迷い' (PLL Score: -143.80)
+2025-07-19 17:38:53 - DistractorFilter - INFO -   ✅ ACCEPTED: '書き残し' (PLL Score: -131.86)
+2025-07-19 17:38:53 - DistractorFilter - INFO -   ✅ ACCEPTED: '起き' (PLL Score: -130.03)
+2025-07-19 17:38:54 - DistractorFilter - INFO -   ✅ ACCEPTED: '掻き集め' (PLL Score: -145.75)
+2025-07-19 17:38:54 - DistractorFilter - INFO -   ✅ ACCEPTED: '棊子' (PLL Score: -114.74)
+2025-07-19 17:38:54 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-07-19 17:38:54 - Main - INFO -     Distractor candidates pool: ['通じ', '目指し', '称え', '縒れ', 'アクマ', '割り', '欠け', '切り抜け', '槻', '春日']
+2025-07-19 17:38:54 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:38:54 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:38:54 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:38:54 - Main - INFO -     Final Rejects (In any filter): []
+2025-07-19 17:38:54 - Main - INFO -     Final Distractors: ['通じ', '目指し', '称え', '縒れ', 'アクマ']
+2025-07-19 17:38:54 - Main - INFO - ------------------------------------------------------------
+2025-07-19 17:38:54 - Main - INFO - ▶️ Target Word: '金' in Carrier Sentence: '彼は銀行強盗で多額の現___を手に入れた。' with context: 'SentenceContextEnum.CLOSED'
+2025-07-19 17:38:54 - Main - INFO -   (Context for Trigram Filter: ('現', BLANK, '手'))
+2025-07-19 17:38:54 - BaselineGenerator - INFO - --- Generating baseline distractors for '金' ---
+2025-07-19 17:38:54 - CorpusProcessor - ERROR - Could not locate the target word '金' within the context of the parsed sentence.
+2025-07-19 17:38:54 - BaselineGenerator - ERROR - Could not analyze target word '金'. Aborting.
+2025-07-19 17:38:55 - DistractorFilter - INFO - Threshold: > -104.65343266772106
+2025-07-19 17:38:55 - Main - INFO - 
+====== Results for Baseline. ======
+2025-07-19 17:38:55 - Main - INFO -     Distractor candidates pool: []
+2025-07-19 17:38:55 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:38:55 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:38:55 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:38:55 - Main - INFO -     Final Rejects (In any filter): []
+2025-07-19 17:38:55 - Main - INFO -     Final Distractors: []
+2025-07-19 17:38:55 - SpellingGenerator - INFO - --- Generating spelling distractors for '金' ---
+2025-07-19 17:38:55 - CorpusProcessor - ERROR - Could not locate the target word '金' within the context of the parsed sentence.
+2025-07-19 17:38:55 - SpellingGenerator - ERROR - Could not analyze target word '金'. Aborting.
+2025-07-19 17:38:55 - DistractorFilter - INFO - Threshold: > -104.65343266772106
+2025-07-19 17:38:55 - Main - INFO - 
+====== Results for Spelling. ======
+2025-07-19 17:38:55 - Main - INFO -     Distractor candidates pool: []
+2025-07-19 17:38:55 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:38:55 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:38:55 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:38:55 - Main - INFO -     Final Rejects (In any filter): []
+2025-07-19 17:38:55 - Main - INFO -     Final Distractors: []
+2025-07-19 17:38:55 - SimilarityGenerator - INFO - 
+--- Generating for '金' (Context: SentenceContextEnum.CLOSED, Range: 0.61-0.75) ---
+2025-07-19 17:38:56 - DistractorFilter - INFO - Threshold: > -104.65343266772106
+2025-07-19 17:38:56 - DistractorFilter - INFO -   ✅ ACCEPTED: '土' (PLL Score: -109.41)
+2025-07-19 17:38:56 - DistractorFilter - INFO -   ✅ ACCEPTED: '火' (PLL Score: -112.05)
+2025-07-19 17:38:56 - DistractorFilter - INFO -   ✅ ACCEPTED: '木' (PLL Score: -112.39)
+2025-07-19 17:38:57 - DistractorFilter - INFO -   ✅ ACCEPTED: '09' (PLL Score: -134.73)
+2025-07-19 17:38:57 - DistractorFilter - INFO -   ✅ ACCEPTED: '06' (PLL Score: -134.63)
+2025-07-19 17:38:57 - DistractorFilter - INFO -   ✅ ACCEPTED: '08' (PLL Score: -135.59)
+2025-07-19 17:38:58 - DistractorFilter - INFO -   ✅ ACCEPTED: '07' (PLL Score: -134.90)
+2025-07-19 17:38:58 - DistractorFilter - INFO -   ✅ ACCEPTED: '04' (PLL Score: -133.36)
+2025-07-19 17:38:58 - DistractorFilter - INFO -   ✅ ACCEPTED: '03' (PLL Score: -134.19)
+2025-07-19 17:38:58 - Main - INFO - 
+====== Results for Similarity. ======
+2025-07-19 17:38:58 - Main - INFO -     Distractor candidates pool: ['土', '火', '木', '09', '06', '08', '07', '04', '03']
+2025-07-19 17:38:58 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:38:58 - Main - INFO -     Dependency Rejects: ['土', '火', '木']
+2025-07-19 17:38:58 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:38:58 - Main - INFO -     Final Rejects (In any filter): ['火', '土', '木']
+2025-07-19 17:38:58 - Main - INFO -     Final Distractors: ['09', '06', '08', '07', '04']
+2025-07-19 17:38:59 - DistractorFilter - INFO - Threshold: > -104.65343266772106
+2025-07-19 17:38:59 - Main - INFO - 
+====== Results for Contextual. ======
+2025-07-19 17:38:59 - Main - INFO -     Distractor candidates pool: []
+2025-07-19 17:38:59 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:38:59 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:38:59 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:38:59 - Main - INFO -     Final Rejects (In any filter): []
+2025-07-19 17:38:59 - Main - INFO -     Final Distractors: []
+2025-07-19 17:38:59 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for '金' (Context: Closed) ---
+2025-07-19 17:38:59 - CorpusProcessor - ERROR - Could not locate the target word '金' within the context of the parsed sentence.
+2025-07-19 17:38:59 - CooccurrenceGenerator - ERROR - Could not analyze target word '金'.
+2025-07-19 17:38:59 - DistractorFilter - INFO - Threshold: > -104.65343266772106
+2025-07-19 17:38:59 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-07-19 17:38:59 - Main - INFO -     Distractor candidates pool: []
+2025-07-19 17:38:59 - Main - INFO -     Trigram Rejects: []
+2025-07-19 17:38:59 - Main - INFO -     Dependency Rejects: []
+2025-07-19 17:38:59 - Main - INFO -     BERT Rejects: []
+2025-07-19 17:38:59 - Main - INFO -     Final Rejects (In any filter): []
+2025-07-19 17:38:59 - Main - INFO -     Final Distractors: []
+2025-07-19 17:38:59 - Main - INFO - ------------------------------------------------------------
+2025-07-19 17:38:59 - Main - INFO - 
+====== System finished demonstration. ======

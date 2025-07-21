@@ -303,14 +303,14 @@ if __name__ == "__main__":
 
             # Log the final, filtered results.
             main_logger.info(f"\n====== Results for {name}. ======")
-            main_logger.info(f"    Distractor candidates pool: {distractor_candidates[:10]}")
-            main_logger.info(f"    Trigram Rejects: {list(trigram_rejected_list)[:10]}")
-            main_logger.info(f"    Dependency Rejects: {dependency_rejected_list[:10]}")
-            main_logger.info(f"    BERT Rejects: {bert_rejected_list[:10]}")
+            main_logger.info(f"    Distractor candidates pool: {distractor_candidates[:20]}")
+            main_logger.info(f"    Predicted context: {context}")
+            main_logger.info(f"    Trigram Rejects: {list(trigram_rejected_list)[:20]}")
+            main_logger.info(f"    Dependency Rejects: {dependency_rejected_list[:20]}")
+            main_logger.info(f"    BERT Rejects: {bert_rejected_list[:20]}")
             main_logger.info(f"    Final Rejects (In any filter): {list(rejected_by_any_filter_set)}")
-            main_logger.info(f"    Final Distractors: {final_distractors_list[:5]}")
-
-        main_logger.info("-" * 60)
+            main_logger.info(f"    Final Distractors: {final_distractors_list}")
+            main_logger.info(f"\n=================================== \n")
 
     main_logger.info("\n====== System finished demonstration. ======")
     sys.exit(0)

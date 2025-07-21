@@ -98,7 +98,7 @@ class SimilarityGenerator:
             min_similarity, max_similarity = 0.4, 0.75
 
         self.logger.info(
-            f"\n--- Generating for '{target_word}' (Context: {context_type}, Range: {min_similarity}-{max_similarity}) ---")
+            f"--- Generating for '{target_word}' (Context: {context_type}, Range: {min_similarity}-{max_similarity}) ---")
         try:
             # 2. Fetch a large pool of candidates
             all_similar_words = self.model.most_similar(target_word, topn=num_candidates)

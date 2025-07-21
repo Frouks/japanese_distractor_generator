@@ -1,3 +1,4 @@
+import logging
 import sys
 from pathlib import Path
 from typing import Union
@@ -28,6 +29,7 @@ class ContextualGenerator:
             self.tokenizer = BertTokenizer.from_pretrained(model_name)
             self.model = BertForMaskedLM.from_pretrained(model_name)
             self.model.eval()
+            self.logger = logging.getLogger('ContextualGenerator')
             print(f"✅ BERT model '{model_name}' loaded successfully.")
         except Exception as e:
             print(f"❌ Failed to load BERT model '{model_name}'. Error: {e}")
@@ -40,7 +42,7 @@ class ContextualGenerator:
             target_word: str,
             context_type: SentenceContextEnum,
             top_n: int = 5,
-            include_prob_score: bool = False
+            include_prob_score: bool = True
     ) -> Union[list[tuple[str, float]], list[str]]:
         """
         Generates distractors by predicting the masked token in a sentence.
@@ -59,6 +61,8 @@ class ContextualGenerator:
         if not self.model:
             print("Error: Model not loaded. Cannot generate contextual distractors.")
             return []
+
+        self.logger.info(f"--- Generating contextual distractors for '{target_word}' (Context: {context_type}) ---")
 
         if context_type == SentenceContextEnum.OPEN:
             # For open contexts, accept a wider range of less probable but plausible words.
