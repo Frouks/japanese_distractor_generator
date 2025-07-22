@@ -1,0 +1,13 @@
+2025-07-22 13:17:48 - root - INFO - Logging configured to output to console and file.
+2025-07-22 13:17:48 - EvaluationPipeline - INFO - ====== Evaluation pipeline started ======
+2025-07-22 13:17:48 - root - INFO - --- Initializing Corpus Processor ---
+2025-07-22 13:17:48 - CorpusProcessor - INFO - No explicit MeCab args provided by user. MeCab will use its default dictionary configuration.
+2025-07-22 13:17:48 - CorpusProcessor - WARNING - IMPORTANT: Please check the 'Active MeCab Dictionary Info' log output below to ensure MeCab is using the dictionary you expect (e.g., unidic).
+2025-07-22 13:17:48 - CorpusProcessor - INFO - MeCab Tagger initialized with final effective args: ''.
+2025-07-22 13:17:48 - CorpusProcessor - INFO - Active MeCab Dictionary Info (from Tagger):
+  Filename: /opt/miniconda3/envs/cadgs/lib/python3.10/site-packages/unidic_lite/dicdir/sys.dic, Charset: utf8, Type: 0, Version: 102
+
+2025-07-22 13:17:48 - CorpusProcessor - INFO - Using feature indices for parsing: POS1=0, POS_Detail_End=3, Lemma=7
+2025-07-22 13:17:48 - root - INFO - --- Loading all words data ---
+2025-07-22 13:17:48 - CorpusProcessor.Loader - ERROR - Words details file not found: /Users/danieleamore/University/Bachelorthesis/japanese_distractor_generator/evaluation_pipeline/re_implementation/processed_corpus_data/jp_all_words_details.json
+2025-07-22 13:17:48 - root - INFO - --- Initializing Re-Implementation System ---

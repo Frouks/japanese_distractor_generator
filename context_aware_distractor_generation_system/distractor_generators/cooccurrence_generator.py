@@ -1,13 +1,22 @@
 import json
 import logging
 import math
-import sys
+import pickle
 from collections import defaultdict
 from pathlib import Path
 from typing import Union
 
-project_root = Path(__file__).resolve().parents[2]
-sys.path.append(str(project_root))
+# This makes the script runnable from anywhere by locating its parent project directories
+try:
+    project_root = Path(__file__).resolve().parents[2]
+except NameError:
+    # Fallback for environments where __file__ might not be defined
+    project_root = Path('.').resolve().parents[2]
+
+# Define the data directory relative to the located project root
+PROCESSED_DATA_DIR = project_root / "re_implementation/processed_corpus_data"
+_COOCCURRENCE_INDEX_FILE = PROCESSED_DATA_DIR / "jp_cooccurrence_index.pkl"
+
 from context_aware_distractor_generation_system.constants.SentenceContextEnum import SentenceContextEnum
 
 
@@ -33,10 +42,32 @@ class CooccurrenceGenerator:
             self.logger.error("Total co-occurrence pairs is zero. PMI cannot be calculated.")
             self.cooccurrence_counts = {}
 
-        # For faster lookups, build an inverted index from a word to its co-occurring partners
-        self.cooccurrence_index = self._build_cooccurrence_index()
+        if _COOCCURRENCE_INDEX_FILE.exists():
+            self.logger.info(f"Loading cached co-occurrence index from {_COOCCURRENCE_INDEX_FILE}...")
+            with open(_COOCCURRENCE_INDEX_FILE, 'rb') as f_in:
+                self.cooccurrence_index = pickle.load(f_in)
+            self.logger.info("✅ Cached index loaded successfully.")
+        else:
+            self.logger.warning("Cached co-occurrence index not found. Building it now (this is a one-time process)...")
+            self.logger.warning(f"Given Location: {_COOCCURRENCE_INDEX_FILE}")
+            # Build the index from scratch
+            self.cooccurrence_index = self._build_cooccurrence_index()
+            # Save it for next time
+            self._save_cooccurrence_index(self.cooccurrence_index)
+
         self.logger.info(
             f"Generator initialized with {len(self.cooccurrence_counts)} co-occurrence pairs and an index of {len(self.cooccurrence_index)} lemmas.")
+
+    def _save_cooccurrence_index(self, index_obj):
+        """Saves the generated index to a pickle file for future use."""
+        self.logger.info(f"Saving co-occurrence index to {_COOCCURRENCE_INDEX_FILE} for future runs...")
+        try:
+            _COOCCURRENCE_INDEX_FILE.parent.mkdir(parents=True, exist_ok=True)
+            with open(_COOCCURRENCE_INDEX_FILE, 'wb') as f_out:
+                pickle.dump(index_obj, f_out)
+            self.logger.info("✅ Index saved successfully.")
+        except Exception as e:
+            self.logger.error(f"Failed to save co-occurrence index: {e}", exc_info=True)
 
     def _build_cooccurrence_index(self):
         """Builds an inverted index from a word to its co-occurring pairs and counts."""

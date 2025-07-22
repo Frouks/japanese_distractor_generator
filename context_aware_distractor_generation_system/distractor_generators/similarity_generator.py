@@ -92,7 +92,7 @@ class SimilarityGenerator:
             min_similarity, max_similarity = 0.4, 0.6
         elif context_type == SentenceContextEnum.CLOSED:
             # For closed contexts, we want very similar distractors to be more challenging.
-            min_similarity, max_similarity = 0.61, 0.75
+            min_similarity, max_similarity = 0.5, 0.70
         else:
             print(f"Warning: Invalid context_type '{context_type}'. Defaulting to a wide range.")
             min_similarity, max_similarity = 0.4, 0.75

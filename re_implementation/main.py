@@ -420,37 +420,26 @@ if __name__ == "__main__":
                 main_logger.info(f"  - {name:15s} (Filtered): [Generator not available]")
                 continue
 
-            # Generate more candidates than needed (e.g., 20) to give the filters options.
             raw_candidates = generator.generate_distractors(word, sentence, num_distractors=20)
 
-            raw_candidates_set = set(raw_candidates)
-            trigram_rejected_set = set()
+            # 1. Apply the filters directly using the updated methods
+            _, trigram_rejected = distractor_filter.filter_by_trigram(raw_candidates, prev_word, next_word)
+            _, dependency_rejected = distractor_filter.filter_by_dependency(raw_candidates, sentence)
 
-            if prev_word:
-                for candidate in raw_candidates:
-                    if (prev_word, candidate, next_word) in distractor_filter.trigrams:
-                        trigram_rejected_set.add(candidate)
+            # 2. Use the "reject-if-any-fail" logic, as requested
+            rejected_by_any_filter_set = set(trigram_rejected) | set(dependency_rejected)
 
-            # 2. Get the set of candidates rejected by the Dependency filter.
-            # We find the *accepted* ones first, then use set difference to find the rejected.
-            dependency_accepted_list = distractor_filter.filter_by_dependency(raw_candidates, sentence)
-            dependency_rejected_set = raw_candidates_set - set(dependency_accepted_list)
-
-            # 3. Find the candidates that are in BOTH rejection sets.
-            rejected_by_both_set = trigram_rejected_set.intersection(dependency_rejected_set)
-
-            # 4. The final candidates are the raw candidates minus those rejected by both.
-            final_candidates_list = [
-                cand for cand in raw_candidates if cand not in rejected_by_both_set
+            final_distractors_list = [
+                cand for cand in raw_candidates if cand not in rejected_by_any_filter_set
             ]
 
-            # Log the final, filtered results.
+            # 3. Log the results
             main_logger.info(f"\n====== Results for {name}. ======")
             main_logger.info(f"     Distractor candidates pool: {raw_candidates}")
-            main_logger.info(f"    Trigram Rejects: {list(trigram_rejected_set)[:20]}")
-            main_logger.info(f"    Dependency Rejects: {list(dependency_rejected_set)[:20]}")
-            main_logger.info(f"    Final Rejects (In Both): {list(rejected_by_both_set)}")
-            main_logger.info(f"     Final Distractors: {final_candidates_list}")
+            main_logger.info(f"    Trigram Rejects: {trigram_rejected}")
+            main_logger.info(f"    Dependency Rejects: {dependency_rejected}")
+            main_logger.info(f"    Final Rejects (In Any Filter): {list(rejected_by_any_filter_set)}")
+            main_logger.info(f"     Final Distractors: {final_distractors_list}")
             main_logger.info(f"\n=================================== \n")
 
     main_logger.info("\n====== System finished demonstration. ======")
