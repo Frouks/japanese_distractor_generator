@@ -57,7 +57,7 @@ WORD_DETAILS_FILE = DATA_DIR / "jp_all_words_details.json"
 COOCCURRENCE_FILE = DATA_DIR / "jp_cooccurrence_counts.json"
 TRIGRAM_FILE = DATA_DIR / "jp_trigram_counts.pkl"
 DEPENDENCY_FILE = DATA_DIR / "jp_dependency_relations.pkl"
-TEST_CASES_FILE = Path("test_cases.csv")
+TEST_CASES_FILE = Path("old_data/test_cases_old.csv")
 OUTPUT_FILE = Path(f"evaluation_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json")
 
 TOTAL_SENTENCES = 25_408_585
