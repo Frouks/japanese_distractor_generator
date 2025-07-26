@@ -1,14 +1,15 @@
 import json
-import re
 import logging
+import re
 import time
-from pathlib import Path
-import pandas as pd
-from tqdm import tqdm
-import matplotlib.pyplot as plt
-import seaborn as sns
 from datetime import datetime
+from pathlib import Path
+
+import matplotlib.pyplot as plt
 import numpy as np
+import seaborn as sns
+from tqdm import tqdm
+
 
 class WikiCorpusReader:
     """
@@ -21,6 +22,7 @@ class WikiCorpusReader:
     4. Collect statistics about the reading process (file counts, sentence lengths, etc.).
     5. Generate visualizations for its own statistics.
     """
+
     def __init__(self, wiki_extracted_path, log_level=logging.INFO, silent=False):
         """
         Initialize the WikiCorpusReader.
@@ -31,7 +33,7 @@ class WikiCorpusReader:
         """
         self.wiki_corpus_path = Path(wiki_extracted_path)
         self.logger = logging.getLogger('WikiCorpusReader')
-        self.stats = {} # Will be populated by stream_sentences
+        self.stats = {}  # Will be populated by stream_sentences
 
         if not silent:
             self._initialize_logging(log_level)
@@ -50,7 +52,8 @@ class WikiCorpusReader:
             ch.setFormatter(formatter)
             self.logger.addHandler(ch)
             # Add file handler
-            fh = logging.FileHandler(log_dir / f"wiki_corpus_reader_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log", encoding='utf-8')
+            fh = logging.FileHandler(log_dir / f"wiki_corpus_reader_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log",
+                                     encoding='utf-8')
             fh.setFormatter(formatter)
             self.logger.addHandler(fh)
         self.logger.info(f"Initialized reader for path: {self.wiki_corpus_path}")
@@ -63,10 +66,10 @@ class WikiCorpusReader:
         self.logger.info(f"Searching for JSON files in: {self.wiki_corpus_path.absolute()}")
         if not self.wiki_corpus_path.exists():
             raise FileNotFoundError(f"Path does not exist: {self.wiki_corpus_path.absolute()}")
-        
+
         json_files = list(self.wiki_corpus_path.glob("**/*.json"))
         valid_json_files = [
-            f for f in json_files 
+            f for f in json_files
             if not f.name.startswith('.') and f.stat().st_size > 10
         ]
         self.logger.info(f"Found {len(valid_json_files)} valid JSON files to process.")
@@ -78,32 +81,32 @@ class WikiCorpusReader:
         """
         if not text or len(text.strip()) < 3:
             return []
-        
+
         text = re.sub(r'\s+', ' ', text.strip())
         text = re.sub(r'\n+', ' ', text)
-        
+
         sentences = re.split(r'[。！？]', text)
-        
+
         valid_sentences_data = []
         for sentence_str in sentences:
             sentence_str = sentence_str.strip()
             # If the sentence is too short or too long we ignore it
             if len(sentence_str) < 8 or len(sentence_str) > 300:
                 continue
-            
+
             total_chars = len(sentence_str)
             japanese_chars = len(re.findall(r'[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]', sentence_str))
-            
+
             if total_chars > 0 and (japanese_chars / total_chars) < 0.3:
                 continue
 
             if len(sentence_str) > 200 and len(long_sentence_log_list) < 10:
-                 long_sentence_log_list.append(sentence_str)
+                long_sentence_log_list.append(sentence_str)
 
             valid_sentences_data.append({'text': sentence_str, 'length': len(sentence_str)})
-        
+
         return valid_sentences_data
-    
+
     def stream_sentences(self):
         """
         A generator that finds, reads, and yields processed sentences one by one.
@@ -111,14 +114,14 @@ class WikiCorpusReader:
         """
         self.logger.info("Starting to stream sentences from corpus...")
         start_time = time.time()
-        
+
         self.stats = {
             'files_processed': 0, 'files_with_errors': 0, 'total_articles': 0,
             'total_sentences': 0, 'sentence_lengths': [], 'long_sentences_log': []
         }
-        
+
         json_files = self._find_all_json_files()
-        
+
         for file_path in tqdm(json_files, desc="Reading Corpus Files"):
             try:
                 with open(file_path, 'r', encoding='utf-8') as f:
@@ -129,7 +132,8 @@ class WikiCorpusReader:
                             article = json.loads(line)
                             text_content = article.get('text', '')
                             if text_content:
-                                sentences_info = self._simple_japanese_sentence_split(text_content, self.stats['long_sentences_log'])
+                                sentences_info = self._simple_japanese_sentence_split(text_content,
+                                                                                      self.stats['long_sentences_log'])
                                 if sentences_info:
                                     self.stats['total_articles'] += 1
                                     for sent_info in sentences_info:
@@ -138,12 +142,12 @@ class WikiCorpusReader:
                                         # yield pauses the function, sends back one piece of data (a sentence string), and waits. When the next piece of data is requested, it resumes from where it left off.
                                         yield sent_info['text']
                         except json.JSONDecodeError:
-                            continue # Skip malformed lines
+                            continue  # Skip malformed lines
                 self.stats['files_processed'] += 1
             except Exception:
                 self.stats['files_with_errors'] += 1
                 continue
-        
+
         end_time = time.time()
         self.stats['total_processing_time_seconds'] = end_time - start_time
         self.logger.info(f"Finished streaming. Processed {self.stats['total_sentences']:,} sentences.")
@@ -172,7 +176,7 @@ class WikiCorpusReader:
             }
         }
         return summary
-    
+
     def generate_and_save_visualizations(self, output_dir="figures"):
         """Creates and saves visualizations based on the collected corpus stats."""
         output_path = Path(output_dir)
@@ -184,32 +188,31 @@ class WikiCorpusReader:
 
         plt.style.use('seaborn-v0_8-whitegrid')
         fig, ax = plt.subplots(figsize=(10, 6))
-        
+
         sentence_lengths_data = self.stats.get('sentence_lengths', [])
         if not sentence_lengths_data:
             self.logger.warning("No sentence length data to plot.")
             return
 
         sns.histplot(sentence_lengths_data, bins=50, ax=ax, color='cornflowerblue', kde=True)
-        
+
         sl_stats = stats['sentence_length_stats']
         ax.axvline(sl_stats['mean'], color='crimson', linestyle='--', label=f"Mean: {sl_stats['mean']:.1f}")
         ax.axvline(sl_stats['median'], color='forestgreen', linestyle='--', label=f"Median: {sl_stats['median']:.1f}")
-        
+
         ax.set_title('Distribution of Sentence Lengths in Japanese Wikipedia Corpus', fontsize=15)
         ax.set_xlabel('Sentence Length (characters)', fontsize=12)
         ax.set_ylabel('Frequency', fontsize=12)
         ax.legend()
-        
+
         plot_file_path = output_path / "corpus_sentence_length_distribution.png"
         plt.tight_layout()
         plt.savefig(plot_file_path, dpi=300)
         self.logger.info(f"📊 Corpus stats visualization saved to: {plot_file_path.resolve()}")
         plt.close(fig)
 
-# ==============================================================================
-#  TESTING BLOCK: This code runs only when you execute `python wiki_corpus_reader.py`
-# ==============================================================================
+
+# Only runs when this script is run  -> python wiki_corpus_reader.py
 if __name__ == '__main__':
     # --- Step 1: Set up logging ---
     test_output_base_dir = Path("wiki_corpus_reader_test_output")
@@ -217,7 +220,7 @@ if __name__ == '__main__':
     log_file_path = test_output_base_dir / "wiki_corpus_reader_test.log"
 
     logging.basicConfig(
-        level=logging.INFO, 
+        level=logging.INFO,
         format='%(asctime)s - %(name)s - %(levelname)s - [%(funcName)s:%(lineno)d] - %(message)s',
         # Set up handlers to log to both the console and the specified file.
         handlers=[
@@ -231,7 +234,7 @@ if __name__ == '__main__':
 
     # --- Step 2: Define the path to the corpus ---
     WIKI_EXTRACTED_PATH = "/Volumes/T7/Bachelorthesis/jawiki_data/jawiki_extracted"
-    
+
     if not Path(WIKI_EXTRACTED_PATH).exists():
         test_logger.error(f"Real corpus path not found: {WIKI_EXTRACTED_PATH}")
         test_logger.error("Please update the WIKI_EXTRACTED_PATH variable in the test script.")
@@ -248,20 +251,21 @@ if __name__ == '__main__':
     # --- Step 4: Create a new instance to test, but limit the files it finds ---    
     NUM_FILES_TO_TEST = 1000
     test_logger.info(f"\n--- Preparing to test with the first {NUM_FILES_TO_TEST} real corpus files ---")
-    
+
     all_real_files = reader._find_all_json_files()
     if len(all_real_files) < NUM_FILES_TO_TEST:
-        test_logger.warning(f"Corpus has fewer than {NUM_FILES_TO_TEST} files. Testing with all {len(all_real_files)} files.")
+        test_logger.warning(
+            f"Corpus has fewer than {NUM_FILES_TO_TEST} files. Testing with all {len(all_real_files)} files.")
         files_to_process = all_real_files
     else:
         files_to_process = all_real_files[:NUM_FILES_TO_TEST]
 
     # Now, when `stream_sentences` calls `self._find_all_json_files`, it will run our lambda function instead.
     reader._find_all_json_files = lambda: files_to_process
-    
+
     # --- Step 5: Test the `stream_sentences` generator and collect statistics ---
     test_logger.info("\n--- Testing sentence streaming and statistics gathering on real data sample ---")
-    
+
     # Consume the generator to force it to run completely.
     sentence_count = 0
     for sentence in reader.stream_sentences():
@@ -269,7 +273,7 @@ if __name__ == '__main__':
 
     # --- Step 6: Verify the results ---
     test_logger.info("\n--- Verifying Test Results ---")
-    
+
     # 1. Get the final statistics.
     stats = reader.get_corpus_statistics()
     test_logger.info(f"Final statistics from processing {stats.get('total_files_processed')} files:")
@@ -280,18 +284,20 @@ if __name__ == '__main__':
     test_logger.info(f"  - Sentence Length Stats (Mean/Median/Min/Max): {stats.get('sentence_length_stats')}")
 
     # 2. Assert that the process ran and found something.
-    assert stats.get('total_files_processed') == NUM_FILES_TO_TEST, f"Expected to process {NUM_FILES_TO_TEST} files, but stats show {stats.get('total_files_processed')}."
+    assert stats.get(
+        'total_files_processed') == NUM_FILES_TO_TEST, f"Expected to process {NUM_FILES_TO_TEST} files, but stats show {stats.get('total_files_processed')}."
     test_logger.info("✅ 'total_files_processed' stat matches expected number.")
-    
-    assert stats.get('total_sentences_found') > 0, "Processing ran but found zero valid sentences, which is unlikely for 1000 real files."
+
+    assert stats.get(
+        'total_sentences_found') > 0, "Processing ran but found zero valid sentences, which is unlikely for 1000 real files."
     test_logger.info(f"✅ Found a plausible number of sentences: {stats.get('total_sentences_found'):,}.")
 
     assert stats.get('total_articles_found') > 0, "Processing ran but found zero articles with valid sentences."
     test_logger.info(f"✅ Found a plausible number of articles: {stats.get('total_articles_found'):,}.")
-    
-    assert len(stats.get('sentence_lengths')) == stats.get('total_sentences_found'), "The number of recorded sentence lengths does not match the total sentence count."
-    test_logger.info("✅ Sentence length tracking is consistent.")
 
+    assert len(stats.get('sentence_lengths')) == stats.get(
+        'total_sentences_found'), "The number of recorded sentence lengths does not match the total sentence count."
+    test_logger.info("✅ Sentence length tracking is consistent.")
 
     # --- Step 7: Test visualization generation ---
     test_logger.info("\n--- Testing visualization generation with real data sample ---")

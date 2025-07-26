@@ -173,6 +173,11 @@ if __name__ == "__main__":
     # --- Step 3: Demonstrate Comparative Distractor Generation with Filtering ---
     test_items = [
         {
+            "sentence": "___は、中に入って席を選ぶことができると言いました。",
+            "target": "ウェイトレス",
+            "english_sentence": "The ___ said we could go inside and choose our seats."
+        },
+        {
             "sentence": "私の___はとても可愛い。",
             "target": "猫",
             "english_sentence": "My ___ is very cute.",

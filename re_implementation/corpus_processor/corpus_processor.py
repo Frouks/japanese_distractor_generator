@@ -554,9 +554,6 @@ class CorpusProcessor:
         self.logger.info("Corpus statistics visualizations generation finished.")
 
 
-# ==============================================================================
-#  TESTING BLOCK: This code runs only when executing `python corpus_processor.py`
-# ==============================================================================
 if __name__ == "__main__":
     import sys
 

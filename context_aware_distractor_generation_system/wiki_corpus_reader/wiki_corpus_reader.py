@@ -212,9 +212,7 @@ class WikiCorpusReader:
         plt.close(fig)
 
 
-# ==============================================================================
-#  TESTING BLOCK: This code runs only when you execute `python wiki_corpus_reader.py`
-# ==============================================================================
+# Only runs when this script is run  -> python wiki_corpus_reader.py
 if __name__ == '__main__':
     # --- Step 1: Set up logging ---
     test_output_base_dir = Path("wiki_corpus_reader_test_output")

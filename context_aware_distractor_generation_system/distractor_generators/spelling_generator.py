@@ -1,5 +1,7 @@
 import logging
+import re
 from collections import defaultdict
+
 
 class SpellingGenerator:
     """
@@ -10,7 +12,7 @@ class SpellingGenerator:
     2. The candidate must have the same Part-of-Speech (POS) as the target word.
     3. Candidates are ranked by the proximity of their word frequency to the target word's frequency.
     """
-    
+
     def __init__(self, corpus_processor, all_words_details):
         """
         Initializes the SpellingGenerator.
@@ -23,10 +25,11 @@ class SpellingGenerator:
         self.logger = logging.getLogger('SpellingGenerator')
         self.processor = corpus_processor
         self.words_data = all_words_details
-        
+
         # Pre-build an inverted index for fast character-based lookups.
         self.char_to_words_index = self._create_char_to_words_index()
-        self.logger.info(f"Generator initialized. Built character index for {len(self.char_to_words_index)} unique characters.")
+        self.logger.info(
+            f"Generator initialized. Built character index for {len(self.char_to_words_index)} unique characters.")
 
     def _create_char_to_words_index(self):
         """
@@ -46,7 +49,7 @@ class SpellingGenerator:
             unique_chars_in_lemma = set(lemma)
             for char in unique_chars_in_lemma:
                 index[char].append(key_tuple)
-        
+
         self.logger.info("Finished building character index.")
         return index
 
@@ -70,53 +73,59 @@ class SpellingGenerator:
         if not target_info:
             self.logger.error(f"Could not analyze target word '{target_word_surface}'. Aborting.")
             return []
-        
+
         target_lemma = target_info['base_form']
+        # print("Target lemma:", target_lemma)
         target_pos = target_info['pos_major']
         target_key = (target_lemma, target_pos)
-        
+
         target_details = self.words_data.get(target_key)
         if not target_details:
             self.logger.error(f"Target key '{target_key}' not found in corpus data.")
             return []
-            
+
         target_frequency = target_details.get('frequency', 0)
         self.logger.info(f"Target analyzed: Lemma='{target_lemma}', POS='{target_pos}', Frequency={target_frequency}")
 
         # 2. Find all candidate words that share at least one character.
-        target_chars = set(target_lemma)
-        self.logger.info(f"Unique characters in target lemma: {target_chars}")
-        
+        japanese_chars_only = set(re.findall(r'[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]', target_lemma))
+
+        # Functional "Chōonpu" -> "Kaa" in hiragana -> かあ in katakana -> "カー"
+        ignored_chars = {'ー'}
+        target_chars = japanese_chars_only - ignored_chars
+
+        self.logger.info(f"Relevant characters for lookup (Japanese only, ignoring {ignored_chars}): {target_chars}")
+
         candidate_keys = set()
         for char in target_chars:
             # Use the pre-built index for a very fast lookup
             if char in self.char_to_words_index:
                 candidate_keys.update(self.char_to_words_index[char])
-        
+
         self.logger.info(f"Found {len(candidate_keys)} potential candidates from character index.")
 
         # 3. Filter candidates by POS and calculate frequency difference.
         candidates_with_diff = []
         for cand_key in candidate_keys:
             cand_lemma, cand_pos = cand_key
-            
+
             # Filter out the target word itself and words with a different POS.
             if cand_lemma == target_lemma or cand_pos != target_pos:
                 continue
-            
+
             cand_details = self.words_data.get(cand_key)
             if not cand_details:
-                continue # Check if the candidate is in our corpus -> that should always be the case
-                
+                continue  # Check if the candidate is in our corpus -> that should always be the case
+
             cand_freq = cand_details.get('frequency', 0)
             freq_difference = abs(cand_freq - target_frequency)
             candidates_with_diff.append((cand_lemma, freq_difference))
-            
+
         # 4. Sort candidates by frequency difference (smallest difference is best).
         sorted_candidates = sorted(candidates_with_diff, key=lambda item: item[1])
-        
+
         # 5. Extract the top N distractors.
         distractors = [lemma for lemma, diff in sorted_candidates[:num_distractors]]
-        
+
         self.logger.info(f"Successfully generated {len(distractors)} distractors: {distractors}")
         return distractors
