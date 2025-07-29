@@ -274,7 +274,7 @@ if __name__ == "__main__":
         for name, generator in ri_system["generators"].items():
             if generator is None: continue
 
-            distractor_candidates = generator.generate_distractors(target, sentence, num_distractors=20)
+            distractor_candidates = generator.generate_distractors(target, sentence, num_distractors=30)
 
             # Apply RI filter logic ("reject if both fail")
             _, trigram_rejected = ri_system["filter"].filter_by_trigram(distractor_candidates, prev_word, next_word)
@@ -303,21 +303,21 @@ if __name__ == "__main__":
                 distractor_candidates = generator.generate_distractors(masked_sentence=masked_sentence_for_generator,
                                                                        target_word=target,
                                                                        context_type=predicted_context,
-                                                                       top_n=20, include_prob_score=False)
+                                                                       top_n=30, include_prob_score=False)
             elif name == "Co-occurrence":
                 distractor_candidates = generator.generate_distractors(target_word_surface=target,
                                                                        sentence_with_blank=sentence,
                                                                        context_type=predicted_context,
-                                                                       num_distractors=20,
+                                                                       num_distractors=30,
                                                                        include_pmi_score=False)
             elif name == "Similarity":
                 distractor_candidates = generator.generate_distractors(target_word=target,
                                                                        context_type=predicted_context,
-                                                                       top_n=20, num_candidates=200,
+                                                                       top_n=30, num_candidates=200,
                                                                        include_sim_score=False)
             else:  # Baseline- and SpellingGenerator
                 distractor_candidates = generator.generate_distractors(target_word_surface=target,
-                                                                       sentence_with_blank=sentence, num_distractors=20)
+                                                                       sentence_with_blank=sentence, num_distractors=30)
 
             # Apply CADGS filter logic ("reject if any fail")
             _, trigram_rejected = cadgs_system["filter"].filter_by_trigram(distractor_candidates, prev_word, next_word)

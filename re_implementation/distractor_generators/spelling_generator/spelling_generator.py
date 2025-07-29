@@ -53,6 +53,23 @@ class SpellingGenerator:
         self.logger.info("Finished building character index.")
         return index
 
+    def _clean_lemma(self, lemma: str) -> str:
+        """
+        Cleans a lemma by removing a hyphen and suffix if the suffix is 80%+ Latin characters.
+        Example: 'タイム-time' -> 'タイム'
+        """
+        if '-' in lemma:
+            parts = lemma.split('-', 1)
+            if len(parts) > 1:
+                main_part, suffix = parts
+                if suffix:
+                    # Find all ASCII letters in the suffix
+                    latin_chars = re.findall(r'[a-zA-Z]', suffix)
+                    # Check if the ratio of Latin characters is 80% or more
+                    if (len(latin_chars) / len(suffix)) >= 0.8:
+                        return main_part
+        return lemma
+
     def generate_distractors(self, target_word_surface, sentence_with_blank, num_distractors=5):
         """
         Generates a ranked list of distractors based on spelling similarity.
@@ -124,7 +141,17 @@ class SpellingGenerator:
         sorted_candidates = sorted(candidates_with_diff, key=lambda item: item[1])
 
         # 5. Extract the top N distractors.
-        distractors = [lemma for lemma, diff in sorted_candidates[:num_distractors]]
+        # 5. Extract, clean, and de-duplicate the top N distractors.
+        distractors = []
+        seen_lemmas = {self._clean_lemma(target_lemma)}
+        for lemma, diff in sorted_candidates:
+            cleaned_lemma = self._clean_lemma(lemma)
+            if cleaned_lemma not in seen_lemmas:
+                distractors.append(cleaned_lemma)
+                seen_lemmas.add(cleaned_lemma)
+            if len(distractors) >= num_distractors:
+                break
+        # distractors = [lemma for lemma, diff in sorted_candidates[:num_distractors]]
 
         self.logger.info(f"Successfully generated {len(distractors)} distractors: {distractors}")
         return distractors
