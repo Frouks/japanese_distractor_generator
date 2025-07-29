@@ -69,7 +69,7 @@ class ContextualGenerator:
             min_prob, max_prob = 0.005, 0.1
         elif context_type == SentenceContextEnum.CLOSED:
             # For closed contexts, demand higher probability candidates.
-            min_prob, max_prob = 0.1, 0.9
+            min_prob, max_prob = 0.005, 0.9
         else:
             print(f"Warning: Invalid context_type '{context_type}'. Defaulting to a wide range.")
             min_prob, max_prob = 0.005, 0.95

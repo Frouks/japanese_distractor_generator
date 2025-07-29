@@ -2,6 +2,7 @@ import json
 import logging
 import math
 import pickle
+import re
 from collections import defaultdict
 from pathlib import Path
 
@@ -128,6 +129,21 @@ class CooccurrenceGenerator:
         except (ValueError, ZeroDivisionError):
             return -float('inf')
 
+    def _clean_lemma(self, lemma: str) -> str:
+        """
+        Cleans a lemma by removing a hyphen and suffix if the suffix is 80%+ Latin characters.
+        Example: 'タイム-time' -> 'タイム'
+        """
+        if '-' in lemma:
+            parts = lemma.split('-', 1)
+            if len(parts) > 1:
+                main_part, suffix = parts
+                if suffix:
+                    latin_chars = re.findall(r'[a-zA-Z]', suffix)
+                    if (len(latin_chars) / len(suffix)) >= 0.8:
+                        return main_part
+        return lemma
+
     def generate_distractors(self, target_word_surface, sentence_with_blank, num_distractors=5):
         """
         Generates a ranked list of distractors based on PMI using sentence-level probabilities.
@@ -204,7 +220,18 @@ class CooccurrenceGenerator:
 
         # 4. Sort and return
         sorted_candidates = sorted(candidates_with_pmi, key=lambda item: item[1], reverse=True)
-        distractors = [lemma for lemma, score in sorted_candidates[:num_distractors]]
+        # distractors = [lemma for lemma, score in sorted_candidates[:num_distractors]]
+
+        # 5. Extract, clean, and de-duplicate the top N distractors
+        distractors = []
+        seen_lemmas = {self._clean_lemma(target_lemma)}
+        for lemma, score in sorted_candidates:
+            cleaned_lemma = self._clean_lemma(lemma)
+            if cleaned_lemma not in seen_lemmas:
+                distractors.append(cleaned_lemma)
+                seen_lemmas.add(cleaned_lemma)
+            if len(distractors) >= num_distractors:
+                break
 
         self.logger.info(f"Successfully generated {len(distractors)} distractors: {distractors}")
         return distractors

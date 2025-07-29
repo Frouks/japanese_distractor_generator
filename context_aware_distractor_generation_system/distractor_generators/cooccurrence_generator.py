@@ -2,6 +2,7 @@ import json
 import logging
 import math
 import pickle
+import re
 from collections import defaultdict
 from pathlib import Path
 from typing import Union
@@ -125,6 +126,21 @@ class CooccurrenceGenerator:
 
         return pmi_val + correction_factor
 
+    def _clean_lemma(self, lemma: str) -> str:
+        """
+        Cleans a lemma by removing a hyphen and suffix if the suffix is 80%+ Latin characters.
+        Example: 'タイム-time' -> 'タイム'
+        """
+        if '-' in lemma:
+            parts = lemma.split('-', 1)
+            if len(parts) > 1:
+                main_part, suffix = parts
+                if suffix:
+                    latin_chars = re.findall(r'[a-zA-Z]', suffix)
+                    if (len(latin_chars) / len(suffix)) >= 0.8:
+                        return main_part
+        return lemma
+
     def generate_distractors(self, target_word_surface, sentence_with_blank, context_type: SentenceContextEnum,
                              num_distractors=5, include_pmi_score: bool = True) -> Union[
         list[tuple[str, float]], list[str]]:
@@ -207,14 +223,24 @@ class CooccurrenceGenerator:
                 candidates_with_scores.append((cand_lemma, score))
 
         sorted_candidates = sorted(candidates_with_scores, key=lambda item: item[1], reverse=True)
-        final_candidates_with_scores = sorted_candidates[:num_distractors]
+        # Clean and format the final output
+        final_candidates_with_scores = []
+        seen_lemmas = {self._clean_lemma(target_lemma)}
+        for lemma, score in sorted_candidates:
+            cleaned_lemma = self._clean_lemma(lemma)
+            if cleaned_lemma not in seen_lemmas:
+                final_candidates_with_scores.append((cleaned_lemma, score))
+                seen_lemmas.add(cleaned_lemma)
+            if len(final_candidates_with_scores) >= num_distractors:
+                break
 
-        # Conditionally format the final output based on the flag
         if include_pmi_score:
             distractors = final_candidates_with_scores
         else:
-            # Default behavior: return only the words
             distractors = [lemma for lemma, score in final_candidates_with_scores]
+
+        self.logger.info(f"Successfully generated {len(distractors)} distractors: {distractors}")
+        return distractors
 
         self.logger.info(f"Successfully generated {len(distractors)} distractors: {distractors}")
         return distractors
