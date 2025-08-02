@@ -127,7 +127,7 @@ class DistractorFilter:
                 if not is_rejected:
                     accepted.append(candidate)
                 else:
-                    rejected.append(candidate)  # CHANGED: Populate the rejected list
+                    rejected.append(candidate)
 
             except Exception as e:
                 self.logger.error(f"Error during dependency parsing for candidate '{candidate}': {e}", exc_info=True)
