@@ -92,37 +92,60 @@ class DistractorFilter:
     def filter_by_dependency(self, candidates, sentence_template, blank_placeholder="___") -> tuple[
         list[str], list[str]]:
         """
-        Applies the dependency filter.
+        Applies the dependency filter with morphology-aware lemma handling.
+        Handles GiNZA's morphological splitting of inflected verbs and adjectives.
         """
         if not self.dependency_index or not self.nlp:
             self.logger.warning("Dependency index or GiNZA model not available. Skipping dependency filtering.")
-            return candidates
+            return candidates, []
 
         accepted, rejected = [], []
+
         for candidate in candidates:
             full_sentence = sentence_template.replace(blank_placeholder, candidate, 1)
             is_rejected = False
+
             try:
                 doc = self.nlp(full_sentence)
-                corpus_relations = set()
+
+                # Strategy 1: Look for exact matches (works for base forms like '猫', '寒い')
+                candidate_lemmas = set()
                 for token in doc:
-                    known_rels_for_token = self.dependency_index.get(token.lemma_, [])
-                    if known_rels_for_token:
-                        corpus_relations.update(known_rels_for_token)
+                    if token.text == candidate:
+                        candidate_lemmas.add(token.lemma_)
 
-                if not corpus_relations:
-                    accepted.append(candidate)
-                    continue
+                # Strategy 2: Handle morphologically split candidates
+                # Find content word stems that could be part of our inflected candidate
+                if not candidate_lemmas:
+                    for token in doc:
+                        # Check if this could be the main stem of our candidate
+                        # Examples from test results:
+                        # - candidate="書いた", token.text="書い", token.lemma_="書く" (VERB)
+                        # - candidate="寒かった", token.text="寒かっ", token.lemma_="寒い" (ADJ)
+                        # - candidate="面白くない", token.text="面白く", token.lemma_="面白い" (ADJ)
+                        if (token.pos_ in ['VERB', 'ADJ'] and
+                                candidate.startswith(token.text)):
+                            candidate_lemmas.add(token.lemma_)
 
+                # Strategy 3: Fallback -> prevents system from crashing
+                if not candidate_lemmas:
+                    candidate_lemmas.add(candidate)
+
+                # Check dependency relations involving the candidate
                 for token in doc:
-                    if token.lemma_ != candidate and token.head.lemma_ != candidate:
-                        continue
+                    # Only process tokens where candidate is involved
+                    if (token.lemma_ in candidate_lemmas or
+                            token.head.lemma_ in candidate_lemmas):
 
-                    live_relation = (token.dep_, token.head.lemma_, token.lemma_)
+                        # Create the dependency relation
+                        live_relation = (token.dep_, token.head.lemma_, token.lemma_)
 
-                    if live_relation in corpus_relations:
-                        is_rejected = True
-                        break
+                        # Check if this relation exists in our corpus
+                        corpus_relations = self.dependency_index.get(token.lemma_, [])
+
+                        if live_relation in corpus_relations:
+                            is_rejected = True
+                            break
 
                 if not is_rejected:
                     accepted.append(candidate)
@@ -133,7 +156,7 @@ class DistractorFilter:
                 self.logger.error(f"Error during dependency parsing for candidate '{candidate}': {e}", exc_info=True)
                 accepted.append(candidate)
 
-        rejected_count = len(candidates) - len(accepted)
+        rejected_count = len(rejected)
         if rejected_count > 0:
             self.logger.info(f"Dependency filter rejected {rejected_count} candidates.")
         return accepted, rejected

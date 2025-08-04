@@ -1,0 +1,852 @@
+2025-08-04 00:27:58 - root - INFO - Logging configured to output to console and file.
+2025-08-04 00:27:58 - Main - INFO - ====== Distractor Generation System Starting ======
+2025-08-04 00:27:58 - Main.Setup - INFO - --- Checking for all required pre-processed data files ---
+2025-08-04 00:27:58 - Main.Setup - INFO - ✅ All pre-processed data files found. Skipping build steps.
+2025-08-04 00:27:58 - Main - INFO - 
+--- Loading data and initializing generators & filters ---
+2025-08-04 00:27:58 - CorpusProcessor - INFO - No explicit MeCab args provided by user. MeCab will use its default dictionary configuration.
+2025-08-04 00:27:58 - CorpusProcessor - WARNING - IMPORTANT: Please check the 'Active MeCab Dictionary Info' log output below to ensure MeCab is using the dictionary you expect (e.g., unidic).
+2025-08-04 00:27:58 - CorpusProcessor - INFO - MeCab Tagger initialized with final effective args: ''.
+2025-08-04 00:27:58 - CorpusProcessor - INFO - Active MeCab Dictionary Info (from Tagger):
+  Filename: /opt/miniconda3/envs/bt/lib/python3.10/site-packages/unidic/dicdir/sys.dic, Charset: utf8, Type: 0, Version: 102
+
+2025-08-04 00:27:58 - CorpusProcessor - INFO - Using feature indices for parsing: POS1=0, POS_Detail_End=3, Lemma=7
+2025-08-04 00:27:58 - CorpusProcessor.Loader - INFO - Loading all words details from /Users/danieleamore/University/Bachelorthesis/japanese_distractor_generator/re_implementation/processed_corpus_data/jp_all_words_details.json...
+2025-08-04 00:27:58 - CorpusProcessor.Loader - INFO - Successfully loaded 179807 entries from words details file.
+2025-08-04 00:27:58 - BaselineGenerator - INFO - Organizing corpus vocabulary by Part-of-Speech for faster lookups...
+2025-08-04 00:27:58 - BaselineGenerator - INFO - Finished organizing vocabulary.
+2025-08-04 00:27:58 - BaselineGenerator - INFO - Generator initialized. Organized vocabulary into 8 POS categories.
+2025-08-04 00:27:58 - SpellingGenerator - INFO - Building character-to-word inverted index for fast lookups...
+2025-08-04 00:27:58 - SpellingGenerator - INFO - Finished building character index.
+2025-08-04 00:27:58 - SpellingGenerator - INFO - Generator initialized. Built character index for 5253 unique characters.
+2025-08-04 00:27:58 - SimilarityGenerator - INFO - Loading Word2Vec model... (This may take a moment)
+2025-08-04 00:27:58 - gensim.utils - INFO - loading Word2Vec object from model/jawiki_min_count_5.word2vec.model
+2025-08-04 00:27:58 - gensim.utils - INFO - loading wv recursively from model/jawiki_min_count_5.word2vec.model.wv.* with mmap=None
+2025-08-04 00:27:58 - gensim.utils - INFO - loading vectors from model/jawiki_min_count_5.word2vec.model.wv.vectors.npy with mmap=None
+2025-08-04 00:27:58 - gensim.utils - INFO - loading syn1neg from model/jawiki_min_count_5.word2vec.model.syn1neg.npy with mmap=None
+2025-08-04 00:27:59 - gensim.utils - INFO - setting ignored attribute cum_table to None
+2025-08-04 00:27:59 - gensim.utils - INFO - Word2Vec lifecycle event {'fname': 'model/jawiki_min_count_5.word2vec.model', 'datetime': '2025-08-04T00:27:59.566577', 'gensim': '4.3.3', 'python': '3.10.16 (main, Dec 11 2024, 10:22:29) [Clang 14.0.6 ]', 'platform': 'macOS-15.5-arm64-arm-64bit', 'event': 'loaded'}
+2025-08-04 00:27:59 - SimilarityGenerator - INFO - Word2Vec model loaded successfully.
+2025-08-04 00:27:59 - SimilarityGenerator - INFO - SimilarityGenerator initialized successfully with model from model/jawiki_min_count_5.word2vec.model
+2025-08-04 00:29:01 - CooccurrenceGenerator.Loader - INFO - Successfully loaded 57684917 co-occurrence counts from processed_corpus_data/jp_cooccurrence_counts.json
+2025-08-04 00:29:01 - CooccurrenceGenerator - INFO - Loading cached co-occurrence index from /Users/danieleamore/University/Bachelorthesis/japanese_distractor_generator/re_implementation/processed_corpus_data/jp_cooccurrence_index.pkl...
+2025-08-04 00:29:37 - CooccurrenceGenerator - INFO - ✅ Cached index loaded successfully.
+2025-08-04 00:29:37 - CooccurrenceGenerator - INFO - Generator initialized with 57684917 co-occurrence pairs and an index of 226838 lemmas.
+2025-08-04 00:29:37 - Main - INFO - Initializing DistractorFilter...
+2025-08-04 00:29:37 - DistractorFilter - INFO - Loading trigrams from processed_corpus_data/jp_trigram_counts.pkl...
+2025-08-04 00:29:40 - DistractorFilter - INFO - Successfully loaded 6,489,162 items into a set in 2.68s.
+2025-08-04 00:29:40 - DistractorFilter - INFO - Loading dependency index from processed_corpus_data/jp_dependency_relations.pkl...
+2025-08-04 00:29:54 - DistractorFilter - INFO - Successfully loaded 452,568 items into a dict in 14.12s.
+2025-08-04 00:29:54 - DistractorFilter - INFO - Loading spaCy/GiNZA model for live parsing...
+2025-08-04 00:29:55 - DistractorFilter - INFO - ✅ GiNZA model loaded successfully.
+2025-08-04 00:29:55 - Main - INFO - DistractorFilter is ready.
+2025-08-04 00:29:55 - Main - INFO - ============================================================
+
+2025-08-04 00:29:55 - Main - INFO - DEMONSTRATING DISTRACTOR GENERATION WITH CHAINED FILTERING
+2025-08-04 00:29:55 - Main - INFO - ============================================================
+
+2025-08-04 00:29:55 - Main - INFO - ▶️  (Open Context) Target: '猫' in Carrier Sentence: '私の___はとても可愛い。'
+2025-08-04 00:29:55 - Main - INFO -   (Context for Trigram Filter: ('私', BLANK, 'とても'))
+2025-08-04 00:29:55 - BaselineGenerator - INFO - --- Generating baseline distractors for '猫' ---
+2025-08-04 00:29:55 - BaselineGenerator - INFO - Target analyzed: Lemma='猫', POS='名詞', Frequency=22075
+2025-08-04 00:29:55 - BaselineGenerator - INFO - Found 166199 candidate words with POS '名詞'.
+2025-08-04 00:29:55 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['経過', 'マイナー', '商店', '土', '分岐', '提唱', 'オーディション', '財産', '連覇', 'インディアン', '連結', '周', 'バスケットボール', '証券', '国土', '大手', '松', '下位', '電動', '当該']
+2025-08-04 00:29:55 - Main - INFO - 
+====== Results for Baseline. ======
+2025-08-04 00:29:55 - Main - INFO -      Distractor candidates pool: ['経過', 'マイナー', '商店', '土', '分岐', '提唱', 'オーディション', '財産', '連覇', 'インディアン', '連結', '周', 'バスケットボール', '証券', '国土', '大手', '松', '下位', '電動', '当該']
+2025-08-04 00:29:55 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:29:55 - Main - INFO -     Dependency Rejects: []
+2025-08-04 00:29:55 - Main - INFO -     Final Rejects (In Any Filter): []
+2025-08-04 00:29:55 - Main - INFO -      Final Distractors: ['経過', 'マイナー', '商店', '土', '分岐', '提唱', 'オーディション', '財産', '連覇', 'インディアン', '連結', '周', 'バスケットボール', '証券', '国土', '大手', '松', '下位', '電動', '当該']
+2025-08-04 00:29:55 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:29:55 - SpellingGenerator - INFO - --- Generating spelling distractors for '猫' ---
+2025-08-04 00:29:55 - SpellingGenerator - INFO - Target analyzed: Lemma='猫', POS='名詞', Frequency=22075
+2025-08-04 00:29:55 - SpellingGenerator - INFO - Relevant characters for lookup (Japanese only, ignoring {'ー'}): {'猫'}
+2025-08-04 00:29:55 - SpellingGenerator - INFO - Found 100 potential candidates from character index.
+2025-08-04 00:29:55 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['黒猫', '山猫', '子猫', '野良猫', '飼い猫', '愛猫', '海猫', '招き猫', '猫耳', '猫好き', '化け猫', '猫股', '白猫', '家猫', '猫背', '野猫', '雌猫', '斑猫', '猫型', '雄猫']
+2025-08-04 00:29:55 - Main - INFO - 
+====== Results for Spelling. ======
+2025-08-04 00:29:55 - Main - INFO -      Distractor candidates pool: ['黒猫', '山猫', '子猫', '野良猫', '飼い猫', '愛猫', '海猫', '招き猫', '猫耳', '猫好き', '化け猫', '猫股', '白猫', '家猫', '猫背', '野猫', '雌猫', '斑猫', '猫型', '雄猫']
+2025-08-04 00:29:55 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:29:55 - Main - INFO -     Dependency Rejects: []
+2025-08-04 00:29:55 - Main - INFO -     Final Rejects (In Any Filter): []
+2025-08-04 00:29:55 - Main - INFO -      Final Distractors: ['黒猫', '山猫', '子猫', '野良猫', '飼い猫', '愛猫', '海猫', '招き猫', '猫耳', '猫好き', '化け猫', '猫股', '白猫', '家猫', '猫背', '野猫', '雌猫', '斑猫', '猫型', '雄猫']
+2025-08-04 00:29:55 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:29:55 - SimilarityGenerator - INFO - --- Generating similarity distractors for '猫' ---
+2025-08-04 00:29:57 - SimilarityGenerator - INFO - Found similar items for '猫': ['犬' (0.72729), 'ネコ' (0.71902), '子猫' (0.66409), '飼い猫' (0.66199), '仔猫' (0.63314), '野良猫' (0.62707), '愛猫' (0.61750), 'チェシャ' (0.60842), '黒猫' (0.60137), '文鳥' (0.60130), 'カナリヤ' (0.60030), '白猫' (0.59696), 'ねこ' (0.59400), 'ねずみ' (0.58800), 'タヌキ' (0.58716), '捨て猫' (0.58233), '子犬' (0.58033), '飼い犬' (0.57252), '吾輩' (0.56726), 'ウサギ' (0.56712)]
+2025-08-04 00:29:57 - SimilarityGenerator - INFO - Successfully generated 20 distractors for target token '猫'.
+2025-08-04 00:29:57 - Main - INFO - 
+====== Results for Similarity. ======
+2025-08-04 00:29:57 - Main - INFO -      Distractor candidates pool: ['犬', 'ネコ', '子猫', '飼い猫', '仔猫', '野良猫', '愛猫', 'チェシャ', '黒猫', '文鳥', 'カナリヤ', '白猫', 'ねこ', 'ねずみ', 'タヌキ', '捨て猫', '子犬', '飼い犬', '吾輩', 'ウサギ']
+2025-08-04 00:29:57 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:29:57 - Main - INFO -     Dependency Rejects: []
+2025-08-04 00:29:57 - Main - INFO -     Final Rejects (In Any Filter): []
+2025-08-04 00:29:57 - Main - INFO -      Final Distractors: ['犬', 'ネコ', '子猫', '飼い猫', '仔猫', '野良猫', '愛猫', 'チェシャ', '黒猫', '文鳥', 'カナリヤ', '白猫', 'ねこ', 'ねずみ', 'タヌキ', '捨て猫', '子犬', '飼い犬', '吾輩', 'ウサギ']
+2025-08-04 00:29:57 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:29:57 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for '猫' ---
+2025-08-04 00:29:57 - CooccurrenceGenerator - INFO - Target: Lemma='猫', POS='名詞', Freq=22075
+2025-08-04 00:29:57 - CooccurrenceGenerator - INFO - Found 6209 co-occurring candidate surfaces to analyze.
+2025-08-04 00:29:58 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['シャトン', 'ジェリクル', '鼻頭', '猫好き', 'チェシャー', '窮鼠', 'バリニーズ', 'アタゴオル', '猫絵', '猫派', '三毛', '捨て猫', 'アビシニアン', '多指', 'ギコ', '猫缶', '擬古', '愛猫', '成猫', '国星']
+2025-08-04 00:29:58 - DistractorFilter - INFO - Dependency filter rejected 3 candidates.
+2025-08-04 00:29:58 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-08-04 00:29:58 - Main - INFO -      Distractor candidates pool: ['シャトン', 'ジェリクル', '鼻頭', '猫好き', 'チェシャー', '窮鼠', 'バリニーズ', 'アタゴオル', '猫絵', '猫派', '三毛', '捨て猫', 'アビシニアン', '多指', 'ギコ', '猫缶', '擬古', '愛猫', '成猫', '国星']
+2025-08-04 00:29:58 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:29:58 - Main - INFO -     Dependency Rejects: ['猫絵', '猫派', '猫缶']
+2025-08-04 00:29:58 - Main - INFO -     Final Rejects (In Any Filter): ['猫絵', '猫派', '猫缶']
+2025-08-04 00:29:58 - Main - INFO -      Final Distractors: ['シャトン', 'ジェリクル', '鼻頭', '猫好き', 'チェシャー', '窮鼠', 'バリニーズ', 'アタゴオル', '三毛', '捨て猫', 'アビシニアン', '多指', 'ギコ', '擬古', '愛猫', '成猫', '国星']
+2025-08-04 00:29:58 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:29:58 - Main - INFO - ▶️  (Closed Context) Target: '猫' in Carrier Sentence: 'その___は魚を咥えて、ニャーと鳴いた。'
+2025-08-04 00:29:58 - Main - INFO -   (Context for Trigram Filter: ('その', BLANK, '魚'))
+2025-08-04 00:29:58 - BaselineGenerator - INFO - --- Generating baseline distractors for '猫' ---
+2025-08-04 00:29:58 - BaselineGenerator - INFO - Target analyzed: Lemma='猫', POS='名詞', Frequency=22075
+2025-08-04 00:29:58 - BaselineGenerator - INFO - Found 166199 candidate words with POS '名詞'.
+2025-08-04 00:29:58 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['経過', 'マイナー', '商店', '土', '分岐', '提唱', 'オーディション', '財産', '連覇', 'インディアン', '連結', '周', 'バスケットボール', '証券', '国土', '大手', '松', '下位', '電動', '当該']
+2025-08-04 00:29:59 - Main - INFO - 
+====== Results for Baseline. ======
+2025-08-04 00:29:59 - Main - INFO -      Distractor candidates pool: ['経過', 'マイナー', '商店', '土', '分岐', '提唱', 'オーディション', '財産', '連覇', 'インディアン', '連結', '周', 'バスケットボール', '証券', '国土', '大手', '松', '下位', '電動', '当該']
+2025-08-04 00:29:59 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:29:59 - Main - INFO -     Dependency Rejects: []
+2025-08-04 00:29:59 - Main - INFO -     Final Rejects (In Any Filter): []
+2025-08-04 00:29:59 - Main - INFO -      Final Distractors: ['経過', 'マイナー', '商店', '土', '分岐', '提唱', 'オーディション', '財産', '連覇', 'インディアン', '連結', '周', 'バスケットボール', '証券', '国土', '大手', '松', '下位', '電動', '当該']
+2025-08-04 00:29:59 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:29:59 - SpellingGenerator - INFO - --- Generating spelling distractors for '猫' ---
+2025-08-04 00:29:59 - SpellingGenerator - INFO - Target analyzed: Lemma='猫', POS='名詞', Frequency=22075
+2025-08-04 00:29:59 - SpellingGenerator - INFO - Relevant characters for lookup (Japanese only, ignoring {'ー'}): {'猫'}
+2025-08-04 00:29:59 - SpellingGenerator - INFO - Found 100 potential candidates from character index.
+2025-08-04 00:29:59 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['黒猫', '山猫', '子猫', '野良猫', '飼い猫', '愛猫', '海猫', '招き猫', '猫耳', '猫好き', '化け猫', '猫股', '白猫', '家猫', '猫背', '野猫', '雌猫', '斑猫', '猫型', '雄猫']
+2025-08-04 00:29:59 - Main - INFO - 
+====== Results for Spelling. ======
+2025-08-04 00:29:59 - Main - INFO -      Distractor candidates pool: ['黒猫', '山猫', '子猫', '野良猫', '飼い猫', '愛猫', '海猫', '招き猫', '猫耳', '猫好き', '化け猫', '猫股', '白猫', '家猫', '猫背', '野猫', '雌猫', '斑猫', '猫型', '雄猫']
+2025-08-04 00:29:59 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:29:59 - Main - INFO -     Dependency Rejects: []
+2025-08-04 00:29:59 - Main - INFO -     Final Rejects (In Any Filter): []
+2025-08-04 00:29:59 - Main - INFO -      Final Distractors: ['黒猫', '山猫', '子猫', '野良猫', '飼い猫', '愛猫', '海猫', '招き猫', '猫耳', '猫好き', '化け猫', '猫股', '白猫', '家猫', '猫背', '野猫', '雌猫', '斑猫', '猫型', '雄猫']
+2025-08-04 00:29:59 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:29:59 - SimilarityGenerator - INFO - --- Generating similarity distractors for '猫' ---
+2025-08-04 00:29:59 - SimilarityGenerator - INFO - Found similar items for '猫': ['犬' (0.72729), 'ネコ' (0.71902), '子猫' (0.66409), '飼い猫' (0.66199), '仔猫' (0.63314), '野良猫' (0.62707), '愛猫' (0.61750), 'チェシャ' (0.60842), '黒猫' (0.60137), '文鳥' (0.60130), 'カナリヤ' (0.60030), '白猫' (0.59696), 'ねこ' (0.59400), 'ねずみ' (0.58800), 'タヌキ' (0.58716), '捨て猫' (0.58233), '子犬' (0.58033), '飼い犬' (0.57252), '吾輩' (0.56726), 'ウサギ' (0.56712)]
+2025-08-04 00:29:59 - SimilarityGenerator - INFO - Successfully generated 20 distractors for target token '猫'.
+2025-08-04 00:29:59 - Main - INFO - 
+====== Results for Similarity. ======
+2025-08-04 00:29:59 - Main - INFO -      Distractor candidates pool: ['犬', 'ネコ', '子猫', '飼い猫', '仔猫', '野良猫', '愛猫', 'チェシャ', '黒猫', '文鳥', 'カナリヤ', '白猫', 'ねこ', 'ねずみ', 'タヌキ', '捨て猫', '子犬', '飼い犬', '吾輩', 'ウサギ']
+2025-08-04 00:29:59 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:29:59 - Main - INFO -     Dependency Rejects: []
+2025-08-04 00:29:59 - Main - INFO -     Final Rejects (In Any Filter): []
+2025-08-04 00:29:59 - Main - INFO -      Final Distractors: ['犬', 'ネコ', '子猫', '飼い猫', '仔猫', '野良猫', '愛猫', 'チェシャ', '黒猫', '文鳥', 'カナリヤ', '白猫', 'ねこ', 'ねずみ', 'タヌキ', '捨て猫', '子犬', '飼い犬', '吾輩', 'ウサギ']
+2025-08-04 00:29:59 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:29:59 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for '猫' ---
+2025-08-04 00:29:59 - CooccurrenceGenerator - INFO - Target: Lemma='猫', POS='名詞', Freq=22075
+2025-08-04 00:29:59 - CooccurrenceGenerator - INFO - Found 6209 co-occurring candidate surfaces to analyze.
+2025-08-04 00:29:59 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['シャトン', 'ジェリクル', '鼻頭', '猫好き', 'チェシャー', '窮鼠', 'バリニーズ', 'アタゴオル', '猫絵', '猫派', '三毛', '捨て猫', 'アビシニアン', '多指', 'ギコ', '猫缶', '擬古', '愛猫', '成猫', '国星']
+2025-08-04 00:30:00 - DistractorFilter - INFO - Dependency filter rejected 3 candidates.
+2025-08-04 00:30:00 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-08-04 00:30:00 - Main - INFO -      Distractor candidates pool: ['シャトン', 'ジェリクル', '鼻頭', '猫好き', 'チェシャー', '窮鼠', 'バリニーズ', 'アタゴオル', '猫絵', '猫派', '三毛', '捨て猫', 'アビシニアン', '多指', 'ギコ', '猫缶', '擬古', '愛猫', '成猫', '国星']
+2025-08-04 00:30:00 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:00 - Main - INFO -     Dependency Rejects: ['猫絵', '猫派', '猫缶']
+2025-08-04 00:30:00 - Main - INFO -     Final Rejects (In Any Filter): ['猫絵', '猫派', '猫缶']
+2025-08-04 00:30:00 - Main - INFO -      Final Distractors: ['シャトン', 'ジェリクル', '鼻頭', '猫好き', 'チェシャー', '窮鼠', 'バリニーズ', 'アタゴオル', '三毛', '捨て猫', 'アビシニアン', '多指', 'ギコ', '擬古', '愛猫', '成猫', '国星']
+2025-08-04 00:30:00 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:00 - Main - INFO - ▶️  (Open Context) Target: '本' in Carrier Sentence: '図書館で面白い___を借りた。'
+2025-08-04 00:30:00 - Main - INFO -   (Context for Trigram Filter: ('面白い', BLANK, '借りた'))
+2025-08-04 00:30:00 - BaselineGenerator - INFO - --- Generating baseline distractors for '本' ---
+2025-08-04 00:30:00 - BaselineGenerator - INFO - Target analyzed: Lemma='本', POS='名詞', Frequency=80890
+2025-08-04 00:30:00 - BaselineGenerator - INFO - Found 166199 candidate words with POS '名詞'.
+2025-08-04 00:30:00 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['復帰', '合併', '事故', '動物', '男性', '種類', '始め', '勝', '写真', '移動', '姿', '運用', '掲載', 'ＦＣ', '支持', 'インド', '行動', '論', '国内', '階']
+2025-08-04 00:30:00 - DistractorFilter - INFO - Dependency filter rejected 3 candidates.
+2025-08-04 00:30:00 - Main - INFO - 
+====== Results for Baseline. ======
+2025-08-04 00:30:00 - Main - INFO -      Distractor candidates pool: ['復帰', '合併', '事故', '動物', '男性', '種類', '始め', '勝', '写真', '移動', '姿', '運用', '掲載', 'ＦＣ', '支持', 'インド', '行動', '論', '国内', '階']
+2025-08-04 00:30:00 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:00 - Main - INFO -     Dependency Rejects: ['写真', '姿', '階']
+2025-08-04 00:30:00 - Main - INFO -     Final Rejects (In Any Filter): ['写真', '姿', '階']
+2025-08-04 00:30:00 - Main - INFO -      Final Distractors: ['復帰', '合併', '事故', '動物', '男性', '種類', '始め', '勝', '移動', '運用', '掲載', 'ＦＣ', '支持', 'インド', '行動', '論', '国内']
+2025-08-04 00:30:00 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:00 - SpellingGenerator - INFO - --- Generating spelling distractors for '本' ---
+2025-08-04 00:30:00 - SpellingGenerator - INFO - Target analyzed: Lemma='本', POS='名詞', Frequency=80890
+2025-08-04 00:30:00 - SpellingGenerator - INFO - Relevant characters for lookup (Japanese only, ignoring {'ー'}): {'本'}
+2025-08-04 00:30:00 - SpellingGenerator - INFO - Found 447 potential candidates from character index.
+2025-08-04 00:30:00 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['本部', '本社', '基本', '脚本', '本塁', '本人', '本線', '本来', '本格', '本名', '本拠', '資本', '本作', '本当', '本土', '本編', '本体', '本種', '本項', '本田']
+2025-08-04 00:30:00 - DistractorFilter - INFO - Dependency filter rejected 1 candidates.
+2025-08-04 00:30:00 - Main - INFO - 
+====== Results for Spelling. ======
+2025-08-04 00:30:00 - Main - INFO -      Distractor candidates pool: ['本部', '本社', '基本', '脚本', '本塁', '本人', '本線', '本来', '本格', '本名', '本拠', '資本', '本作', '本当', '本土', '本編', '本体', '本種', '本項', '本田']
+2025-08-04 00:30:00 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:00 - Main - INFO -     Dependency Rejects: ['脚本']
+2025-08-04 00:30:00 - Main - INFO -     Final Rejects (In Any Filter): ['脚本']
+2025-08-04 00:30:00 - Main - INFO -      Final Distractors: ['本部', '本社', '基本', '本塁', '本人', '本線', '本来', '本格', '本名', '本拠', '資本', '本作', '本当', '本土', '本編', '本体', '本種', '本項', '本田']
+2025-08-04 00:30:00 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:00 - SimilarityGenerator - INFO - --- Generating similarity distractors for '本' ---
+2025-08-04 00:30:00 - SimilarityGenerator - INFO - Found similar items for '本': ['書物' (0.64820), '原書' (0.63685), '本書' (0.63266), '本より' (0.62586), '書籍' (0.61339), '前書き' (0.57827), '同書' (0.57445), '版本' (0.55561), '袋綴じ' (0.54857), '稿本' (0.54343), '写本' (0.53996), '冊子' (0.53438), '後書き' (0.53145), '和綴' (0.53022), '書' (0.52939), '節用' (0.52897), '明融' (0.52843), '初編' (0.52578), '読み物' (0.52562), '跋文' (0.52430)]
+2025-08-04 00:30:00 - SimilarityGenerator - INFO - Successfully generated 20 distractors for target token '本'.
+2025-08-04 00:30:01 - DistractorFilter - INFO - Dependency filter rejected 6 candidates.
+2025-08-04 00:30:01 - Main - INFO - 
+====== Results for Similarity. ======
+2025-08-04 00:30:01 - Main - INFO -      Distractor candidates pool: ['書物', '原書', '本書', '本より', '書籍', '前書き', '同書', '版本', '袋綴じ', '稿本', '写本', '冊子', '後書き', '和綴', '書', '節用', '明融', '初編', '読み物', '跋文']
+2025-08-04 00:30:01 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:01 - Main - INFO -     Dependency Rejects: ['書物', '本より', '書籍', '写本', '書', '読み物']
+2025-08-04 00:30:01 - Main - INFO -     Final Rejects (In Any Filter): ['書', '書籍', '写本', '読み物', '書物', '本より']
+2025-08-04 00:30:01 - Main - INFO -      Final Distractors: ['原書', '本書', '前書き', '同書', '版本', '袋綴じ', '稿本', '冊子', '後書き', '和綴', '節用', '明融', '初編', '跋文']
+2025-08-04 00:30:01 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:01 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for '本' ---
+2025-08-04 00:30:01 - CooccurrenceGenerator - INFO - Target: Lemma='本', POS='名詞', Freq=80890
+2025-08-04 00:30:01 - CooccurrenceGenerator - INFO - Found 21286 co-occurring candidate surfaces to analyze.
+2025-08-04 00:30:01 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['亀鑑', 'モエハ', '紹煕', '二夫', '単行', '初撰', '和刻', 'メイユウ', 'フユモト', 'サカゴエ', '手抄', '天理', '古点', '判形', '影印', '稀覯', 'シロガネチョウ', '手写', '前表', '教則']
+2025-08-04 00:30:01 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-08-04 00:30:01 - Main - INFO -      Distractor candidates pool: ['亀鑑', 'モエハ', '紹煕', '二夫', '単行', '初撰', '和刻', 'メイユウ', 'フユモト', 'サカゴエ', '手抄', '天理', '古点', '判形', '影印', '稀覯', 'シロガネチョウ', '手写', '前表', '教則']
+2025-08-04 00:30:01 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:01 - Main - INFO -     Dependency Rejects: []
+2025-08-04 00:30:01 - Main - INFO -     Final Rejects (In Any Filter): []
+2025-08-04 00:30:01 - Main - INFO -      Final Distractors: ['亀鑑', 'モエハ', '紹煕', '二夫', '単行', '初撰', '和刻', 'メイユウ', 'フユモト', 'サカゴエ', '手抄', '天理', '古点', '判形', '影印', '稀覯', 'シロガネチョウ', '手写', '前表', '教則']
+2025-08-04 00:30:01 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:01 - Main - INFO - ▶️  (Closed Context) Target: '本' in Carrier Sentence: '彼はその___のページをめくり、活字を追い始めた。'
+2025-08-04 00:30:01 - Main - INFO -   (Context for Trigram Filter: ('彼', BLANK, 'ページ'))
+2025-08-04 00:30:01 - BaselineGenerator - INFO - --- Generating baseline distractors for '本' ---
+2025-08-04 00:30:01 - CorpusProcessor - WARNING - Used fallback search to find target token in context.
+2025-08-04 00:30:01 - BaselineGenerator - INFO - Target analyzed: Lemma='本', POS='名詞', Frequency=80890
+2025-08-04 00:30:01 - BaselineGenerator - INFO - Found 166199 candidate words with POS '名詞'.
+2025-08-04 00:30:01 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['復帰', '合併', '事故', '動物', '男性', '種類', '始め', '勝', '写真', '移動', '姿', '運用', '掲載', 'ＦＣ', '支持', 'インド', '行動', '論', '国内', '階']
+2025-08-04 00:30:02 - DistractorFilter - INFO - Dependency filter rejected 4 candidates.
+2025-08-04 00:30:02 - Main - INFO - 
+====== Results for Baseline. ======
+2025-08-04 00:30:02 - Main - INFO -      Distractor candidates pool: ['復帰', '合併', '事故', '動物', '男性', '種類', '始め', '勝', '写真', '移動', '姿', '運用', '掲載', 'ＦＣ', '支持', 'インド', '行動', '論', '国内', '階']
+2025-08-04 00:30:02 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:02 - Main - INFO -     Dependency Rejects: ['種類', '始め', '写真', '掲載']
+2025-08-04 00:30:02 - Main - INFO -     Final Rejects (In Any Filter): ['写真', '掲載', '始め', '種類']
+2025-08-04 00:30:02 - Main - INFO -      Final Distractors: ['復帰', '合併', '事故', '動物', '男性', '勝', '移動', '姿', '運用', 'ＦＣ', '支持', 'インド', '行動', '論', '国内', '階']
+2025-08-04 00:30:02 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:02 - SpellingGenerator - INFO - --- Generating spelling distractors for '本' ---
+2025-08-04 00:30:02 - CorpusProcessor - WARNING - Used fallback search to find target token in context.
+2025-08-04 00:30:02 - SpellingGenerator - INFO - Target analyzed: Lemma='本', POS='名詞', Frequency=80890
+2025-08-04 00:30:02 - SpellingGenerator - INFO - Relevant characters for lookup (Japanese only, ignoring {'ー'}): {'本'}
+2025-08-04 00:30:02 - SpellingGenerator - INFO - Found 447 potential candidates from character index.
+2025-08-04 00:30:02 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['本部', '本社', '基本', '脚本', '本塁', '本人', '本線', '本来', '本格', '本名', '本拠', '資本', '本作', '本当', '本土', '本編', '本体', '本種', '本項', '本田']
+2025-08-04 00:30:02 - DistractorFilter - INFO - Dependency filter rejected 3 candidates.
+2025-08-04 00:30:02 - Main - INFO - 
+====== Results for Spelling. ======
+2025-08-04 00:30:02 - Main - INFO -      Distractor candidates pool: ['本部', '本社', '基本', '脚本', '本塁', '本人', '本線', '本来', '本格', '本名', '本拠', '資本', '本作', '本当', '本土', '本編', '本体', '本種', '本項', '本田']
+2025-08-04 00:30:02 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:02 - Main - INFO -     Dependency Rejects: ['本人', '本線', '本作']
+2025-08-04 00:30:02 - Main - INFO -     Final Rejects (In Any Filter): ['本線', '本作', '本人']
+2025-08-04 00:30:02 - Main - INFO -      Final Distractors: ['本部', '本社', '基本', '脚本', '本塁', '本来', '本格', '本名', '本拠', '資本', '本当', '本土', '本編', '本体', '本種', '本項', '本田']
+2025-08-04 00:30:02 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:02 - SimilarityGenerator - INFO - --- Generating similarity distractors for '本' ---
+2025-08-04 00:30:02 - CorpusProcessor - WARNING - Used fallback search to find target token in context.
+2025-08-04 00:30:02 - SimilarityGenerator - INFO - Found similar items for '本': ['書物' (0.64820), '原書' (0.63685), '本書' (0.63266), '本より' (0.62586), '書籍' (0.61339), '前書き' (0.57827), '同書' (0.57445), '版本' (0.55561), '袋綴じ' (0.54857), '稿本' (0.54343), '写本' (0.53996), '冊子' (0.53438), '後書き' (0.53145), '和綴' (0.53022), '書' (0.52939), '節用' (0.52897), '明融' (0.52843), '初編' (0.52578), '読み物' (0.52562), '跋文' (0.52430)]
+2025-08-04 00:30:02 - SimilarityGenerator - INFO - Successfully generated 20 distractors for target token '本'.
+2025-08-04 00:30:02 - DistractorFilter - INFO - Dependency filter rejected 8 candidates.
+2025-08-04 00:30:02 - Main - INFO - 
+====== Results for Similarity. ======
+2025-08-04 00:30:02 - Main - INFO -      Distractor candidates pool: ['書物', '原書', '本書', '本より', '書籍', '前書き', '同書', '版本', '袋綴じ', '稿本', '写本', '冊子', '後書き', '和綴', '書', '節用', '明融', '初編', '読み物', '跋文']
+2025-08-04 00:30:02 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:02 - Main - INFO -     Dependency Rejects: ['書物', '本書', '本より', '書籍', '同書', '写本', '書', '読み物']
+2025-08-04 00:30:02 - Main - INFO -     Final Rejects (In Any Filter): ['書', '書籍', '写本', '書物', '本書', '同書', '読み物', '本より']
+2025-08-04 00:30:02 - Main - INFO -      Final Distractors: ['原書', '前書き', '版本', '袋綴じ', '稿本', '冊子', '後書き', '和綴', '節用', '明融', '初編', '跋文']
+2025-08-04 00:30:02 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:02 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for '本' ---
+2025-08-04 00:30:02 - CorpusProcessor - WARNING - Used fallback search to find target token in context.
+2025-08-04 00:30:02 - CooccurrenceGenerator - INFO - Target: Lemma='本', POS='名詞', Freq=80890
+2025-08-04 00:30:02 - CooccurrenceGenerator - INFO - Found 21286 co-occurring candidate surfaces to analyze.
+2025-08-04 00:30:02 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['亀鑑', 'モエハ', '紹煕', '二夫', '単行', '初撰', '和刻', 'メイユウ', 'フユモト', 'サカゴエ', '手抄', '天理', '古点', '判形', '影印', '稀覯', 'シロガネチョウ', '手写', '前表', '教則']
+2025-08-04 00:30:03 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-08-04 00:30:03 - Main - INFO -      Distractor candidates pool: ['亀鑑', 'モエハ', '紹煕', '二夫', '単行', '初撰', '和刻', 'メイユウ', 'フユモト', 'サカゴエ', '手抄', '天理', '古点', '判形', '影印', '稀覯', 'シロガネチョウ', '手写', '前表', '教則']
+2025-08-04 00:30:03 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:03 - Main - INFO -     Dependency Rejects: []
+2025-08-04 00:30:03 - Main - INFO -     Final Rejects (In Any Filter): []
+2025-08-04 00:30:03 - Main - INFO -      Final Distractors: ['亀鑑', 'モエハ', '紹煕', '二夫', '単行', '初撰', '和刻', 'メイユウ', 'フユモト', 'サカゴエ', '手抄', '天理', '古点', '判形', '影印', '稀覯', 'シロガネチョウ', '手写', '前表', '教則']
+2025-08-04 00:30:03 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:03 - Main - INFO - ▶️  (Open Context) Target: '走る' in Carrier Sentence: '彼は公園を___のが好きだ。'
+2025-08-04 00:30:03 - Main - INFO -   (Context for Trigram Filter: ('公園', BLANK, '好き'))
+2025-08-04 00:30:03 - BaselineGenerator - INFO - --- Generating baseline distractors for '走る' ---
+2025-08-04 00:30:03 - BaselineGenerator - INFO - Target analyzed: Lemma='走る', POS='動詞', Frequency=44121
+2025-08-04 00:30:03 - BaselineGenerator - INFO - Found 8094 candidate words with POS '動詞'.
+2025-08-04 00:30:03 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '及ぶ', '組む', '食べる', '並ぶ', '通る', '繋がる', '呉れる', '話す', '加わる', '破る', '通す', '止める', '増える', '読む']
+2025-08-04 00:30:03 - DistractorFilter - INFO - Dependency filter rejected 6 candidates.
+2025-08-04 00:30:03 - Main - INFO - 
+====== Results for Baseline. ======
+2025-08-04 00:30:03 - Main - INFO -      Distractor candidates pool: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '及ぶ', '組む', '食べる', '並ぶ', '通る', '繋がる', '呉れる', '話す', '加わる', '破る', '通す', '止める', '増える', '読む']
+2025-08-04 00:30:03 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:03 - Main - INFO -     Dependency Rejects: ['巡る', '乗る', '食べる', '通る', '話す', '読む']
+2025-08-04 00:30:03 - Main - INFO -     Final Rejects (In Any Filter): ['話す', '乗る', '通る', '食べる', '読む', '巡る']
+2025-08-04 00:30:03 - Main - INFO -      Final Distractors: ['応ずる', '限る', '占める', '命ずる', '及ぶ', '組む', '並ぶ', '繋がる', '呉れる', '加わる', '破る', '通す', '止める', '増える']
+2025-08-04 00:30:03 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:03 - SpellingGenerator - INFO - --- Generating spelling distractors for '走る' ---
+2025-08-04 00:30:03 - SpellingGenerator - INFO - Target analyzed: Lemma='走る', POS='動詞', Frequency=44121
+2025-08-04 00:30:03 - SpellingGenerator - INFO - Relevant characters for lookup (Japanese only, ignoring {'ー'}): {'る', '走'}
+2025-08-04 00:30:03 - SpellingGenerator - INFO - Found 4768 potential candidates from character index.
+2025-08-04 00:30:03 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '食べる', '通る', '繋がる', '呉れる', '加わる', '破る', '止める', '増える', '移る', '感ずる', '広がる', '達する', '決まる', '起きる']
+2025-08-04 00:30:03 - DistractorFilter - INFO - Dependency filter rejected 4 candidates.
+2025-08-04 00:30:03 - Main - INFO - 
+====== Results for Spelling. ======
+2025-08-04 00:30:03 - Main - INFO -      Distractor candidates pool: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '食べる', '通る', '繋がる', '呉れる', '加わる', '破る', '止める', '増える', '移る', '感ずる', '広がる', '達する', '決まる', '起きる']
+2025-08-04 00:30:03 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:03 - Main - INFO -     Dependency Rejects: ['巡る', '乗る', '食べる', '通る']
+2025-08-04 00:30:03 - Main - INFO -     Final Rejects (In Any Filter): ['乗る', '食べる', '通る', '巡る']
+2025-08-04 00:30:03 - Main - INFO -      Final Distractors: ['応ずる', '限る', '占める', '命ずる', '繋がる', '呉れる', '加わる', '破る', '止める', '増える', '移る', '感ずる', '広がる', '達する', '決まる', '起きる']
+2025-08-04 00:30:03 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:03 - SimilarityGenerator - INFO - --- Generating similarity distractors for '走る' ---
+2025-08-04 00:30:03 - SimilarityGenerator - INFO - Found similar items for '走る': ['走り' (0.67152), '通る' (0.66150), '走っ' (0.65795), '走った' (0.65504), '歩く' (0.63235), '走り抜ける' (0.62695), '走らせる' (0.60728), '走れる' (0.59926), '伸びる' (0.59349), '抜ける' (0.59342), '駆け抜ける' (0.58453), '横切る' (0.58052), '通り抜ける' (0.55549), '走行' (0.55295), '貫く' (0.54751), '走らない' (0.54253), '延びる' (0.52398), '滑る' (0.51650), '走らせ' (0.51344), '走り回る' (0.50255)]
+2025-08-04 00:30:03 - SimilarityGenerator - INFO - Successfully generated 20 distractors for target token '走る'.
+2025-08-04 00:30:04 - DistractorFilter - INFO - Dependency filter rejected 13 candidates.
+2025-08-04 00:30:04 - Main - INFO - 
+====== Results for Similarity. ======
+2025-08-04 00:30:04 - Main - INFO -      Distractor candidates pool: ['走り', '通る', '走っ', '走った', '歩く', '走り抜ける', '走らせる', '走れる', '伸びる', '抜ける', '駆け抜ける', '横切る', '通り抜ける', '走行', '貫く', '走らない', '延びる', '滑る', '走らせ', '走り回る']
+2025-08-04 00:30:04 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:04 - Main - INFO -     Dependency Rejects: ['走り', '通る', '走っ', '走った', '歩く', '走らせる', '抜ける', '横切る', '通り抜ける', '貫く', '走らない', '走らせ', '走り回る']
+2025-08-04 00:30:04 - Main - INFO -     Final Rejects (In Any Filter): ['抜ける', '走った', '走らせ', '貫く', '走っ', '走らない', '通る', '走り回る', '走らせる', '歩く', '通り抜ける', '走り', '横切る']
+2025-08-04 00:30:04 - Main - INFO -      Final Distractors: ['走り抜ける', '走れる', '伸びる', '駆け抜ける', '走行', '延びる', '滑る']
+2025-08-04 00:30:04 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:04 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for '走る' ---
+2025-08-04 00:30:04 - CooccurrenceGenerator - INFO - Target: Lemma='走る', POS='動詞', Freq=44121
+2025-08-04 00:30:04 - CooccurrenceGenerator - INFO - Found 7560 co-occurring candidate surfaces to analyze.
+2025-08-04 00:30:04 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['擦れる', '跳び越える', '巧む', '群れる', '縫う', 'しゃがむ', '引き締まる', '沿う', '媚びる', '見通す', '曲がりくねる', '波打つ', '追い越す', '切り立つ', '駆ける', '着る', '通り抜ける', '追い抜く', '乗り換える', '折り返す']
+2025-08-04 00:30:04 - DistractorFilter - INFO - Dependency filter rejected 2 candidates.
+2025-08-04 00:30:04 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-08-04 00:30:04 - Main - INFO -      Distractor candidates pool: ['擦れる', '跳び越える', '巧む', '群れる', '縫う', 'しゃがむ', '引き締まる', '沿う', '媚びる', '見通す', '曲がりくねる', '波打つ', '追い越す', '切り立つ', '駆ける', '着る', '通り抜ける', '追い抜く', '乗り換える', '折り返す']
+2025-08-04 00:30:04 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:04 - Main - INFO -     Dependency Rejects: ['着る', '通り抜ける']
+2025-08-04 00:30:04 - Main - INFO -     Final Rejects (In Any Filter): ['通り抜ける', '着る']
+2025-08-04 00:30:04 - Main - INFO -      Final Distractors: ['擦れる', '跳び越える', '巧む', '群れる', '縫う', 'しゃがむ', '引き締まる', '沿う', '媚びる', '見通す', '曲がりくねる', '波打つ', '追い越す', '切り立つ', '駆ける', '追い抜く', '乗り換える', '折り返す']
+2025-08-04 00:30:04 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:04 - Main - INFO - ▶️  (Closed Context) Target: '走る' in Carrier Sentence: '彼は100メートルを11秒で___ことができる。'
+2025-08-04 00:30:04 - Main - INFO -   (Context for Trigram Filter: ('秒', BLANK, 'こと'))
+2025-08-04 00:30:04 - BaselineGenerator - INFO - --- Generating baseline distractors for '走る' ---
+2025-08-04 00:30:04 - BaselineGenerator - INFO - Target analyzed: Lemma='走る', POS='動詞', Frequency=44121
+2025-08-04 00:30:04 - BaselineGenerator - INFO - Found 8094 candidate words with POS '動詞'.
+2025-08-04 00:30:04 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '及ぶ', '組む', '食べる', '並ぶ', '通る', '繋がる', '呉れる', '話す', '加わる', '破る', '通す', '止める', '増える', '読む']
+2025-08-04 00:30:04 - DistractorFilter - INFO - Trigram filter rejected 1 candidates.
+2025-08-04 00:30:04 - DistractorFilter - INFO - Dependency filter rejected 19 candidates.
+2025-08-04 00:30:04 - Main - INFO - 
+====== Results for Baseline. ======
+2025-08-04 00:30:04 - Main - INFO -      Distractor candidates pool: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '及ぶ', '組む', '食べる', '並ぶ', '通る', '繋がる', '呉れる', '話す', '加わる', '破る', '通す', '止める', '増える', '読む']
+2025-08-04 00:30:04 - Main - INFO -     Trigram Rejects: ['破る']
+2025-08-04 00:30:04 - Main - INFO -     Dependency Rejects: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '及ぶ', '組む', '食べる', '並ぶ', '通る', '繋がる', '話す', '加わる', '破る', '通す', '止める', '増える', '読む']
+2025-08-04 00:30:04 - Main - INFO -     Final Rejects (In Any Filter): ['話す', '乗る', '並ぶ', '読む', '命ずる', '及ぶ', '占める', '組む', '破る', '加わる', '止める', '増える', '繋がる', '限る', '巡る', '通す', '通る', '応ずる', '食べる']
+2025-08-04 00:30:04 - Main - INFO -      Final Distractors: ['呉れる']
+2025-08-04 00:30:04 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:04 - SpellingGenerator - INFO - --- Generating spelling distractors for '走る' ---
+2025-08-04 00:30:04 - SpellingGenerator - INFO - Target analyzed: Lemma='走る', POS='動詞', Frequency=44121
+2025-08-04 00:30:04 - SpellingGenerator - INFO - Relevant characters for lookup (Japanese only, ignoring {'ー'}): {'る', '走'}
+2025-08-04 00:30:04 - SpellingGenerator - INFO - Found 4768 potential candidates from character index.
+2025-08-04 00:30:04 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '食べる', '通る', '繋がる', '呉れる', '加わる', '破る', '止める', '増える', '移る', '感ずる', '広がる', '達する', '決まる', '起きる']
+2025-08-04 00:30:04 - DistractorFilter - INFO - Trigram filter rejected 2 candidates.
+2025-08-04 00:30:05 - DistractorFilter - INFO - Dependency filter rejected 19 candidates.
+2025-08-04 00:30:05 - Main - INFO - 
+====== Results for Spelling. ======
+2025-08-04 00:30:05 - Main - INFO -      Distractor candidates pool: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '食べる', '通る', '繋がる', '呉れる', '加わる', '破る', '止める', '増える', '移る', '感ずる', '広がる', '達する', '決まる', '起きる']
+2025-08-04 00:30:05 - Main - INFO -     Trigram Rejects: ['破る', '達する']
+2025-08-04 00:30:05 - Main - INFO -     Dependency Rejects: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '食べる', '通る', '繋がる', '加わる', '破る', '止める', '増える', '移る', '感ずる', '広がる', '達する', '決まる', '起きる']
+2025-08-04 00:30:05 - Main - INFO -     Final Rejects (In Any Filter): ['乗る', '移る', '命ずる', '占める', '決まる', '広がる', '達する', '破る', '加わる', '止める', '増える', '起きる', '繋がる', '限る', '巡る', '感ずる', '通る', '応ずる', '食べる']
+2025-08-04 00:30:05 - Main - INFO -      Final Distractors: ['呉れる']
+2025-08-04 00:30:05 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:05 - SimilarityGenerator - INFO - --- Generating similarity distractors for '走る' ---
+2025-08-04 00:30:05 - SimilarityGenerator - INFO - Found similar items for '走る': ['走り' (0.67152), '通る' (0.66150), '走っ' (0.65795), '走った' (0.65504), '歩く' (0.63235), '走り抜ける' (0.62695), '走らせる' (0.60728), '走れる' (0.59926), '伸びる' (0.59349), '抜ける' (0.59342), '駆け抜ける' (0.58453), '横切る' (0.58052), '通り抜ける' (0.55549), '走行' (0.55295), '貫く' (0.54751), '走らない' (0.54253), '延びる' (0.52398), '滑る' (0.51650), '走らせ' (0.51344), '走り回る' (0.50255)]
+2025-08-04 00:30:05 - SimilarityGenerator - INFO - Successfully generated 20 distractors for target token '走る'.
+2025-08-04 00:30:05 - DistractorFilter - INFO - Dependency filter rejected 20 candidates.
+2025-08-04 00:30:05 - Main - INFO - 
+====== Results for Similarity. ======
+2025-08-04 00:30:05 - Main - INFO -      Distractor candidates pool: ['走り', '通る', '走っ', '走った', '歩く', '走り抜ける', '走らせる', '走れる', '伸びる', '抜ける', '駆け抜ける', '横切る', '通り抜ける', '走行', '貫く', '走らない', '延びる', '滑る', '走らせ', '走り回る']
+2025-08-04 00:30:05 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:05 - Main - INFO -     Dependency Rejects: ['走り', '通る', '走っ', '走った', '歩く', '走り抜ける', '走らせる', '走れる', '伸びる', '抜ける', '駆け抜ける', '横切る', '通り抜ける', '走行', '貫く', '走らない', '延びる', '滑る', '走らせ', '走り回る']
+2025-08-04 00:30:05 - Main - INFO -     Final Rejects (In Any Filter): ['抜ける', '走行', '走った', '延びる', '走らせ', '貫く', '駆け抜ける', '走れる', '走り回る', '走り抜ける', '走り', '伸びる', '走っ', '走らない', '通る', '滑る', '歩く', '通り抜ける', '横切る', '走らせる']
+2025-08-04 00:30:05 - Main - INFO -      Final Distractors: []
+2025-08-04 00:30:05 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:05 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for '走る' ---
+2025-08-04 00:30:05 - CooccurrenceGenerator - INFO - Target: Lemma='走る', POS='動詞', Freq=44121
+2025-08-04 00:30:05 - CooccurrenceGenerator - INFO - Found 7560 co-occurring candidate surfaces to analyze.
+2025-08-04 00:30:05 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['擦れる', '跳び越える', '巧む', '群れる', '縫う', 'しゃがむ', '引き締まる', '沿う', '媚びる', '見通す', '曲がりくねる', '波打つ', '追い越す', '切り立つ', '駆ける', '着る', '通り抜ける', '追い抜く', '乗り換える', '折り返す']
+2025-08-04 00:30:05 - DistractorFilter - INFO - Dependency filter rejected 14 candidates.
+2025-08-04 00:30:05 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-08-04 00:30:05 - Main - INFO -      Distractor candidates pool: ['擦れる', '跳び越える', '巧む', '群れる', '縫う', 'しゃがむ', '引き締まる', '沿う', '媚びる', '見通す', '曲がりくねる', '波打つ', '追い越す', '切り立つ', '駆ける', '着る', '通り抜ける', '追い抜く', '乗り換える', '折り返す']
+2025-08-04 00:30:05 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:05 - Main - INFO -     Dependency Rejects: ['群れる', '縫う', 'しゃがむ', '沿う', '媚びる', '見通す', '波打つ', '追い越す', '駆ける', '着る', '通り抜ける', '追い抜く', '乗り換える', '折り返す']
+2025-08-04 00:30:05 - Main - INFO -     Final Rejects (In Any Filter): ['追い抜く', '波打つ', '乗り換える', '見通す', '折り返す', '群れる', '追い越す', '媚びる', '縫う', '駆ける', 'しゃがむ', '通り抜ける', '沿う', '着る']
+2025-08-04 00:30:05 - Main - INFO -      Final Distractors: ['擦れる', '跳び越える', '巧む', '引き締まる', '曲がりくねる', '切り立つ']
+2025-08-04 00:30:05 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:05 - Main - INFO - ▶️  (Testing Spelling/Similarity) Target: '政府' in Carrier Sentence: '内閣総理大臣が率いる日本___は、新しい法案を国会に提出した。'
+2025-08-04 00:30:05 - Main - INFO -   (Context for Trigram Filter: ('日本', BLANK, '新しい'))
+2025-08-04 00:30:05 - BaselineGenerator - INFO - --- Generating baseline distractors for '政府' ---
+2025-08-04 00:30:05 - BaselineGenerator - INFO - Target analyzed: Lemma='政府', POS='名詞', Frequency=192178
+2025-08-04 00:30:05 - BaselineGenerator - INFO - Found 166199 candidate words with POS '名詞'.
+2025-08-04 00:30:05 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['獲得', '戦争', '東', 'ザ', 'バス', '経済', '担当', '事件', '設立', '選挙', '上', 'グループ', '式', '地方', '設置', '変更', '女性', '線', '調査', 'プロ']
+2025-08-04 00:30:06 - DistractorFilter - INFO - Dependency filter rejected 19 candidates.
+2025-08-04 00:30:06 - Main - INFO - 
+====== Results for Baseline. ======
+2025-08-04 00:30:06 - Main - INFO -      Distractor candidates pool: ['獲得', '戦争', '東', 'ザ', 'バス', '経済', '担当', '事件', '設立', '選挙', '上', 'グループ', '式', '地方', '設置', '変更', '女性', '線', '調査', 'プロ']
+2025-08-04 00:30:06 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:06 - Main - INFO -     Dependency Rejects: ['獲得', '戦争', '東', 'バス', '経済', '担当', '事件', '設立', '選挙', '上', 'グループ', '式', '地方', '設置', '変更', '女性', '線', '調査', 'プロ']
+2025-08-04 00:30:06 - Main - INFO -     Final Rejects (In Any Filter): ['調査', '事件', 'プロ', 'グループ', '変更', '獲得', '戦争', '東', '選挙', '上', '地方', '経済', '女性', '設置', '担当', '線', '式', 'バス', '設立']
+2025-08-04 00:30:06 - Main - INFO -      Final Distractors: ['ザ']
+2025-08-04 00:30:06 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:06 - SpellingGenerator - INFO - --- Generating spelling distractors for '政府' ---
+2025-08-04 00:30:06 - SpellingGenerator - INFO - Target analyzed: Lemma='政府', POS='名詞', Frequency=192178
+2025-08-04 00:30:06 - SpellingGenerator - INFO - Relevant characters for lookup (Japanese only, ignoring {'ー'}): {'政', '府'}
+2025-08-04 00:30:06 - SpellingGenerator - INFO - Found 278 potential candidates from character index.
+2025-08-04 00:30:06 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['政治', '府', '行政', '政策', '政権', '幕府', '政党', '財政', '政', '安政', '政務', '寛政', '政界', '執政', '文政', '法政', '摂政', '郵政', '政令', '国政']
+2025-08-04 00:30:06 - DistractorFilter - INFO - Dependency filter rejected 10 candidates.
+2025-08-04 00:30:06 - Main - INFO - 
+====== Results for Spelling. ======
+2025-08-04 00:30:06 - Main - INFO -      Distractor candidates pool: ['政治', '府', '行政', '政策', '政権', '幕府', '政党', '財政', '政', '安政', '政務', '寛政', '政界', '執政', '文政', '法政', '摂政', '郵政', '政令', '国政']
+2025-08-04 00:30:06 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:06 - Main - INFO -     Dependency Rejects: ['政治', '府', '行政', '政策', '政権', '幕府', '政党', '財政', '政界', '政令']
+2025-08-04 00:30:06 - Main - INFO -     Final Rejects (In Any Filter): ['政党', '財政', '政令', '政治', '行政', '幕府', '政策', '政界', '政権', '府']
+2025-08-04 00:30:06 - Main - INFO -      Final Distractors: ['政', '安政', '政務', '寛政', '執政', '文政', '法政', '摂政', '郵政', '国政']
+2025-08-04 00:30:06 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:06 - SimilarityGenerator - INFO - --- Generating similarity distractors for '政府' ---
+2025-08-04 00:30:06 - SimilarityGenerator - INFO - Found similar items for '政府': ['当局' (0.68812), '国家' (0.62747), '議会' (0.56404), '政権' (0.56342), '行政' (0.54944), '軍事' (0.54858), '共産' (0.54573), '軍部' (0.53671), '政策' (0.53241), '政庁' (0.53235), '国民' (0.52099), '軍政' (0.51565), '国防' (0.50985), '立法' (0.50980), '司法' (0.50474), '各省' (0.50346), '連邦' (0.50329), '共和' (0.50279), '外交' (0.50052), '政治' (0.49953)]
+2025-08-04 00:30:06 - SimilarityGenerator - INFO - Successfully generated 20 distractors for target token '政府'.
+2025-08-04 00:30:07 - DistractorFilter - INFO - Dependency filter rejected 13 candidates.
+2025-08-04 00:30:07 - Main - INFO - 
+====== Results for Similarity. ======
+2025-08-04 00:30:07 - Main - INFO -      Distractor candidates pool: ['当局', '国家', '議会', '政権', '行政', '軍事', '共産', '軍部', '政策', '政庁', '国民', '軍政', '国防', '立法', '司法', '各省', '連邦', '共和', '外交', '政治']
+2025-08-04 00:30:07 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:07 - Main - INFO -     Dependency Rejects: ['当局', '国家', '議会', '政権', '行政', '軍部', '政策', '国民', '軍政', '司法', '連邦', '外交', '政治']
+2025-08-04 00:30:07 - Main - INFO -     Final Rejects (In Any Filter): ['国家', '司法', '当局', '政治', '議会', '行政', '外交', '連邦', '政策', '国民', '政権', '軍政', '軍部']
+2025-08-04 00:30:07 - Main - INFO -      Final Distractors: ['軍事', '共産', '政庁', '国防', '立法', '各省', '共和']
+2025-08-04 00:30:07 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:07 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for '政府' ---
+2025-08-04 00:30:07 - CooccurrenceGenerator - INFO - Target: Lemma='政府', POS='名詞', Freq=192178
+2025-08-04 00:30:07 - CooccurrenceGenerator - INFO - Found 28999 co-occurring candidate surfaces to analyze.
+2025-08-04 00:30:07 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['見限り', '有り米', 'ハプス', '有礼', 'がざ', '小金', 'ＧＵＮＴ', '強まり', '米民', '民行', 'ビエン-外国', 'サツナン-外国', 'プント', '弱まり', '五榜', '専掌', '松山', 'イムズ', '政費', 'ＦＦＲＤＣ']
+2025-08-04 00:30:15 - DistractorFilter - INFO - Dependency filter rejected 3 candidates.
+2025-08-04 00:30:15 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-08-04 00:30:15 - Main - INFO -      Distractor candidates pool: ['見限り', '有り米', 'ハプス', '有礼', 'がざ', '小金', 'ＧＵＮＴ', '強まり', '米民', '民行', 'ビエン-外国', 'サツナン-外国', 'プント', '弱まり', '五榜', '専掌', '松山', 'イムズ', '政費', 'ＦＦＲＤＣ']
+2025-08-04 00:30:15 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:15 - Main - INFO -     Dependency Rejects: ['有り米', '米民', 'ビエン-外国']
+2025-08-04 00:30:15 - Main - INFO -     Final Rejects (In Any Filter): ['ビエン-外国', '米民', '有り米']
+2025-08-04 00:30:15 - Main - INFO -      Final Distractors: ['見限り', 'ハプス', '有礼', 'がざ', '小金', 'ＧＵＮＴ', '強まり', '民行', 'サツナン-外国', 'プント', '弱まり', '五榜', '専掌', '松山', 'イムズ', '政費', 'ＦＦＲＤＣ']
+2025-08-04 00:30:15 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:15 - Main - INFO - ▶️  (Testing Similarity (Antonyms)) Target: '寒い' in Carrier Sentence: '今日の朝は本当に___ですね。'
+2025-08-04 00:30:15 - Main - INFO -   (Context for Trigram Filter: ('本当', BLANK, 'です'))
+2025-08-04 00:30:15 - BaselineGenerator - INFO - --- Generating baseline distractors for '寒い' ---
+2025-08-04 00:30:15 - BaselineGenerator - INFO - Target analyzed: Lemma='寒い', POS='形容詞', Frequency=6056
+2025-08-04 00:30:15 - BaselineGenerator - INFO - Found 721 candidate words with POS '形容詞'.
+2025-08-04 00:30:15 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['望ましい', '素早い', '怖い', '丸い', '柔らかい', '温かい', '嬉しい', '鋭い', '久しい', '力強い', '苦しい', '熱い', '貧しい', '美味しい', '淡い', '相応しい', '冷たい', '黄色い', '恐ろしい', '可愛い']
+2025-08-04 00:30:15 - DistractorFilter - INFO - Dependency filter rejected 7 candidates.
+2025-08-04 00:30:15 - Main - INFO - 
+====== Results for Baseline. ======
+2025-08-04 00:30:15 - Main - INFO -      Distractor candidates pool: ['望ましい', '素早い', '怖い', '丸い', '柔らかい', '温かい', '嬉しい', '鋭い', '久しい', '力強い', '苦しい', '熱い', '貧しい', '美味しい', '淡い', '相応しい', '冷たい', '黄色い', '恐ろしい', '可愛い']
+2025-08-04 00:30:15 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:15 - Main - INFO -     Dependency Rejects: ['怖い', '嬉しい', '苦しい', '熱い', '美味しい', '恐ろしい', '可愛い']
+2025-08-04 00:30:15 - Main - INFO -     Final Rejects (In Any Filter): ['熱い', '可愛い', '怖い', '嬉しい', '恐ろしい', '美味しい', '苦しい']
+2025-08-04 00:30:15 - Main - INFO -      Final Distractors: ['望ましい', '素早い', '丸い', '柔らかい', '温かい', '鋭い', '久しい', '力強い', '貧しい', '淡い', '相応しい', '冷たい', '黄色い']
+2025-08-04 00:30:15 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:15 - SpellingGenerator - INFO - --- Generating spelling distractors for '寒い' ---
+2025-08-04 00:30:15 - SpellingGenerator - INFO - Target analyzed: Lemma='寒い', POS='形容詞', Frequency=6056
+2025-08-04 00:30:15 - SpellingGenerator - INFO - Relevant characters for lookup (Japanese only, ignoring {'ー'}): {'寒', 'い'}
+2025-08-04 00:30:15 - SpellingGenerator - INFO - Found 2770 potential candidates from character index.
+2025-08-04 00:30:15 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['望ましい', '素早い', '怖い', '丸い', '柔らかい', '温かい', '嬉しい', '鋭い', '久しい', '力強い', '苦しい', '熱い', '貧しい', '美味しい', '淡い', '相応しい', '冷たい', '黄色い', '恐ろしい', '可愛い']
+2025-08-04 00:30:15 - DistractorFilter - INFO - Dependency filter rejected 7 candidates.
+2025-08-04 00:30:15 - Main - INFO - 
+====== Results for Spelling. ======
+2025-08-04 00:30:15 - Main - INFO -      Distractor candidates pool: ['望ましい', '素早い', '怖い', '丸い', '柔らかい', '温かい', '嬉しい', '鋭い', '久しい', '力強い', '苦しい', '熱い', '貧しい', '美味しい', '淡い', '相応しい', '冷たい', '黄色い', '恐ろしい', '可愛い']
+2025-08-04 00:30:15 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:15 - Main - INFO -     Dependency Rejects: ['怖い', '嬉しい', '苦しい', '熱い', '美味しい', '恐ろしい', '可愛い']
+2025-08-04 00:30:15 - Main - INFO -     Final Rejects (In Any Filter): ['熱い', '可愛い', '怖い', '嬉しい', '恐ろしい', '美味しい', '苦しい']
+2025-08-04 00:30:15 - Main - INFO -      Final Distractors: ['望ましい', '素早い', '丸い', '柔らかい', '温かい', '鋭い', '久しい', '力強い', '貧しい', '淡い', '相応しい', '冷たい', '黄色い']
+2025-08-04 00:30:15 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:15 - SimilarityGenerator - INFO - --- Generating similarity distractors for '寒い' ---
+2025-08-04 00:30:15 - SimilarityGenerator - INFO - Found similar items for '寒い': ['暑い' (0.86498), '涼しい' (0.75997), '暖かい' (0.75866), '寒く' (0.70140), '蒸し暑い' (0.69459), '涼しく' (0.65026), '暑く' (0.63007), '冷え込む' (0.61377), '寒かった' (0.61359), '肌寒い' (0.61327), '暑かった' (0.60304), '暑' (0.59942), '真冬' (0.59889), '酷暑' (0.59736), '暖かく' (0.57458), '冬場' (0.55737), '暖かかった' (0.55508), '蒸し暑く' (0.55365), '乾期' (0.53942), '凍える' (0.53765)]
+2025-08-04 00:30:15 - SimilarityGenerator - INFO - Successfully generated 20 distractors for target token '寒い'.
+2025-08-04 00:30:16 - DistractorFilter - INFO - Dependency filter rejected 3 candidates.
+2025-08-04 00:30:16 - Main - INFO - 
+====== Results for Similarity. ======
+2025-08-04 00:30:16 - Main - INFO -      Distractor candidates pool: ['暑い', '涼しい', '暖かい', '寒く', '蒸し暑い', '涼しく', '暑く', '冷え込む', '寒かった', '肌寒い', '暑かった', '暑', '真冬', '酷暑', '暖かく', '冬場', '暖かかった', '蒸し暑く', '乾期', '凍える']
+2025-08-04 00:30:16 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:16 - Main - INFO -     Dependency Rejects: ['寒く', '冷え込む', '寒かった']
+2025-08-04 00:30:16 - Main - INFO -     Final Rejects (In Any Filter): ['冷え込む', '寒かった', '寒く']
+2025-08-04 00:30:16 - Main - INFO -      Final Distractors: ['暑い', '涼しい', '暖かい', '蒸し暑い', '涼しく', '暑く', '肌寒い', '暑かった', '暑', '真冬', '酷暑', '暖かく', '冬場', '暖かかった', '蒸し暑く', '乾期', '凍える']
+2025-08-04 00:30:16 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:16 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for '寒い' ---
+2025-08-04 00:30:16 - CooccurrenceGenerator - INFO - Target: Lemma='寒い', POS='形容詞', Freq=6056
+2025-08-04 00:30:16 - CooccurrenceGenerator - INFO - Found 873 co-occurring candidate surfaces to analyze.
+2025-08-04 00:30:16 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['蒸し暑い', '暑い', '涼しい', '温かい', '冷たい', '熱い', '厳しい', '白い', '暗い', '短い', '赤い', '珍しい', '低い', '黒い', '明るい', '激しい', '悪い', '高い', '少ない', '多い']
+2025-08-04 00:30:16 - DistractorFilter - INFO - Dependency filter rejected 11 candidates.
+2025-08-04 00:30:16 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-08-04 00:30:16 - Main - INFO -      Distractor candidates pool: ['蒸し暑い', '暑い', '涼しい', '温かい', '冷たい', '熱い', '厳しい', '白い', '暗い', '短い', '赤い', '珍しい', '低い', '黒い', '明るい', '激しい', '悪い', '高い', '少ない', '多い']
+2025-08-04 00:30:16 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:16 - Main - INFO -     Dependency Rejects: ['熱い', '厳しい', '暗い', '短い', '珍しい', '低い', '激しい', '悪い', '高い', '少ない', '多い']
+2025-08-04 00:30:16 - Main - INFO -     Final Rejects (In Any Filter): ['厳しい', '低い', '激しい', '珍しい', '多い', '暗い', '悪い', '高い', '熱い', '少ない', '短い']
+2025-08-04 00:30:16 - Main - INFO -      Final Distractors: ['蒸し暑い', '暑い', '涼しい', '温かい', '冷たい', '白い', '赤い', '黒い', '明るい']
+2025-08-04 00:30:16 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:16 - Main - INFO - ▶️  (Testing Co-occurrence/Thematic) Target: 'コーヒー' in Carrier Sentence: '彼は朝食に___を一杯飲みます。'
+2025-08-04 00:30:16 - Main - INFO -   (Context for Trigram Filter: ('朝食', BLANK, '一杯'))
+2025-08-04 00:30:16 - BaselineGenerator - INFO - --- Generating baseline distractors for 'コーヒー' ---
+2025-08-04 00:30:16 - BaselineGenerator - INFO - Target analyzed: Lemma='コーヒー-coffee', POS='名詞', Frequency=14799
+2025-08-04 00:30:16 - BaselineGenerator - INFO - Found 166199 candidate words with POS '名詞'.
+2025-08-04 00:30:16 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['同作', '受信', '両国', '入院', '噂', '逃亡', 'ねた', '容量', '騎乗', 'エル', '悪魔', 'アレンジ', '徹底', '保証', 'サンフランシスコ', '血液', '開放', '湖', '騒動', '黄色']
+2025-08-04 00:30:16 - DistractorFilter - INFO - Dependency filter rejected 1 candidates.
+2025-08-04 00:30:16 - Main - INFO - 
+====== Results for Baseline. ======
+2025-08-04 00:30:16 - Main - INFO -      Distractor candidates pool: ['同作', '受信', '両国', '入院', '噂', '逃亡', 'ねた', '容量', '騎乗', 'エル', '悪魔', 'アレンジ', '徹底', '保証', 'サンフランシスコ', '血液', '開放', '湖', '騒動', '黄色']
+2025-08-04 00:30:16 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:16 - Main - INFO -     Dependency Rejects: ['血液']
+2025-08-04 00:30:16 - Main - INFO -     Final Rejects (In Any Filter): ['血液']
+2025-08-04 00:30:16 - Main - INFO -      Final Distractors: ['同作', '受信', '両国', '入院', '噂', '逃亡', 'ねた', '容量', '騎乗', 'エル', '悪魔', 'アレンジ', '徹底', '保証', 'サンフランシスコ', '開放', '湖', '騒動', '黄色']
+2025-08-04 00:30:16 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:16 - SpellingGenerator - INFO - --- Generating spelling distractors for 'コーヒー' ---
+2025-08-04 00:30:16 - SpellingGenerator - INFO - Target analyzed: Lemma='コーヒー-coffee', POS='名詞', Frequency=14799
+2025-08-04 00:30:16 - SpellingGenerator - INFO - Relevant characters for lookup (Japanese only, ignoring {'ー'}): {'コ', 'ヒ'}
+2025-08-04 00:30:16 - SpellingGenerator - INFO - Found 7210 potential candidates from character index.
+2025-08-04 00:30:16 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['サンフランシスコ', 'ヨコスカ', 'ヒーロー', 'コウジ', 'コンテスト', 'チェコ', 'ヒトラー', 'パソコン', 'ヒロイン', 'コート', 'コンクリート', 'アルコール', 'コール', 'オリコン', 'コントロール', 'ヨウコ', 'コンクール', 'タバコ', 'フリードリヒ', 'ハコダテ']
+2025-08-04 00:30:17 - DistractorFilter - INFO - Dependency filter rejected 1 candidates.
+2025-08-04 00:30:17 - Main - INFO - 
+====== Results for Spelling. ======
+2025-08-04 00:30:17 - Main - INFO -      Distractor candidates pool: ['サンフランシスコ', 'ヨコスカ', 'ヒーロー', 'コウジ', 'コンテスト', 'チェコ', 'ヒトラー', 'パソコン', 'ヒロイン', 'コート', 'コンクリート', 'アルコール', 'コール', 'オリコン', 'コントロール', 'ヨウコ', 'コンクール', 'タバコ', 'フリードリヒ', 'ハコダテ']
+2025-08-04 00:30:17 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:17 - Main - INFO -     Dependency Rejects: ['アルコール']
+2025-08-04 00:30:17 - Main - INFO -     Final Rejects (In Any Filter): ['アルコール']
+2025-08-04 00:30:17 - Main - INFO -      Final Distractors: ['サンフランシスコ', 'ヨコスカ', 'ヒーロー', 'コウジ', 'コンテスト', 'チェコ', 'ヒトラー', 'パソコン', 'ヒロイン', 'コート', 'コンクリート', 'コール', 'オリコン', 'コントロール', 'ヨウコ', 'コンクール', 'タバコ', 'フリードリヒ', 'ハコダテ']
+2025-08-04 00:30:17 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:17 - SimilarityGenerator - INFO - --- Generating similarity distractors for 'コーヒー' ---
+2025-08-04 00:30:17 - SimilarityGenerator - INFO - Found similar items for 'コーヒー': ['紅茶' (0.66509), 'エスプレッソ' (0.64310), '無糖' (0.59962), 'ココア' (0.58013), '淹れ' (0.57809), 'デミタス' (0.57264), '微糖' (0.55842), '生豆' (0.55321), 'カフェオレ' (0.54190), '淹れた' (0.53994), 'ミルク' (0.53958), '珈琲' (0.53776), 'ドトール' (0.53477), 'スターバックス' (0.53319), '淹れる' (0.53313), 'レモネード' (0.52920), '焙煎' (0.52874), 'coffee' (0.52302), 'タピオカ' (0.52264), '深煎り' (0.52234)]
+2025-08-04 00:30:17 - SimilarityGenerator - INFO - Successfully generated 20 distractors for target token 'コーヒー'.
+2025-08-04 00:30:17 - DistractorFilter - INFO - Dependency filter rejected 8 candidates.
+2025-08-04 00:30:17 - Main - INFO - 
+====== Results for Similarity. ======
+2025-08-04 00:30:17 - Main - INFO -      Distractor candidates pool: ['紅茶', 'エスプレッソ', '無糖', 'ココア', '淹れ', 'デミタス', '微糖', '生豆', 'カフェオレ', '淹れた', 'ミルク', '珈琲', 'ドトール', 'スターバックス', '淹れる', 'レモネード', '焙煎', 'coffee', 'タピオカ', '深煎り']
+2025-08-04 00:30:17 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:17 - Main - INFO -     Dependency Rejects: ['紅茶', 'エスプレッソ', 'ココア', '生豆', '淹れた', 'ミルク', '珈琲', 'レモネード']
+2025-08-04 00:30:17 - Main - INFO -     Final Rejects (In Any Filter): ['ミルク', '淹れた', '珈琲', '紅茶', '生豆', 'レモネード', 'ココア', 'エスプレッソ']
+2025-08-04 00:30:17 - Main - INFO -      Final Distractors: ['無糖', '淹れ', 'デミタス', '微糖', 'カフェオレ', 'ドトール', 'スターバックス', '淹れる', '焙煎', 'coffee', 'タピオカ', '深煎り']
+2025-08-04 00:30:17 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:17 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for 'コーヒー' ---
+2025-08-04 00:30:17 - CooccurrenceGenerator - INFO - Target: Lemma='コーヒー-coffee', POS='名詞', Freq=14799
+2025-08-04 00:30:17 - CooccurrenceGenerator - INFO - Found 4790 co-occurring candidate surfaces to analyze.
+2025-08-04 00:30:17 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['シアトルズ', 'ソリュブル', 'ドトール', '酒入り', 'アラビカ', '生豆', '焙煎', '深煎り', 'ドリッパー', 'デミタス', 'ドリップ', 'スターバックス', 'エスプレッソ', '浅炒り', '日レス', 'フィーカ', 'ピーツ', '入神', 'マンデリン', '新豆']
+2025-08-04 00:30:17 - DistractorFilter - INFO - Dependency filter rejected 2 candidates.
+2025-08-04 00:30:17 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-08-04 00:30:17 - Main - INFO -      Distractor candidates pool: ['シアトルズ', 'ソリュブル', 'ドトール', '酒入り', 'アラビカ', '生豆', '焙煎', '深煎り', 'ドリッパー', 'デミタス', 'ドリップ', 'スターバックス', 'エスプレッソ', '浅炒り', '日レス', 'フィーカ', 'ピーツ', '入神', 'マンデリン', '新豆']
+2025-08-04 00:30:17 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:17 - Main - INFO -     Dependency Rejects: ['生豆', 'エスプレッソ']
+2025-08-04 00:30:17 - Main - INFO -     Final Rejects (In Any Filter): ['エスプレッソ', '生豆']
+2025-08-04 00:30:17 - Main - INFO -      Final Distractors: ['シアトルズ', 'ソリュブル', 'ドトール', '酒入り', 'アラビカ', '焙煎', '深煎り', 'ドリッパー', 'デミタス', 'ドリップ', 'スターバックス', '浅炒り', '日レス', 'フィーカ', 'ピーツ', '入神', 'マンデリン', '新豆']
+2025-08-04 00:30:17 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:17 - Main - INFO - ▶️  (Conjugation (Past Tense)) Target: '書いた' in Carrier Sentence: '彼女は昨日、長い手紙を___。'
+2025-08-04 00:30:17 - Main - INFO -   (Context for Trigram Filter: ('手紙', BLANK, 'EOS'))
+2025-08-04 00:30:17 - BaselineGenerator - INFO - --- Generating baseline distractors for '書いた' ---
+2025-08-04 00:30:17 - BaselineGenerator - INFO - Target analyzed: Lemma='書く', POS='動詞', Frequency=130301
+2025-08-04 00:30:17 - BaselineGenerator - INFO - Found 8094 candidate words with POS '動詞'.
+2025-08-04 00:30:17 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['思う', '加える', '出す', '述べる', '認める', '結ぶ', '始まる', '至る', '渡る', '出る', '経る', '残す', '付く', '求める', '果たす', '選ぶ', '基づく', '変わる', '続ける', '当たる']
+2025-08-04 00:30:18 - DistractorFilter - INFO - Dependency filter rejected 6 candidates.
+2025-08-04 00:30:18 - Main - INFO - 
+====== Results for Baseline. ======
+2025-08-04 00:30:18 - Main - INFO -      Distractor candidates pool: ['思う', '加える', '出す', '述べる', '認める', '結ぶ', '始まる', '至る', '渡る', '出る', '経る', '残す', '付く', '求める', '果たす', '選ぶ', '基づく', '変わる', '続ける', '当たる']
+2025-08-04 00:30:18 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:18 - Main - INFO -     Dependency Rejects: ['加える', '出す', '認める', '結ぶ', '残す', '求める']
+2025-08-04 00:30:18 - Main - INFO -     Final Rejects (In Any Filter): ['出す', '求める', '残す', '加える', '認める', '結ぶ']
+2025-08-04 00:30:18 - Main - INFO -      Final Distractors: ['思う', '述べる', '始まる', '至る', '渡る', '出る', '経る', '付く', '果たす', '選ぶ', '基づく', '変わる', '続ける', '当たる']
+2025-08-04 00:30:18 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:18 - SpellingGenerator - INFO - --- Generating spelling distractors for '書いた' ---
+2025-08-04 00:30:18 - SpellingGenerator - INFO - Target analyzed: Lemma='書く', POS='動詞', Frequency=130301
+2025-08-04 00:30:18 - SpellingGenerator - INFO - Relevant characters for lookup (Japanese only, ignoring {'ー'}): {'書', 'く'}
+2025-08-04 00:30:18 - SpellingGenerator - INFO - Found 1469 potential candidates from character index.
+2025-08-04 00:30:18 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['付く', '基づく', '続く', '描く', '除く', '置く', '開く', '聞く', '働く', '亡くなる', '引く-他動詞', '引き続く', '無くなる', '招く', '築く', '抱く', '動く', '気付く', '導く', '抜く']
+2025-08-04 00:30:18 - DistractorFilter - INFO - Dependency filter rejected 5 candidates.
+2025-08-04 00:30:18 - Main - INFO - 
+====== Results for Spelling. ======
+2025-08-04 00:30:18 - Main - INFO -      Distractor candidates pool: ['付く', '基づく', '続く', '描く', '除く', '置く', '開く', '聞く', '働く', '亡くなる', '引く-他動詞', '引き続く', '無くなる', '招く', '築く', '抱く', '動く', '気付く', '導く', '抜く']
+2025-08-04 00:30:18 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:18 - Main - INFO -     Dependency Rejects: ['描く', '除く', '置く', '開く', '聞く']
+2025-08-04 00:30:18 - Main - INFO -     Final Rejects (In Any Filter): ['置く', '開く', '除く', '聞く', '描く']
+2025-08-04 00:30:18 - Main - INFO -      Final Distractors: ['付く', '基づく', '続く', '働く', '亡くなる', '引く-他動詞', '引き続く', '無くなる', '招く', '築く', '抱く', '動く', '気付く', '導く', '抜く']
+2025-08-04 00:30:18 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:18 - SimilarityGenerator - INFO - --- Generating similarity distractors for '書いた' ---
+2025-08-04 00:30:18 - SimilarityGenerator - INFO - Found similar items for '書いた': ['書かれた' (0.75476), '書き' (0.73664), '読んだ' (0.72693), '書く' (0.71528), '書かせた' (0.69901), '書い' (0.68781), '書き上げた' (0.66682), '書き残した' (0.66089), '書き記した' (0.64499), '書かせる' (0.63488), '書き綴った' (0.63468), '綴られた' (0.63457), '書かなかった' (0.63117), 'したためた' (0.62259), '記した' (0.61880), '書きあげた' (0.60934), '書き起こした' (0.60594), '書き留めた' (0.60346), '書き上げる' (0.60273), '読み返した' (0.60111)]
+2025-08-04 00:30:18 - SimilarityGenerator - INFO - Successfully generated 20 distractors for target token '書いた'.
+2025-08-04 00:30:18 - DistractorFilter - INFO - Dependency filter rejected 15 candidates.
+2025-08-04 00:30:18 - Main - INFO - 
+====== Results for Similarity. ======
+2025-08-04 00:30:18 - Main - INFO -      Distractor candidates pool: ['書かれた', '書き', '読んだ', '書く', '書かせた', '書い', '書き上げた', '書き残した', '書き記した', '書かせる', '書き綴った', '綴られた', '書かなかった', 'したためた', '記した', '書きあげた', '書き起こした', '書き留めた', '書き上げる', '読み返した']
+2025-08-04 00:30:18 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:18 - Main - INFO -     Dependency Rejects: ['書かれた', '書き', '読んだ', '書く', '書かせた', '書い', '書き上げた', '書き残した', '書かせる', '綴られた', '書かなかった', 'したためた', '記した', '書き上げる', '読み返した']
+2025-08-04 00:30:18 - Main - INFO -     Final Rejects (In Any Filter): ['書き', '読んだ', '書かせる', 'したためた', '書く', '記した', '書い', '書かせた', '読み返した', '書き上げる', '書き残した', '書かれた', '書き上げた', '綴られた', '書かなかった']
+2025-08-04 00:30:18 - Main - INFO -      Final Distractors: ['書き記した', '書き綴った', '書きあげた', '書き起こした', '書き留めた']
+2025-08-04 00:30:18 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:18 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for '書いた' ---
+2025-08-04 00:30:18 - CooccurrenceGenerator - INFO - Target: Lemma='書く', POS='動詞', Freq=130301
+2025-08-04 00:30:18 - CooccurrenceGenerator - INFO - Found 11426 co-occurring candidate surfaces to analyze.
+2025-08-04 00:30:18 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['思い入れる', '言い回す', '擦れる', '憎しむ', '蹴る', '道化る', '巧む', '激する', '黄昏る', 'がれる', '戯ける', '焼き捨てる', '駆け出す', '書き直す', '思い浮かべる', '群れる', '誑かす', '裏返す', '惟る', '心得る']
+2025-08-04 00:30:19 - DistractorFilter - INFO - Dependency filter rejected 2 candidates.
+2025-08-04 00:30:19 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-08-04 00:30:19 - Main - INFO -      Distractor candidates pool: ['思い入れる', '言い回す', '擦れる', '憎しむ', '蹴る', '道化る', '巧む', '激する', '黄昏る', 'がれる', '戯ける', '焼き捨てる', '駆け出す', '書き直す', '思い浮かべる', '群れる', '誑かす', '裏返す', '惟る', '心得る']
+2025-08-04 00:30:19 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:19 - Main - INFO -     Dependency Rejects: ['焼き捨てる', '書き直す']
+2025-08-04 00:30:19 - Main - INFO -     Final Rejects (In Any Filter): ['書き直す', '焼き捨てる']
+2025-08-04 00:30:19 - Main - INFO -      Final Distractors: ['思い入れる', '言い回す', '擦れる', '憎しむ', '蹴る', '道化る', '巧む', '激する', '黄昏る', 'がれる', '戯ける', '駆け出す', '思い浮かべる', '群れる', '誑かす', '裏返す', '惟る', '心得る']
+2025-08-04 00:30:19 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:19 - Main - INFO - ▶️  (Conjugation (Past Tense)) Target: '走った' in Carrier Sentence: '彼はマラソン大会で速く___。'
+2025-08-04 00:30:19 - Main - INFO -   (Context for Trigram Filter: ('速く', BLANK, 'EOS'))
+2025-08-04 00:30:19 - BaselineGenerator - INFO - --- Generating baseline distractors for '走った' ---
+2025-08-04 00:30:19 - BaselineGenerator - INFO - Target analyzed: Lemma='走る', POS='動詞', Frequency=44121
+2025-08-04 00:30:19 - BaselineGenerator - INFO - Found 8094 candidate words with POS '動詞'.
+2025-08-04 00:30:19 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '及ぶ', '組む', '食べる', '並ぶ', '通る', '繋がる', '呉れる', '話す', '加わる', '破る', '通す', '止める', '増える', '読む']
+2025-08-04 00:30:19 - DistractorFilter - INFO - Dependency filter rejected 17 candidates.
+2025-08-04 00:30:19 - Main - INFO - 
+====== Results for Baseline. ======
+2025-08-04 00:30:19 - Main - INFO -      Distractor candidates pool: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '及ぶ', '組む', '食べる', '並ぶ', '通る', '繋がる', '呉れる', '話す', '加わる', '破る', '通す', '止める', '増える', '読む']
+2025-08-04 00:30:19 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:19 - Main - INFO -     Dependency Rejects: ['応ずる', '限る', '乗る', '占める', '及ぶ', '組む', '食べる', '並ぶ', '通る', '繋がる', '話す', '加わる', '破る', '通す', '止める', '増える', '読む']
+2025-08-04 00:30:19 - Main - INFO -     Final Rejects (In Any Filter): ['話す', '乗る', '並ぶ', '読む', '及ぶ', '占める', '組む', '破る', '加わる', '止める', '増える', '繋がる', '限る', '通す', '応ずる', '食べる', '通る']
+2025-08-04 00:30:19 - Main - INFO -      Final Distractors: ['巡る', '命ずる', '呉れる']
+2025-08-04 00:30:19 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:19 - SpellingGenerator - INFO - --- Generating spelling distractors for '走った' ---
+2025-08-04 00:30:19 - SpellingGenerator - INFO - Target analyzed: Lemma='走る', POS='動詞', Frequency=44121
+2025-08-04 00:30:19 - SpellingGenerator - INFO - Relevant characters for lookup (Japanese only, ignoring {'ー'}): {'る', '走'}
+2025-08-04 00:30:19 - SpellingGenerator - INFO - Found 4768 potential candidates from character index.
+2025-08-04 00:30:19 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '食べる', '通る', '繋がる', '呉れる', '加わる', '破る', '止める', '増える', '移る', '感ずる', '広がる', '達する', '決まる', '起きる']
+2025-08-04 00:30:19 - DistractorFilter - INFO - Dependency filter rejected 17 candidates.
+2025-08-04 00:30:19 - Main - INFO - 
+====== Results for Spelling. ======
+2025-08-04 00:30:19 - Main - INFO -      Distractor candidates pool: ['巡る', '応ずる', '限る', '乗る', '占める', '命ずる', '食べる', '通る', '繋がる', '呉れる', '加わる', '破る', '止める', '増える', '移る', '感ずる', '広がる', '達する', '決まる', '起きる']
+2025-08-04 00:30:19 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:19 - Main - INFO -     Dependency Rejects: ['応ずる', '限る', '乗る', '占める', '食べる', '通る', '繋がる', '加わる', '破る', '止める', '増える', '移る', '感ずる', '広がる', '達する', '決まる', '起きる']
+2025-08-04 00:30:19 - Main - INFO -     Final Rejects (In Any Filter): ['乗る', '移る', '占める', '決まる', '広がる', '達する', '破る', '加わる', '止める', '増える', '起きる', '繋がる', '限る', '感ずる', '応ずる', '食べる', '通る']
+2025-08-04 00:30:19 - Main - INFO -      Final Distractors: ['巡る', '命ずる', '呉れる']
+2025-08-04 00:30:19 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:19 - SimilarityGenerator - INFO - --- Generating similarity distractors for '走った' ---
+2025-08-04 00:30:19 - SimilarityGenerator - INFO - Found similar items for '走った': ['走る' (0.65504), '走り' (0.62054), '走らせた' (0.60932), '走らない' (0.50688), '走れる' (0.50363), '走っ' (0.50068), '歩いた' (0.49723), '走らせる' (0.48921), '追い抜いた' (0.48415), '飛び出した' (0.47651), '走らせ' (0.47188), '泳いだ' (0.46534), '逃げた' (0.46469), '走れなかった' (0.46397), '立ち止まった' (0.45982), 'ぶつかった' (0.45973), '走り抜ける' (0.45470), '通り過ぎた' (0.44891), '突っ込んだ' (0.44841), '走り去った' (0.44679)]
+2025-08-04 00:30:19 - SimilarityGenerator - INFO - Successfully generated 20 distractors for target token '走った'.
+2025-08-04 00:30:19 - DistractorFilter - INFO - Dependency filter rejected 12 candidates.
+2025-08-04 00:30:19 - Main - INFO - 
+====== Results for Similarity. ======
+2025-08-04 00:30:19 - Main - INFO -      Distractor candidates pool: ['走る', '走り', '走らせた', '走らない', '走れる', '走っ', '歩いた', '走らせる', '追い抜いた', '飛び出した', '走らせ', '泳いだ', '逃げた', '走れなかった', '立ち止まった', 'ぶつかった', '走り抜ける', '通り過ぎた', '突っ込んだ', '走り去った']
+2025-08-04 00:30:19 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:19 - Main - INFO -     Dependency Rejects: ['走る', '走らせた', '走らない', '走れる', '走っ', '歩いた', '走らせる', '走らせ', '泳いだ', '逃げた', '走れなかった', '通り過ぎた']
+2025-08-04 00:30:19 - Main - INFO -     Final Rejects (In Any Filter): ['走らせた', '泳いだ', '通り過ぎた', '走っ', '走らない', '走れる', '走れなかった', '走らせる', '歩いた', '走る', '走らせ', '逃げた']
+2025-08-04 00:30:19 - Main - INFO -      Final Distractors: ['走り', '追い抜いた', '飛び出した', '立ち止まった', 'ぶつかった', '走り抜ける', '突っ込んだ', '走り去った']
+2025-08-04 00:30:19 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:19 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for '走った' ---
+2025-08-04 00:30:19 - CooccurrenceGenerator - INFO - Target: Lemma='走る', POS='動詞', Freq=44121
+2025-08-04 00:30:19 - CooccurrenceGenerator - INFO - Found 1724 co-occurring candidate surfaces to analyze.
+2025-08-04 00:30:19 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['擦れる', '着る', '蹴る', '飛び出す', '捨てる', '痛める', '背負う', '乗せる', '苦しむ', '逃げる', '勝つ', '戦う', '抜く', '終わる', '遅れる', '投げる', '買う', '落とす', '落ちる', '助ける']
+2025-08-04 00:30:20 - DistractorFilter - INFO - Dependency filter rejected 13 candidates.
+2025-08-04 00:30:20 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-08-04 00:30:20 - Main - INFO -      Distractor candidates pool: ['擦れる', '着る', '蹴る', '飛び出す', '捨てる', '痛める', '背負う', '乗せる', '苦しむ', '逃げる', '勝つ', '戦う', '抜く', '終わる', '遅れる', '投げる', '買う', '落とす', '落ちる', '助ける']
+2025-08-04 00:30:20 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:20 - Main - INFO -     Dependency Rejects: ['着る', '痛める', '背負う', '逃げる', '勝つ', '戦う', '抜く', '終わる', '遅れる', '投げる', '買う', '落とす', '落ちる']
+2025-08-04 00:30:20 - Main - INFO -     Final Rejects (In Any Filter): ['投げる', '落ちる', '戦う', '勝つ', '買う', '抜く', '落とす', '遅れる', '痛める', '逃げる', '終わる', '背負う', '着る']
+2025-08-04 00:30:20 - Main - INFO -      Final Distractors: ['擦れる', '蹴る', '飛び出す', '捨てる', '乗せる', '苦しむ', '助ける']
+2025-08-04 00:30:20 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:20 - Main - INFO - ▶️  (Ambiguous Kanji) Target: '日' in Carrier Sentence: '次の日曜は父の___なので、お墓参りに行きます。'
+2025-08-04 00:30:20 - Main - INFO -   (Context for Trigram Filter: ('父', BLANK, 'な'))
+2025-08-04 00:30:20 - BaselineGenerator - INFO - --- Generating baseline distractors for '日' ---
+2025-08-04 00:30:20 - BaselineGenerator - INFO - Target analyzed: Lemma='日', POS='名詞', Frequency=291761
+2025-08-04 00:30:20 - BaselineGenerator - INFO - Found 166199 candidate words with POS '名詞'.
+2025-08-04 00:30:20 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['試合', '出場', '発売', 'チーム', '地域', '開発', '以降', '記録', 'シーズン', '以下', '曲', '歴史', '一日', '局', '関係', '郡', '平成', '開催', '時間', '大会']
+2025-08-04 00:30:20 - DistractorFilter - INFO - Dependency filter rejected 12 candidates.
+2025-08-04 00:30:20 - Main - INFO - 
+====== Results for Baseline. ======
+2025-08-04 00:30:20 - Main - INFO -      Distractor candidates pool: ['試合', '出場', '発売', 'チーム', '地域', '開発', '以降', '記録', 'シーズン', '以下', '曲', '歴史', '一日', '局', '関係', '郡', '平成', '開催', '時間', '大会']
+2025-08-04 00:30:20 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:20 - Main - INFO -     Dependency Rejects: ['試合', '出場', '発売', 'チーム', '開発', '以降', '記録', '曲', '局', '関係', '郡', '開催']
+2025-08-04 00:30:20 - Main - INFO -     Final Rejects (In Any Filter): ['関係', '出場', '開発', '開催', '試合', '郡', '局', '記録', '以降', 'チーム', '曲', '発売']
+2025-08-04 00:30:20 - Main - INFO -      Final Distractors: ['地域', 'シーズン', '以下', '歴史', '一日', '平成', '時間', '大会']
+2025-08-04 00:30:20 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:20 - SpellingGenerator - INFO - --- Generating spelling distractors for '日' ---
+2025-08-04 00:30:20 - SpellingGenerator - INFO - Target analyzed: Lemma='日', POS='名詞', Frequency=291761
+2025-08-04 00:30:20 - SpellingGenerator - INFO - Relevant characters for lookup (Japanese only, ignoring {'ー'}): {'日'}
+2025-08-04 00:30:20 - SpellingGenerator - INFO - Found 454 potential candidates from character index.
+2025-08-04 00:30:20 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['一日', '朝日', '今日', '日間', '同日', '毎日', '翌日', '日曜', '平日', '来日', '日常', '当日', '日記', '日中', '日々', '中日', '前日', '日産', '日程', '休日']
+2025-08-04 00:30:20 - DistractorFilter - INFO - Dependency filter rejected 6 candidates.
+2025-08-04 00:30:20 - Main - INFO - 
+====== Results for Spelling. ======
+2025-08-04 00:30:20 - Main - INFO -      Distractor candidates pool: ['一日', '朝日', '今日', '日間', '同日', '毎日', '翌日', '日曜', '平日', '来日', '日常', '当日', '日記', '日中', '日々', '中日', '前日', '日産', '日程', '休日']
+2025-08-04 00:30:20 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:20 - Main - INFO -     Dependency Rejects: ['同日', '日曜', '来日', '日常', '日記', '日々']
+2025-08-04 00:30:20 - Main - INFO -     Final Rejects (In Any Filter): ['日記', '同日', '日常', '日曜', '来日', '日々']
+2025-08-04 00:30:20 - Main - INFO -      Final Distractors: ['一日', '朝日', '今日', '日間', '毎日', '翌日', '平日', '当日', '日中', '中日', '前日', '日産', '日程', '休日']
+2025-08-04 00:30:20 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:20 - SimilarityGenerator - INFO - --- Generating similarity distractors for '日' ---
+2025-08-04 00:30:20 - SimilarityGenerator - INFO - Found similar items for '日': ['日祝' (0.58696), '前日' (0.57264), '月初め' (0.55084), '当日' (0.54059), '翌日' (0.53240), '日付け' (0.52900), '月末' (0.52239), '一日' (0.50881), '祭日' (0.50845), '祝日' (0.50557), '週' (0.50089), '夜' (0.49892), '祝祭日' (0.49845), '初日' (0.48667), '休日' (0.48597), '両日' (0.48130), '晩' (0.47884), '日・祝' (0.47805), '前夜' (0.46624), '命日' (0.46284)]
+2025-08-04 00:30:20 - SimilarityGenerator - INFO - Successfully generated 20 distractors for target token '日'.
+2025-08-04 00:30:21 - DistractorFilter - INFO - Dependency filter rejected 1 candidates.
+2025-08-04 00:30:21 - Main - INFO - 
+====== Results for Similarity. ======
+2025-08-04 00:30:21 - Main - INFO -      Distractor candidates pool: ['日祝', '前日', '月初め', '当日', '翌日', '日付け', '月末', '一日', '祭日', '祝日', '週', '夜', '祝祭日', '初日', '休日', '両日', '晩', '日・祝', '前夜', '命日']
+2025-08-04 00:30:21 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:21 - Main - INFO -     Dependency Rejects: ['命日']
+2025-08-04 00:30:21 - Main - INFO -     Final Rejects (In Any Filter): ['命日']
+2025-08-04 00:30:21 - Main - INFO -      Final Distractors: ['日祝', '前日', '月初め', '当日', '翌日', '日付け', '月末', '一日', '祭日', '祝日', '週', '夜', '祝祭日', '初日', '休日', '両日', '晩', '日・祝', '前夜']
+2025-08-04 00:30:21 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:21 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for '日' ---
+2025-08-04 00:30:21 - CooccurrenceGenerator - INFO - Target: Lemma='日', POS='名詞', Freq=291761
+2025-08-04 00:30:21 - CooccurrenceGenerator - INFO - Found 44197 co-occurring candidate surfaces to analyze.
+2025-08-04 00:30:21 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['松山', '乗り合わせ', '明け暮れ', '忌明け', '豊島', 'ハプス', '何曜', '蓮正', 'ツルサワ', '苦参', '休肝', '松本', '借り切り', '次記', '片岡', '想観', '初酉', '小金', '定休', '休電']
+2025-08-04 00:30:22 - DistractorFilter - INFO - Dependency filter rejected 3 candidates.
+2025-08-04 00:30:22 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-08-04 00:30:22 - Main - INFO -      Distractor candidates pool: ['松山', '乗り合わせ', '明け暮れ', '忌明け', '豊島', 'ハプス', '何曜', '蓮正', 'ツルサワ', '苦参', '休肝', '松本', '借り切り', '次記', '片岡', '想観', '初酉', '小金', '定休', '休電']
+2025-08-04 00:30:22 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:22 - Main - INFO -     Dependency Rejects: ['蓮正', '次記', '想観']
+2025-08-04 00:30:22 - Main - INFO -     Final Rejects (In Any Filter): ['次記', '蓮正', '想観']
+2025-08-04 00:30:22 - Main - INFO -      Final Distractors: ['松山', '乗り合わせ', '明け暮れ', '忌明け', '豊島', 'ハプス', '何曜', 'ツルサワ', '苦参', '休肝', '松本', '借り切り', '片岡', '初酉', '小金', '定休', '休電']
+2025-08-04 00:30:22 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:22 - Main - INFO - ▶️  (Ambiguous Kanji) Target: '金' in Carrier Sentence: '彼は銀行強盗で多額の現___を手に入れた。'
+2025-08-04 00:30:22 - Main - INFO -   (Context for Trigram Filter: ('多額', BLANK, '手'))
+2025-08-04 00:30:22 - BaselineGenerator - INFO - --- Generating baseline distractors for '金' ---
+2025-08-04 00:30:22 - BaselineGenerator - INFO - Target analyzed: Lemma='現金', POS='名詞', Frequency=8339
+2025-08-04 00:30:22 - BaselineGenerator - INFO - Found 166199 candidate words with POS '名詞'.
+2025-08-04 00:30:22 - BaselineGenerator - INFO - Successfully generated 20 distractors: ['燕', 'シミュレーション', '北軍', 'ニュージャージー', '奪還', 'ツル', 'サイエンス', '日付け', '民事', '落ち', '追悼', '輿論', '中毒', '元帥', '考察', '色彩', 'ＣＦ', 'ケイハン', '弾圧', '台地']
+2025-08-04 00:30:22 - DistractorFilter - INFO - Dependency filter rejected 4 candidates.
+2025-08-04 00:30:22 - Main - INFO - 
+====== Results for Baseline. ======
+2025-08-04 00:30:22 - Main - INFO -      Distractor candidates pool: ['燕', 'シミュレーション', '北軍', 'ニュージャージー', '奪還', 'ツル', 'サイエンス', '日付け', '民事', '落ち', '追悼', '輿論', '中毒', '元帥', '考察', '色彩', 'ＣＦ', 'ケイハン', '弾圧', '台地']
+2025-08-04 00:30:22 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:22 - Main - INFO -     Dependency Rejects: ['ニュージャージー', 'サイエンス', 'ＣＦ', '台地']
+2025-08-04 00:30:22 - Main - INFO -     Final Rejects (In Any Filter): ['ＣＦ', 'ニュージャージー', 'サイエンス', '台地']
+2025-08-04 00:30:22 - Main - INFO -      Final Distractors: ['燕', 'シミュレーション', '北軍', '奪還', 'ツル', '日付け', '民事', '落ち', '追悼', '輿論', '中毒', '元帥', '考察', '色彩', 'ケイハン', '弾圧']
+2025-08-04 00:30:22 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:22 - SpellingGenerator - INFO - --- Generating spelling distractors for '金' ---
+2025-08-04 00:30:22 - SpellingGenerator - INFO - Target analyzed: Lemma='現金', POS='名詞', Frequency=8339
+2025-08-04 00:30:22 - SpellingGenerator - INFO - Relevant characters for lookup (Japanese only, ignoring {'ー'}): {'金', '現'}
+2025-08-04 00:30:22 - SpellingGenerator - INFO - Found 578 potential candidates from character index.
+2025-08-04 00:30:22 - SpellingGenerator - INFO - Successfully generated 20 distractors: ['賃金', '借金', '金銭', '現職', '金剛', '年金', '合金', '罰金', '金庫', '基金', '発現', '預金', '金色', '権現', '金額', '現生', '金利', '金星', '税金', '現状']
+2025-08-04 00:30:22 - DistractorFilter - INFO - Dependency filter rejected 9 candidates.
+2025-08-04 00:30:22 - Main - INFO - 
+====== Results for Spelling. ======
+2025-08-04 00:30:22 - Main - INFO -      Distractor candidates pool: ['賃金', '借金', '金銭', '現職', '金剛', '年金', '合金', '罰金', '金庫', '基金', '発現', '預金', '金色', '権現', '金額', '現生', '金利', '金星', '税金', '現状']
+2025-08-04 00:30:22 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:22 - Main - INFO -     Dependency Rejects: ['借金', '金銭', '年金', '罰金', '基金', '金色', '権現', '金星', '税金']
+2025-08-04 00:30:22 - Main - INFO -     Final Rejects (In Any Filter): ['金星', '借金', '金色', '罰金', '金銭', '権現', '基金', '税金', '年金']
+2025-08-04 00:30:22 - Main - INFO -      Final Distractors: ['賃金', '現職', '金剛', '合金', '金庫', '発現', '預金', '金額', '現生', '金利', '現状']
+2025-08-04 00:30:22 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:22 - SimilarityGenerator - INFO - --- Generating similarity distractors for '金' ---
+2025-08-04 00:30:22 - SimilarityGenerator - INFO - Found similar items for '金': ['銀' (0.57866), '大金' (0.54302), '金銀' (0.54131), '一封' (0.50753), '路銀' (0.50418), '寅二' (0.49309), '歳幣' (0.49215), '小銭' (0.49198), '大枚' (0.49141), '延べ棒' (0.48475), '敬姫' (0.48446), '淑姫' (0.48353), '容淳' (0.48214), '東柱' (0.47752), '素梅' (0.47450), 'なけなし' (0.47160), '永南' (0.47025), '賢姫' (0.46461), '金東' (0.46438), '性洙' (0.46132)]
+2025-08-04 00:30:22 - SimilarityGenerator - INFO - Successfully generated 20 distractors for target token '金'.
+2025-08-04 00:30:23 - DistractorFilter - INFO - Dependency filter rejected 4 candidates.
+2025-08-04 00:30:23 - Main - INFO - 
+====== Results for Similarity. ======
+2025-08-04 00:30:23 - Main - INFO -      Distractor candidates pool: ['銀', '大金', '金銀', '一封', '路銀', '寅二', '歳幣', '小銭', '大枚', '延べ棒', '敬姫', '淑姫', '容淳', '東柱', '素梅', 'なけなし', '永南', '賢姫', '金東', '性洙']
+2025-08-04 00:30:23 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:23 - Main - INFO -     Dependency Rejects: ['銀', '大金', '金銀', '小銭']
+2025-08-04 00:30:23 - Main - INFO -     Final Rejects (In Any Filter): ['大金', '金銀', '銀', '小銭']
+2025-08-04 00:30:23 - Main - INFO -      Final Distractors: ['一封', '路銀', '寅二', '歳幣', '大枚', '延べ棒', '敬姫', '淑姫', '容淳', '東柱', '素梅', 'なけなし', '永南', '賢姫', '金東', '性洙']
+2025-08-04 00:30:23 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:23 - CooccurrenceGenerator - INFO - --- Generating co-occurrence distractors for '金' ---
+2025-08-04 00:30:23 - CooccurrenceGenerator - INFO - Target: Lemma='現金', POS='名詞', Freq=8339
+2025-08-04 00:30:23 - CooccurrenceGenerator - INFO - Found 23111 co-occurring candidate surfaces to analyze.
+2025-08-04 00:30:23 - CooccurrenceGenerator - INFO - Successfully generated 20 distractors: ['見限り', '英哲', 'ケイヒメ', 'セイヒン', '大中', '小金', 'キュウガイ', 'ジョンピル', 'コンカン', 'テツコウ', 'テイカク', 'ケイキョク', 'サンテイ', 'ショウヒツ', 'ヨウジュン', 'インショク', 'エイイツ', 'セイシュ', 'フショク', 'ヨンサム']
+2025-08-04 00:30:23 - Main - INFO - 
+====== Results for Co-occurrence. ======
+2025-08-04 00:30:23 - Main - INFO -      Distractor candidates pool: ['見限り', '英哲', 'ケイヒメ', 'セイヒン', '大中', '小金', 'キュウガイ', 'ジョンピル', 'コンカン', 'テツコウ', 'テイカク', 'ケイキョク', 'サンテイ', 'ショウヒツ', 'ヨウジュン', 'インショク', 'エイイツ', 'セイシュ', 'フショク', 'ヨンサム']
+2025-08-04 00:30:23 - Main - INFO -     Trigram Rejects: []
+2025-08-04 00:30:23 - Main - INFO -     Dependency Rejects: []
+2025-08-04 00:30:23 - Main - INFO -     Final Rejects (In Any Filter): []
+2025-08-04 00:30:23 - Main - INFO -      Final Distractors: ['見限り', '英哲', 'ケイヒメ', 'セイヒン', '大中', '小金', 'キュウガイ', 'ジョンピル', 'コンカン', 'テツコウ', 'テイカク', 'ケイキョク', 'サンテイ', 'ショウヒツ', 'ヨウジュン', 'インショク', 'エイイツ', 'セイシュ', 'フショク', 'ヨンサム']
+2025-08-04 00:30:23 - Main - INFO - 
+=================================== 
+
+2025-08-04 00:30:23 - Main - INFO - 
+====== System finished demonstration. ======

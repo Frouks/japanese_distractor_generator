@@ -1,0 +1,30 @@
+2025-08-04 01:13:09 - root - INFO - Logging configured to output to console and file.
+2025-08-04 01:13:09 - Main - INFO - ====== Distractor Generation System Starting ======
+2025-08-04 01:13:09 - Main.Setup - INFO - --- Checking for all required pre-processed data files ---
+2025-08-04 01:13:09 - Main.Setup - INFO - ✅ All pre-processed data files found. Skipping build steps.
+2025-08-04 01:13:09 - Main - INFO - 
+--- Loading data and initializing generators & filters ---
+2025-08-04 01:13:09 - CorpusProcessor - INFO - No explicit MeCab args provided by user. MeCab will use its default dictionary configuration.
+2025-08-04 01:13:09 - CorpusProcessor - WARNING - IMPORTANT: Please check the 'Active MeCab Dictionary Info' log output below to ensure MeCab is using the dictionary you expect (e.g., unidic).
+2025-08-04 01:13:09 - CorpusProcessor - INFO - MeCab Tagger initialized with final effective args: ''.
+2025-08-04 01:13:09 - CorpusProcessor - INFO - Active MeCab Dictionary Info (from Tagger):
+  Filename: /opt/miniconda3/envs/bt/lib/python3.10/site-packages/unidic/dicdir/sys.dic, Charset: utf8, Type: 0, Version: 102
+
+2025-08-04 01:13:09 - CorpusProcessor - INFO - Using feature indices for parsing: POS1=0, POS_Detail_End=3, Lemma=7
+2025-08-04 01:13:09 - CorpusProcessor.Loader - INFO - Loading all words details from /Users/danieleamore/University/Bachelorthesis/japanese_distractor_generator/re_implementation/processed_corpus_data/jp_all_words_details.json...
+2025-08-04 01:13:09 - CorpusProcessor.Loader - INFO - Successfully loaded 179807 entries from words details file.
+2025-08-04 01:13:09 - BaselineGenerator - INFO - Organizing corpus vocabulary by Part-of-Speech for faster lookups...
+2025-08-04 01:13:09 - BaselineGenerator - INFO - Finished organizing vocabulary.
+2025-08-04 01:13:09 - BaselineGenerator - INFO - Generator initialized. Organized vocabulary into 8 POS categories.
+2025-08-04 01:13:09 - SpellingGenerator - INFO - Building character-to-word inverted index for fast lookups...
+2025-08-04 01:13:09 - SpellingGenerator - INFO - Finished building character index.
+2025-08-04 01:13:09 - SpellingGenerator - INFO - Generator initialized. Built character index for 5253 unique characters.
+2025-08-04 01:13:09 - SimilarityGenerator - INFO - Loading Word2Vec model... (This may take a moment)
+2025-08-04 01:13:09 - gensim.utils - INFO - loading Word2Vec object from model/jawiki_min_count_5.word2vec.model
+2025-08-04 01:13:09 - gensim.utils - INFO - loading wv recursively from model/jawiki_min_count_5.word2vec.model.wv.* with mmap=None
+2025-08-04 01:13:09 - gensim.utils - INFO - loading vectors from model/jawiki_min_count_5.word2vec.model.wv.vectors.npy with mmap=None
+2025-08-04 01:13:09 - gensim.utils - INFO - loading syn1neg from model/jawiki_min_count_5.word2vec.model.syn1neg.npy with mmap=None
+2025-08-04 01:13:09 - gensim.utils - INFO - setting ignored attribute cum_table to None
+2025-08-04 01:13:10 - gensim.utils - INFO - Word2Vec lifecycle event {'fname': 'model/jawiki_min_count_5.word2vec.model', 'datetime': '2025-08-04T01:13:10.480227', 'gensim': '4.3.3', 'python': '3.10.16 (main, Dec 11 2024, 10:22:29) [Clang 14.0.6 ]', 'platform': 'macOS-15.5-arm64-arm-64bit', 'event': 'loaded'}
+2025-08-04 01:13:10 - SimilarityGenerator - INFO - Word2Vec model loaded successfully.
+2025-08-04 01:13:10 - SimilarityGenerator - INFO - SimilarityGenerator initialized successfully with model from model/jawiki_min_count_5.word2vec.model
